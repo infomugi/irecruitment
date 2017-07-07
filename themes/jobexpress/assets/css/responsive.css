@@ -1,0 +1,188 @@
+/**************media Query************/
+@media (max-width:1199px){
+    .navbar-default .nav>li>a {
+        padding: 14px 11px 30px;
+    }
+    .page-heading2 h1 {
+        font-size: 45px;
+    }
+    .job_title{
+        font-size: 18px;
+    }
+    .facebook{
+        font-size: 14px;
+    }
+    .employe_list .nav-tabs2>li>a {
+        padding: 10px 10px;
+    }
+    .Resume, .Resume p{
+        padding-bottom: 0px;
+        line-height: 20px;
+    }
+    .testi-box:after{ right: 20%;}
+    .testi-box:before{ left: 25%;}
+}
+@media (max-width:991px){
+    .navbar-default .nav>li>a {
+        padding: 14px 11px;
+    }
+    .navbar-toggle {
+        display: block;
+        margin-top: -35px;
+    }
+    .navbar-collapse.collapse.in {
+        display: block!important;
+    }
+    .navbar-collapse.collapse {
+        display: none !important;
+    }
+    .navbar-nav>li, .navbar-header {
+        float: none;
+    }
+    .modal-dialog {
+        width: 398px;
+        margin: 30px auto;
+    }
+    .btn-search {
+        top: 113px;
+    }
+    .tab-content {
+        margin-bottom: 30px;
+    }
+    .table>tbody>tr>td h1 {
+        font-size: 13px;
+        line-height: 22px;
+    }
+    .client {
+        width: 31%;
+        float: left;
+        margin-right: 15px;
+    }
+    .client img, .block1 img{
+        margin: 0 auto;
+        width: 100%;
+    }
+    .footer-block {
+        width: 30%;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .footer-block2 {
+        width: 50%;
+    }
+    .flex-direction-nav .flex-next {
+        right: 100px;
+        top: 86%;
+    }
+    .flex-direction-nav .flex-prev{
+        left: 100px;
+        top: 86%;
+    }
+    .video-sec, .author, .panel-pricing, .Resume{
+        margin-bottom: 30px;
+    }
+    .p-r {
+        padding-left: 0px !important;
+    }
+    .p-l {
+        padding-right: 0px !important;
+    }
+    .twiiter i{  left: 4px;}
+    .google_plus i{  left: 4px;}
+    .employe_list .nav-tabs2>li>a {
+        padding: 10px 6px;
+    }
+    .our_site, .success_story, #footer {
+        background-position: 100%;
+    }
+    .header-stricky .col-md-3.text-right {
+        margin-top: 0px;
+        margin-right: 16px;
+    }
+    .input-group-btn{ right: 68px;}
+}
+@media (max-width:767px){ 
+    .overflow .fact-box {
+        margin-bottom: 30px;
+    }
+    .footer-bottom, .footer-bottom .col-md-6.col-sm-6.text-right{ 
+        text-align: center;
+    }
+    .page-title h1 {
+        font-size: 30px;
+        line-height: 40px;
+    }
+    .page-title .with {
+        top: -20px;
+    }
+    .client {
+        width: 49%;
+        margin-right: 5px;
+    }
+    .tab-image {
+        float: none;
+        margin-right: 0;
+    }
+    header{
+        width: auto;
+    }
+    [data-wysihtml5-command], [data-wysihtml5-action], .fore-color{ width: 57px;}
+     .footer-block {
+        float: none;
+        width: 100%;
+     }
+     .btn-info {
+        margin-bottom: 15px;
+     }
+     .text-shorting .work-time {
+        margin-left: 15px;
+        margin-bottom: 10px;
+    }
+    .employe_list .nav-tabs2>li {
+        float: none;
+        display: inline-block;
+    }
+    .employe_list .nav-tabs2>li>a {
+        padding: 10px 14px;
+    }
+    .table>tbody>tr>td{ vertical-align: super;}
+    .btn-search {
+        top: 0;
+        left: 0;
+        position: relative;
+    }
+    .navbar-nav .open .dropdown-menu{
+        background-color: #033036;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a{
+        color: #7eabb0;
+        padding: 7px 20px;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a:focus, .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover, .navbar-default .navbar-nav .open .dropdown-menu>.active>a, .navbar-default .navbar-nav .open .dropdown-menu>.active>a:focus, .navbar-default .navbar-nav .open .dropdown-menu>.active>a:hover{ color: #fff; background: transparent;}
+    .header-stricky .col-md-3.text-right{ margin-right: 0px;}
+}
+@media (max-width:545px){ 
+    .client {
+        width: 100%;
+    }
+}
+@media (max-width:480px){ 
+    .flex-direction-nav .flex-next {
+        right: 30px;
+    }
+    .flex-direction-nav .flex-prev{
+        left: 30px;
+    }
+    .banner-heading{ font-size: 23px;}
+    ul.follow li{     
+        margin-right: 3px;
+        width: 40px;
+        height: 40px;
+        line-height: 43px;
+    }
+    .register{ width: 100%;}
+    .register.job{ margin-left: 0px; margin-top: 10px;}
+    .input-group-btn {
+        right: 73px;
+    }
+}
