@@ -6,25 +6,18 @@ $this->breadcrumbs=array(
 	'Kotas',
 	);
 
-	$this->pageTitle='Daftar Kota';
+$this->pageTitle='Daftar Kota';
+?>
+
+
+<?php echo CHtml::link('Kelola Kota',
+	array('admin'),
+	array('class' => 'btn btn-success btn-flat'));
 	?>
 
-	<section class="col-xs-12">
+	<HR>
 
-		<?php echo CHtml::link('Tambah Kota',
- array('create'),
- array('class' => 'btn btn-success btn-flat'));
- ?>
-		<?php echo CHtml::link('Kelola Kota',
- array('admin'),
- array('class' => 'btn btn-success btn-flat'));
- ?>
-
-		<HR>
-
-			<?php $this->widget('zii.widgets.CListView', array(
+		<?php $this->widget('zii.widgets.CListView', array(
 			'dataProvider'=>$dataProvider,
 			'itemView'=>'_view',
 			)); ?>
-
-		</section>

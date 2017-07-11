@@ -1,6 +1,6 @@
 <?php
-/* @var $this KotaController */
-/* @var $model Kota */
+/* @var $this PendidikanController */
+/* @var $model Pendidikan */
 /* @var $form CActiveForm */
 ?>
 
@@ -9,22 +9,23 @@
 	<div class="col-md-9"> 
 
 		<?php $form=$this->beginWidget('CActiveForm', array(
-			'id'=>'kota-form',
+			'id'=>'pendidikan-form',
 			'enableAjaxValidation'=>false,
 			)); ?>
 
 			<?php echo $form->errorSummary($model, null, null, array('class' => 'alert alert-warning')); ?>
 
 			
+			
 			<div class="form-group">
 				
 				<div class="col-sm-4 control-label">
-					<?php echo $form->labelEx($model,'id'); ?>
+					<?php echo $form->labelEx($model,'instansi'); ?>
 				</div>   
 
 				<div class="col-sm-8">
-					<?php echo $form->error($model,'id'); ?>
-					<?php echo $form->textField($model,'id',array('size'=>4,'maxlength'=>4)),array('class'=>'form-control')); ?>
+					<?php echo $form->error($model,'instansi'); ?>
+					<?php echo $form->textField($model,'instansi',array('class'=>'form-control')); ?>
 				</div>
 				
 			</div>  
@@ -33,12 +34,12 @@
 			<div class="form-group">
 				
 				<div class="col-sm-4 control-label">
-					<?php echo $form->labelEx($model,'province_id'); ?>
+					<?php echo $form->labelEx($model,'tahun'); ?>
 				</div>   
 
 				<div class="col-sm-8">
-					<?php echo $form->error($model,'province_id'); ?>
-					<?php echo $form->textField($model,'province_id',array('size'=>2,'maxlength'=>2)),array('class'=>'form-control')); ?>
+					<?php echo $form->error($model,'tahun'); ?>
+					<?php echo $form->textField($model,'tahun',array('class'=>'form-control')); ?>
 				</div>
 				
 			</div>  
@@ -47,15 +48,31 @@
 			<div class="form-group">
 				
 				<div class="col-sm-4 control-label">
-					<?php echo $form->labelEx($model,'name'); ?>
+					<?php echo $form->labelEx($model,'gaji'); ?>
 				</div>   
 
 				<div class="col-sm-8">
-					<?php echo $form->error($model,'name'); ?>
-					<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>255)),array('class'=>'form-control')); ?>
+					<?php echo $form->error($model,'gaji'); ?>
+					<?php echo $form->textField($model,'gaji',array('class'=>'form-control')); ?>
 				</div>
 				
 			</div>  
+
+			
+			<div class="form-group">
+				
+				<div class="col-sm-4 control-label">
+					<?php echo $form->labelEx($model,'bagian'); ?>
+				</div>   
+
+				<div class="col-sm-8">
+					<?php echo $form->error($model,'bagian'); ?>
+					<?php echo $form->textField($model,'bagian',array('class'=>'form-control')); ?>
+				</div>
+				
+			</div>  
+
+			
 
 			<div class="form-group">
 				<div class="col-md-12">  

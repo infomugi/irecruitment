@@ -7,7 +7,7 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'E-Recruitment',
+	'name'=>'Infomedia',
 	'theme' => 'jobexpress',
 	'timeZone' => 'Asia/Jakarta',
 	'language'=>'id',

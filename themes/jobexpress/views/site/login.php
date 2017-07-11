@@ -18,7 +18,7 @@ $this->breadcrumbs=array(
             <div id="form">
               <div id="userform">
                 <ul class="nav nav-tabs nav-justified" role="tablist">
-                  <li class="active border-right"><a href="#login" role="tab" data-toggle="tab">Log in</a></li>
+                  <li class="active border-right"><a href="#login" role="tab" data-toggle="tab">Masuk</a></li>
                 </ul>
                 <div class="tab-content">
                   <div class="tab-pane fade active in" id="login">
@@ -45,8 +45,8 @@ $this->breadcrumbs=array(
                         <?php echo $form->errorSummary($model, null, null, array('class' => 'alert alert-warning')); ?>
 
                         <div class="form-group">
-                          <label> Username or E-mail</label>
-                          <?php echo $form->textField($model,'username', array('class' => 'form-control', 'placeholder'=>'Username')); ?>
+                          <label> Username atau E-mail</label>
+                          <?php echo $form->textField($model,'username', array('class' => 'form-control', 'placeholder'=>'Username atau Email')); ?>
 
                           <div class="search_icon"><span class="ti-user"></span></div>
                         </div>

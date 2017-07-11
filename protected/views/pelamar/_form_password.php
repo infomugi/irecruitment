@@ -30,16 +30,13 @@
 			</div>  
 
 			
-	
-								
-								
-								<div class="form-group">
-									<div class="col-md-12">  
-									</br></br>
-									<?php echo CHtml::submitButton($model->isNewRecord ? 'Registrasi' : 'Edit', array('class' => 'btn btn-info btn-flat pull-right')); ?>
-								</div>
-							</div>
+			<div class="form-group">
+				<div class="col-md-12">  
+				</br></br>
+				<?php echo CHtml::submitButton($model->isNewRecord ? 'Registrasi' : 'Edit', array('class' => 'btn btn-success btn-flat pull-right')); ?>
+			</div>
+		</div>
 
-							<?php $this->endWidget(); ?>
+		<?php $this->endWidget(); ?>
 
 </div></div><!-- form -->

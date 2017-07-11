@@ -1,23 +1,25 @@
 <?php
 
 /**
- * This is the model class for table "bagian".
+ * This is the model class for table "pelamar_pendidikan".
  *
- * The followings are the available columns in table 'bagian':
- * @property integer $id_bagian
- * @property string $nama
- * @property string $deskripsi
- * @property string $psikotest
- * @property string $status
+ * The followings are the available columns in table 'pelamar_pendidikan':
+ * @property integer $id_pekerjaan
+ * @property string $instansi
+ * @property string $tahun
+ * @property double $gaji
+ * @property string $bagian
+ * @property integer $people_id
+ * @property integer $user_id
  */
-class Bagian extends CActiveRecord
+class Pekerjaan extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'bagian';
+		return 'pelamar_pekerjaan';
 	}
 
 	/**
@@ -28,13 +30,14 @@ class Bagian extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nama, deskripsi, status', 'required'),
-			array('nama', 'length', 'max'=>50),
-			array('status', 'length', 'max'=>25),
-			array('psikotest', 'length', 'max'=>255),
+			array('instansi, tahun, people_id', 'required'),
+			array('people_id', 'numerical', 'integerOnly'=>true),
+			array('gaji, tahun', 'numerical'),
+			array('instansi', 'length', 'max'=>100),
+			array('bagian', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_bagian, nama, deskripsi, psikotest, status', 'safe', 'on'=>'search'),
+			array('id_pekerjaan, instansi, tahun, gaji, bagian, people_id', 'safe', 'on'=>'search'),
 			);
 	}
 
@@ -55,11 +58,12 @@ class Bagian extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id_bagian' => 'Id Bagian',
-			'nama' => 'Nama',
-			'deskripsi' => 'Deskripsi',
-			'psikotest' => 'Soal Psikotest',
-			'status' => 'Status',
+			'id_pekerjaan' => 'Id Pendidikan',
+			'instansi' => 'Nama Instansi',
+			'tahun' => 'Tahun Bekerja',
+			'gaji' => 'Gaji Terkahir',
+			'bagian' => 'Jabatan Sebelumnya',
+			'people_id' => 'Pelamar ID',
 			);
 	}
 
@@ -81,11 +85,12 @@ class Bagian extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id_bagian',$this->id_bagian);
-		$criteria->compare('nama',$this->nama,true);
-		$criteria->compare('deskripsi',$this->deskripsi,true);
-		$criteria->compare('psikotest',$this->psikotest,true);
-		$criteria->compare('status',$this->status,true);
+		$criteria->compare('id_pekerjaan',$this->id_pekerjaan);
+		$criteria->compare('instansi',$this->instansi,true);
+		$criteria->compare('tahun',$this->tahun,true);
+		$criteria->compare('gaji',$this->gaji);
+		$criteria->compare('bagian',$this->bagian,true);
+		$criteria->compare('people_id',$this->people_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -96,7 +101,7 @@ class Bagian extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Bagian the static model class
+	 * @return Pendidikan the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

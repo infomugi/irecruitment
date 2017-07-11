@@ -13,9 +13,9 @@ $this->menu=array(
 	array('label'=>'Tambah Pelamar', 'url'=>array('create')),
 	array('label'=>'Detail Pelamar', 'url'=>array('view', 'id'=>$model->id_people)),
 	array('label'=>'Kelola Pelamar', 'url'=>array('admin')),
-);	
+	);	
 
-	$this->pageTitle='Edit Pelamar';
-	?>
+$this->pageTitle='Edit Pelamar';
+?>
 
-	<?php echo $this->renderPartial('_form', array('model'=>$model,'user'=>$user)); ?>
+<?php echo $this->renderPartial('_form_update', array('model'=>$model,'user'=>$user)); ?>

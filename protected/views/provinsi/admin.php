@@ -31,7 +31,7 @@ $this->pageTitle='Kelola Provinsi';
 				'htmlOptions'=>array('width'=>'10px', 
 					'style' => 'text-align: center;')),
 
-			'id',
+			// 'id',
 			'name',
 
 			),

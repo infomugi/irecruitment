@@ -146,6 +146,35 @@ class SiteController extends Controller
 		}
 
 	/**
+	 * Displays the register page
+	 */
+	public function actionRegister()
+	{
+		$model=new User;
+		$Pelamar=new Pelamar;
+		$Pelamar->setScenario('insert');
+		$Pelamar->setScenario('registrasi');
+
+		if(isset($_POST['User']))
+		{
+			$model->attributes=$_POST['User'];
+			$model->password = md5($model->password);
+			if($model->save()){
+				$Pelamar->id_people = rand(1000000,2000000);
+				$Pelamar->id_user = $model->id_user;
+				$Pelamar->save();
+				Yii::app()->user->setFlash('success', 'Selamat '.$model->username.' berhasil registrasi, silahkan login.');
+				$this->redirect(array('site/login'));
+			}
+		}
+
+		$this->render('register',array(
+			'model'=>$model,
+			'Pelamar'=>$Pelamar,
+			));
+	}		
+
+	/**
 	 * Logs out the current user and redirect to homepage.
 	 */
 	public function actionLogout()

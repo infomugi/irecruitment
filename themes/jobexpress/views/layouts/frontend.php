@@ -5,18 +5,13 @@
 	<title><?php echo CHtml::encode($this->pageTitle); ?> - <?php echo CHtml::encode(Yii::app()->name); ?></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="author" content="Mugi Rachmat">
-
 	<?php
 	$baseUrl = Yii::app()->theme->baseUrl; 
 	$cs = Yii::app()->getClientScript();
 	Yii::app()->clientScript->registerCoreScript('jquery');
 	?>
-
-	<!-- Bootstrap -->
 	<link href="<?php echo $baseUrl;?>/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<!--font awesome-->
 	<link href="<?php echo $baseUrl;?>/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-	<!--custom css-->
 	<link href="<?php echo $baseUrl;?>/assets/plugins/themify/themify-icons.css" rel="stylesheet">
 	<link href="<?php echo $baseUrl;?>/assets/css/style.css" rel="stylesheet">
 	<link href="<?php echo $baseUrl;?>/assets/css/responsive.css" rel="stylesheet">

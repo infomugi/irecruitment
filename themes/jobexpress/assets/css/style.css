@@ -33,7 +33,7 @@ a:focus, a:hover{
     position: relative;
 }
 .form-control{
-    height: 64px;
+    /*height: 64px;*/
     border: none;
     box-shadow: none;
     outline: none;
@@ -73,11 +73,11 @@ ul.unstyled li.active a{ color: #2196f3; font-weight: 500;}
 .p-l{ padding-left: 0px !important; }
 .p-r{ padding-right: 0px !important; }
 .borderfull-width{ 
-   border: solid 1px #e1e1e1;
-   position: relative;
-   overflow: hidden;
-   top: 15px;
-   margin-bottom: 35px;
+ border: solid 1px #e1e1e1;
+ position: relative;
+ overflow: hidden;
+ top: 15px;
+ margin-bottom: 35px;
 }
 textarea.form-control {
     height: 150px !important;
@@ -112,10 +112,10 @@ input[type=checkbox], input[type=radio]{
 .border-none{ border: none !important;}
 /*************Page Css***********/
 .header-stricky{
-   /* margin: 20px 0 0px; */
-   /* position: relative; */
-   float: left;
-   width: 100%;
+ /* margin: 20px 0 0px; */
+ /* position: relative; */
+ float: left;
+ width: 100%;
 }
 .site-logo{
     margin: 15px 0px;
@@ -828,11 +828,11 @@ ul.bottom_link li a {
 }
 #userform .form-group{ position: relative;}
 #userform .form-group input.form-control {
- height: auto;
- background-color: transparent;
- color: #333333;
- padding: 10px;
- padding-left: 30px;
+   height: auto;
+   background-color: transparent;
+   color: #333333;
+   padding: 10px;
+   padding-left: 30px;
 }
 #userform  .search_icon{ top: 40px;}
 #userform .form-control {
@@ -844,9 +844,9 @@ ul.bottom_link li a {
   box-shadow: none;
 }
 #userform::-webkit-input-placeholder {
-   text-transform: uppercase;
-   font-weight: 700;
-   color: #bbb;
+ text-transform: uppercase;
+ font-weight: 700;
+ color: #bbb;
 }
 #userform #signup .form-group label {
     font-size: 16px;
@@ -1117,7 +1117,7 @@ label span{ color: #7d7d7d; font-weight: 500;}
 .contact_details span a{ color: #2196f3; text-decoration: underline; font-weight: 500;}
 .resume .panel-body{ margin-bottom: 20px;}
 .resume2 .borderfull-width{
- margin: 0px;
+   margin: 0px;
 }
 .resume .job-search{ padding-top: 0px;  padding-bottom: 25px;}
 .resume .form-control{ border: solid 1px #e1e1e1;
@@ -1236,13 +1236,13 @@ label span{ color: #7d7d7d; font-weight: 500;}
     .table>tbody>tr>td a{ font-size: 13px; color: #2196f3; font-weight: 500; }
     .table>tbody>tr>td i{ padding-right: 5px;}
     .bottom-text {
-     padding: 10px 0px;
- }
- .manage .table>thead>tr>th{ padding-left: 0px;}
- .manage .panel-body{ padding-bottom: 5px;}
- /******employe_list Page Css*********/
+       padding: 10px 0px;
+   }
+   .manage .table>thead>tr>th{ padding-left: 0px;}
+   .manage .panel-body{ padding-bottom: 5px;}
+   /******employe_list Page Css*********/
 
- .list span{
+   .list span{
     color: #7d7d7d;
     font-size: 13px;
     line-height: 30px;

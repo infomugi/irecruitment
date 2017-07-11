@@ -1,27 +1,33 @@
 <?php
-/* @var $this LowonganController */
-/* @var $model Lowongan */
+/* @var $this PendidikanController */
+/* @var $model Pendidikan */
 
 $this->breadcrumbs=array(
-	'Lowongans'=>array('index'),
+	'Pendidikans'=>array('index'),
 	'Kelola',
 	);
 
-$this->pageTitle='Kelola Job Order';
+$this->menu=array(
+	array('label'=>'Tambah Pendidikan', 'url'=>array('create')),
+	array('label'=>'Daftar Pendidikan', 'url'=>array('index')),
+	array('label'=>'Kelola Pendidikan', 'url'=>array('admin')),
+	);
+
+$this->pageTitle='Kelola Pendidikan';
 ?>
 
 
-<?php echo CHtml::link('Tambah Job Order',
+<?php echo CHtml::link('Tambah Pendidikan',
 	array('create'),
-	array('class' => 'btn btn-primary btn-flat'));
+	array('class' => 'btn btn-success btn-flat'));
 	?>
-	<?php echo CHtml::link('Daftar Job Order',
+	<?php echo CHtml::link('Daftar Pendidikan',
 		array('index'),
-		array('class' => 'btn btn-primary btn-flat'));
+		array('class' => 'btn btn-success btn-flat'));
 		?>
 
 		<?php $this->widget('zii.widgets.grid.CGridView', array(
-			'id'=>'lowongan-grid',
+			'id'=>'pendidikan-grid',
 			'dataProvider'=>$model->search(),
 			'filter'=>$model,
 			'itemsCssClass' => 'table table-bordered table-striped dataTable table-hover',
@@ -33,27 +39,11 @@ $this->pageTitle='Kelola Job Order';
 					'htmlOptions'=>array('width'=>'10px', 
 						'style' => 'text-align: center;')),
 
-				'tanggal',
-				array(
-					'name'=>'jabatan',
-					'value'=>'$data->Jabatan->nama',
-					),
+				'instansi',
+				'tahun',
+				'gaji',
+				'bagian',
 
-				array(
-					'name'=>'bagian',
-					'value'=>'$data->Bagian->nama',
-					),
-
-				array(
-					'name'=>'tipe',
-					'value'=>'Lowongan::model()->tipe($data->tipe)',
-					),
-
-				array(
-					'name'=>'status',
-					'value'=>'Lowongan::model()->status($data->status)',
-					),		
-				
 				array(
 					'header'=>'Action',
 					'class'=>'CButtonColumn',
@@ -62,4 +52,4 @@ $this->pageTitle='Kelola Job Order';
 					),
 				),
 				)); ?>
-
+				

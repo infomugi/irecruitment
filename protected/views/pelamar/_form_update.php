@@ -33,20 +33,6 @@
 			<div class="form-group">
 				
 				<div class="col-sm-4 control-label">
-					<?php echo $form->labelEx($user,'password'); ?>
-				</div>   
-
-				<div class="col-sm-8">
-					<?php echo $form->error($user,'password'); ?>
-					<?php echo $form->passwordField($user,'password',array('class'=>'form-control')); ?>
-				</div>
-				
-			</div>  
-
-			
-			<div class="form-group">
-				
-				<div class="col-sm-4 control-label">
 					<?php echo $form->labelEx($user,'email'); ?>
 				</div>   
 
@@ -282,7 +268,7 @@
 										<div class="form-group">
 											<div class="col-md-12">  
 											</br></br>
-											<?php echo CHtml::submitButton($model->isNewRecord ? 'Registrasi' : 'Edit', array('class' => 'btn btn-success btn-flat pull-right')); ?>
+											<?php echo CHtml::submitButton($model->isNewRecord ? 'Registrasi' : 'Edit', array('class' => 'btn btn-primary btn-flat pull-right')); ?>
 										</div>
 									</div>
 

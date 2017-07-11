@@ -36,7 +36,7 @@ class Pelamar extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nama, tempat_lahir, tanggal_lahir, agama, jenis_kelamin, golongan_darah, kewarganegaraan, hp, kota_id, provinsi_id', 'required'),
+			array('nama, tempat_lahir, tanggal_lahir, agama, jenis_kelamin, golongan_darah, kewarganegaraan, hp, kota_id, provinsi_id', 'required','on'=>'insert'),
 			array('id_people, id_user, kota_id, provinsi_id', 'numerical', 'integerOnly'=>true),
 			array('nama, tanggal_lahir', 'length', 'max'=>255),
 			array('tempat_lahir, tanggal_lahir, agama, jenis_kelamin, golongan_darah, kewarganegaraan, hp', 'length', 'max'=>30),

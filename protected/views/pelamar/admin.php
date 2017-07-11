@@ -57,6 +57,7 @@ $this->pageTitle='Kelola Pelamar';
 				array(
 					'header'=>'Action',
 					'class'=>'CButtonColumn',
+					'template'=>'{view}',
 					'htmlOptions'=>array('width'=>'100px', 
 						'style' => 'text-align: center;'),
 					),

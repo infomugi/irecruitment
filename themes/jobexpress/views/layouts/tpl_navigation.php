@@ -34,31 +34,24 @@
                   array('label'=>'Profil', 'url'=>array('/site/about'),'visible'=>YII::app()->user->isGuest),
                   array('label'=>'Visi & Misi', 'url'=>array('/site/visimisi'),'visible'=>YII::app()->user->isGuest),
                   array('label'=>'Lowongan Kerja', 'url'=>array('/lowongan/index'),'visible'=>YII::app()->user->isGuest),
-                  array('label'=>'Register','url'=>array('/user/create'),'visible'=>yii::app()->user->isGuest),
+                  array('label'=>'Register','url'=>array('/site/register'),'visible'=>yii::app()->user->isGuest),
                   
-                  array('label'=>'Profile','url'=>array('/pelamar/profile','id'=>Yii::app()->user->id),'visible'=>yii::app()->user->getLevel()==2),
+                  array('label'=>'Profile','url'=>array('/pelamar/profile'),'visible'=>yii::app()->user->getLevel()==2),
                   array('label'=>'Lowongan Kerja','url'=>array('/lowongan/terbaru'),'visible'=>yii::app()->user->getLevel()==2),
-                  array('label'=>'Pengumuman','url'=>array('/lamaran/history'),'visible'=>yii::app()->user->getLevel()==2),
-
-                  // array('label'=>'Info Loker','url'=>array('/pelamar/loker','id'=>Yii::app()->user->id),'visible'=>yii::app()->user->getLevel()==2),
-                  // array('label'=>'Pengumuman','url'=>array('/pelamar/Pengumuman','id'=>Yii::app()->user->id),'visible'=>yii::app()->user->getLevel()==2),
+                  array('label'=>'Pengumuman','url'=>array('/filelamaran/history'),'visible'=>yii::app()->user->getLevel()==2),
 
                   array('label'=>'Pengguna <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"), 
                     'items'=>array(
-                      array('label'=>'Kelola','url'=>array('/user/admin')),
-                      ),'visible'=>Yii::app()->user->getLevel()==1),
-
-                  array('label'=>'Pelamar <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"), 
-                    'items'=>array(
-                      array('label'=>'Kelola','url'=>array('/pelamar/admin')),
+                      array('label'=>'Kelola Data Akun','url'=>array('/user/admin')),
+                      array('label'=>'Kelola Data Pelamar','url'=>array('/pelamar/admin')),
                       // array('label'=>'Pelamar Diterima','url'=>array('/pelamar/index')),
                       // array('label'=>'Pelamar Ditolak','url'=>array('/pelamar/index')),
                       ),'visible'=>Yii::app()->user->getLevel()==1), 
 
-                  array('label'=>'Lowongan <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"), 
+                  array('label'=>'Job Order <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"), 
                     'items'=>array(
-                      array('label'=>'Tambah','url'=>array('/lowongan/create')),
-                      array('label'=>'Kelola','url'=>array('/lowongan/admin')),
+                      array('label'=>'Tambah Job Order','url'=>array('/lowongan/create')),
+                      array('label'=>'Kelola Job Order','url'=>array('/lowongan/admin')),
                       ),'visible'=>Yii::app()->user->getLevel()==1),
 
                   array('label'=>'Master <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"), 
@@ -66,6 +59,8 @@
                       array('label'=>'Bagian','url'=>array('/bagian/admin')),
                       array('label'=>'Jabatan','url'=>array('/jabatan/admin')),
                       array('label'=>'Level','url'=>array('/level/admin')),
+                      array('label'=>'Provinsi','url'=>array('/provinsi/admin')),
+                      array('label'=>'Kota','url'=>array('/kota/admin')),
                       ),'visible'=>Yii::app()->user->getLevel()==1),                                      
 
                   // array('label'=>'Pengajuan <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"), 

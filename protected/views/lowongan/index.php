@@ -10,11 +10,11 @@ $this->pageTitle='Daftar Lowongan';
 ?>
 <?php if(Yii::app()->user->getLevel()==1): ?>
 	
-	<?php echo CHtml::link('Tambah Lowongan',
+	<?php echo CHtml::link('Tambah Job Order',
 		array('create'),
 		array('class' => 'btn btn-primary btn-flat'));
 		?>
-		<?php echo CHtml::link('Kelola Lowongan',
+		<?php echo CHtml::link('Kelola Job Order',
 			array('admin'),
 			array('class' => 'btn btn-primary btn-flat'));
 			?>
