@@ -13,11 +13,11 @@ $this->pageTitle='Kelola Bagian';
 
 <?php echo CHtml::link('Tambah Bagian',
 	array('create'),
-	array('class' => 'btn btn-primary btn-flat'));
+	array('class' => 'btn btn-danger btn-flat'));
 	?>
 	<?php echo CHtml::link('Daftar Bagian',
 		array('index'),
-		array('class' => 'btn btn-primary btn-flat'));
+		array('class' => 'btn btn-danger btn-flat'));
 		?>
 
 		<?php $this->widget('zii.widgets.grid.CGridView', array(

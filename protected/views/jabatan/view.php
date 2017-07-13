@@ -14,15 +14,15 @@ $this->pageTitle='Detail Jabatan';
 
 <?php echo CHtml::link('Tambah',
 	array('create'),
-	array('class' => 'btn btn-primary btn-flat','title'=>'Tambah Jabatan'));
+	array('class' => 'btn btn-danger btn-flat','title'=>'Tambah Jabatan'));
 	?>
 	<?php echo CHtml::link('List',
 		array('index'),
-		array('class' => 'btn btn-primary btn-flat', 'title'=>'Daftar Jabatan'));
+		array('class' => 'btn btn-danger btn-flat', 'title'=>'Daftar Jabatan'));
 		?>
 		<?php echo CHtml::link('Kalola',
 			array('admin'),
-			array('class' => 'btn btn-primary btn-flat','title'=>'Kelola Jabatan'));
+			array('class' => 'btn btn-danger btn-flat','title'=>'Kelola Jabatan'));
 			?>
 			<?php echo CHtml::link('Edit', 
 				array('update', 'id'=>$model->id_jabatan,

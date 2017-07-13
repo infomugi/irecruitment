@@ -89,7 +89,7 @@
 
 				<div class="form-group">
 					<div class="col-md-12">  
-						<?php echo CHtml::submitButton($model->isNewRecord ? 'Simpan' : 'Edit', array('class' => 'btn btn-primary btn-flat pull-right')); ?>
+						<?php echo CHtml::submitButton($model->isNewRecord ? 'Simpan' : 'Edit', array('class' => 'btn btn-danger btn-flat pull-right')); ?>
 					</div>
 				</div>
 

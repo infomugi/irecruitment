@@ -23,7 +23,6 @@
 	<?php require_once('tpl_navigation.php'); ?>
 	<?php echo $content; ?>
 
-	<script src="<?php echo $baseUrl;?>/assets/js/jquery.min.js"></script>
 	<script src="<?php echo $baseUrl;?>/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 	<script src="<?php echo $baseUrl;?>/assets/js/common.js"></script>
 

@@ -14,11 +14,11 @@ $this->pageTitle='Manage User';
 
 	<?php echo CHtml::link('<i class="fa fa-plus"></i>',
 		array('create'),
-		array('class' => 'btn btn-primary btn-md'));
+		array('class' => 'btn btn-danger btn-md'));
 		?>
 		<?php echo CHtml::link('<i class="fa fa-tasks"></i>',
 			array('index'),
-			array('class' => 'btn btn-primary btn-md'));
+			array('class' => 'btn btn-danger btn-md'));
 			?>
 
 		</span> 
@@ -27,11 +27,11 @@ $this->pageTitle='Manage User';
 
 			<?php echo CHtml::link('Add User',
 				array('create'),
-				array('class' => 'btn btn-primary btn-flat'));
+				array('class' => 'btn btn-danger btn-flat'));
 				?>
 				<?php echo CHtml::link('List User',
 					array('index'),
-					array('class' => 'btn btn-primary btn-flat'));
+					array('class' => 'btn btn-danger btn-flat'));
 					?>
 
 				</span>	

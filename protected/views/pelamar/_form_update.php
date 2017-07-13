@@ -268,7 +268,7 @@
 										<div class="form-group">
 											<div class="col-md-12">  
 											</br></br>
-											<?php echo CHtml::submitButton($model->isNewRecord ? 'Registrasi' : 'Edit', array('class' => 'btn btn-primary btn-flat pull-right')); ?>
+											<?php echo CHtml::submitButton($model->isNewRecord ? 'Registrasi' : 'Edit', array('class' => 'btn btn-danger btn-flat pull-right')); ?>
 										</div>
 									</div>
 

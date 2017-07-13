@@ -13,11 +13,11 @@ $this->pageTitle='Kelola Jabatan';
 
 <?php echo CHtml::link('Tambah Jabatan',
 	array('create'),
-	array('class' => 'btn btn-primary btn-flat'));
+	array('class' => 'btn btn-danger btn-flat'));
 	?>
 	<?php echo CHtml::link('Daftar Jabatan',
 		array('index'),
-		array('class' => 'btn btn-primary btn-flat'));
+		array('class' => 'btn btn-danger btn-flat'));
 		?>
 
 		<?php $this->widget('zii.widgets.grid.CGridView', array(

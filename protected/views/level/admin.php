@@ -13,11 +13,11 @@ $this->pageTitle='Kelola Level';
 
 <?php echo CHtml::link('Tambah Level',
 	array('create'),
-	array('class' => 'btn btn-primary btn-flat'));
+	array('class' => 'btn btn-danger btn-flat'));
 	?>
 	<?php echo CHtml::link('Daftar Level',
 		array('index'),
-		array('class' => 'btn btn-primary btn-flat'));
+		array('class' => 'btn btn-danger btn-flat'));
 		?>
 
 

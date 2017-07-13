@@ -12,11 +12,11 @@ $this->pageTitle='Daftar Jabatan';
 
 <?php echo CHtml::link('Tambah Jabatan',
 	array('create'),
-	array('class' => 'btn btn-primary btn-flat'));
+	array('class' => 'btn btn-danger btn-flat'));
 	?>
 	<?php echo CHtml::link('Kelola Jabatan',
 		array('admin'),
-		array('class' => 'btn btn-primary btn-flat'));
+		array('class' => 'btn btn-danger btn-flat'));
 		?>
 
 		<HR>

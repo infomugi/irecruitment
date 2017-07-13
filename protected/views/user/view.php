@@ -14,15 +14,15 @@ $this->pageTitle='Detail User';
 
 	<?php echo CHtml::link('<i class="fa fa-plus"></i>',
 		array('create'),
-		array('class' => 'btn btn-primary btn-flat','title'=>'Add User'));
+		array('class' => 'btn btn-danger btn-flat','title'=>'Add User'));
 		?>
 		<?php echo CHtml::link('<i class="fa fa-tasks"></i>',
 			array('index'),
-			array('class' => 'btn btn-primary btn-flat', 'title'=>'List User'));
+			array('class' => 'btn btn-danger btn-flat', 'title'=>'List User'));
 			?>
 			<?php echo CHtml::link('<i class="fa fa-table"></i>',
 				array('admin'),
-				array('class' => 'btn btn-primary btn-flat','title'=>'Manage User'));
+				array('class' => 'btn btn-danger btn-flat','title'=>'Manage User'));
 				?>
 				<?php echo CHtml::link('<i class="fa fa-edit"></i>', 
 					array('update', 'id'=>$model->id_user,
@@ -39,15 +39,15 @@ $this->pageTitle='Detail User';
 
 								<?php echo CHtml::link('Add',
 									array('create'),
-									array('class' => 'btn btn-primary btn-flat','title'=>'Add User'));
+									array('class' => 'btn btn-danger btn-flat','title'=>'Add User'));
 									?>
 									<?php echo CHtml::link('List',
 										array('index'),
-										array('class' => 'btn btn-primary btn-flat', 'title'=>'List User'));
+										array('class' => 'btn btn-danger btn-flat', 'title'=>'List User'));
 										?>
 										<?php echo CHtml::link('Manage',
 											array('admin'),
-											array('class' => 'btn btn-primary btn-flat','title'=>'Manage User'));
+											array('class' => 'btn btn-danger btn-flat','title'=>'Manage User'));
 											?>
 											<?php echo CHtml::link('Edit', 
 												array('update', 'id'=>$model->id_user,
