@@ -86,10 +86,10 @@ if($lewat!="Telah lewat"){
 				$umur = Pelamar::model()->countBirth($profile->tanggal_lahir);
 
 				if($model->umur>$umur){
-
+					echo "<br>";
 					echo CHtml::link('Melamar', 
 						array('filelamaran/lamar', 'job'=>$model->id_lowongan, 'user'=>YII::app()->user->id), 
-						array('class' => 'btn-style-1 btn-lg', 'title'=>'Melamar'));
+						array('class' => 'btn btn-info', 'title'=>'Melamar'));
 
 				}else{
 
@@ -106,9 +106,11 @@ if($lewat!="Telah lewat"){
 
 		}else{
 
+			echo "<br>";
+			echo "<div class='alert alert-warning'>Silahkan Login untuk Melamar Lowongan <b>".$model->Jabatan->nama ." ". $model->Bagian->nama ."</b>.</div>";
 			echo CHtml::link('Melamar', 
 				array('filelamaran/lamar', 'job'=>$model->id_lowongan, 'user'=>YII::app()->user->id), 
-				array('class' => 'btn-style-1 btn-lg', 'title'=>'Melamar'));
+				array('class' => 'btn btn-danger pull-right', 'title'=>'Melamar'));
 			
 		}
 		endif;

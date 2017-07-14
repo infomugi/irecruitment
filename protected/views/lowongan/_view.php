@@ -12,13 +12,16 @@ $hide = Lowongan::model()->hide($data->tanggal_kebutuhan);
 			<div class="work-time text-center col-md-2"><?php echo CHtml::encode(Lowongan::model()->tipe($data->tipe)); ?></div>
 		</div>
 		<div class="bottom_text">
-			<div class="contact_details col-md-4 col-sm-4">
-				<span><strong>Tanggal Posting: <i class="fa fa-calendar"></i></strong> <?php echo CHtml::encode($data->tanggal); ?></span>
+			<div class="contact_details col-md-3 col-sm-3">
+				<span><strong>Posting: <i class="fa fa-calendar"></i></strong> <?php echo CHtml::encode($data->tanggal); ?></span>
 			</div>
-			<div class="contact_details col-md-4 col-sm-4">
-				<span><strong>Batas Waktu: <i class="fa fa-calendar"></i></strong> <?php echo CHtml::encode($data->tanggal); ?></span>
-			</div>			
-			<div class="contact_details col-md-4 col-sm-4">
+			<div class="contact_details col-md-3 col-sm-3">
+				<span><strong>Berlaku: <i class="fa fa-calendar"></i></strong> <?php echo CHtml::encode($data->tanggal); ?></span>
+			</div>		
+			<div class="contact_details col-md-3 col-sm-3">
+				<span><strong>Kebutuhan:</strong> <?php echo CHtml::encode($data->jumlah_orang); ?> Orang</span>
+			</div>				
+			<div class="contact_details col-md-3 col-sm-3">
 				<span><strong>Status Lowongan:</strong> <?php echo CHtml::encode(Lowongan::model()->deadline($data->tanggal_kebutuhan)); ?></span>
 			</div>
 			<p class="col-md-12"><?php echo CHtml::encode($data->deskripsi_kebutuhan); ?></p>
