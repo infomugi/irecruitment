@@ -71,12 +71,12 @@ class Lowongan extends CActiveRecord
 			'tipe' => 'Tipe',
 			'deskripsi_pekerjaan' => 'Deskripsi Pekerjaan',
 			'deskripsi_kebutuhan' => 'Deskripsi Kebutuhan',
-			'jumlah_orang' => 'Jumlah Orang',
+			'jumlah_orang' => 'Kuantitas',
 			'tanggal_kebutuhan' => 'Batas Waktu',
 			'lokasi' => 'Lokasi',
 			'jeniskelamin' => 'Jenis Kelamin',
 			'status' => 'Status',
-			'umur' => 'Umur Maksimum',
+			'umur' => 'Umur',
 			);
 	}
 

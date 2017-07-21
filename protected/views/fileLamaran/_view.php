@@ -15,13 +15,11 @@ if($data->status_lamaran=="Belum di Verifikasi"){
 ?>
 
 <div class="sorting_content">
-	<div class="tab-image"><img src="assets/images/candidates/candidate-1.png" alt="" class="img-responsive"></div>
 	<div class="overflow">
 		<div class="text-shorting">
-			<h1><?php echo CHtml::link(CHtml::encode("Lamaran : ".$dataBagian->nama." - ".$dataJabatan->nama), array('view', 'id'=>$data->id)); ?></h1>
+			<h3><?php echo CHtml::link(CHtml::encode("Lamaran : ".$dataBagian->nama." - ".$dataJabatan->nama), array('view', 'id'=>$data->id)); ?></h3>
 			<ul class="unstyled">
 				<li><span class="label label-<?php echo $alert; ?>"> <?php echo $data->status_lamaran; ?></span></li>
-				<li><span><strong>Rate : </strong> <i class="fa fa-money"></i> $100 / Hour</span></li>
 			</ul>
 			<p></p>
 		</div>

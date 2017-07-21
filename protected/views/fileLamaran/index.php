@@ -16,27 +16,27 @@ $this->menu=array(
 	<?php if(YII::app()->user->getLevel()==1): ?>
 		<?php echo CHtml::link('<i class="fa fa-tasks"></i> Semua Lamaran', 
 			array('index'
-				), array('class' => 'btn btn-danger btn-flat', 'title'=>'Daftar Semua Lamaran'));
+				), array('class' => 'btn btn-info btn-flat', 'title'=>'Daftar Semua Lamaran'));
 				?>	
 
 				<?php echo CHtml::link('<i class="fa fa-server"></i> Belum Verifikasi', 
 					array('unverified'
-						), array('class' => 'btn btn-danger btn-flat', 'title'=>'Daftar Lamaran Belum di Verifikasi'));
+						), array('class' => 'btn btn-info btn-flat', 'title'=>'Daftar Lamaran Belum di Verifikasi'));
 						?>
 
 						<?php echo CHtml::link('<i class="fa fa-check"></i> Diverifikasi', 
 							array('verified'
-								), array('class' => 'btn btn-danger btn-flat', 'title'=>'Daftar Lamaran Diterima'));
+								), array('class' => 'btn btn-info btn-flat', 'title'=>'Daftar Lamaran Diterima'));
 								?>						
 
 								<?php echo CHtml::link('<i class="fa fa-check"></i> Diterima', 
 									array('accept'
-										), array('class' => 'btn btn-danger btn-flat', 'title'=>'Daftar Lamaran Diterima'));
+										), array('class' => 'btn btn-info btn-flat', 'title'=>'Daftar Lamaran Diterima'));
 										?>
 
 										<?php echo CHtml::link('<i class="fa fa-remove"></i> Ditolak', 
 											array('reject'
-												), array('class' => 'btn btn-danger btn-flat', 'title'=>'Daftar Lamaran Ditolak'));
+												), array('class' => 'btn btn-info btn-flat', 'title'=>'Daftar Lamaran Ditolak'));
 												?>
 
 											<?php endif; ?>								

@@ -12,11 +12,11 @@ $this->pageTitle='Daftar Lowongan';
 	
 	<?php echo CHtml::link('Tambah Job Order',
 		array('create'),
-		array('class' => 'btn btn-danger btn-flat'));
+		array('class' => 'btn btn-info btn-flat'));
 		?>
 		<?php echo CHtml::link('Kelola Job Order',
 			array('admin'),
-			array('class' => 'btn btn-danger btn-flat'));
+			array('class' => 'btn btn-info btn-flat'));
 			?>
 
 		<?php endif; ?>

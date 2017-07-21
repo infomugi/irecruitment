@@ -66,7 +66,7 @@ class Pelamar extends CActiveRecord
 	{
 		return array(
 			'id_people' => 'Id People',
-			'nama' => 'Nama',
+			'nama' => 'Nama Lengkap',
 			'tempat_lahir' => 'Tempat Lahir',
 			'tanggal_lahir' => 'Tanggal Lahir',
 			'agama' => 'Agama',

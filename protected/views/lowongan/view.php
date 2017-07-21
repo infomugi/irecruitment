@@ -8,7 +8,7 @@ $this->breadcrumbs=array(
 	);
 
 $dataProvider=new CActiveDataProvider('FileLamaran',array('criteria'=>array('condition'=>'lowongan_id="'.$model->id_lowongan.'"')));
-$this->pageTitle='Lowongan - '.$model->Jabatan->nama . " - " .$model->Bagian->nama;
+$this->pageTitle='Lowongan '.$model->Jabatan->nama . " untuk " .$model->Bagian->nama;
 ?>
 
 
@@ -110,7 +110,7 @@ if($lewat!="Telah lewat"){
 			echo "<div class='alert alert-warning'>Silahkan Login untuk Melamar Lowongan <b>".$model->Jabatan->nama ." ". $model->Bagian->nama ."</b>.</div>";
 			echo CHtml::link('Melamar', 
 				array('filelamaran/lamar', 'job'=>$model->id_lowongan, 'user'=>YII::app()->user->id), 
-				array('class' => 'btn btn-danger pull-right', 'title'=>'Melamar'));
+				array('class' => 'btn btn-info pull-right', 'title'=>'Melamar'));
 			
 		}
 		endif;

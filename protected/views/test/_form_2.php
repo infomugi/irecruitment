@@ -11,6 +11,12 @@
 		<?php $form=$this->beginWidget('CActiveForm', array(
 			'id'=>'test-form',
 			'enableAjaxValidation'=>false,
+			'enableClientValidation' => true,
+			'clientOptions' => array(
+				'validateOnSubmit' => true,
+				),
+			'errorMessageCssClass' => 'label label-info',
+			'htmlOptions' => array('enctype' => 'multipart/form-data','autocomplete'=>'off'),
 			)); ?>
 
 			<?php echo $form->errorSummary($model, null, null, array('class' => 'alert alert-warning')); ?>
@@ -60,7 +66,7 @@
 				<div class="form-group">
 					<div class="col-md-12">  
 					</br></br>
-					<?php echo CHtml::submitButton($model->isNewRecord ? 'Simpan' : 'Edit', array('class' => 'btn btn-danger btn-flat pull-right')); ?>
+					<?php echo CHtml::submitButton($model->isNewRecord ? 'Simpan' : 'Edit', array('class' => 'btn btn-info btn-flat pull-right')); ?>
 				</div>
 			</div>
 

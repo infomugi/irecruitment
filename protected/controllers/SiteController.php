@@ -29,9 +29,10 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
+
 		if (!YII::app()->user->isGuest){
 			
-			$this->layout="list";
+			$this->layout="admin";
 			$dataProvider=new CActiveDataProvider('FileLamaran',array('criteria'=>array('condition'=>'status_lamaran="Belum di Verifikasi"')));
 			$this->render('dashboard',array(
 				'dataProvider'=>$dataProvider,
@@ -150,6 +151,7 @@ class SiteController extends Controller
 	 */
 	public function actionRegister()
 	{
+		$this->layout="signin";	
 		$model=new User;
 		$Pelamar=new Pelamar;
 		$Pelamar->setScenario('insert');

@@ -218,7 +218,7 @@ class FileLamaranController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$this->layout="list";
+		$this->layout="admin";
 		$dataProvider=new CActiveDataProvider('FileLamaran',
 			array(
 				'sort'=>array(
@@ -233,7 +233,7 @@ class FileLamaranController extends Controller
 
 	public function actionUnverified()
 	{
-		$this->layout="list";
+		$this->layout="admin";
 		$dataProvider=new CActiveDataProvider('FileLamaran',array('criteria'=>array('condition'=>'status_lamaran="Belum di Verifikasi"'), ));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
@@ -242,7 +242,7 @@ class FileLamaranController extends Controller
 
 	public function actionVerified()
 	{
-		$this->layout="list";
+		$this->layout="admin";
 		$dataProvider=new CActiveDataProvider('FileLamaran',array('criteria'=>array('condition'=>'status_lamaran="Diverifikasi"'), 'sort'=>array('defaultOrder'=>'id DESC')));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
@@ -251,7 +251,7 @@ class FileLamaranController extends Controller
 
 	public function actionAccept()
 	{
-		$this->layout="list";
+		$this->layout="admin";
 		$dataProvider=new CActiveDataProvider('FileLamaran',array('criteria'=>array('condition'=>'status_lamaran="Diterima"'), 'sort'=>array('defaultOrder'=>'id DESC')));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
@@ -260,7 +260,7 @@ class FileLamaranController extends Controller
 
 	public function actionReject()
 	{
-		$this->layout="list";
+		$this->layout="admin";
 		$dataProvider=new CActiveDataProvider('FileLamaran',array('criteria'=>array('condition'=>'status_lamaran="Ditolak"'), 'sort'=>array('defaultOrder'=>'id DESC')));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
@@ -269,7 +269,13 @@ class FileLamaranController extends Controller
 
 	public function actionHistory()
 	{
-		$this->layout="list";
+		if(Yii::app()->user->getLevel()==1){
+			$this->layout="admin";
+		}else{
+			$this->layout="list";
+		}
+
+		
 		$dataProvider=new CActiveDataProvider('FileLamaran',
 			array(
 				'criteria'=>array('condition'=>'id_people='.YII::app()->user->id),

@@ -31,9 +31,9 @@
   							'encodeLabel'=>false,
   							'items'=>array(
   								array('label'=>'Home', 'url'=>array('/site/index'),'visible'=>YII::app()->user->getLevel()!=2),
-  								array('label'=>'Profil', 'url'=>array('/site/about'),'visible'=>YII::app()->user->isGuest),
-  								array('label'=>'Visi & Misi', 'url'=>array('/site/visimisi'),'visible'=>YII::app()->user->isGuest),
-  								array('label'=>'Lowongan Kerja', 'url'=>array('/lowongan/index'),'visible'=>YII::app()->user->isGuest),
+  								// array('label'=>'Profil', 'url'=>array('/site/about'),'visible'=>YII::app()->user->isGuest),
+  								// array('label'=>'Visi & Misi', 'url'=>array('/site/visimisi'),'visible'=>YII::app()->user->isGuest),
+  								// array('label'=>'Lowongan Kerja', 'url'=>array('/lowongan/index'),'visible'=>YII::app()->user->isGuest),
   								array('label'=>'Register','url'=>array('/site/register'),'visible'=>yii::app()->user->isGuest),
   								
   								array('label'=>'Profile','url'=>array('/pelamar/profile'),'visible'=>yii::app()->user->getLevel()==2),

@@ -11,6 +11,12 @@
 		<?php $form=$this->beginWidget('CActiveForm', array(
 			'id'=>'user-form',
 			'enableAjaxValidation'=>false,
+			'enableClientValidation' => true,
+			'clientOptions' => array(
+				'validateOnSubmit' => true,
+				),
+			'errorMessageCssClass' => 'label label-info',
+			'htmlOptions' => array('enctype' => 'multipart/form-data','autocomplete'=>'off'),
 			)); ?>
 
 			<?php echo $form->errorSummary($model, null, null, array('class' => 'alert alert-warning')); ?>

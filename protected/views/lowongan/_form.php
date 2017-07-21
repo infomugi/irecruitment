@@ -35,6 +35,12 @@
 		<?php $form=$this->beginWidget('CActiveForm', array(
 			'id'=>'lowongan-form',
 			'enableAjaxValidation'=>false,
+			'enableClientValidation' => true,
+			'clientOptions' => array(
+				'validateOnSubmit' => true,
+				),
+			'errorMessageCssClass' => 'label label-info',
+			'htmlOptions' => array('enctype' => 'multipart/form-data','autocomplete'=>'off'),
 			)); ?>
 
 			<?php echo $form->errorSummary($model, null, null, array('class' => 'alert alert-warning')); ?>
@@ -76,6 +82,19 @@
 						</div>
 
 					</div>  
+
+					<div class="form-group">
+
+						<div class="col-sm-4 control-label">
+							<?php echo $form->labelEx($model,'jumlah_orang'); ?>
+						</div>   
+
+						<div class="col-sm-8">
+							<?php echo $form->error($model,'jumlah_orang'); ?>
+							<?php echo $form->textField($model,'jumlah_orang',array('class'=>'form-control')); ?>
+						</div>
+
+					</div>  					
 
 
 					<div class="form-group">
@@ -172,20 +191,6 @@
 							<div class="form-group">
 
 								<div class="col-sm-4 control-label">
-									<?php echo $form->labelEx($model,'jumlah_orang'); ?>
-								</div>   
-
-								<div class="col-sm-8">
-									<?php echo $form->error($model,'jumlah_orang'); ?>
-									<?php echo $form->textField($model,'jumlah_orang',array('class'=>'form-control')); ?>
-								</div>
-
-							</div>  
-
-
-							<div class="form-group">
-
-								<div class="col-sm-4 control-label">
 									<?php echo $form->labelEx($model,'tanggal_kebutuhan'); ?>
 								</div>   
 
@@ -266,7 +271,7 @@
 									<div class="form-group">
 										<div class="col-md-12">  
 										</br></br>
-										<?php echo CHtml::submitButton($model->isNewRecord ? 'Simpan' : 'Edit', array('class' => 'btn btn-danger btn-flat pull-right')); ?>
+										<?php echo CHtml::submitButton($model->isNewRecord ? 'Simpan' : 'Edit', array('class' => 'btn btn-info btn-flat pull-right')); ?>
 									</div>
 								</div>
 

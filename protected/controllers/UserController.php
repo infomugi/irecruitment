@@ -6,7 +6,7 @@ class UserController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public $layout='//layouts/admin';
+	public $layout='//layouts/column2';
 
 	/**
 	 * @return array action filters
@@ -16,7 +16,7 @@ class UserController extends Controller
 		return array(
 			'accessControl', // perform access control for CRUD operations
 			// 'postOnly + delete', // we only allow deletion via POST request
-		);
+			);
 	}
 
 	/**
@@ -60,7 +60,7 @@ class UserController extends Controller
 		$this->layout = 'admin';
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
-		));
+			));
 	}
 
 	/**
@@ -84,18 +84,18 @@ class UserController extends Controller
 			if($model->save())
 
 				$Pelamar->setScenario('registrasi');
-				$Pelamar->id_people = rand(1000000,2000000);
-				$Pelamar->id_user = $model->id_user;
-				$Pelamar->save();
-				
-				Yii::app()->user->setFlash('success', 'Selamat '.$model->username.' berhasil registrasi, silahkan login.');
-				$this->redirect(array('site/login'));
+			$Pelamar->id_people = rand(1000000,2000000);
+			$Pelamar->id_user = $model->id_user;
+			$Pelamar->save();
+			
+			Yii::app()->user->setFlash('success', 'Selamat '.$model->username.' berhasil registrasi, silahkan login.');
+			$this->redirect(array('site/login'));
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
 			'Pelamar'=>$Pelamar,
-		));
+			));
 	}
 
 	/**
@@ -121,7 +121,7 @@ class UserController extends Controller
 
 		$this->render('update',array(
 			'model'=>$model,
-		));
+			));
 	}
 
 	/**
@@ -147,7 +147,7 @@ class UserController extends Controller
 		$dataProvider=new CActiveDataProvider('User');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
-		));
+			));
 	}
 
 	/**
@@ -164,7 +164,7 @@ class UserController extends Controller
 
 		$this->render('admin',array(
 			'model'=>$model,
-		));
+			));
 	}
 
 	/**

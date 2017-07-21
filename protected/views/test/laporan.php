@@ -13,17 +13,17 @@ $this->pageTitle='Laporan Pengumuman Test';
 
 	<?php echo CHtml::link('<i class="fa fa-print"></i> Cetak Laporan Semua',
 		array('print'),
-		array('class' => 'btn btn-danger btn-flat'));
+		array('class' => 'btn btn-info btn-flat'));
 		?>
 
 		<?php echo CHtml::link('<i class="fa fa-print"></i> Cetak Laporan Lulus',
 			array('printlulus'),
-			array('class' => 'btn btn-danger btn-flat'));
+			array('class' => 'btn btn-info btn-flat'));
 			?>			
 
 			<?php echo CHtml::link('<i class="fa fa-print"></i> Cetak Laporan Gagal',
 				array('printgagal'),
-				array('class' => 'btn btn-danger btn-flat'));
+				array('class' => 'btn btn-info btn-flat'));
 				?>		
 
 

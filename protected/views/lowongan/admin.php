@@ -13,11 +13,11 @@ $this->pageTitle='Kelola Job Order';
 
 <?php echo CHtml::link('Tambah Job Order',
 	array('create'),
-	array('class' => 'btn btn-danger btn-flat'));
+	array('class' => 'btn btn-info btn-flat'));
 	?>
 	<?php echo CHtml::link('Daftar Job Order',
 		array('index'),
-		array('class' => 'btn btn-danger btn-flat'));
+		array('class' => 'btn btn-info btn-flat'));
 		?>
 
 		<?php $this->widget('zii.widgets.grid.CGridView', array(

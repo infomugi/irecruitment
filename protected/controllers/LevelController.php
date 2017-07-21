@@ -16,7 +16,7 @@ class LevelController extends Controller
 		return array(
 			'accessControl', // perform access control for CRUD operations
 			// 'postOnly + delete', // we only allow deletion via POST request
-		);
+			);
 	}
 
 	/**
@@ -47,7 +47,7 @@ class LevelController extends Controller
 	{
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
-		));
+			));
 	}
 
 	/**
@@ -70,7 +70,7 @@ class LevelController extends Controller
 
 		$this->render('create',array(
 			'model'=>$model,
-		));
+			));
 	}
 
 	/**
@@ -94,7 +94,7 @@ class LevelController extends Controller
 
 		$this->render('update',array(
 			'model'=>$model,
-		));
+			));
 	}
 
 	/**
@@ -119,7 +119,7 @@ class LevelController extends Controller
 		$dataProvider=new CActiveDataProvider('Level');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
-		));
+			));
 	}
 
 	/**
@@ -134,7 +134,7 @@ class LevelController extends Controller
 
 		$this->render('admin',array(
 			'model'=>$model,
-		));
+			));
 	}
 
 	/**
