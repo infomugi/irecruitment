@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 11, 2017 at 10:58 AM
+-- Generation Time: Jul 21, 2017 at 11:30 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -39,8 +39,8 @@ CREATE TABLE `bagian` (
 --
 
 INSERT INTO `bagian` (`id_bagian`, `nama`, `deskripsi`, `psikotest`, `status`) VALUES
-(1, 'Mechanical Engineering', 'Mechanical Engineering', '', 'Aktif'),
-(2, 'Networking', 'Networking', '', 'Aktif'),
+(1, 'Mechanical Engineering', 'Mechanical Engineering Jobs', '', 'Aktif'),
+(2, 'Networking', 'Networking Jobs', '', 'Aktif'),
 (3, 'Online Marketing', 'Online Marketing Jobs', '', 'Aktif'),
 (4, 'Animation', 'Animation Jobs', '', 'Aktif'),
 (5, 'Design Engineer', 'Design Engineer Jobs', '', 'Aktif'),
@@ -685,15 +685,15 @@ CREATE TABLE `lowongan` (
 --
 
 INSERT INTO `lowongan` (`id_lowongan`, `tanggal`, `bagian`, `jabatan`, `tipe`, `deskripsi_pekerjaan`, `deskripsi_kebutuhan`, `jumlah_orang`, `tanggal_kebutuhan`, `lokasi`, `status`, `jeniskelamin`, `umur`) VALUES
-(1, '2017-03-17', 1, 3, 1, 'Membuat dan merekan administrasi', 'SMK/ D3/ S1', 6, '2017-04-13', 'Soreang, Bandung, West Java, Indonesia', 1, 'L', 35),
-(2, '2017-03-17', 3, 2, 1, 'Membuat Desain Brosur dan Pamplet', 'Menguasasi CorelDraw, Photoshop, Adobe Illustrator.', 7, '2017-05-28', 'Banjaran, Bandung, West Java, Indonesia', 1, 'P', 25),
-(3, '2017-03-17', 1, 1, 1, 'Menguasai Softskill dan Konseptual.', 'Magister Administrasi', 10, '2017-05-10', 'Majalaya, Bandung, West Java, Indonesia', 1, 'L', 35),
-(4, '2017-03-17', 3, 1, 1, 'Membuat Desain Animasi 3D', 'S2 Desain Komunikasi Visual', 5, '2017-05-14', 'Jakarta, Special Capital Region of Jakarta, Indonesia', 1, 'P', 25),
-(5, '2017-03-17', 1, 2, 1, 'Membuat Desain Brosur dan Pamplet', 'Menguasai CSS, HTML, PHOTOSHOP, CORELDRAW', 5, '2017-03-13', 'Bandung', 1, 'L', 20),
-(6, '2017-03-17', 3, 1, 1, 'Merancang Desain', 'Menguasai CSS, HTML, PHOTOSHOP, CORELDRAW', 8, '2017-05-30', 'Soreang, Bandung, West Java, Indonesia', 1, 'P', 25),
-(8, '2017-03-13', 3, 1, 1, 'Merancang Desain 2', 'Menguasai CSS, HTML, PHOTOSHOP, CORELDRAW', 5, '2017-04-30', 'Soreang, Bandung, West Java, Indonesia', 1, 'L', 25),
-(9, '2017-03-13', 2, 2, 1, 'Membuat Desain Animasi 3D', 'Menguasai CSS, HTML, PHOTOSHOP, CORELDRAW', 4, '2017-03-31', 'Bandung, Bandung City, West Java, Indonesia', 1, 'P', 30),
-(10, '2017-03-13', 1, 1, 1, 'Membuat Desain Animasi 3D', 'Menguasasi CorelDraw, Photoshop, Adobe Illustrator.', 2, '2017-03-31', 'Jakarta, Indonesia', 1, 'L', 35);
+(1, '2017-03-17', 1, 3, 1, 'Membuat dan merekan administrasi', 'SMK/ D3/ S1', 6, '2017-07-30', 'Soreang, Bandung, West Java, Indonesia', 1, 'L', 35),
+(2, '2017-03-17', 3, 2, 1, 'Membuat Desain Brosur dan Pamplet', 'Menguasasi CorelDraw, Photoshop, Adobe Illustrator.', 7, '2017-07-29', 'Banjaran, Bandung, West Java, Indonesia', 1, 'P', 25),
+(3, '2017-03-17', 1, 1, 1, 'Menguasai Softskill dan Konseptual.', 'Magister Administrasi', 10, '2017-08-29', 'Majalaya, Bandung, West Java, Indonesia', 1, 'L', 35),
+(4, '2017-03-17', 3, 1, 1, 'Membuat Desain Animasi 3D', 'S2 Desain Komunikasi Visual', 5, '2017-08-14', 'Jakarta, Special Capital Region of Jakarta, Indonesia', 1, 'P', 25),
+(5, '2017-03-17', 1, 2, 1, 'Membuat Desain Brosur dan Pamplet', 'Menguasai CSS, HTML, PHOTOSHOP, CORELDRAW', 5, '2017-09-13', 'Bandung', 1, 'L', 20),
+(6, '2017-03-17', 3, 1, 1, 'Merancang Desain', 'Menguasai CSS, HTML, PHOTOSHOP, CORELDRAW', 8, '2017-08-30', 'Soreang, Bandung, West Java, Indonesia', 1, 'P', 25),
+(8, '2017-03-13', 3, 1, 1, 'Merancang Desain 2', 'Menguasai CSS, HTML, PHOTOSHOP, CORELDRAW', 5, '2017-08-30', 'Soreang, Bandung, West Java, Indonesia', 1, 'L', 25),
+(9, '2017-03-13', 2, 2, 1, 'Membuat Desain Animasi 3D', 'Menguasai CSS, HTML, PHOTOSHOP, CORELDRAW', 4, '2017-09-30', 'Bandung, Bandung City, West Java, Indonesia', 1, 'P', 30),
+(10, '2017-03-13', 1, 1, 1, 'Membuat Desain Animasi 3D', 'Menguasasi CorelDraw, Photoshop, Adobe Illustrator.', 2, '2017-08-25', 'Jakarta, Indonesia', 1, 'L', 35);
 
 -- --------------------------------------------------------
 
@@ -748,7 +748,6 @@ CREATE TABLE `pelamar_pekerjaan` (
 --
 
 INSERT INTO `pelamar_pekerjaan` (`id_pekerjaan`, `instansi`, `tahun`, `gaji`, `bagian`, `people_id`, `user_id`) VALUES
-(5, 'ITB', '2015', 3.75, 'TI', 1194397, 30),
 (6, 'ITS', '2016', 3.45, 'TI', 1527100, 32);
 
 -- --------------------------------------------------------
@@ -772,7 +771,6 @@ CREATE TABLE `pelamar_pendidikan` (
 --
 
 INSERT INTO `pelamar_pendidikan` (`id_pendidikan`, `instansi`, `tahun_lulus`, `nilai`, `jurusan`, `people_id`, `user_id`) VALUES
-(5, 'ITB', '2015', 3.75, 'TI', 1194397, 30),
 (6, 'ITS', '2016', 3.45, 'TI', 1527100, 32);
 
 -- --------------------------------------------------------
@@ -980,7 +978,7 @@ ALTER TABLE `file_lamaran`
 -- AUTO_INCREMENT for table `jabatan`
 --
 ALTER TABLE `jabatan`
-  MODIFY `id_jabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_jabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `level`
 --
