@@ -75,10 +75,22 @@ class PelamarController extends Controller
 				'pageSize'=>'4',
 				)));
 
+		$criteria3 = new CDbCriteria;
+		$criteria3->condition = 'people_id = :id';
+		$criteria3->params = array(':id'=>$id);
+		$criteria3->order = 'tahun DESC';			
+
+		$dataFamily=new CActiveDataProvider('Keluarga',array(
+			'criteria'=>$criteria3,
+			'pagination'=>array(
+				'pageSize'=>'4',
+				)));		
+
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 			'dataProvider'=>$dataProvider,
 			'dataJobs'=>$dataJobs,
+			'dataFamily'=>$dataFamily,
 			));
 	}
 
@@ -86,7 +98,7 @@ class PelamarController extends Controller
 	{
 		$profile=$this->loadProfile(Yii::app()->user->id);
 		$criteria = new CDbCriteria;
-		$criteria->condition = 'people_id = :id';
+		$criteria->condition = 'user_id = :id';
 		$criteria->params = array(':id'=>Yii::app()->user->id);
 		$criteria->order = 'tahun_lulus DESC';		
 
@@ -97,7 +109,7 @@ class PelamarController extends Controller
 				)));
 
 		$criteria2 = new CDbCriteria;
-		$criteria2->condition = 'people_id = :id';
+		$criteria2->condition = 'user_id = :id';
 		$criteria2->params = array(':id'=>Yii::app()->user->id);
 		$criteria2->order = 'tahun DESC';			
 
@@ -105,12 +117,24 @@ class PelamarController extends Controller
 			'criteria'=>$criteria2,
 			'pagination'=>array(
 				'pageSize'=>'4',
-				)));	
+				)));
+
+		$criteria3 = new CDbCriteria;
+		$criteria3->condition = 'user_id = :id';
+		$criteria3->params = array(':id'=>Yii::app()->user->id);
+		$criteria3->order = 'id_keluarga DESC';			
+
+		$dataFamily=new CActiveDataProvider('Keluarga',array(
+			'criteria'=>$criteria3,
+			'pagination'=>array(
+				'pageSize'=>'4',
+				)));					
 
 		$this->render('profile',array(
 			'model'=>$this->loadProfile(YII::app()->user->id),
 			'dataProvider'=>$dataProvider,
 			'dataJobs'=>$dataJobs,
+			'dataFamily'=>$dataFamily,
 			));
 	}	
 

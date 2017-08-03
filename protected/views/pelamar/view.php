@@ -15,16 +15,7 @@ $this->pageTitle='Profile - '.$model->nama;
 ?>
 
 
-<?php if($model->nama!=""){ ?>
-
-	<?php echo CHtml::link('List',
-		array('index'),
-		array('class' => 'btn btn-info btn-flat', 'title'=>'Daftar Pelamar'));
-	?>
-	<?php echo CHtml::link('Kelola',
-		array('admin'),
-		array('class' => 'btn btn-info btn-flat','title'=>'Kelola Pelamar'));
-	?>
+<?php if($model->tempat_lahir!=""){ ?>
 
 	<?php echo CHtml::link('<i class="ti-write"></i> Profile', 
 		array('update', 'id'=>$model->id_people,
@@ -41,6 +32,11 @@ $this->pageTitle='Profile - '.$model->nama;
 			), array('class' => 'btn btn-success btn-flat', 'title'=>'Riwayat Lamaran'));
 	?>
 
+	<?php echo CHtml::link('<i class="ti-clipboard"></i> Keluarga', 
+		array('keluarga/create', 'id'=>$model->id_people,
+			), array('class' => 'btn btn-success btn-flat', 'title'=>'Riwayat Keluarga'));
+	?>
+
 	<?php echo CHtml::link('<i class="ti-clipboard"></i> Pendidikan', 
 		array('pendidikan/create', 'id'=>$model->id_people,
 			), array('class' => 'btn btn-success btn-flat', 'title'=>'Riwayat Pendidikan'));
@@ -49,10 +45,6 @@ $this->pageTitle='Profile - '.$model->nama;
 	<?php echo CHtml::link('<i class="ti-calendar"></i> Pekerjaan', 
 		array('pekerjaan/create', 'id'=>$model->id_people,
 			), array('class' => 'btn btn-success btn-flat', 'title'=>'Riwayat Pekerjaan'));
-	?>
-	<?php echo CHtml::link('Hapus', 
-		array('delete', 'id'=>$model->id_people,
-			),  array('class' => 'btn btn-warning btn-flat', 'title'=>'Hapus Pelamar'));
 	?>
 
 
@@ -71,6 +63,7 @@ $this->pageTitle='Profile - '.$model->nama;
 			array('label'=>'Umur','value'=>Pelamar::model()->countBirth($model->tanggal_lahir)." Tahun"),
 			),
 		)); ?>
+
 
 	<H4><i class="ti-clipboard"></i> Riwayat Pekerjaan</H4>
 	<?php $this->widget('zii.widgets.grid.CGridView', array(

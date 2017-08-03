@@ -1,13 +1,13 @@
 <?php
-/* @var $this PendidikanController */
-/* @var $model Pendidikan */
+/* @var $this KeluargaController */
+/* @var $model Keluarga */
 
 $this->breadcrumbs=array(
-	'Pendidikans'=>array('index'),
+	'Keluargas'=>array('index'),
 	'Manage',
 	);
 
-	$this->pageTitle='Manage Pendidikan';
+	$this->pageTitle='Manage Keluarga';
 	?>
 
 	<span class="visible-xs">
@@ -25,11 +25,11 @@ $this->breadcrumbs=array(
 
 	<span class="hidden-xs">
 
-		<?php echo CHtml::link('Add Pendidikan',
+		<?php echo CHtml::link('Add Keluarga',
  array('create'),
  array('class' => 'btn btn-primary btn-flat'));
  ?>
-		<?php echo CHtml::link('List Pendidikan',
+		<?php echo CHtml::link('List Keluarga',
  array('index'),
  array('class' => 'btn btn-primary btn-flat'));
  ?>
@@ -39,7 +39,7 @@ $this->breadcrumbs=array(
 	<HR>
 
 		<?php $this->widget('zii.widgets.grid.CGridView', array(
-		'id'=>'pendidikan-grid',
+		'id'=>'keluarga-grid',
 		'dataProvider'=>$model->search(),
 		//'filter'=>$model,
 		'itemsCssClass' => 'table-responsive table table-striped table-hover table-vcenter',
@@ -51,19 +51,17 @@ $this->breadcrumbs=array(
 		'htmlOptions'=>array('width'=>'10px', 
 		'style' => 'text-align: center;')),
 
-				'id_pendidikan',
-		'jenjang',
-		'instansi',
-		'kota',
-		'jurusan',
-		'mulai',
+		'id_keluarga',
+		'hubungan_keluarga',
+		'nama',
+		'jenis_kelamin',
+		'tempat_lahir',
+		'tanggal_lahir',
 		/*
-		'selesai',
-		'tahun_lulus',
-		'status',
-		'nilai',
-		'jenis',
-		'people_id',
+		'pendidikan_terakhir',
+		'jabatan_pekerjaan',
+		'nama_perusahaan',
+		'keterangan',
 		'user_id',
 		*/
 			array(
@@ -72,7 +70,7 @@ $this->breadcrumbs=array(
 				'buttons'=>array(
 					'view'=>
 					array(
-						'url'=>'Yii::app()->createUrl("Pendidikan/view", array("id"=>$data->id_pendidikan))',
+						'url'=>'Yii::app()->createUrl("Keluarga/view", array("id"=>$data->id_keluarga))',
 						'options'=>array(
 							'ajax'=>array(
 								'type'=>'POST',
@@ -95,7 +93,7 @@ $this->breadcrumbs=array(
 					<!-- Popup Header -->
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title"><strong>View</strong> Pendidikan</h4>
+						<h4 class="modal-title"><strong>View</strong> Keluarga</h4>
 					</div>
 					<!-- Popup Content -->
 					<div class="modal-body">

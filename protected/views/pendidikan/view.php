@@ -7,55 +7,82 @@ $this->breadcrumbs=array(
 	$model->id_pendidikan,
 	);
 
-$this->menu=array(
-	array('label'=>'Daftar Pendidikan', 'url'=>array('index')),
-	array('label'=>'Kelola Pendidikan', 'url'=>array('admin')),
-);
 	$this->pageTitle='Detail Pendidikan';
 	?>
 
+	<span class="visible-xs">
 
-	<section class="col-xs-12">
-
-		<?php echo CHtml::link('Tambah',
+		<?php echo CHtml::link('<i class='fa fa-plus'></i>',
 	 array('create'),
- array('class' => 'btn btn-success btn-flat','title'=>'Tambah Pendidikan'));
+ array('class' => 'btn btn-primary btn-flat','title'=>'Add Pendidikan'));
+		 ?>
+		<?php echo CHtml::link('<i class='fa fa-tasks'></i>',
+	 array('index'),
+ array('class' => 'btn btn-primary btn-flat', 'title'=>'List Pendidikan'));
+		 ?>
+		<?php echo CHtml::link('<i class='fa fa-table'></i>',
+	 array('admin'),
+ array('class' => 'btn btn-primary btn-flat','title'=>'Manage Pendidikan'));
+		 ?>
+		<?php echo CHtml::link('<i class='fa fa-edit'></i>', 
+	 array('update', 'id'=>$model->id_pendidikan,
+		), array('class' => 'btn btn-info btn-flat', 'title'=>'Edit Pendidikan'));
+ ?>
+		<?php echo CHtml::link('<i class='fa fa-remove'></i>', 
+	 array('delete', 'id'=>$model->id_pendidikan,
+		),  array('class' => 'btn btn-danger btn-flat', 'title'=>'Hapus Pendidikan'));
+ ?>
+
+	</span> 
+
+	<span class="hidden-xs">
+
+		<?php echo CHtml::link('Add',
+	 array('create'),
+ array('class' => 'btn btn-primary btn-flat','title'=>'Add Pendidikan'));
 		 ?>
 		<?php echo CHtml::link('List',
 	 array('index'),
- array('class' => 'btn btn-success btn-flat', 'title'=>'Daftar Pendidikan'));
+ array('class' => 'btn btn-primary btn-flat', 'title'=>'List Pendidikan'));
 		 ?>
-		<?php echo CHtml::link('Kalola',
+		<?php echo CHtml::link('Manage',
 	 array('admin'),
- array('class' => 'btn btn-success btn-flat','title'=>'Kelola Pendidikan'));
+ array('class' => 'btn btn-primary btn-flat','title'=>'Manage Pendidikan'));
 		 ?>
 		<?php echo CHtml::link('Edit', 
 	 array('update', 'id'=>$model->id_pendidikan,
 		), array('class' => 'btn btn-info btn-flat', 'title'=>'Edit Pendidikan'));
  ?>
-		<?php echo CHtml::link('Hapus', 
+		<?php echo CHtml::link('Delete', 
 	 array('delete', 'id'=>$model->id_pendidikan,
-		),  array('class' => 'btn btn-warning btn-flat', 'title'=>'Hapus Pendidikan'));
+		),  array('class' => 'btn btn-danger btn-flat', 'title'=>'Hapus Pendidikan'));
  ?>
 
-		<HR>
+	</span>
 
-			<?php $this->widget('zii.widgets.CDetailView', array(
-			'data'=>$model,
-			'htmlOptions'=>array("class"=>"table"),
-			'attributes'=>array(
-						'id_pendidikan',
+	<HR>
+
+		<?php $this->widget('zii.widgets.CDetailView', array(
+		'data'=>$model,
+		'htmlOptions'=>array("class"=>"table"),
+		'attributes'=>array(
+					'id_pendidikan',
+		'jenjang',
 		'instansi',
-		'tahun_lulus',
-		'nilai',
+		'kota',
 		'jurusan',
+		'mulai',
+		'selesai',
+		'tahun_lulus',
+		'status',
+		'nilai',
+		'jenis',
 		'people_id',
-				),
-				)); ?>
+		'user_id',
+			),
+			)); ?>
 
-			</section>
-
-			<STYLE>
-				th{width:150px;}
-			</STYLE>
+		<STYLE>
+			th{width:150px;}
+		</STYLE>
 

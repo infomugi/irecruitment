@@ -153,13 +153,14 @@ class SiteController extends Controller
 	{
 		$this->layout="signin";	
 		$model=new User;
+		$model->setScenario('register_user');
 		$Pelamar=new Pelamar;
-		$Pelamar->setScenario('insert');
-		$Pelamar->setScenario('registrasi');
+		$Pelamar->setScenario('register_pelamar');
 
-		if(isset($_POST['User']))
+		if(isset($_POST['User'],$_POST['Pelamar']))
 		{
 			$model->attributes=$_POST['User'];
+			$Pelamar->attributes=$_POST['Pelamar'];
 			$model->password = md5($model->password);
 			if($model->save()){
 				$Pelamar->id_people = rand(1000000,2000000);

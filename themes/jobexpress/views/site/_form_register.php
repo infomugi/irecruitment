@@ -17,6 +17,13 @@
 	)); ?>
 
 	<?php echo $form->errorSummary($model, null, null, array('class' => 'alert alert-warning')); ?>
+	<?php echo $form->errorSummary($Pelamar, null, null, array('class' => 'alert alert-warning')); ?>
+
+	<div class="form-group">
+		<label> <?php echo $form->labelEx($Pelamar,'nik'); ?></label>
+		<?php echo $form->textField($Pelamar,'nik', array('class' => 'form-control', 'placeholder'=>'NIK')); ?>
+		<div class="search_icon"><span class="ti-credit-card"></span></div>
+	</div>
 
 	<div class="form-group">
 		<label> Username</label>

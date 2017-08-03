@@ -1,27 +1,27 @@
 <?php
-/* @var $this PendidikanController */
+/* @var $this KeluargaController */
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Pendidikans',
+	'Keluargas',
 	);
 
-	$this->pageTitle='List Pendidikan';
+	$this->pageTitle='List Keluarga';
 	?>
 
 	<span class="visible-xs">
 
 		<?php echo CHtml::link('<i class='fa fa-plus'></i>',
 	 array('create'),
- array('class' => 'btn btn-primary btn-flat','title'=>'Add Pendidikan'));
+ array('class' => 'btn btn-primary btn-flat','title'=>'Add Keluarga'));
 		 ?>
 		<?php echo CHtml::link('<i class='fa fa-tasks'></i>',
 	 array('index'),
- array('class' => 'btn btn-primary btn-flat', 'title'=>'List Pendidikan'));
+ array('class' => 'btn btn-primary btn-flat', 'title'=>'List Keluarga'));
 		 ?>
 		<?php echo CHtml::link('<i class='fa fa-table'></i>',
 	 array('admin'),
- array('class' => 'btn btn-primary btn-flat','title'=>'Manage Pendidikan'));
+ array('class' => 'btn btn-primary btn-flat','title'=>'Manage Keluarga'));
 		 ?>
 
 	</span> 
@@ -30,15 +30,15 @@ $this->breadcrumbs=array(
 
 		<?php echo CHtml::link('Add',
 	 array('create'),
- array('class' => 'btn btn-primary btn-flat','title'=>'Add Pendidikan'));
+ array('class' => 'btn btn-primary btn-flat','title'=>'Add Keluarga'));
 		 ?>
 		<?php echo CHtml::link('List',
 	 array('index'),
- array('class' => 'btn btn-primary btn-flat', 'title'=>'List Pendidikan'));
+ array('class' => 'btn btn-primary btn-flat', 'title'=>'List Keluarga'));
 		 ?>
 		<?php echo CHtml::link('Manage',
 	 array('admin'),
- array('class' => 'btn btn-primary btn-flat','title'=>'Manage Pendidikan'));
+ array('class' => 'btn btn-primary btn-flat','title'=>'Manage Keluarga'));
 		 ?>
 
 	</span>

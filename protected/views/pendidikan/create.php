@@ -4,13 +4,10 @@
 
 $this->breadcrumbs=array(
 	'Pendidikans'=>array('index'),
-	'Tambah',
+	'Add',
 	);
-$this->menu=array(
-	array('label'=>'Daftar Pendidikan', 'url'=>array('index')),
-	array('label'=>'Kelola Pendidikan', 'url'=>array('admin')),
-);
-	$this->pageTitle='Tambah Pendidikan';
+
+	$this->pageTitle='Add Pendidikan';
 	?>
 
 	<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

@@ -15,7 +15,7 @@ $this->pageTitle='Profile - '.$model->nama;
 ?>
 
 
-<?php if($model->nama!=""){ ?>
+<?php if($model->tempat_lahir!=""){ ?>
 
 	<?php echo CHtml::link('<i class="ti-write"></i> Profile', 
 		array('update', 'id'=>$model->id_people,
@@ -30,6 +30,11 @@ $this->pageTitle='Profile - '.$model->nama;
 	<?php echo CHtml::link('<i class="ti-id-badge"></i> Lamaran', 
 		array('filelamaran/history',
 			), array('class' => 'btn btn-success btn-flat', 'title'=>'Riwayat Lamaran'));
+	?>
+
+	<?php echo CHtml::link('<i class="ti-clipboard"></i> Keluarga', 
+		array('keluarga/create', 'id'=>$model->id_people,
+			), array('class' => 'btn btn-success btn-flat', 'title'=>'Riwayat Keluarga'));
 	?>
 
 	<?php echo CHtml::link('<i class="ti-clipboard"></i> Pendidikan', 
@@ -59,6 +64,106 @@ $this->pageTitle='Profile - '.$model->nama;
 			),
 		)); ?>
 
+	<H4><i class="ti-clipboard"></i> Keluarga</H4>
+	<?php $this->widget('zii.widgets.grid.CGridView', array(
+		'id'=>'keluarga-grid',
+		'summaryText'=>'',
+		'dataProvider'=>$dataFamily,
+		'itemsCssClass' => 'table-responsive table table-striped table-hover table-vcenter',
+		'columns'=>array(
+
+			array('name'=>'hubungan_keluarga','value'=>'Keluarga::model()->relationship_family($data->hubungan_keluarga)'),
+			'nama',
+			array('name'=>'jenis_kelamin','value'=>'Keluarga::model()->gender($data->jenis_kelamin)'),
+			'tempat_lahir',
+			'tanggal_lahir',
+			array('name'=>'pendidikan_terakhir','value'=>'Keluarga::model()->school($data->pendidikan_terakhir)'),
+			array('name'=>'jabatan_pekerjaan','value'=>'$data->Jabatan->nama'),
+			'nama_perusahaan',
+			'keterangan',
+
+			array(
+				'class'=>'CButtonColumn',
+				'template'=>'{update}{delete}',
+				'buttons'=>array(
+					'update'=>
+					array(
+						'url'=>'Yii::app()->createUrl("keluarga/update", array("id"=>$data->id_keluarga))',
+						),
+					'delete'=>
+					array(
+						'url'=>'Yii::app()->createUrl("keluarga/delete", array("id"=>$data->id_keluarga))',
+						),
+					),
+				),
+
+			),
+		)); ?>
+
+
+	<H4><i class="ti-calendar"></i> Riwayat Pendidikan Formal</H4>
+	<?php $this->widget('zii.widgets.grid.CGridView', array(
+		'id'=>'pendidikan-grid',
+		'summaryText'=>'',
+		'dataProvider'=>$dataProvider,
+		'itemsCssClass' => 'table table-bordered table-striped dataTable table-hover',
+		'columns'=>array(
+
+			'instansi',
+			'tahun_lulus',
+			'nilai',
+			'jurusan',
+
+			array(
+				'class'=>'CButtonColumn',
+				'template'=>'{update}{delete}',
+				'buttons'=>array(
+					'update'=>
+					array(
+						'url'=>'Yii::app()->createUrl("pendidikan/update", array("id"=>$data->id_pendidikan))',
+						),
+					'delete'=>
+					array(
+						'url'=>'Yii::app()->createUrl("pendidikan/delete", array("id"=>$data->id_pendidikan))',
+						),
+					),
+				),
+
+			),
+		)); ?>	
+
+
+	<H4><i class="ti-calendar"></i> Riwayat Pendidikan Non Formal</H4>
+	<?php $this->widget('zii.widgets.grid.CGridView', array(
+		'id'=>'pendidikan-grid',
+		'summaryText'=>'',
+		'dataProvider'=>$dataProvider,
+		'itemsCssClass' => 'table table-bordered table-striped dataTable table-hover',
+		'columns'=>array(
+
+			'instansi',
+			'tahun_lulus',
+			'nilai',
+			'jurusan',
+
+			array(
+				'class'=>'CButtonColumn',
+				'template'=>'{update}{delete}',
+				'buttons'=>array(
+					'update'=>
+					array(
+						'url'=>'Yii::app()->createUrl("pendidikan/update", array("id"=>$data->id_pendidikan))',
+						),
+					'delete'=>
+					array(
+						'url'=>'Yii::app()->createUrl("pendidikan/delete", array("id"=>$data->id_pendidikan))',
+						),
+					),
+				),
+
+			),
+		)); ?>	
+
 	<H4><i class="ti-clipboard"></i> Riwayat Pekerjaan</H4>
 	<?php $this->widget('zii.widgets.grid.CGridView', array(
 		'id'=>'pendidikan-grid',
@@ -83,38 +188,6 @@ $this->pageTitle='Profile - '.$model->nama;
 					'delete'=>
 					array(
 						'url'=>'Yii::app()->createUrl("pekerjaan/delete", array("id"=>$data->id_pekerjaan))',
-						),
-					),
-				),
-
-			),
-		)); ?>
-
-
-	<H4><i class="ti-calendar"></i> Riwayat Pendidikan</H4>
-	<?php $this->widget('zii.widgets.grid.CGridView', array(
-		'id'=>'pendidikan-grid',
-		'summaryText'=>'',
-		'dataProvider'=>$dataProvider,
-		'itemsCssClass' => 'table table-bordered table-striped dataTable table-hover',
-		'columns'=>array(
-
-			'instansi',
-			'tahun_lulus',
-			'nilai',
-			'jurusan',
-
-			array(
-				'class'=>'CButtonColumn',
-				'template'=>'{update}{delete}',
-				'buttons'=>array(
-					'update'=>
-					array(
-						'url'=>'Yii::app()->createUrl("pendidikan/update", array("id"=>$data->id_pendidikan))',
-						),
-					'delete'=>
-					array(
-						'url'=>'Yii::app()->createUrl("pendidikan/delete", array("id"=>$data->id_pendidikan))',
 						),
 					),
 				),

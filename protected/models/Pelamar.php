@@ -5,6 +5,7 @@
  *
  * The followings are the available columns in table 'pelamar':
  * @property integer $id_people
+ * @property integer $nik
  * @property string $nama
  * @property string $tempat_lahir
  * @property string $tanggal_lahir
@@ -36,9 +37,11 @@ class Pelamar extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nama, tempat_lahir, tanggal_lahir, agama, jenis_kelamin, golongan_darah, kewarganegaraan, hp, kota_id, provinsi_id', 'required','on'=>'insert'),
-			array('id_people, id_user, kota_id, provinsi_id', 'numerical', 'integerOnly'=>true),
-			array('nama, tanggal_lahir', 'length', 'max'=>255),
+			array('nama, nik', 'required','on'=>'register_pelamar'),
+			array('nik','unique','on'=>'register_pelamar'),
+			// array('nama, nik, tempat_lahir, tanggal_lahir, agama, jenis_kelamin, golongan_darah, kewarganegaraan, hp, kota_id, provinsi_id', 'required','on'=>'insert'),
+			array('id_people, id_user, kota_id, provinsi_id, nik', 'numerical', 'integerOnly'=>true),
+			array('nama, tanggal_lahir, nik', 'length', 'max'=>255),
 			array('tempat_lahir, tanggal_lahir, agama, jenis_kelamin, golongan_darah, kewarganegaraan, hp', 'length', 'max'=>30),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -66,6 +69,7 @@ class Pelamar extends CActiveRecord
 	{
 		return array(
 			'id_people' => 'Id People',
+			'nik' => 'NIK',
 			'nama' => 'Nama Lengkap',
 			'tempat_lahir' => 'Tempat Lahir',
 			'tanggal_lahir' => 'Tanggal Lahir',
@@ -99,6 +103,7 @@ class Pelamar extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id_people',$this->id_people);
+		$criteria->compare('nik',$this->nik);
 		$criteria->compare('nama',$this->nama,true);
 		$criteria->compare('tempat_lahir',$this->tempat_lahir,true);
 		$criteria->compare('tanggal_lahir',$this->tanggal_lahir,true);
