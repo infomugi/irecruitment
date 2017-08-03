@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 21, 2017 at 11:30 AM
+-- Generation Time: Aug 03, 2017 at 12:18 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -703,6 +703,7 @@ INSERT INTO `lowongan` (`id_lowongan`, `tanggal`, `bagian`, `jabatan`, `tipe`, `
 
 CREATE TABLE `pelamar` (
   `id_people` int(11) NOT NULL,
+  `nik` int(11) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `tempat_lahir` varchar(30) NOT NULL,
   `tanggal_lahir` date NOT NULL,
@@ -713,19 +714,57 @@ CREATE TABLE `pelamar` (
   `id_user` int(10) NOT NULL,
   `kota_id` int(11) NOT NULL,
   `provinsi_id` int(11) NOT NULL,
-  `hp` varchar(15) NOT NULL
+  `hp` varchar(15) NOT NULL,
+  `alamat_domisili` text NOT NULL,
+  `status_domisili` int(11) NOT NULL,
+  `status_menikah` int(11) NOT NULL,
+  `tanggal_menikah` date NOT NULL,
+  `no_jamsostek` varchar(50) NOT NULL,
+  `no_sim_a` varchar(50) NOT NULL,
+  `no_sim_b` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pelamar`
 --
 
-INSERT INTO `pelamar` (`id_people`, `nama`, `tempat_lahir`, `tanggal_lahir`, `agama`, `jenis_kelamin`, `golongan_darah`, `kewarganegaraan`, `id_user`, `kota_id`, `provinsi_id`, `hp`) VALUES
-(1037231, 'Syifa Andani', 'Bandung', '1998-06-10', 'Islam', 'L', 'A', 'WNI', 33, 3204, 32, '08724955'),
-(1194397, 'Mugi Rachmat', 'Bandung', '1996-01-30', 'Islam', 'L', 'O', 'WNI', 30, 2101, 21, ''),
-(1196411, 'Andika Pratyam', 'Jakatya', '1991-03-07', 'Islam', 'L', 'A', 'WNI', 31, 2101, 21, ''),
-(1459259, 'Andi', 'Bandung', '1970-01-01', 'Islam', 'L', 'B', 'WNI', 34, 6411, 64, '08785959595'),
-(1527100, 'Renika Auliya', 'Tuban', '1989-03-08', 'Islam', 'L', 'A', 'WNI', 32, 3523, 35, '087854848448');
+INSERT INTO `pelamar` (`id_people`, `nik`, `nama`, `tempat_lahir`, `tanggal_lahir`, `agama`, `jenis_kelamin`, `golongan_darah`, `kewarganegaraan`, `id_user`, `kota_id`, `provinsi_id`, `hp`, `alamat_domisili`, `status_domisili`, `status_menikah`, `tanggal_menikah`, `no_jamsostek`, `no_sim_a`, `no_sim_b`) VALUES
+(1037231, 0, 'Syifa Andani', 'Bandung', '1998-06-10', 'Islam', 'L', 'A', 'WNI', 33, 3204, 32, '08724955', '', 0, 0, '0000-00-00', '', '', ''),
+(1194397, 0, 'Mugi Rachmat', 'Bandung', '1996-01-30', 'Islam', 'L', 'O', 'WNI', 30, 2101, 21, '', '', 0, 0, '0000-00-00', '', '', ''),
+(1196411, 0, 'Andika Pratyam', 'Jakatya', '1991-03-07', 'Islam', 'L', 'A', 'WNI', 31, 2101, 21, '', '', 0, 0, '0000-00-00', '', '', ''),
+(1393127, 0, '', '', '1970-01-01', '', '', '', '', 38, 0, 0, '', '', 0, 0, '0000-00-00', '', '', ''),
+(1459259, 0, 'Andi', 'Bandung', '1970-01-01', 'Islam', 'L', 'B', 'WNI', 34, 6411, 64, '08785959595', '', 0, 0, '0000-00-00', '', '', ''),
+(1527100, 0, 'Renika Auliya', 'Tuban', '1989-03-08', 'Islam', 'L', 'A', 'WNI', 32, 3523, 35, '087854848448', '', 0, 0, '0000-00-00', '', '', ''),
+(1684723, 6312144, 'admins', 'Jakarta', '1980-01-03', 'Islam', 'L', 'B', 'WNI', 41, 6501, 65, '087659595949', '', 0, 0, '0000-00-00', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pelamar_keluarga`
+--
+
+CREATE TABLE `pelamar_keluarga` (
+  `id_keluarga` int(11) NOT NULL,
+  `hubungan_keluarga` int(11) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `jenis_kelamin` int(11) NOT NULL,
+  `tempat_lahir` varchar(50) NOT NULL,
+  `tanggal_lahir` date NOT NULL,
+  `pendidikan_terakhir` int(11) NOT NULL,
+  `jabatan_pekerjaan` int(11) NOT NULL,
+  `nama_perusahaan` varchar(50) NOT NULL,
+  `keterangan` text NOT NULL,
+  `people_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pelamar_keluarga`
+--
+
+INSERT INTO `pelamar_keluarga` (`id_keluarga`, `hubungan_keluarga`, `nama`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `pendidikan_terakhir`, `jabatan_pekerjaan`, `nama_perusahaan`, `keterangan`, `people_id`, `user_id`) VALUES
+(1, 1, 'Andi', 1, 'Jakarta', '0000-00-00', 5, 2, 'PT. Mardel ', '-', 1684723, 41),
+(2, 2, 'Ina', 0, 'Surabaya', '2017-08-17', 2, 2, 'PT. Mardel ', '-', 1684723, 41);
 
 -- --------------------------------------------------------
 
@@ -758,10 +797,16 @@ INSERT INTO `pelamar_pekerjaan` (`id_pekerjaan`, `instansi`, `tahun`, `gaji`, `b
 
 CREATE TABLE `pelamar_pendidikan` (
   `id_pendidikan` int(11) NOT NULL,
+  `jenjang` int(11) NOT NULL,
   `instansi` varchar(100) DEFAULT NULL,
-  `tahun_lulus` varchar(5) DEFAULT NULL,
-  `nilai` float DEFAULT NULL,
+  `kota` varchar(50) NOT NULL,
   `jurusan` varchar(50) DEFAULT NULL,
+  `mulai` date NOT NULL,
+  `selesai` date NOT NULL,
+  `tahun_lulus` varchar(5) DEFAULT NULL,
+  `status` int(11) NOT NULL,
+  `nilai` float DEFAULT NULL,
+  `jenis` int(11) NOT NULL,
   `people_id` int(11) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -770,8 +815,9 @@ CREATE TABLE `pelamar_pendidikan` (
 -- Dumping data for table `pelamar_pendidikan`
 --
 
-INSERT INTO `pelamar_pendidikan` (`id_pendidikan`, `instansi`, `tahun_lulus`, `nilai`, `jurusan`, `people_id`, `user_id`) VALUES
-(6, 'ITS', '2016', 3.45, 'TI', 1527100, 32);
+INSERT INTO `pelamar_pendidikan` (`id_pendidikan`, `jenjang`, `instansi`, `kota`, `jurusan`, `mulai`, `selesai`, `tahun_lulus`, `status`, `nilai`, `jenis`, `people_id`, `user_id`) VALUES
+(6, 0, 'ITS', '', 'TI', '0000-00-00', '0000-00-00', '2016', 0, 3.45, 0, 1527100, 32),
+(7, 5, 'LPKIA', 'Bandung', 'Teknik Informatika', '0000-00-00', '0000-00-00', '2012', 1, 3.25, 1, 1684723, 41);
 
 -- --------------------------------------------------------
 
@@ -878,7 +924,9 @@ INSERT INTO `user` (`id_user`, `username`, `password`, `email`, `date_create`, `
 (31, 'andika', '7e51eea5fa101ed4dade9ad3a7a072bb', 'andika@gmial.com', '2017-03-20', 2),
 (32, 'renika', '21232f297a57a5a743894a0e4a801fc3', 'renika@gmail.com', '2017-03-20', 2),
 (33, 'syifa', '21232f297a57a5a743894a0e4a801fc3', 'syifa@gmial.com', '2017-06-12', 2),
-(34, 'akira', '21232f297a57a5a743894a0e4a801fc3', 'akira@gmail.com', '2017-07-11', 2);
+(34, 'akira', '21232f297a57a5a743894a0e4a801fc3', 'akira@gmail.com', '2017-07-11', 2),
+(40, 'okin', '21232f297a57a5a743894a0e4a801fc3', 'okin@gmail.com', '2017-08-02', 2),
+(41, 'admins', 'c3284d0f94606de1fd2af172aba15bf3', 'admins@fmi.com', '2017-08-03', 2);
 
 --
 -- Indexes for dumped tables
@@ -928,6 +976,12 @@ ALTER TABLE `lowongan`
 ALTER TABLE `pelamar`
   ADD PRIMARY KEY (`id_people`),
   ADD KEY `id_user` (`id_user`);
+
+--
+-- Indexes for table `pelamar_keluarga`
+--
+ALTER TABLE `pelamar_keluarga`
+  ADD PRIMARY KEY (`id_keluarga`);
 
 --
 -- Indexes for table `pelamar_pekerjaan`
@@ -990,6 +1044,11 @@ ALTER TABLE `level`
 ALTER TABLE `lowongan`
   MODIFY `id_lowongan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
+-- AUTO_INCREMENT for table `pelamar_keluarga`
+--
+ALTER TABLE `pelamar_keluarga`
+  MODIFY `id_keluarga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `pelamar_pekerjaan`
 --
 ALTER TABLE `pelamar_pekerjaan`
@@ -998,7 +1057,7 @@ ALTER TABLE `pelamar_pekerjaan`
 -- AUTO_INCREMENT for table `pelamar_pendidikan`
 --
 ALTER TABLE `pelamar_pendidikan`
-  MODIFY `id_pendidikan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_pendidikan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `test`
 --
@@ -1008,7 +1067,7 @@ ALTER TABLE `test`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_user` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 --
 -- Constraints for dumped tables
 --
