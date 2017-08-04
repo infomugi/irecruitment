@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 03, 2017 at 12:18 PM
+-- Generation Time: Aug 04, 2017 at 12:57 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -735,7 +735,32 @@ INSERT INTO `pelamar` (`id_people`, `nik`, `nama`, `tempat_lahir`, `tanggal_lahi
 (1393127, 0, '', '', '1970-01-01', '', '', '', '', 38, 0, 0, '', '', 0, 0, '0000-00-00', '', '', ''),
 (1459259, 0, 'Andi', 'Bandung', '1970-01-01', 'Islam', 'L', 'B', 'WNI', 34, 6411, 64, '08785959595', '', 0, 0, '0000-00-00', '', '', ''),
 (1527100, 0, 'Renika Auliya', 'Tuban', '1989-03-08', 'Islam', 'L', 'A', 'WNI', 32, 3523, 35, '087854848448', '', 0, 0, '0000-00-00', '', '', ''),
-(1684723, 6312144, 'admins', 'Jakarta', '1980-01-03', 'Islam', 'L', 'B', 'WNI', 41, 6501, 65, '087659595949', '', 0, 0, '0000-00-00', '', '', '');
+(1684723, 6312144, 'admins', 'Jakarta', '1980-01-03', 'Islam', 'L', 'B', 'WNI', 41, 6501, 65, '087659595949', '', 0, 0, '0000-00-00', '', '', ''),
+(1910492, 132456, 'mehdi', 'Jakarta', '1982-01-22', 'Islam', 'L', 'B', 'WNI', 42, 3315, 33, '087824931504', '', 0, 0, '0000-00-00', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pelamar_bahasa`
+--
+
+CREATE TABLE `pelamar_bahasa` (
+  `id_bahasa` int(11) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `berbicara` int(11) NOT NULL,
+  `menulis` int(11) NOT NULL,
+  `membaca` int(11) NOT NULL,
+  `mengerti` int(11) NOT NULL,
+  `people_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pelamar_bahasa`
+--
+
+INSERT INTO `pelamar_bahasa` (`id_bahasa`, `nama`, `berbicara`, `menulis`, `membaca`, `mengerti`, `people_id`, `user_id`) VALUES
+(1, 'Inggris', 1, 2, 3, 2, 1910492, 42);
 
 -- --------------------------------------------------------
 
@@ -764,7 +789,8 @@ CREATE TABLE `pelamar_keluarga` (
 
 INSERT INTO `pelamar_keluarga` (`id_keluarga`, `hubungan_keluarga`, `nama`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `pendidikan_terakhir`, `jabatan_pekerjaan`, `nama_perusahaan`, `keterangan`, `people_id`, `user_id`) VALUES
 (1, 1, 'Andi', 1, 'Jakarta', '0000-00-00', 5, 2, 'PT. Mardel ', '-', 1684723, 41),
-(2, 2, 'Ina', 0, 'Surabaya', '2017-08-17', 2, 2, 'PT. Mardel ', '-', 1684723, 41);
+(2, 2, 'Ina', 0, 'Surabaya', '2017-08-17', 2, 2, 'PT. Mardel ', '-', 1684723, 41),
+(3, 1, 'Ono', 1, 'Surabaya', '1997-08-21', 4, 2, 'Pt. ZYX', '-', 1910492, 42);
 
 -- --------------------------------------------------------
 
@@ -807,6 +833,8 @@ CREATE TABLE `pelamar_pendidikan` (
   `status` int(11) NOT NULL,
   `nilai` float DEFAULT NULL,
   `jenis` int(11) NOT NULL,
+  `macam` int(11) NOT NULL,
+  `no_dokumen` varchar(50) NOT NULL,
   `people_id` int(11) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -815,9 +843,11 @@ CREATE TABLE `pelamar_pendidikan` (
 -- Dumping data for table `pelamar_pendidikan`
 --
 
-INSERT INTO `pelamar_pendidikan` (`id_pendidikan`, `jenjang`, `instansi`, `kota`, `jurusan`, `mulai`, `selesai`, `tahun_lulus`, `status`, `nilai`, `jenis`, `people_id`, `user_id`) VALUES
-(6, 0, 'ITS', '', 'TI', '0000-00-00', '0000-00-00', '2016', 0, 3.45, 0, 1527100, 32),
-(7, 5, 'LPKIA', 'Bandung', 'Teknik Informatika', '0000-00-00', '0000-00-00', '2012', 1, 3.25, 1, 1684723, 41);
+INSERT INTO `pelamar_pendidikan` (`id_pendidikan`, `jenjang`, `instansi`, `kota`, `jurusan`, `mulai`, `selesai`, `tahun_lulus`, `status`, `nilai`, `jenis`, `macam`, `no_dokumen`, `people_id`, `user_id`) VALUES
+(6, 0, 'ITS', '', 'TI', '0000-00-00', '0000-00-00', '2016', 0, 3.45, 0, 0, '', 1527100, 32),
+(7, 5, 'LPKIA', 'Bandung', 'Teknik Informatika', '0000-00-00', '0000-00-00', '2012', 1, 3.25, 1, 0, '', 1684723, 41),
+(8, 5, 'Unpad', 'Bandung', 'TI', '2018-08-04', '1970-01-01', '2016', 1, 3.75, 1, 0, '', 1910492, 42),
+(9, 0, 'LPK', '', NULL, '0000-00-00', '0000-00-00', NULL, 0, NULL, 2, 1, 'SK/90/YI/1029', 1910492, 42);
 
 -- --------------------------------------------------------
 
@@ -926,7 +956,8 @@ INSERT INTO `user` (`id_user`, `username`, `password`, `email`, `date_create`, `
 (33, 'syifa', '21232f297a57a5a743894a0e4a801fc3', 'syifa@gmial.com', '2017-06-12', 2),
 (34, 'akira', '21232f297a57a5a743894a0e4a801fc3', 'akira@gmail.com', '2017-07-11', 2),
 (40, 'okin', '21232f297a57a5a743894a0e4a801fc3', 'okin@gmail.com', '2017-08-02', 2),
-(41, 'admins', 'c3284d0f94606de1fd2af172aba15bf3', 'admins@fmi.com', '2017-08-03', 2);
+(41, 'admins', 'c3284d0f94606de1fd2af172aba15bf3', 'admins@fmi.com', '2017-08-03', 2),
+(42, 'mehdi', '77e2edcc9b40441200e31dc57dbb8829', 'mehdi@gmaiol.com', '2017-08-04', 2);
 
 --
 -- Indexes for dumped tables
@@ -976,6 +1007,12 @@ ALTER TABLE `lowongan`
 ALTER TABLE `pelamar`
   ADD PRIMARY KEY (`id_people`),
   ADD KEY `id_user` (`id_user`);
+
+--
+-- Indexes for table `pelamar_bahasa`
+--
+ALTER TABLE `pelamar_bahasa`
+  ADD PRIMARY KEY (`id_bahasa`);
 
 --
 -- Indexes for table `pelamar_keluarga`
@@ -1044,10 +1081,15 @@ ALTER TABLE `level`
 ALTER TABLE `lowongan`
   MODIFY `id_lowongan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
+-- AUTO_INCREMENT for table `pelamar_bahasa`
+--
+ALTER TABLE `pelamar_bahasa`
+  MODIFY `id_bahasa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `pelamar_keluarga`
 --
 ALTER TABLE `pelamar_keluarga`
-  MODIFY `id_keluarga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_keluarga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `pelamar_pekerjaan`
 --
@@ -1057,7 +1099,7 @@ ALTER TABLE `pelamar_pekerjaan`
 -- AUTO_INCREMENT for table `pelamar_pendidikan`
 --
 ALTER TABLE `pelamar_pendidikan`
-  MODIFY `id_pendidikan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_pendidikan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `test`
 --
@@ -1067,7 +1109,7 @@ ALTER TABLE `test`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id_user` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 --
 -- Constraints for dumped tables
 --

@@ -7,7 +7,6 @@
 
 <div class="form-normal form-horizontal clearfix">
 
-
 	<?php $form=$this->beginWidget('CActiveForm', array(
 		'id'=>'keluarga-form',
 		'enableAjaxValidation'=>false,
@@ -217,4 +216,5 @@
 						<?php $this->endWidget(); ?>
 
 
-</div><!-- form -->
+					</div>
+<!-- form -->

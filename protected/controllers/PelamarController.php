@@ -98,15 +98,26 @@ class PelamarController extends Controller
 	{
 		$profile=$this->loadProfile(Yii::app()->user->id);
 		$criteria = new CDbCriteria;
-		$criteria->condition = 'user_id = :id';
+		$criteria->condition = 'user_id = :id AND jenis=1';
 		$criteria->params = array(':id'=>Yii::app()->user->id);
 		$criteria->order = 'tahun_lulus DESC';		
 
-		$dataProvider=new CActiveDataProvider('Pendidikan',array(
+		$dataFormal=new CActiveDataProvider('Pendidikan',array(
 			'criteria'=>$criteria,
 			'pagination'=>array(
 				'pageSize'=>'4',
 				)));
+
+		$criteria1 = new CDbCriteria;
+		$criteria1->condition = 'user_id = :id AND jenis=2';
+		$criteria1->params = array(':id'=>Yii::app()->user->id);
+		$criteria1->order = 'tahun_lulus DESC';		
+
+		$dataNonFormal=new CActiveDataProvider('Pendidikan',array(
+			'criteria'=>$criteria1,
+			'pagination'=>array(
+				'pageSize'=>'4',
+				)));		
 
 		$criteria2 = new CDbCriteria;
 		$criteria2->condition = 'user_id = :id';
@@ -128,13 +139,26 @@ class PelamarController extends Controller
 			'criteria'=>$criteria3,
 			'pagination'=>array(
 				'pageSize'=>'4',
-				)));					
+				)));	
+
+		$criteria4 = new CDbCriteria;
+		$criteria4->condition = 'user_id = :id';
+		$criteria4->params = array(':id'=>Yii::app()->user->id);
+		$criteria4->order = 'id_bahasa DESC';			
+
+		$dataBahasa=new CActiveDataProvider('Bahasa',array(
+			'criteria'=>$criteria4,
+			'pagination'=>array(
+				'pageSize'=>'4',
+				)));			
 
 		$this->render('profile',array(
 			'model'=>$this->loadProfile(YII::app()->user->id),
-			'dataProvider'=>$dataProvider,
+			'dataFormal'=>$dataFormal,
+			'dataNonFormal'=>$dataNonFormal,
 			'dataJobs'=>$dataJobs,
 			'dataFamily'=>$dataFamily,
+			'dataBahasa'=>$dataBahasa,
 			));
 	}	
 
@@ -147,6 +171,8 @@ class PelamarController extends Controller
 	{
 		$model=$this->loadModel($id);
 		$user=$this->loadUser($model->id_user);
+		$model->setScenario('update_pelamar');
+		$user->setScenario('update_user');
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);

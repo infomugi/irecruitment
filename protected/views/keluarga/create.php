@@ -7,7 +7,7 @@ $this->breadcrumbs=array(
 	'Add',
 	);
 
-	$this->pageTitle='Add Keluarga';
-	?>
+$this->pageTitle='Tambah Data Keluarga';
+?>
 
-	<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

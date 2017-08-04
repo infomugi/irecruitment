@@ -1,6 +1,6 @@
 <?php
 
-class PendidikanController extends Controller
+class BahasaController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -32,7 +32,7 @@ class PendidikanController extends Controller
 				'users'=>array('@'),
 				),
 			array('allow',
-				'actions'=>array('create','update','view','delete','formal','nonformal','updateformal','updatenonformal'),
+				'actions'=>array('create','update','view','delete'),
 				'users'=>array('@'),
 				'expression'=>'Yii::app()->user->getLevel()==2',
 				),			
@@ -47,15 +47,26 @@ class PendidikanController extends Controller
 			);
 	}
 
+
+
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
 	 */
 	public function actionView($id)
 	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-			));
+		if(Yii::app()->request->isAjaxRequest)
+		{
+			$this->renderPartial('view',array(
+				'model'=>$this->loadModel($id),
+				), false, true);
+		}
+		else
+		{
+			$this->render('view',array(
+				'model'=>$this->loadModel($id),
+				));
+		}
 	}
 
 	/**
@@ -64,14 +75,14 @@ class PendidikanController extends Controller
 	 */
 	public function actionCreate($id)
 	{
-		$model=new Pendidikan;
+		$model=new Bahasa;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Pendidikan']))
+		if(isset($_POST['Bahasa']))
 		{
-			$model->attributes=$_POST['Pendidikan'];
+			$model->attributes=$_POST['Bahasa'];
 			$model->people_id = $id;
 			$model->user_id = YII::app()->user->id;
 			if($model->save()){
@@ -96,9 +107,9 @@ class PendidikanController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Pendidikan']))
+		if(isset($_POST['Bahasa']))
 		{
-			$model->attributes=$_POST['Pendidikan'];
+			$model->attributes=$_POST['Bahasa'];
 			if($model->save()){
 				$this->redirect(array('pelamar/profile'));
 			}
@@ -128,7 +139,7 @@ class PendidikanController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Pendidikan');
+		$dataProvider=new CActiveDataProvider('Bahasa');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 			));
@@ -139,10 +150,10 @@ class PendidikanController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Pendidikan('search');
+		$model=new Bahasa('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Pendidikan']))
-			$model->attributes=$_GET['Pendidikan'];
+		if(isset($_GET['Bahasa']))
+			$model->attributes=$_GET['Bahasa'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -153,12 +164,12 @@ class PendidikanController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Pendidikan the loaded model
+	 * @return Bahasa the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Pendidikan::model()->findByPk($id);
+		$model=Bahasa::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -166,104 +177,30 @@ class PendidikanController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Pendidikan $model the model to be validated
+	 * @param Bahasa $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='pendidikan-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='bahasa-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
 	}
 
-	public function actionFormal($id)
-	{
-		$model=new Pendidikan;
-		$model->setScenario('formal');
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['Pendidikan']))
-		{
-			$model->attributes=$_POST['Pendidikan'];
-			$model->people_id = $id;
-			$model->user_id = YII::app()->user->id;
-			$model->jenis = 1;
-
-			if($model->save()){
-				$this->redirect(array('pelamar/profile'));
-			}
-		}
-
-		$this->render('create_formal',array(
-			'model'=>$model,
-			));
-	}
-
-	public function actionNonFormal($id)
-	{
-		$model=new Pendidikan;
-		$model->setScenario('nonformal');
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['Pendidikan']))
-		{
-			$model->attributes=$_POST['Pendidikan'];
-			$model->people_id = $id;
-			$model->user_id = YII::app()->user->id;
-			$model->jenis = 2;
-			
-			if($model->save()){
-				$this->redirect(array('pelamar/profile'));
-			}
-		}
-
-		$this->render('create_non_formal',array(
-			'model'=>$model,
-			));
-	}		
-
-	public function actionUpdateFormal($id)
+	public function actionEnable($id)
 	{
 		$model=$this->loadModel($id);
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['Pendidikan']))
-		{
-			$model->attributes=$_POST['Pendidikan'];
-			if($model->save()){
-				$this->redirect(array('pelamar/profile'));
-			}
-		}
-
-		$this->render('update_formal',array(
-			'model'=>$model,
-			));
-	}
-
-	public function actionUpdateNonFormal($id)
-	{
-		$model=$this->loadModel($id);
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['Pendidikan']))
-		{
-			$model->attributes=$_POST['Pendidikan'];
-			if($model->save()){
-				$this->redirect(array('pelamar/profile'));
-			}
-		}
-
-		$this->render('update_non_formal',array(
-			'model'=>$model,
-			));
+		$model->status = 1;
+		$model->save();
+		$this->redirect(array('index'));
 	}	
+
+	public function actionDisable($id)
+	{
+		$model=$this->loadModel($id);
+		$model->status = 0;
+		$model->save();
+		$this->redirect(array('index'));
+	}			
 }

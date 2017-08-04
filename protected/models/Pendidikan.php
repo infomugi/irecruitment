@@ -15,6 +15,8 @@
  * @property integer $status
  * @property double $nilai
  * @property integer $jenis
+ * @property integer $macam
+ * @property string $no_dokumen
  * @property integer $people_id
  * @property integer $user_id
  */
@@ -36,16 +38,18 @@ class Pendidikan extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('jenjang, kota, mulai, selesai, status, jenis', 'required'),
-			array('jenjang, status, jenis, people_id, user_id', 'numerical', 'integerOnly'=>true),
+			// array('jenjang, kota, mulai, selesai, status, jenis', 'required'),
+			array('jenjang, instansi, jurusan, nilai, tahun_lulus, kota, mulai, selesai, status, jenis', 'required','on'=>'formal'),
+			array('macam, instansi, no_dokumen, mulai, selesai, jenis', 'required','on'=>'nonformal'),
+			array('jenjang, status, jenis, people_id, user_id, macam', 'numerical', 'integerOnly'=>true),
 			array('nilai', 'numerical'),
 			array('instansi', 'length', 'max'=>100),
-			array('kota, jurusan', 'length', 'max'=>50),
+			array('kota, jurusan, no_dokumen, mulai, selesai', 'length', 'max'=>50),
 			array('tahun_lulus', 'length', 'max'=>5),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id_pendidikan, jenjang, instansi, kota, jurusan, mulai, selesai, tahun_lulus, status, nilai, jenis, people_id, user_id', 'safe', 'on'=>'search'),
-		);
+			);
 	}
 
 	/**
@@ -56,7 +60,7 @@ class Pendidikan extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-		);
+			);
 	}
 
 	/**
@@ -76,9 +80,11 @@ class Pendidikan extends CActiveRecord
 			'status' => 'Status',
 			'nilai' => 'Nilai',
 			'jenis' => 'Jenis',
+			'macam' => 'Macam',
+			'no_sertifikat' => 'No. Sertifikat',
 			'people_id' => 'People',
 			'user_id' => 'User',
-		);
+			);
 	}
 
 	/**
@@ -115,7 +121,7 @@ class Pendidikan extends CActiveRecord
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
-		));
+			));
 	}
 
 	/**
@@ -127,5 +133,31 @@ class Pendidikan extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+
+	protected function beforeSave()
+	{
+		$this->mulai = date('Y-m-d', strtotime($this->mulai));
+		$this->selesai = date('Y-m-d', strtotime($this->selesai));
+		return TRUE;
+	}
+	
+	protected function afterFind()
+	{
+		$this->mulai = date('d-m-Y', strtotime($this->mulai));
+		$this->selesai = date('d-m-Y', strtotime($this->selesai));
+		return TRUE;
+	}
+
+	public function macam($data){
+		if($data==1){
+			return "Pelatihan";
+		}else if($data==2){
+			return "Workshop";
+		}else if($data==3){
+			return "Seminar";
+		}else{
+			return "Lainnya";
+		}
 	}
 }

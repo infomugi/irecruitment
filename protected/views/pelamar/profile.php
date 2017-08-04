@@ -19,12 +19,12 @@ $this->pageTitle='Profile - '.$model->nama;
 
 	<?php echo CHtml::link('<i class="ti-write"></i> Profile', 
 		array('update', 'id'=>$model->id_people,
-			), array('class' => 'btn btn-info btn-flat', 'title'=>'Edit Pelamar'));
+			), array('class' => 'btn btn-success btn-flat', 'title'=>'Edit Pelamar'));
 	?>
 
 	<?php echo CHtml::link('<i class="ti-lock"></i> Password', 
 		array('password', 'id'=>$model->id_people,
-			), array('class' => 'btn btn-info btn-flat', 'title'=>'Edit Pelamar'));
+			), array('class' => 'btn btn-success btn-flat', 'title'=>'Edit Pelamar'));
 	?>	
 
 	<?php echo CHtml::link('<i class="ti-id-badge"></i> Lamaran', 
@@ -32,15 +32,6 @@ $this->pageTitle='Profile - '.$model->nama;
 			), array('class' => 'btn btn-success btn-flat', 'title'=>'Riwayat Lamaran'));
 	?>
 
-	<?php echo CHtml::link('<i class="ti-clipboard"></i> Keluarga', 
-		array('keluarga/create', 'id'=>$model->id_people,
-			), array('class' => 'btn btn-success btn-flat', 'title'=>'Riwayat Keluarga'));
-	?>
-
-	<?php echo CHtml::link('<i class="ti-clipboard"></i> Pendidikan', 
-		array('pendidikan/create', 'id'=>$model->id_people,
-			), array('class' => 'btn btn-success btn-flat', 'title'=>'Riwayat Pendidikan'));
-	?>
 
 	<?php echo CHtml::link('<i class="ti-calendar"></i> Pekerjaan', 
 		array('pekerjaan/create', 'id'=>$model->id_people,
@@ -51,7 +42,7 @@ $this->pageTitle='Profile - '.$model->nama;
 	<h3><span class="ti-user"></span> Profile - <?php echo $model->nama; ?></h3>
 	<?php $this->widget('zii.widgets.CDetailView', array(
 		'data'=>$model,
-		'htmlOptions'=>array("class"=>"table"),
+		'htmlOptions'=>array("class"=>"table table-bordered table-striped dataTable table-hover"),
 		'attributes'=>array(
 			'nama',
 			'tempat_lahir',
@@ -64,12 +55,19 @@ $this->pageTitle='Profile - '.$model->nama;
 			),
 		)); ?>
 
-	<H4><i class="ti-clipboard"></i> Keluarga</H4>
+
+
+	<H4><?php echo CHtml::link('<i class="ti-plus"></i>', 
+		array('keluarga/create', 'id'=>$model->id_people,
+			), array('class' => 'btn btn-warning btn-sm pull-right', 'title'=>'Riwayat Keluarga'));
+	?><i class="ti-clipboard pull-left"></i> Keluarga</H4>
+
+
 	<?php $this->widget('zii.widgets.grid.CGridView', array(
 		'id'=>'keluarga-grid',
 		'summaryText'=>'',
 		'dataProvider'=>$dataFamily,
-		'itemsCssClass' => 'table-responsive table table-striped table-hover table-vcenter',
+		'itemsCssClass' => 'table table-bordered table-striped dataTable table-hover',
 		'columns'=>array(
 
 			array('name'=>'hubungan_keluarga','value'=>'Keluarga::model()->relationship_family($data->hubungan_keluarga)'),
@@ -84,6 +82,7 @@ $this->pageTitle='Profile - '.$model->nama;
 
 			array(
 				'class'=>'CButtonColumn',
+				'header'=>'Action',
 				'template'=>'{update}{delete}',
 				'buttons'=>array(
 					'update'=>
@@ -101,26 +100,35 @@ $this->pageTitle='Profile - '.$model->nama;
 		)); ?>
 
 
-	<H4><i class="ti-calendar"></i> Riwayat Pendidikan Formal</H4>
+	<H4><?php echo CHtml::link('<i class="ti-plus"></i>', 
+		array('pendidikan/formal', 'id'=>$model->id_people,
+			), array('class' => 'btn btn-success btn-sm pull-right', 'title'=>'Riwayat Pendidikan Formal'));
+	?><i class="ti-clipboard pull-left"></i> Pendidikan Formal</H4>
+
+
 	<?php $this->widget('zii.widgets.grid.CGridView', array(
 		'id'=>'pendidikan-grid',
 		'summaryText'=>'',
-		'dataProvider'=>$dataProvider,
+		'dataProvider'=>$dataFormal,
 		'itemsCssClass' => 'table table-bordered table-striped dataTable table-hover',
 		'columns'=>array(
 
 			'instansi',
+			'mulai',
+			'selesai',
 			'tahun_lulus',
 			'nilai',
 			'jurusan',
+			'nilai',
 
 			array(
 				'class'=>'CButtonColumn',
+				'header'=>'Action',
 				'template'=>'{update}{delete}',
 				'buttons'=>array(
 					'update'=>
 					array(
-						'url'=>'Yii::app()->createUrl("pendidikan/update", array("id"=>$data->id_pendidikan))',
+						'url'=>'Yii::app()->createUrl("pendidikan/updateformal", array("id"=>$data->id_pendidikan))',
 						),
 					'delete'=>
 					array(
@@ -133,26 +141,32 @@ $this->pageTitle='Profile - '.$model->nama;
 		)); ?>	
 
 
-	<H4><i class="ti-calendar"></i> Riwayat Pendidikan Non Formal</H4>
+	<H4><?php echo CHtml::link('<i class="ti-plus"></i>', 
+		array('pendidikan/nonformal', 'id'=>$model->id_people,
+			), array('class' => 'btn btn-success btn-sm pull-right', 'title'=>'Riwayat Pendidikan Non Formal'));
+	?><i class="ti-clipboard pull-left"></i> Pendidikan Non Formal</H4>
+
 	<?php $this->widget('zii.widgets.grid.CGridView', array(
-		'id'=>'pendidikan-grid',
+		'id'=>'non-pendidikan-grid',
 		'summaryText'=>'',
-		'dataProvider'=>$dataProvider,
+		'dataProvider'=>$dataNonFormal,
 		'itemsCssClass' => 'table table-bordered table-striped dataTable table-hover',
 		'columns'=>array(
 
+			array('name'=>'macam','value'=>'Pendidikan::model()->macam($data->macam)'),
+			'mulai',
+			'selesai',
 			'instansi',
-			'tahun_lulus',
-			'nilai',
-			'jurusan',
+			'no_dokumen',
 
 			array(
 				'class'=>'CButtonColumn',
+				'header'=>'Action',
 				'template'=>'{update}{delete}',
 				'buttons'=>array(
 					'update'=>
 					array(
-						'url'=>'Yii::app()->createUrl("pendidikan/update", array("id"=>$data->id_pendidikan))',
+						'url'=>'Yii::app()->createUrl("pendidikan/updatenonformal", array("id"=>$data->id_pendidikan))',
 						),
 					'delete'=>
 					array(
@@ -164,9 +178,51 @@ $this->pageTitle='Profile - '.$model->nama;
 			),
 		)); ?>	
 
-	<H4><i class="ti-clipboard"></i> Riwayat Pekerjaan</H4>
+
+	<H4><?php echo CHtml::link('<i class="ti-plus"></i>', 
+		array('bahasa/create', 'id'=>$model->id_people,
+			), array('class' => 'btn btn-success btn-sm pull-right', 'title'=>'Riwayat Kemampuan Bahasa'));
+	?><i class="ti-clipboard pull-left"></i> Kemampuan Bahasa</H4>
+
 	<?php $this->widget('zii.widgets.grid.CGridView', array(
-		'id'=>'pendidikan-grid',
+		'id'=>'non-pendidikan-grid',
+		'summaryText'=>'',
+		'dataProvider'=>$dataBahasa,
+		'itemsCssClass' => 'table table-bordered table-striped dataTable table-hover',
+		'columns'=>array(
+
+			'nama',
+			array('name'=>'berbicara','value'=>'Bahasa::model()->grade($data->berbicara)'),
+			array('name'=>'menulis','value'=>'Bahasa::model()->grade($data->menulis)'),
+			array('name'=>'membaca','value'=>'Bahasa::model()->grade($data->membaca)'),
+			array('name'=>'mengerti','value'=>'Bahasa::model()->grade($data->mengerti)'),
+
+			array(
+				'class'=>'CButtonColumn',
+				'header'=>'Action',
+				'template'=>'{update}{delete}',
+				'buttons'=>array(
+					'update'=>
+					array(
+						'url'=>'Yii::app()->createUrl("bahasa/update", array("id"=>$data->id_bahasa))',
+						),
+					'delete'=>
+					array(
+						'url'=>'Yii::app()->createUrl("bahasa/delete", array("id"=>$data->id_bahasa))',
+						),
+					),
+				),
+
+			),
+		)); ?>	
+
+	<H4><?php echo CHtml::link('<i class="ti-plus"></i>', 
+		array('pekerjaan/create', 'id'=>$model->id_people,
+			), array('class' => 'btn btn-success btn-sm pull-right', 'title'=>'Riwayat Pekerjaan'));
+	?><i class="ti-clipboard pull-left"></i> Pekerjaan</H4>
+
+	<?php $this->widget('zii.widgets.grid.CGridView', array(
+		'id'=>'pekerjaan-grid',
 		'summaryText'=>'',
 		'dataProvider'=>$dataJobs,
 		'itemsCssClass' => 'table table-bordered table-striped dataTable table-hover',
@@ -179,6 +235,7 @@ $this->pageTitle='Profile - '.$model->nama;
 
 			array(
 				'class'=>'CButtonColumn',
+				'header'=>'Action',
 				'template'=>'{update}{delete}',
 				'buttons'=>array(
 					'update'=>
