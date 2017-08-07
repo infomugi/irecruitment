@@ -36,7 +36,7 @@
   								// array('label'=>'Lowongan Kerja', 'url'=>array('/lowongan/index'),'visible'=>YII::app()->user->isGuest),
   								array('label'=>'Register','url'=>array('/site/register'),'visible'=>yii::app()->user->isGuest),
   								
-  								array('label'=>'Profile','url'=>array('/pelamar/profile'),'visible'=>yii::app()->user->getLevel()==2),
+  								array('label'=>'Data Diri','url'=>array('/pelamar/profile'),'visible'=>yii::app()->user->getLevel()==2),
   								array('label'=>'Lowongan Kerja','url'=>array('/lowongan/terbaru'),'visible'=>yii::app()->user->getLevel()==2),
   								array('label'=>'Pengumuman','url'=>array('/filelamaran/history'),'visible'=>yii::app()->user->getLevel()==2),
 

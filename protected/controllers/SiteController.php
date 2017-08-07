@@ -156,6 +156,7 @@ class SiteController extends Controller
 		$model->setScenario('register_user');
 		$Pelamar=new Pelamar;
 		$Pelamar->setScenario('register_pelamar');
+		$keahlian=new Keahlian;
 
 		if(isset($_POST['User'],$_POST['Pelamar']))
 		{
@@ -166,6 +167,9 @@ class SiteController extends Controller
 				$Pelamar->id_people = rand(1000000,2000000);
 				$Pelamar->id_user = $model->id_user;
 				$Pelamar->save();
+				$keahlian->people_id = $Pelamar->id_people;
+				$keahlian->user_id = $Pelamar->id_user;
+				$keahlian->save();
 				Yii::app()->user->setFlash('success', 'Selamat '.$model->username.' berhasil registrasi, silahkan login.');
 				$this->redirect(array('site/login'));
 			}

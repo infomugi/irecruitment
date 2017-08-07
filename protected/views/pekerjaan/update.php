@@ -4,14 +4,14 @@
 
 $this->breadcrumbs=array(
 	'Pekerjaans'=>array('index'),
-	$model->id_Pekerjaan=>array('view','id'=>$model->id_Pekerjaan),
+	$model->id_pekerjaan=>array('view','id'=>$model->id_pekerjaan),
 	'Update',
 	);
 
 $this->menu=array(
 	array('label'=>'Daftar Pekerjaan', 'url'=>array('index')),
 	array('label'=>'Tambah Pekerjaan', 'url'=>array('create')),
-	array('label'=>'Detail Pekerjaan', 'url'=>array('view', 'id'=>$model->id_Pekerjaan)),
+	array('label'=>'Detail Pekerjaan', 'url'=>array('view', 'id'=>$model->id_pekerjaan)),
 	array('label'=>'Kelola Pekerjaan', 'url'=>array('admin')),
 	);	
 

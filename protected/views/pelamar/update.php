@@ -15,7 +15,7 @@ $this->menu=array(
 	array('label'=>'Kelola Pelamar', 'url'=>array('admin')),
 	);	
 
-$this->pageTitle='Edit Pelamar';
+$this->pageTitle='Edit Data Pribadi';
 ?>
 
 <?php echo $this->renderPartial('_form_update', array('model'=>$model,'user'=>$user)); ?>

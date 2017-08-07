@@ -97,6 +97,8 @@ class PelamarController extends Controller
 	public function actionProfile()
 	{
 		$profile=$this->loadProfile(Yii::app()->user->id);
+		$dataKeahlian=$this->loadKeahlian(Yii::app()->user->id);
+		
 		$criteria = new CDbCriteria;
 		$criteria->condition = 'user_id = :id AND jenis=1';
 		$criteria->params = array(':id'=>Yii::app()->user->id);
@@ -150,7 +152,18 @@ class PelamarController extends Controller
 			'criteria'=>$criteria4,
 			'pagination'=>array(
 				'pageSize'=>'4',
-				)));			
+				)));
+
+		$criteria5 = new CDbCriteria;
+		$criteria5->condition = 'user_id = :id';
+		$criteria5->params = array(':id'=>Yii::app()->user->id);
+		$criteria5->order = 'id_organisasi DESC';			
+
+		$dataOrganisasi=new CActiveDataProvider('Organisasi',array(
+			'criteria'=>$criteria5,
+			'pagination'=>array(
+				'pageSize'=>'4',
+				)));							
 
 		$this->render('profile',array(
 			'model'=>$this->loadProfile(YII::app()->user->id),
@@ -159,6 +172,8 @@ class PelamarController extends Controller
 			'dataJobs'=>$dataJobs,
 			'dataFamily'=>$dataFamily,
 			'dataBahasa'=>$dataBahasa,
+			'dataOrganisasi'=>$dataOrganisasi,
+			'dataKeahlian'=>$dataKeahlian,
 			));
 	}	
 
@@ -289,7 +304,18 @@ class PelamarController extends Controller
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
-	}			
+	}		
+
+
+	public function loadKeahlian($id)
+	{
+		$model=Keahlian::model()->findByAttributes(array('user_id'=>$id));
+		if($model===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
+	}		
+
+
 
 	/**
 	 * Performs the AJAX validation.

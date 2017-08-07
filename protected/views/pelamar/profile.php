@@ -11,20 +11,20 @@ $this->menu=array(
 	array('label'=>'Daftar Pelamar', 'url'=>array('index')),
 	array('label'=>'Kelola Pelamar', 'url'=>array('admin')),
 	);
-$this->pageTitle='Profile - '.$model->nama;
+$this->pageTitle='Data Diri - '.ucfirst($model->nama);
 ?>
 
 
 <?php if($model->tempat_lahir!=""){ ?>
 
-	<?php echo CHtml::link('<i class="ti-write"></i> Profile', 
+	<?php echo CHtml::link('<i class="ti-write"></i> Data Pribadi', 
 		array('update', 'id'=>$model->id_people,
-			), array('class' => 'btn btn-success btn-flat', 'title'=>'Edit Pelamar'));
+			), array('class' => 'btn btn-success btn-flat', 'title'=>'Edit Data Pribadi'));
 	?>
 
 	<?php echo CHtml::link('<i class="ti-lock"></i> Password', 
 		array('password', 'id'=>$model->id_people,
-			), array('class' => 'btn btn-success btn-flat', 'title'=>'Edit Pelamar'));
+			), array('class' => 'btn btn-success btn-flat', 'title'=>'Edit Password'));
 	?>	
 
 	<?php echo CHtml::link('<i class="ti-id-badge"></i> Lamaran', 
@@ -33,13 +33,7 @@ $this->pageTitle='Profile - '.$model->nama;
 	?>
 
 
-	<?php echo CHtml::link('<i class="ti-calendar"></i> Pekerjaan', 
-		array('pekerjaan/create', 'id'=>$model->id_people,
-			), array('class' => 'btn btn-success btn-flat', 'title'=>'Riwayat Pekerjaan'));
-	?>
-
-
-	<h3><span class="ti-user"></span> Profile - <?php echo $model->nama; ?></h3>
+	<h3><span class="ti-user"></span> Profile - <?php echo ucfirst($model->nama); ?></h3>
 	<?php $this->widget('zii.widgets.CDetailView', array(
 		'data'=>$model,
 		'htmlOptions'=>array("class"=>"table table-bordered table-striped dataTable table-hover"),
@@ -59,7 +53,7 @@ $this->pageTitle='Profile - '.$model->nama;
 
 	<H4><?php echo CHtml::link('<i class="ti-plus"></i>', 
 		array('keluarga/create', 'id'=>$model->id_people,
-			), array('class' => 'btn btn-warning btn-sm pull-right', 'title'=>'Riwayat Keluarga'));
+			), array('class' => 'btn btn-success btn-sm pull-right', 'title'=>'Riwayat Keluarga'));
 	?><i class="ti-clipboard pull-left"></i> Keluarga</H4>
 
 
@@ -217,6 +211,43 @@ $this->pageTitle='Profile - '.$model->nama;
 		)); ?>	
 
 	<H4><?php echo CHtml::link('<i class="ti-plus"></i>', 
+		array('organisasi/create', 'id'=>$model->id_people,
+			), array('class' => 'btn btn-success btn-sm pull-right', 'title'=>'Riwayat Organisasi'));
+	?><i class="ti-clipboard pull-left"></i> Organisasi</H4>
+
+	<?php $this->widget('zii.widgets.grid.CGridView', array(
+		'id'=>'organisasi-grid',
+		'summaryText'=>'',
+		'dataProvider'=>$dataOrganisasi,
+		'itemsCssClass' => 'table table-bordered table-striped dataTable table-hover',
+		'columns'=>array(
+
+			'nama',
+			'tempat',
+			'jenis_kegiatan',
+			'tahun',
+			'jabatan',
+
+			array(
+				'class'=>'CButtonColumn',
+				'header'=>'Action',
+				'template'=>'{update}{delete}',
+				'buttons'=>array(
+					'update'=>
+					array(
+						'url'=>'Yii::app()->createUrl("organisasi/update", array("id"=>$data->id_organisasi))',
+						),
+					'delete'=>
+					array(
+						'url'=>'Yii::app()->createUrl("organisasi/delete", array("id"=>$data->id_organisasi))',
+						),
+					),
+				),
+
+			),
+		)); ?>	
+
+	<H4><?php echo CHtml::link('<i class="ti-plus"></i>', 
 		array('pekerjaan/create', 'id'=>$model->id_people,
 			), array('class' => 'btn btn-success btn-sm pull-right', 'title'=>'Riwayat Pekerjaan'));
 	?><i class="ti-clipboard pull-left"></i> Pekerjaan</H4>
@@ -251,6 +282,78 @@ $this->pageTitle='Profile - '.$model->nama;
 
 			),
 		)); ?>
+
+
+	<H4><?php echo CHtml::link('<i class="ti-plus"></i> Edit Keahlian', 
+		array('keahlian/update', 'id'=>$model->id_people,
+			), array('class' => 'btn btn-success btn-sm pull-right', 'title'=>'Edit Keahlian'));
+	?><i class="ti-clipboard pull-left"></i> Keahlian</H4>
+	<div class="col-lg-2">
+		<?php $this->widget('zii.widgets.CDetailView', array(
+			'data'=>$dataKeahlian,
+			'htmlOptions'=>array("class"=>"table"),
+			'attributes'=>array(
+
+				array('name'=>'word','value'=>Keahlian::model()->check($dataKeahlian->word)),
+				array('name'=>'excel','value'=>Keahlian::model()->check($dataKeahlian->excel)),
+
+				),
+			)); ?>
+	</div>
+	<div class="col-lg-2">
+		<?php $this->widget('zii.widgets.CDetailView', array(
+			'data'=>$dataKeahlian,
+			'htmlOptions'=>array("class"=>"table"),
+			'attributes'=>array(
+
+				array('name'=>'powerpoint','value'=>Keahlian::model()->check($dataKeahlian->powerpoint)),
+				array('name'=>'sql','value'=>Keahlian::model()->check($dataKeahlian->sql)),
+
+
+
+				),
+			)); ?>
+	</div>
+	<div class="col-lg-2">
+		<?php $this->widget('zii.widgets.CDetailView', array(
+			'data'=>$dataKeahlian,
+			'htmlOptions'=>array("class"=>"table"),
+			'attributes'=>array(
+
+				array('name'=>'lan','value'=>Keahlian::model()->check($dataKeahlian->lan)),
+				array('name'=>'wan','value'=>Keahlian::model()->check($dataKeahlian->wan)),
+
+				),
+			)); ?>
+	</div>
+
+	<div class="col-lg-2">
+		<?php $this->widget('zii.widgets.CDetailView', array(
+			'data'=>$dataKeahlian,
+			'htmlOptions'=>array("class"=>"table"),
+			'attributes'=>array(
+				
+				array('name'=>'bahasa_pascal','value'=>Keahlian::model()->check($dataKeahlian->bahasa_pascal)),
+				array('name'=>'c','value'=>Keahlian::model()->check($dataKeahlian->c)),
+
+				),
+			)); ?>
+	</div>
+
+	<div class="col-lg-2">
+		<?php $this->widget('zii.widgets.CDetailView', array(
+			'data'=>$dataKeahlian,
+			'htmlOptions'=>array("class"=>"table"),
+			'attributes'=>array(
+				
+				array('name'=>'php','value'=>Keahlian::model()->check($dataKeahlian->php)),
+				array('name'=>'java','value'=>Keahlian::model()->check($dataKeahlian->java)),
+
+				),
+			)); ?>
+	</div>
+
+
 
 	<?php }else{ ?>
 		<div class="alert alert-warning">
