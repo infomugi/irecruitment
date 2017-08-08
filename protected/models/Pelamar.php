@@ -148,12 +148,14 @@ class Pelamar extends CActiveRecord
 	protected function beforeSave()
 	{
 		$this->tanggal_lahir = date('Y-m-d', strtotime($this->tanggal_lahir));
+		$this->tanggal_menikah = date('Y-m-d', strtotime($this->tanggal_menikah));
 		return TRUE;
 	}
 	
 	protected function afterFind()
 	{
 		$this->tanggal_lahir = date('d-m-Y', strtotime($this->tanggal_lahir));
+		$this->tanggal_menikah = date('d-m-Y', strtotime($this->tanggal_menikah));
 		return TRUE;
 	}
 
@@ -161,6 +163,28 @@ class Pelamar extends CActiveRecord
 	{
 		$diff = abs(strtotime(date('Y-m-d')) - strtotime($countBirth));
 		return $years = floor($diff / (365*60*60*24));
+	}	
+
+	public function domisili($data){
+		if($data==1){
+			return "Milik Sendiri";
+		}elseif($data==2){
+			return "Milik Orangtua";
+		}elseif($data==3){
+			return "Kontrak";
+		}elseif($data==4){
+			return "Kost";
+		}else{
+			return "Lainnya";
+		}
+	}	
+
+	public function menikah($data){
+		if($data==1){
+			return "Sudah Menikah";
+		}else{
+			return "Belum Menikah";
+		}
 	}		
 
 }

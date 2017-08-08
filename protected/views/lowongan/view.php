@@ -8,8 +8,13 @@ $this->breadcrumbs=array(
 	);
 
 $dataProvider=new CActiveDataProvider('FileLamaran',array('criteria'=>array('condition'=>'lowongan_id="'.$model->id_lowongan.'"')));
-$this->pageTitle='Lowongan '.$model->Jabatan->nama . " untuk " .$model->Bagian->nama;
+$this->pageTitle="Detail Lowongan Pekerjaan";
 ?>
+
+
+<div class="job_title"><?php echo 'Lowongan '.$model->Jabatan->nama . " untuk " .$model->Bagian->nama; ?></div>
+<div class="borderfull-width"></div>
+<div class="clearfix"></div>
 
 
 <?php 

@@ -28,7 +28,7 @@ class PelamarController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions'=>array('profile','update','view','password'),
+				'actions'=>array('profile','update','view','password','dokumen'),
 				'users'=>array('@'),
 				),
 			array('allow',
@@ -177,14 +177,25 @@ class PelamarController extends Controller
 			));
 	}	
 
+
+	public function actionDokumen()
+	{
+		$dataDokumen=$this->loadDokumen(Yii::app()->user->id);
+		$this->render('dokumen',array(
+			'model'=>$this->loadProfile(YII::app()->user->id),
+			'dataDokumen'=>$dataDokumen,
+			));
+	}	
+
+
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
-	public function actionUpdate($id)
+	public function actionUpdate()
 	{
-		$model=$this->loadModel($id);
+		$model=$this->loadProfile(YII::app()->user->id);
 		$user=$this->loadUser($model->id_user);
 		$model->setScenario('update_pelamar');
 		$user->setScenario('update_user');
@@ -212,10 +223,9 @@ class PelamarController extends Controller
 			));
 	}
 
-	public function actionPassword($id)
+	public function actionPassword()
 	{
-		$model=$this->loadModel($id);
-		$user=$this->loadUser($model->id_user);
+		$user=$this->loadUser(YII::app()->user->id);
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -224,13 +234,12 @@ class PelamarController extends Controller
 		{
 			$user->attributes=$_POST['User'];
 			$user->password = md5($user->password);
-			if($model->save()){
+			if($user->save()){
 				$this->redirect(array('profile'));
 			}
 		}
 
 		$this->render('password',array(
-			'model'=>$model,
 			'user'=>$user,
 			));
 	}	
@@ -313,7 +322,15 @@ class PelamarController extends Controller
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
-	}		
+	}	
+
+	public function loadDokumen($id)
+	{
+		$model=Dokumen::model()->findByAttributes(array('user_id'=>$id));
+		if($model===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
+	}			
 
 
 

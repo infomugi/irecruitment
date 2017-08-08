@@ -17,37 +17,51 @@ $this->pageTitle='Data Diri - '.ucfirst($model->nama);
 
 <?php if($model->tempat_lahir!=""){ ?>
 
-	<?php echo CHtml::link('<i class="ti-write"></i> Data Pribadi', 
-		array('update', 'id'=>$model->id_people,
-			), array('class' => 'btn btn-success btn-flat', 'title'=>'Edit Data Pribadi'));
-	?>
+	<h3><span class="ti-user"></span> <?php echo ucfirst($model->nama); ?></h3>
 
-	<?php echo CHtml::link('<i class="ti-lock"></i> Password', 
-		array('password', 'id'=>$model->id_people,
-			), array('class' => 'btn btn-success btn-flat', 'title'=>'Edit Password'));
-	?>	
+	<div class="row">
+		<div class="col-md-5">
 
-	<?php echo CHtml::link('<i class="ti-id-badge"></i> Lamaran', 
-		array('filelamaran/history',
-			), array('class' => 'btn btn-success btn-flat', 'title'=>'Riwayat Lamaran'));
-	?>
+			<?php $this->widget('zii.widgets.CDetailView', array(
+				'data'=>$model,
+				'htmlOptions'=>array("class"=>"table table-bordered table-striped dataTable table-hover"),
+				'attributes'=>array(
+					'nama',
+					'tempat_lahir',
+					'tanggal_lahir',
+					'agama',
+					'jenis_kelamin',
+					'golongan_darah',
+					'kewarganegaraan',
+					array('label'=>'Umur','value'=>Pelamar::model()->countBirth($model->tanggal_lahir)." Tahun"),
+					'hp',
+					),
+				)); ?>
 
+		</div>
 
-	<h3><span class="ti-user"></span> Profile - <?php echo ucfirst($model->nama); ?></h3>
-	<?php $this->widget('zii.widgets.CDetailView', array(
-		'data'=>$model,
-		'htmlOptions'=>array("class"=>"table table-bordered table-striped dataTable table-hover"),
-		'attributes'=>array(
-			'nama',
-			'tempat_lahir',
-			'tanggal_lahir',
-			'agama',
-			'jenis_kelamin',
-			'golongan_darah',
-			'kewarganegaraan',
-			array('label'=>'Umur','value'=>Pelamar::model()->countBirth($model->tanggal_lahir)." Tahun"),
-			),
-		)); ?>
+		<div class="col-md-5">
+
+			<?php $this->widget('zii.widgets.CDetailView', array(
+				'data'=>$model,
+				'htmlOptions'=>array("class"=>"table table-bordered table-striped dataTable table-hover"),
+				'attributes'=>array(
+
+					'alamat_domisili',
+					array('name'=>'status_domisili','value'=>Pelamar::model()->domisili($model->status_domisili)),
+					array('name'=>'status_menikah','value'=>Pelamar::model()->menikah($model->status_menikah)),
+					'tanggal_menikah',
+					'no_jamsostek',
+					'no_sim',
+					'no_npwp',
+					'telephone_pribadi',
+					'telephone_rumah',
+					),
+				)); ?>
+		</div>
+		<div class="col-md-2">
+		</div>
+	</div>
 
 
 
@@ -352,8 +366,6 @@ $this->pageTitle='Data Diri - '.ucfirst($model->nama);
 				),
 			)); ?>
 	</div>
-
-
 
 	<?php }else{ ?>
 		<div class="alert alert-warning">

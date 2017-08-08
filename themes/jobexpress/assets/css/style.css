@@ -822,6 +822,24 @@ ul.bottom_link li a {
         width: 1% !important;
     }
 }
+
+@media (max-width: 320px) {
+    .banner-heading{
+        font-size: 20px;
+        color: #fff;
+        line-height: 24px;
+    }
+}
+
+@media (max-width: 420px) {
+    .banner-heading{
+        font-size: 20px;
+        color: #fff;
+        line-height: 24px;
+    }
+}
+
+
 #userform .nav-tabs {
     border: 1px solid #ddd;
 }
@@ -918,7 +936,7 @@ ul.bottom_link li a {
 }
 /***********About Page**********/
 .about{
-    background: url(../images/about/about-banner.jpg) no-repeat left top/cover;
+    background: #900c10;
 }
 .about_us{ padding-bottom: 70px;}
 .banner .banner-heading{

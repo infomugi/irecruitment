@@ -4,11 +4,10 @@
 
 $this->breadcrumbs=array(
 	'Pelamars'=>array('index'),
-	$model->id_people=>array('view','id'=>$model->id_people),
-	'Update',
+	'Edit Password',
 	);
 
-	$this->pageTitle='Edit Password';
-	?>
+$this->pageTitle='Edit Password';
+?>
 
-	<?php echo $this->renderPartial('_form_password', array('model'=>$model,'user'=>$user)); ?>
+<?php echo $this->renderPartial('_form_password', array('user'=>$user)); ?>

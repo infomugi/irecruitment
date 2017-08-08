@@ -272,7 +272,7 @@ class FileLamaranController extends Controller
 		if(Yii::app()->user->getLevel()==1){
 			$this->layout="admin";
 		}else{
-			$this->layout="list";
+			$this->layout="main";
 		}
 
 		

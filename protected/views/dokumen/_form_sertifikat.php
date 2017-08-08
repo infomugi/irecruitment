@@ -1,45 +1,47 @@
 <?php
-/* @var $this UserController */
-/* @var $model User */
+/* @var $this DokumenController */
+/* @var $model Dokumen */
 /* @var $form CActiveForm */
 ?>
 
 
 <div class="form-normal form-horizontal clearfix">
-	<div class="col-md-9"> 
+	<div class="col-lg-9 col-md-10"> 
 
 		<?php $form=$this->beginWidget('CActiveForm', array(
-			'id'=>'user-form',
+			'id'=>'dokumen-form',
 			'enableAjaxValidation'=>false,
 			'enableClientValidation' => true,
 			'clientOptions' => array(
 				'validateOnSubmit' => true,
 				),
-			'errorMessageCssClass' => 'label label-info',
+			'errorMessageCssClass' => 'label label-danger',
 			'htmlOptions' => array('enctype' => 'multipart/form-data','autocomplete'=>'off'),
 			)); ?>
 
-			<?php echo $form->errorSummary($user, null, null, array('class' => 'alert alert-warning')); ?>
+			<?php echo $form->errorSummary($model, null, null, array('class' => 'alert alert-warning')); ?>
 
-			
+
+
 			<div class="form-group">
-				
+
 				<div class="col-sm-4 control-label">
-					<?php echo $form->labelEx($user,'password'); ?>
+					<?php echo $form->labelEx($model,'sertifikat'); ?>
 				</div>   
 
 				<div class="col-sm-8">
-					<?php echo $form->error($user,'password'); ?>
-					<?php echo $form->passwordField($user,'password',array('class'=>'form-control')); ?>
+					<?php echo $form->error($model,'sertifikat'); ?>
+					<?php echo $form->fileField($model,'sertifikat',array('class'=>'btn btn-success')); ?>
 				</div>
-				
+
 			</div>  
+
 
 			
 			<div class="form-group">
 				<div class="col-md-12">  
 				</br></br>
-				<?php echo CHtml::submitButton($user->isNewRecord ? 'Registrasi' : 'Edit', array('class' => 'btn btn-success btn-flat pull-right')); ?>
+				<?php echo CHtml::submitButton($model->isNewRecord ? 'Submit' : 'Edit', array('class' => 'btn btn-success btn-flat pull-right')); ?>
 			</div>
 		</div>
 

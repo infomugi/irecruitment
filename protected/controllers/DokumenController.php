@@ -28,7 +28,7 @@ class DokumenController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions'=>array('uploadcv'),
+				'actions'=>array('uploadcv','uploadktp','uploadijazah','uploadtranskrip','uploadskck','uploadsertifikat'),
 				'users'=>array('@'),
 				'expression'=>'Yii::app()->user->getLevel()==2',
 				),			
@@ -160,7 +160,7 @@ class DokumenController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=Dokumen::model()->findByPk($id);
+		$model=Dokumen::model()->findByAttributes(array('people_id'=>$id));
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -198,6 +198,7 @@ class DokumenController extends Controller
 	public function actionUploadCV($id)
 	{
 		$model=$this->loadModel($id);
+		$model->setScenario('upload_cv');
 
 		if(isset($_POST['Dokumen']))
 		{
@@ -222,4 +223,151 @@ class DokumenController extends Controller
 			'model'=>$model,
 			));
 	}
+
+	public function actionUploadKTP($id)
+	{
+		$model=$this->loadModel($id);
+		$model->setScenario('upload_ktp');
+
+		if(isset($_POST['Dokumen']))
+		{
+			$model->attributes=$_POST['Dokumen'];
+			$model->tanggal = date('Y-m-d h:i:s');
+			$model->ktp=CUploadedFile::getInstance($model,'ktp');
+			$tmp;
+			if(strlen(trim(CUploadedFile::getInstance($model,'ktp'))) > 0) 
+			{ 
+				$tmp=CUploadedFile::getInstance($model,'ktp'); 
+				$model->ktp=$model->user_id." - KTP Lamaran - ".$model->people_id.'.'.$tmp->extensionName; 
+			}
+
+			if($model->update()){
+				if(strlen(trim($model->ktp)) > 0) 
+					$tmp->saveAs(Yii::getPathOfAlias('webroot').'/lamaran/ktp/'.$model->ktp);				
+				$this->redirect(array('pelamar/profile'));
+			}
+		}
+
+		$this->render('upload_ktp',array(
+			'model'=>$model,
+			));
+	}
+
+	public function actionUploadIjazah($id)
+	{
+		$model=$this->loadModel($id);
+		$model->setScenario('upload_ijazah');
+
+		if(isset($_POST['Dokumen']))
+		{
+			$model->attributes=$_POST['Dokumen'];
+			$model->tanggal = date('Y-m-d h:i:s');
+			$model->ijazah=CUploadedFile::getInstance($model,'ijazah');
+			$tmp;
+			if(strlen(trim(CUploadedFile::getInstance($model,'ijazah'))) > 0) 
+			{ 
+				$tmp=CUploadedFile::getInstance($model,'ijazah'); 
+				$model->ijazah=$model->user_id." - Ijazah Lamaran - ".$model->people_id.'.'.$tmp->extensionName; 
+			}
+
+			if($model->update()){
+				if(strlen(trim($model->ijazah)) > 0) 
+					$tmp->saveAs(Yii::getPathOfAlias('webroot').'/lamaran/ijazah/'.$model->ijazah);				
+				$this->redirect(array('pelamar/profile'));
+			}
+		}
+
+		$this->render('upload_ijazah',array(
+			'model'=>$model,
+			));
+	}	
+
+	public function actionUploadTranskrip($id)
+	{
+		$model=$this->loadModel($id);
+		$model->setScenario('upload_transkrip');
+
+		if(isset($_POST['Dokumen']))
+		{
+			$model->attributes=$_POST['Dokumen'];
+			$model->tanggal = date('Y-m-d h:i:s');
+			$model->transkrip=CUploadedFile::getInstance($model,'transkrip');
+			$tmp;
+			if(strlen(trim(CUploadedFile::getInstance($model,'transkrip'))) > 0) 
+			{ 
+				$tmp=CUploadedFile::getInstance($model,'transkrip'); 
+				$model->transkrip=$model->user_id." - Transkrip Lamaran - ".$model->people_id.'.'.$tmp->extensionName; 
+			}
+
+			if($model->update()){
+				if(strlen(trim($model->transkrip)) > 0) 
+					$tmp->saveAs(Yii::getPathOfAlias('webroot').'/lamaran/transkrip/'.$model->transkrip);				
+				$this->redirect(array('pelamar/profile'));
+			}
+		}
+
+		$this->render('upload_transkrip',array(
+			'model'=>$model,
+			));
+	}	
+
+	public function actionUploadSkck($id)
+	{
+		$model=$this->loadModel($id);
+		$model->setScenario('upload_skck');
+
+		if(isset($_POST['Dokumen']))
+		{
+			$model->attributes=$_POST['Dokumen'];
+			$model->tanggal = date('Y-m-d h:i:s');
+			$model->skck=CUploadedFile::getInstance($model,'skck');
+			$tmp;
+			if(strlen(trim(CUploadedFile::getInstance($model,'skck'))) > 0) 
+			{ 
+				$tmp=CUploadedFile::getInstance($model,'skck'); 
+				$model->skck=$model->user_id." - SKCK Lamaran - ".$model->people_id.'.'.$tmp->extensionName; 
+			}
+
+			if($model->update()){
+				if(strlen(trim($model->skck)) > 0) 
+					$tmp->saveAs(Yii::getPathOfAlias('webroot').'/lamaran/skck/'.$model->skck);				
+				$this->redirect(array('pelamar/profile'));
+			}
+		}
+
+		$this->render('upload_skck',array(
+			'model'=>$model,
+			));
+	}	
+
+	public function actionUploadSertifikat($id)
+	{
+		$model=$this->loadModel($id);
+		$model->setScenario('upload_sertifikat');
+
+		if(isset($_POST['Dokumen']))
+		{
+			$model->attributes=$_POST['Dokumen'];
+			$model->tanggal = date('Y-m-d h:i:s');
+			$model->sertifikat=CUploadedFile::getInstance($model,'sertifikat');
+			$tmp;
+			if(strlen(trim(CUploadedFile::getInstance($model,'sertifikat'))) > 0) 
+			{ 
+				$tmp=CUploadedFile::getInstance($model,'sertifikat'); 
+				$model->sertifikat=$model->user_id." - Sertifikat Lamaran - ".$model->people_id.'.'.$tmp->extensionName; 
+			}
+
+			if($model->update()){
+				if(strlen(trim($model->sertifikat)) > 0) 
+					$tmp->saveAs(Yii::getPathOfAlias('webroot').'/lamaran/sertifikat/'.$model->sertifikat);				
+				$this->redirect(array('pelamar/profile'));
+			}
+		}
+
+		$this->render('upload_sertifikat',array(
+			'model'=>$model,
+			));
+	}			
+
+
 }

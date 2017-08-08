@@ -36,7 +36,17 @@ class Dokumen extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('tanggal, cv, ktp, ijazah, transkrip, skck, sertifikat, people_id, user_id, verifikasi_id, tanggal_verifikasi, status', 'required'),
+			array('tanggal, people_id, user_id, status','required','on'=>'register_dokumen'),
+			array('tanggal, cv','required','on'=>'upload_cv'),
+			array('tanggal, ktp','required','on'=>'upload_ktp'),
+			array('tanggal, ijazah','required','on'=>'upload_ijazah'),
+			array('tanggal, transkrip','required','on'=>'upload_transkrip'),
+			array('tanggal, skck','required','on'=>'upload_skck'),
+			array('tanggal, sertifikat','required','on'=>'upload_sertifikat'),
+
+			array('cv, ktp, ijazah, transkrip, skck, sertifikat', 'file', 'types' => 'pdf, doc, docx', 'allowEmpty' => true, 'maxSize' => 1024 * 1024 * 1, 'tooLarge' => 'The file was larger than 3 MB. Please upload a smaller file.'),		
+
+			// array('tanggal, cv, ktp, ijazah, transkrip, skck, sertifikat, people_id, user_id, verifikasi_id, tanggal_verifikasi, status', 'required'),
 			array('people_id, user_id, verifikasi_id, status', 'numerical', 'integerOnly'=>true),
 			array('cv, ktp, ijazah, transkrip, skck, sertifikat', 'length', 'max'=>255),
 			// The following rule is used by search().
@@ -64,12 +74,12 @@ class Dokumen extends CActiveRecord
 		return array(
 			'id_dokumen' => 'Id Dokumen',
 			'tanggal' => 'Tanggal',
-			'cv' => 'Cv',
-			'ktp' => 'Ktp',
-			'ijazah' => 'Ijazah',
-			'transkrip' => 'Transkrip',
-			'skck' => 'Skck',
-			'sertifikat' => 'Sertifikat',
+			'cv' => 'Dokumen CV',
+			'ktp' => 'Dokumen KTP',
+			'ijazah' => 'Dokumen Ijazah',
+			'transkrip' => 'Dokumen Transkrip',
+			'skck' => 'Dokumen SKCK',
+			'sertifikat' => 'Dokumen Sertifikat',
 			'people_id' => 'People',
 			'user_id' => 'User',
 			'verifikasi_id' => 'Verifikasi',

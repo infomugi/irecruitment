@@ -15,7 +15,7 @@
 	<link href="<?php echo $baseUrl;?>/assets/plugins/themify/themify-icons.css" rel="stylesheet">
 	<link href="<?php echo $baseUrl;?>/assets/css/style.css" rel="stylesheet">
 	<link href="<?php echo $baseUrl;?>/assets/css/responsive.css" rel="stylesheet">
-	<link href="<?php echo $baseUrl;?>/https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
 </head>
 
 <body>
