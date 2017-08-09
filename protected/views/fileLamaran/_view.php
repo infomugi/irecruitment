@@ -17,7 +17,7 @@ if($data->status_lamaran=="Belum di Verifikasi"){
 <div class="sorting_content">
 	<div class="overflow">
 		<div class="text-shorting">
-			<h3><?php echo CHtml::link(CHtml::encode("Lamaran : ".$dataBagian->nama." - ".$dataJabatan->nama), array('view', 'id'=>$data->id)); ?></h3>
+			<h4><?php echo CHtml::link(CHtml::encode("Lamaran : ".$dataBagian->nama." - ".$dataJabatan->nama), array('view', 'id'=>$data->id)); ?></h4>
 			<ul class="unstyled">
 				<li><span class="label label-<?php echo $alert; ?>"> <?php echo $data->status_lamaran; ?></span></li>
 			</ul>
