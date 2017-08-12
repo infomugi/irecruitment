@@ -7,7 +7,7 @@
  * @property integer $id_penilaian_saw
  * @property string $tanggal
  * @property integer $penilai_id
- * @property integer $customer_id
+ * @property integer $pelamar_id
  * @property integer $c1
  * @property integer $c2
  * @property integer $c3
