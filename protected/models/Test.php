@@ -42,7 +42,7 @@ class Test extends CActiveRecord
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id_test, tanggal, lamaran_id, lowongan_id, user_id, status1, berita_acara1, status2, berita_acara2, status3, berita_acara3', 'safe', 'on'=>'search'),
-		);
+			);
 	}
 
 	/**
@@ -56,7 +56,7 @@ class Test extends CActiveRecord
 			'Lamaran'=>array(self::BELONGS_TO,'FileLamaran','lamaran_id'),
 			'Lowongan'=>array(self::BELONGS_TO,'Lowongan','lowongan_id'),
 			'User'=>array(self::BELONGS_TO,'User','user_id'),
-		);
+			);
 	}
 
 	/**
@@ -71,12 +71,12 @@ class Test extends CActiveRecord
 			'lowongan_id' => 'Lowongan',
 			'user_id' => 'User',
 			'status1' => 'Test Ke-1',
-			'berita_acara1' => 'Berita Acara',
+			'berita_acara1' => 'Keterangan Test Ke-1',
 			'status2' => 'Test Ke-2',
-			'berita_acara2' => 'Berita Acara',
+			'berita_acara2' => 'Keterangan Test Ke-2',
 			'status3' => 'Test Ke-3',
-			'berita_acara3' => 'Berita Acara',
-		);
+			'berita_acara3' => 'Keterangan Test Ke-3',
+			);
 	}
 
 	/**
@@ -111,7 +111,7 @@ class Test extends CActiveRecord
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
-		));
+			));
 	}
 
 	/**

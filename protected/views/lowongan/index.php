@@ -10,20 +10,16 @@ $this->pageTitle='Daftar Lowongan';
 ?>
 <?php if(Yii::app()->user->getLevel()==1): ?>
 	
-	<?php echo CHtml::link('Tambah Job Order',
+	<?php echo CHtml::link('Tambah',
 		array('create'),
-		array('class' => 'btn btn-info btn-flat'));
+		array('class' => 'btn btn-danger pull-right btn-flat'));
 		?>
-		<?php echo CHtml::link('Kelola Job Order',
-			array('admin'),
-			array('class' => 'btn btn-info btn-flat'));
-			?>
+		
+	<?php endif; ?>
 
-		<?php endif; ?>
+	<?php $this->widget('zii.widgets.CListView', array(
+		'dataProvider'=>$dataProvider,
+		'itemView'=>'_view',
+		)); ?>
 
-		<?php $this->widget('zii.widgets.CListView', array(
-			'dataProvider'=>$dataProvider,
-			'itemView'=>'_view',
-			)); ?>
-
-			
+		

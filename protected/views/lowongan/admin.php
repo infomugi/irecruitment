@@ -13,11 +13,11 @@ $this->pageTitle='Kelola Job Order';
 
 <?php echo CHtml::link('Tambah Job Order',
 	array('create'),
-	array('class' => 'btn btn-info btn-flat'));
+	array('class' => 'btn btn-danger btn-flat'));
 	?>
 	<?php echo CHtml::link('Daftar Job Order',
 		array('index'),
-		array('class' => 'btn btn-info btn-flat'));
+		array('class' => 'btn btn-danger btn-flat'));
 		?>
 
 		<?php $this->widget('zii.widgets.grid.CGridView', array(
@@ -33,7 +33,7 @@ $this->pageTitle='Kelola Job Order';
 					'htmlOptions'=>array('width'=>'10px', 
 						'style' => 'text-align: center;')),
 
-				'tanggal',
+				// 'tanggal',
 				'tanggal_kebutuhan',
 				array(
 					'name'=>'jabatan',
@@ -45,10 +45,10 @@ $this->pageTitle='Kelola Job Order';
 					'value'=>'$data->Bagian->nama',
 					),
 
-				// array(
-				// 	'name'=>'tipe',
-				// 	'value'=>'Lowongan::model()->tipe($data->tipe)',
-				// 	),
+				array(
+					'name'=>'tipe',
+					'value'=>'Lowongan::model()->tipe($data->tipe)',
+					),
 
 				array(
 					'name'=>'status',

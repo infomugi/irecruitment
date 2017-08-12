@@ -50,7 +50,7 @@ class Pelamar extends CActiveRecord
 			array('nik','unique'),
 			array('nama, nik, tempat_lahir, tanggal_lahir, agama, jenis_kelamin, golongan_darah, kewarganegaraan, hp, kota_id, provinsi_id', 'required','on'=>'update_pelamar'),
 			array('id_people, id_user, kota_id, provinsi_id, nik, status_menikah, status_domisili', 'numerical', 'integerOnly'=>true),
-			array('nama, tanggal_lahir, nik, no_jamsostek, no_sim, no_npwp, alamat_domisili, telephone_pribadi, telephone_rumah', 'length', 'max'=>255),
+			array('nama, tanggal_lahir, nik, no_jamsostek, no_sim, no_npwp, alamat_domisili, telephone_pribadi, telephone_rumah, tanggal_lahir', 'length', 'max'=>255),
 			array('tempat_lahir, tanggal_lahir, agama, jenis_kelamin, golongan_darah, kewarganegaraan, hp', 'length', 'max'=>30),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

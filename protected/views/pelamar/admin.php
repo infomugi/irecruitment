@@ -21,7 +21,7 @@ $this->pageTitle='Kelola Pelamar';
 
 	<?php echo CHtml::link('<i class="fa fa-tasks"></i>',
 		array('index'),
-		array('class' => 'btn btn-info btn-md'));
+		array('class' => 'btn btn-danger btn-md'));
 		?>
 
 	</span> 
@@ -30,7 +30,7 @@ $this->pageTitle='Kelola Pelamar';
 
 		<?php echo CHtml::link('List Pelamar',
 			array('index'),
-			array('class' => 'btn btn-info btn-flat'));
+			array('class' => 'btn btn-danger btn-flat'));
 			?>
 
 		</span>	

@@ -14,15 +14,15 @@ $this->pageTitle='Detail Level';
 
 <?php echo CHtml::link('Tambah',
 	array('create'),
-	array('class' => 'btn btn-info btn-flat','title'=>'Tambah Level'));
+	array('class' => 'btn btn-danger btn-flat','title'=>'Tambah Level'));
 	?>
 	<?php echo CHtml::link('List',
 		array('index'),
-		array('class' => 'btn btn-info btn-flat', 'title'=>'Daftar Level'));
+		array('class' => 'btn btn-danger btn-flat', 'title'=>'Daftar Level'));
 		?>
 		<?php echo CHtml::link('Kelola',
 			array('admin'),
-			array('class' => 'btn btn-info btn-flat','title'=>'Kelola Level'));
+			array('class' => 'btn btn-danger btn-flat','title'=>'Kelola Level'));
 			?>
 			<?php echo CHtml::link('Edit', 
 				array('update', 'id'=>$model->level_ID,

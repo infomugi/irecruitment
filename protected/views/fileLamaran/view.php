@@ -24,7 +24,7 @@ if(YII::app()->user->getLevel()==2){
 		<?php if($model->test_id==1): ?>
 			<?php echo CHtml::link('<i class="fa fa-plus"></i> Buat Pengumuman', 
 				array('test/create', 'loker'=>$model->lowongan_id, 'lamaran'=>$model->id, 'user'=>$model->id_people
-					), array('class' => 'btn btn-info btn-flat', 'title'=>'Buat Pengumuman Test'));
+					), array('class' => 'btn btn-danger btn-flat', 'title'=>'Buat Pengumuman Test'));
 					?>	 	
 				<?php endif; ?>
 
@@ -34,13 +34,14 @@ if(YII::app()->user->getLevel()==2){
 
 				<?php if($model->status_lamaran=="Diverifikasi"){ ?>
 
-					<button class="btn btn-info btn-flat" disabled>Lamaran telah Diverifikasi</button>
+					<button class="btn btn-danger btn-flat" disabled>Lamaran telah Diverifikasi</button>
 
 					<?php }else{ ?>
 
-						<?php echo CHtml::link('<i class="fa fa-check"></i> Terima', 
+						<?php 
+						echo CHtml::link('<i class="fa fa-check"></i> Verifikasi Lamaran', 
 							array('diterima', 'id'=>$model->id,
-								), array('class' => 'btn btn-info btn-flat', 'title'=>'Terima Lamaran'));
+								), array('class' => 'btn btn-danger btn-flat', 'title'=>'Terima Lamaran'));
 						?>
 
 						<?php } ?>
@@ -51,7 +52,7 @@ if(YII::app()->user->getLevel()==2){
 
 						<?php echo CHtml::link('<i class="fa fa-remove"></i> Tolak', 
 							array('ditolak', 'id'=>$model->id,
-								), array('class' => 'btn btn-info btn-flat', 'title'=>'Tolak Lamaran'));
+								), array('class' => 'btn btn-danger btn-flat', 'title'=>'Tolak Lamaran'));
 								?>
 							<?php endif; ?>
 
@@ -134,7 +135,7 @@ if(YII::app()->user->getLevel()==2){
 											));
 											?> 
 										</div>
-										<div class="col-md-6">
+										<div class="col-md-6 col-lg-12 col-xs-12">
 											<h4><i class="fa fa-calendar"></i> File</h4>
 											<?php $this->widget('zii.widgets.CDetailView', array(
 												'data'=>$model,
@@ -300,12 +301,12 @@ if(YII::app()->user->getLevel()==2){
 																				<?php if(YII::app()->user->getLevel()==1): ?>
 																					<?php echo CHtml::link('<i class="fa fa-check"></i> Lulus Seleksi', 
 																						array('lulus', 'id'=>$model->id,
-																							), array('class' => 'btn btn-info btn-flat', 'title'=>'Terima Pelamar Sebagai Pegawai'));
+																							), array('class' => 'btn btn-danger btn-flat', 'title'=>'Terima Pelamar Sebagai Pegawai'));
 																							?>
 
 																							<?php echo CHtml::link('<i class="fa fa-remove"></i> Tolak', 
 																								array('ditolak', 'id'=>$model->id,
-																									), array('class' => 'btn btn-info btn-flat pull-right', 'title'=>'Tolak Lamaran'));
+																									), array('class' => 'btn btn-danger btn-flat pull-right', 'title'=>'Tolak Lamaran'));
 																									?>
 																								<?php endif; ?>
 

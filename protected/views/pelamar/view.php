@@ -19,12 +19,12 @@ $this->pageTitle='Profile - '.$model->nama;
 
 	<?php echo CHtml::link('<i class="ti-write"></i> Profile', 
 		array('update', 'id'=>$model->id_people,
-			), array('class' => 'btn btn-info btn-flat', 'title'=>'Edit Pelamar'));
+			), array('class' => 'btn btn-danger btn-flat', 'title'=>'Edit Pelamar'));
 	?>
 
 	<?php echo CHtml::link('<i class="ti-lock"></i> Password', 
 		array('password', 'id'=>$model->id_people,
-			), array('class' => 'btn btn-info btn-flat', 'title'=>'Edit Pelamar'));
+			), array('class' => 'btn btn-danger btn-flat', 'title'=>'Edit Pelamar'));
 	?>	
 
 	<?php echo CHtml::link('<i class="ti-id-badge"></i> Lamaran', 

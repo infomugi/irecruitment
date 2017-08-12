@@ -14,12 +14,12 @@ $this->pageTitle='Laporan Pengumuman Test';
 
 	<?php echo CHtml::link('<i class="fa fa-print"></i> Pengumuman Lulus',
 		array('printlulus'),
-		array('class' => 'btn btn-info btn-flat'));
+		array('class' => 'btn btn-danger btn-flat'));
 		?>
 
 		<?php echo CHtml::link('<i class="fa fa-print"></i> Pengumuman Gagal',
 			array('printgagal'),
-			array('class' => 'btn btn-info btn-flat'));
+			array('class' => 'btn btn-danger btn-flat'));
 			?>
 
 			<?php 

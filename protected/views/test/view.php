@@ -27,7 +27,7 @@ $this->breadcrumbs=array(
 		 ?>
 		<?php echo CHtml::link('Edit', 
 	 array('update', 'id'=>$model->id_test,
-		), array('class' => 'btn btn-info btn-flat', 'title'=>'Edit Test'));
+		), array('class' => 'btn btn-danger btn-flat', 'title'=>'Edit Test'));
  ?>
 		<?php echo CHtml::link('Hapus', 
 	 array('delete', 'id'=>$model->id_test,

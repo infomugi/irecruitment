@@ -26,7 +26,7 @@ $this->breadcrumbs=array(
 		 ?>
 		<?php echo CHtml::link('<i class='fa fa-edit'></i>', 
 	 array('update', 'id'=>$model->id_keluarga,
-		), array('class' => 'btn btn-info btn-flat', 'title'=>'Edit Keluarga'));
+		), array('class' => 'btn btn-danger btn-flat', 'title'=>'Edit Keluarga'));
  ?>
 		<?php echo CHtml::link('<i class='fa fa-remove'></i>', 
 	 array('delete', 'id'=>$model->id_keluarga,
@@ -51,7 +51,7 @@ $this->breadcrumbs=array(
 		 ?>
 		<?php echo CHtml::link('Edit', 
 	 array('update', 'id'=>$model->id_keluarga,
-		), array('class' => 'btn btn-info btn-flat', 'title'=>'Edit Keluarga'));
+		), array('class' => 'btn btn-danger btn-flat', 'title'=>'Edit Keluarga'));
  ?>
 		<?php echo CHtml::link('Delete', 
 	 array('delete', 'id'=>$model->id_keluarga,

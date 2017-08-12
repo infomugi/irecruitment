@@ -61,23 +61,35 @@
 								<i class="fa fa-dashboard"></i>	<span> Dashboard </span>
 							</a>
 						</li>
-
-						<li class="has_sub">
-							<a href="javascript:void(0);" class="waves-effect"><i class="fa fa-archive"></i><span> Job Order <span class="badge badge-primary pull-right">8</span></span></a>
-							<ul class="list-unstyled">
-								<li><a href="<?php echo $url;?>lowongan/create"> Tambah</a></li>
-								<li><a href="<?php echo $url;?>lowongan/admin"> Kelola</a></li>
-							</ul>
+						<li>
+							<a href="<?php echo $url;?>lowongan/list" class="waves-effect"><i class="fa fa-archive"></i><span> Job Order </span></a>
 						</li>
-
 						<li>
 							<a href="<?php echo $url;?>filelamaran/index" class="waves-effect"><i class="fa fa-file"></i><span> Data Lamaran </span></a>
 						</li>
 						<li>
-							<a href="<?php echo $url;?>test/index" class="waves-effect"><i class="fa fa-file-text"></i><span> Laporan </span></a>
+							<a href="<?php echo $url;?>lowongan/listreport" class="waves-effect"><i class="fa fa-file-text"></i><span> Laporan </span></a>
 						</li>
+
 						<li>
-							<a href="<?php echo $url;?>user/admin" class="waves-effect"><i class="fa fa-user"></i><span> Account Setting </span></a>
+							<a href="<?php echo $url;?>user/admin" class="waves-effect"><i class="fa fa-github-alt"></i><span> Account Setting </span></a>
+						</li>
+
+						<li class="has_sub">
+							<a href="javascript:void(0);" class="waves-effect"><i class="fa fa-cog"></i><span> Metode SAW </span></a>
+							<ul class="list-unstyled">
+								<li><a href="<?php echo $url;?>crips/admin">Nilai Crips</a></li>
+								<li><a href="<?php echo $url;?>kriteria/admin">Kriteria</a></li>
+								<li><a href="<?php echo $url;?>penilaiansaw/perhitungan">Analisis</a></li>
+							</ul>
+						</li>
+
+						<li class="has_sub">
+							<a href="javascript:void(0);" class="waves-effect"><i class="fa fa-tasks"></i><span> Referensi </span></a>
+							<ul class="list-unstyled">
+								<li><a href="<?php echo $url;?>bagian/admin">Bagian</a></li>
+								<li><a href="<?php echo $url;?>jabatan/admin">Jabatan</a></li>
+							</ul>
 						</li>
 
 					</ul>

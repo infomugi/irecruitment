@@ -15,15 +15,15 @@ $this->pageTitle='Detail Bagian';
 
 	<?php echo CHtml::link('Tambah',
 		array('create'),
-		array('class' => 'btn btn-info btn-flat','title'=>'Tambah Bagian'));
+		array('class' => 'btn btn-danger btn-flat','title'=>'Tambah Bagian'));
 		?>
 		<?php echo CHtml::link('List',
 			array('index'),
-			array('class' => 'btn btn-info btn-flat', 'title'=>'Daftar Bagian'));
+			array('class' => 'btn btn-danger btn-flat', 'title'=>'Daftar Bagian'));
 			?>
 			<?php echo CHtml::link('Kelola',
 				array('admin'),
-				array('class' => 'btn btn-info btn-flat','title'=>'Kelola Bagian'));
+				array('class' => 'btn btn-danger btn-flat','title'=>'Kelola Bagian'));
 				?>
 				<?php echo CHtml::link('Edit', 
 					array('update', 'id'=>$model->id_bagian,
@@ -35,9 +35,9 @@ $this->pageTitle='Detail Bagian';
 								?>
 
 								<?php if($model->psikotest==""){ ?>
-									<button class="btn btn-info btn-flat" disabled>File Psikotest Belum di Upload</button>
+									<button class="btn btn-danger btn-flat" disabled>File Psikotest Belum di Upload</button>
 									<?php }else{ ?>
-										<a href="<?php echo Yii::app()->request->baseUrl.'/psikotest/'.$model->psikotest; ?>" class="btn btn-info"><i class="fa fa-download"></i> Download</a>
+										<a href="<?php echo Yii::app()->request->baseUrl.'/psikotest/'.$model->psikotest; ?>" class="btn btn-danger"><i class="fa fa-download"></i> Download</a>
 										<?php } ?>
 
 										<HR>

@@ -30,7 +30,7 @@ $this->pageTitle='Detail Pekerjaan';
 			?>
 			<?php echo CHtml::link('Edit', 
 				array('update', 'id'=>$model->id_pekerjaan,
-					), array('class' => 'btn btn-info btn-flat', 'title'=>'Edit Pekerjaan'));
+					), array('class' => 'btn btn-danger btn-flat', 'title'=>'Edit Pekerjaan'));
 					?>
 					<?php echo CHtml::link('Hapus', 
 						array('delete', 'id'=>$model->id_pekerjaan,

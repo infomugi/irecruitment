@@ -32,7 +32,7 @@ class LowonganController extends Controller
 				'users'=>array('*'),
 				),
 			array('allow',
-				'actions'=>array('create','update','view','delete','admin','index','view','terbaru','list'),
+				'actions'=>array('create','update','view','delete','admin','index','view','terbaru','list','listreport'),
 				'users'=>array('@'),
 				'expression'=>'Yii::app()->user->getLevel()==1',
 				),
@@ -195,5 +195,15 @@ class LowonganController extends Controller
 			'dataProvider'=>$dataProvider,
 			));
 	}
+
+
+	public function actionListReport()
+	{
+		$this->layout="admin";
+		$dataProvider=new CActiveDataProvider('Lowongan',array('criteria'=>array('order'=>'id_lowongan DESC')));
+		$this->render('list_report',array(
+			'dataProvider'=>$dataProvider,
+			));
+	}	
 
 }

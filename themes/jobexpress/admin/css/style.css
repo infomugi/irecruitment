@@ -7,101 +7,96 @@ File: Main Css File
 /* ==============
   General
   ===================*/
-  body {
-    background: #fafafa;
-    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    margin: 0;
-    font-size: 15px; }
 
-    html {
-      overflow-x: hidden;
-      position: relative;
-      min-height: 100%;
-      background: #fafafa; }
+  html {
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100%;
+    background: #fafafa; }
 
-      h1, h2, h3, h4, h5, h6 {
-        margin: 10px 0;
-        font-weight: 600; }
+    h1, h2, h3, h4, h5, h6 {
+      margin: 10px 0;
+      font-weight: 600; }
 
-        h1 {
-          line-height: 43px; }
+      h1 {
+        line-height: 43px; }
 
-          h2 {
-            line-height: 35px; }
+        h2 {
+          line-height: 35px; }
 
-            h3 {
-              line-height: 30px; }
-              h3 small {
-                color: #444444; }
+          h3 {
+            line-height: 30px; }
+            h3 small {
+              color: #444444; }
 
-                h4 {
-                  line-height: 22px; }
-                  h4 small {
+              h4 {
+                line-height: 22px; }
+                h4 small {
+                  color: #444444; }
+
+                  h5 small {
                     color: #444444; }
 
-                    h5 small {
-                      color: #444444; }
+                    * {
+                      outline: none !important; }
 
-                      * {
-                        outline: none !important; }
-
-                        a:hover {
+                      a:hover {
+                        outline: 0;
+                        text-decoration: none; }
+                        a:active {
                           outline: 0;
                           text-decoration: none; }
-                          a:active {
+                          a:focus {
                             outline: 0;
                             text-decoration: none; }
-                            a:focus {
-                              outline: 0;
-                              text-decoration: none; }
 
-                              b {
-                                font-weight: 500; }
+                            b {
+                              font-weight: 500; }
 
-                                .container {
-                                  width: auto;
-                                  padding-left: 10px;
-                                  padding-right: 10px; }
+                              .container {
+                                width: auto;
+                                padding-left: 10px;
+                                padding-right: 10px; }
 
-                                  .container-alt {
-                                    margin-left: auto;
-                                    margin-right: auto;
-                                    padding-left: 15px;
-                                    padding-right: 15px; }
+                                .container-alt {
+                                  margin-left: auto;
+                                  margin-right: auto;
+                                  padding-left: 15px;
+                                  padding-right: 15px; }
 
-                                    .footer {
-                                      background-color: #f9f9f9;
-                                      border-top: 1px solid rgba(0, 0, 0, 0.05);
-                                      bottom: 0;
-                                      color: #1d1e3a;
-                                      text-align: center;
-                                      padding: 20px 30px;
-                                      position: absolute;
-                                      right: 0;
-                                      left: 240px; }
+                                  .footer {
+                                    background-color: #f9f9f9;
+                                    border-top: 1px solid rgba(0, 0, 0, 0.05);
+                                    bottom: 0;
+                                    color: #1d1e3a;
+                                    text-align: center;
+                                    padding: 20px 30px;
+                                    position: absolute;
+                                    right: 0;
+                                    left: 240px; }
 
-                                      #wrapper {
-                                        height: 100%;
-                                        overflow: hidden;
-                                        width: 100%; }
+                                    #wrapper {
+                                      height: 100%;
+                                      overflow: hidden;
+                                      width: 100%; }
 
-                                        .page {
-                                          bottom: 0;
-                                          left: 0;
-                                          right: 0;
-                                          top: 0; }
+                                      .page {
+                                        bottom: 0;
+                                        left: 0;
+                                        right: 0;
+                                        top: 0; }
 
-                                          /* Social */
-                                          .social-links li a {
-                                            -webkit-border-radius: 50%;
-                                            background: #f8f8f8;
-                                            border-radius: 50%;
-                                            color: #9f9f9f;
-                                            display: inline-block;
-                                            height: 30px;
-                                            line-height: 30px;
-                                            text-align: center;
-                                            width: 30px; }
+                                        /* Social */
+                                        .social-links li a {
+                                          -webkit-border-radius: 50%;
+                                          background: #f8f8f8;
+                                          border-radius: 50%;
+                                          color: #9f9f9f;
+                                          display: inline-block;
+                                          height: 30px;
+                                          line-height: 30px;
+                                          text-align: center;
+                                          width: 30px; }
 
 /* ==============
   Loader
@@ -142,7 +137,7 @@ File: Main Css File
           margin-left: -23px;
           border-width: 2px 1px;
           border-style: solid;
-          border-color: #4ac18e rgba(74, 193, 142, 0.3);
+          border-color: #eb7475 rgba(235, 116, 117, 0.3);
           border-radius: 50%;
           -o-border-radius: 50%;
           -ms-border-radius: 50%;
@@ -168,7 +163,7 @@ File: Main Css File
             margin-top: -6px;
             left: 50%;
             margin-left: -6px;
-            background-color: #4ac18e;
+            background-color: #eb7475;
             border-radius: 50%;
             -o-border-radius: 50%;
             -ms-border-radius: 50%;
@@ -222,144 +217,144 @@ File: Main Css File
                                                     -moz-transform: rotate(1080deg); } }
                                                     @keyframes pulse {
                                                       0% {
-                                                        background-color: rgba(74, 193, 142, 0.2); }
+                                                        background-color: rgba(235, 116, 117, 0.2); }
                                                         13% {
-                                                          background-color: rgba(74, 193, 142, 0.2); }
+                                                          background-color: rgba(235, 116, 117, 0.2); }
                                                           15% {
-                                                            background-color: rgba(74, 193, 142, 0.9); }
+                                                            background-color: rgba(235, 116, 117, 0.9); }
                                                             28% {
-                                                              background-color: rgba(74, 193, 142, 0.9); }
+                                                              background-color: rgba(235, 116, 117, 0.9); }
                                                               30% {
-                                                                background-color: rgba(74, 193, 142, 0.2); }
+                                                                background-color: rgba(235, 116, 117, 0.2); }
                                                                 43% {
-                                                                  background-color: rgba(74, 193, 142, 0.2); }
+                                                                  background-color: rgba(235, 116, 117, 0.2); }
                                                                   45% {
-                                                                    background-color: rgba(74, 193, 142, 0.9); }
+                                                                    background-color: rgba(235, 116, 117, 0.9); }
                                                                     70% {
-                                                                      background-color: rgba(74, 193, 142, 0.9); }
+                                                                      background-color: rgba(235, 116, 117, 0.9); }
                                                                       74% {
-                                                                        background-color: rgba(74, 193, 142, 0.2); }
+                                                                        background-color: rgba(235, 116, 117, 0.2); }
                                                                         100% {
-                                                                          background-color: rgba(74, 193, 142, 0.9); } }
+                                                                          background-color: rgba(235, 116, 117, 0.9); } }
                                                                           @-o-keyframes pulse {
                                                                             0% {
-                                                                              background-color: rgba(74, 193, 142, 0.2); }
+                                                                              background-color: rgba(235, 116, 117, 0.2); }
                                                                               13% {
-                                                                                background-color: rgba(74, 193, 142, 0.2); }
+                                                                                background-color: rgba(235, 116, 117, 0.2); }
                                                                                 15% {
-                                                                                  background-color: rgba(74, 193, 142, 0.9); }
+                                                                                  background-color: rgba(235, 116, 117, 0.9); }
                                                                                   28% {
-                                                                                    background-color: rgba(74, 193, 142, 0.9); }
+                                                                                    background-color: rgba(235, 116, 117, 0.9); }
                                                                                     30% {
-                                                                                      background-color: rgba(74, 193, 142, 0.2); }
+                                                                                      background-color: rgba(235, 116, 117, 0.2); }
                                                                                       43% {
-                                                                                        background-color: rgba(74, 193, 142, 0.2); }
+                                                                                        background-color: rgba(235, 116, 117, 0.2); }
                                                                                         45% {
-                                                                                          background-color: rgba(74, 193, 142, 0.9); }
+                                                                                          background-color: rgba(235, 116, 117, 0.9); }
                                                                                           70% {
-                                                                                            background-color: rgba(74, 193, 142, 0.9); }
+                                                                                            background-color: rgba(235, 116, 117, 0.9); }
                                                                                             74% {
-                                                                                              background-color: rgba(74, 193, 142, 0.2); }
+                                                                                              background-color: rgba(235, 116, 117, 0.2); }
                                                                                               100% {
-                                                                                                background-color: rgba(74, 193, 142, 0.9); } }
+                                                                                                background-color: rgba(235, 116, 117, 0.9); } }
                                                                                                 @-ms-keyframes pulse {
                                                                                                   0% {
-                                                                                                    background-color: rgba(74, 193, 142, 0.2); }
+                                                                                                    background-color: rgba(235, 116, 117, 0.2); }
                                                                                                     13% {
-                                                                                                      background-color: rgba(74, 193, 142, 0.2); }
+                                                                                                      background-color: rgba(235, 116, 117, 0.2); }
                                                                                                       15% {
-                                                                                                        background-color: rgba(74, 193, 142, 0.9); }
+                                                                                                        background-color: rgba(235, 116, 117, 0.9); }
                                                                                                         28% {
-                                                                                                          background-color: rgba(74, 193, 142, 0.9); }
+                                                                                                          background-color: rgba(235, 116, 117, 0.9); }
                                                                                                           30% {
-                                                                                                            background-color: rgba(74, 193, 142, 0.2); }
+                                                                                                            background-color: rgba(235, 116, 117, 0.2); }
                                                                                                             43% {
-                                                                                                              background-color: rgba(74, 193, 142, 0.2); }
+                                                                                                              background-color: rgba(235, 116, 117, 0.2); }
                                                                                                               45% {
-                                                                                                                background-color: rgba(74, 193, 142, 0.9); }
+                                                                                                                background-color: rgba(235, 116, 117, 0.9); }
                                                                                                                 70% {
-                                                                                                                  background-color: rgba(74, 193, 142, 0.9); }
+                                                                                                                  background-color: rgba(235, 116, 117, 0.9); }
                                                                                                                   74% {
-                                                                                                                    background-color: rgba(74, 193, 142, 0.2); }
+                                                                                                                    background-color: rgba(235, 116, 117, 0.2); }
                                                                                                                     100% {
-                                                                                                                      background-color: rgba(74, 193, 142, 0.9); } }
+                                                                                                                      background-color: rgba(235, 116, 117, 0.9); } }
                                                                                                                       @-webkit-keyframes pulse {
                                                                                                                         0% {
-                                                                                                                          background-color: rgba(74, 193, 142, 0.2); }
+                                                                                                                          background-color: rgba(235, 116, 117, 0.2); }
                                                                                                                           13% {
-                                                                                                                            background-color: rgba(74, 193, 142, 0.2); }
+                                                                                                                            background-color: rgba(235, 116, 117, 0.2); }
                                                                                                                             15% {
-                                                                                                                              background-color: rgba(74, 193, 142, 0.9); }
+                                                                                                                              background-color: rgba(235, 116, 117, 0.9); }
                                                                                                                               28% {
-                                                                                                                                background-color: rgba(74, 193, 142, 0.9); }
+                                                                                                                                background-color: rgba(235, 116, 117, 0.9); }
                                                                                                                                 30% {
-                                                                                                                                  background-color: rgba(74, 193, 142, 0.2); }
+                                                                                                                                  background-color: rgba(235, 116, 117, 0.2); }
                                                                                                                                   43% {
-                                                                                                                                    background-color: rgba(74, 193, 142, 0.2); }
+                                                                                                                                    background-color: rgba(235, 116, 117, 0.2); }
                                                                                                                                     45% {
-                                                                                                                                      background-color: rgba(74, 193, 142, 0.9); }
+                                                                                                                                      background-color: rgba(235, 116, 117, 0.9); }
                                                                                                                                       70% {
-                                                                                                                                        background-color: rgba(74, 193, 142, 0.9); }
+                                                                                                                                        background-color: rgba(235, 116, 117, 0.9); }
                                                                                                                                         74% {
-                                                                                                                                          background-color: rgba(74, 193, 142, 0.2); }
+                                                                                                                                          background-color: rgba(235, 116, 117, 0.2); }
                                                                                                                                           100% {
-                                                                                                                                            background-color: rgba(74, 193, 142, 0.9); } }
+                                                                                                                                            background-color: rgba(235, 116, 117, 0.9); } }
                                                                                                                                             @-moz-keyframes pulse {
                                                                                                                                               0% {
-                                                                                                                                                background-color: rgba(74, 193, 142, 0.2); }
+                                                                                                                                                background-color: rgba(235, 116, 117, 0.2); }
                                                                                                                                                 13% {
-                                                                                                                                                  background-color: rgba(74, 193, 142, 0.2); }
+                                                                                                                                                  background-color: rgba(235, 116, 117, 0.2); }
                                                                                                                                                   15% {
-                                                                                                                                                    background-color: rgba(74, 193, 142, 0.9); }
+                                                                                                                                                    background-color: rgba(235, 116, 117, 0.9); }
                                                                                                                                                     28% {
-                                                                                                                                                      background-color: rgba(74, 193, 142, 0.9); }
+                                                                                                                                                      background-color: rgba(235, 116, 117, 0.9); }
                                                                                                                                                       30% {
-                                                                                                                                                        background-color: rgba(74, 193, 142, 0.2); }
+                                                                                                                                                        background-color: rgba(235, 116, 117, 0.2); }
                                                                                                                                                         43% {
-                                                                                                                                                          background-color: rgba(74, 193, 142, 0.2); }
+                                                                                                                                                          background-color: rgba(235, 116, 117, 0.2); }
                                                                                                                                                           45% {
-                                                                                                                                                            background-color: rgba(74, 193, 142, 0.9); }
+                                                                                                                                                            background-color: rgba(235, 116, 117, 0.9); }
                                                                                                                                                             70% {
-                                                                                                                                                              background-color: rgba(74, 193, 142, 0.9); }
+                                                                                                                                                              background-color: rgba(235, 116, 117, 0.9); }
                                                                                                                                                               74% {
-                                                                                                                                                                background-color: rgba(74, 193, 142, 0.2); }
+                                                                                                                                                                background-color: rgba(235, 116, 117, 0.2); }
                                                                                                                                                                 100% {
-                                                                                                                                                                  background-color: rgba(74, 193, 142, 0.9); } }
+                                                                                                                                                                  background-color: rgba(235, 116, 117, 0.9); } }
                                                                                                                                                                   @keyframes borderPulse {
                                                                                                                                                                     0% {
-                                                                                                                                                                      box-shadow: 0 0 0 0 white, 0 0 0 1px rgba(74, 193, 142, 0.8); }
+                                                                                                                                                                      box-shadow: 0 0 0 0 white, 0 0 0 1px rgba(235, 116, 117, 0.8); }
                                                                                                                                                                       40% {
-                                                                                                                                                                        box-shadow: 0 0 0 1px white, 0 0 0 2px rgba(74, 193, 142, 0.8); }
+                                                                                                                                                                        box-shadow: 0 0 0 1px white, 0 0 0 2px rgba(235, 116, 117, 0.8); }
                                                                                                                                                                         80% {
-                                                                                                                                                                          box-shadow: 0 0 0 3px #ffffff, 0 0 1px 3px rgba(74, 193, 142, 0.8); } }
+                                                                                                                                                                          box-shadow: 0 0 0 3px #ffffff, 0 0 1px 3px rgba(235, 116, 117, 0.8); } }
                                                                                                                                                                           @-o-keyframes borderPulse {
                                                                                                                                                                             0% {
-                                                                                                                                                                              box-shadow: 0 0 0 0 white, 0 0 0 1px rgba(74, 193, 142, 0.8); }
+                                                                                                                                                                              box-shadow: 0 0 0 0 white, 0 0 0 1px rgba(235, 116, 117, 0.8); }
                                                                                                                                                                               40% {
-                                                                                                                                                                                box-shadow: 0 0 0 1px white, 0 0 0 2px rgba(74, 193, 142, 0.8); }
+                                                                                                                                                                                box-shadow: 0 0 0 1px white, 0 0 0 2px rgba(235, 116, 117, 0.8); }
                                                                                                                                                                                 80% {
-                                                                                                                                                                                  box-shadow: 0 0 0 3px #ffffff, 0 0 1px 3px rgba(74, 193, 142, 0.8); } }
+                                                                                                                                                                                  box-shadow: 0 0 0 3px #ffffff, 0 0 1px 3px rgba(235, 116, 117, 0.8); } }
                                                                                                                                                                                   @-ms-keyframes borderPulse {
                                                                                                                                                                                     0% {
-                                                                                                                                                                                      box-shadow: 0 0 0 0 white, 0 0 0 1px rgba(74, 193, 142, 0.8); }
+                                                                                                                                                                                      box-shadow: 0 0 0 0 white, 0 0 0 1px rgba(235, 116, 117, 0.8); }
                                                                                                                                                                                       40% {
-                                                                                                                                                                                        box-shadow: 0 0 0 1px white, 0 0 0 2px rgba(74, 193, 142, 0.8); }
+                                                                                                                                                                                        box-shadow: 0 0 0 1px white, 0 0 0 2px rgba(235, 116, 117, 0.8); }
                                                                                                                                                                                         80% {
-                                                                                                                                                                                          box-shadow: 0 0 0 3px #ffffff, 0 0 1px 3px rgba(74, 193, 142, 0.8); } }
+                                                                                                                                                                                          box-shadow: 0 0 0 3px #ffffff, 0 0 1px 3px rgba(235, 116, 117, 0.8); } }
                                                                                                                                                                                           @-webkit-keyframes borderPulse {
                                                                                                                                                                                             0% {
-                                                                                                                                                                                              box-shadow: 0 0 0 0 white, 0 0 0 1px rgba(74, 193, 142, 0.8); }
+                                                                                                                                                                                              box-shadow: 0 0 0 0 white, 0 0 0 1px rgba(235, 116, 117, 0.8); }
                                                                                                                                                                                               40% {
-                                                                                                                                                                                                box-shadow: 0 0 0 1px white, 0 0 0 2px rgba(74, 193, 142, 0.8); }
+                                                                                                                                                                                                box-shadow: 0 0 0 1px white, 0 0 0 2px rgba(235, 116, 117, 0.8); }
                                                                                                                                                                                                 80% {
-                                                                                                                                                                                                  box-shadow: 0 0 0 3px #ffffff, 0 0 1px 3px rgba(74, 193, 142, 0.8); } }
+                                                                                                                                                                                                  box-shadow: 0 0 0 3px #ffffff, 0 0 1px 3px rgba(235, 116, 117, 0.8); } }
                                                                                                                                                                                                   @-moz-keyframes borderPulse {
                                                                                                                                                                                                     0% {
-                                                                                                                                                                                                      box-shadow: 0 0 0 0 white, 0 0 0 1px rgba(74, 193, 142, 0.8); }
+                                                                                                                                                                                                      box-shadow: 0 0 0 0 white, 0 0 0 1px rgba(235, 116, 117, 0.8); }
                                                                                                                                                                                                       40% {
-                                                                                                                                                                                                        box-shadow: 0 0 0 1px white, 0 0 0 2px rgba(74, 193, 142, 0.8); }
+                                                                                                                                                                                                        box-shadow: 0 0 0 1px white, 0 0 0 2px rgba(235, 116, 117, 0.8); }
                                                                                                                                                                                                         80% {
-                                                                                                                                                                                                          box-shadow: 0 0 0 3px #ffffff, 0 0 1px 3px rgba(74, 193, 142, 0.8); } }
+                                                                                                                                                                                                          box-shadow: 0 0 0 3px #ffffff, 0 0 1px 3px rgba(235, 116, 117, 0.8); } }
                                                                                                                                                                                                           @-webkit-keyframes load8 {
                                                                                                                                                                                                             0% {
                                                                                                                                                                                                               -webkit-transform: rotate(0deg);
@@ -412,10 +407,10 @@ File: Main Css File
               padding: 6px 1.5rem; }
 
               .bg-primary {
-                background-color: #4ac18e !important; }
+                background-color: #eb7475 !important; }
 
                 .bg-success {
-                  background-color: #67a8e4 !important; }
+                  background-color: #4ac18e !important; }
 
                   .bg-info {
                     background-color: #47b8c6 !important; }
@@ -424,7 +419,7 @@ File: Main Css File
                       background-color: #eca14f !important; }
 
                       .bg-danger {
-                        background-color: #e9595b !important; }
+                        background-color: #67a8e4 !important; }
 
                         .bg-muted {
                           background-color: #707070 !important; }
@@ -436,19 +431,19 @@ File: Main Css File
                               color: #ffffff !important; }
 
                               .text-danger {
-                                color: #e9595b !important; }
+                                color: #67a8e4 !important; }
 
                                 .text-muted {
                                   color: #707070 !important; }
 
                                   .text-primary {
-                                    color: #4ac18e !important; }
+                                    color: #eb7475 !important; }
 
                                     .text-warning {
                                       color: #eca14f !important; }
 
                                       .text-success {
-                                        color: #67a8e4 !important; }
+                                        color: #4ac18e !important; }
 
                                         .text-info {
                                           color: #47b8c6 !important; }
@@ -461,10 +456,10 @@ File: Main Css File
                                               color: #1d1e3a; }
 
                                               .badge-primary {
-                                                background-color: #4ac18e; }
+                                                background-color: #eb7475; }
 
                                                 .badge-success {
-                                                  background-color: #67a8e4; }
+                                                  background-color: #4ac18e; }
 
                                                   .badge-info {
                                                     background-color: #47b8c6; }
@@ -473,17 +468,17 @@ File: Main Css File
                                                       background-color: #eca14f; }
 
                                                       .badge-danger {
-                                                        background-color: #e9595b; }
+                                                        background-color: #67a8e4; }
 
                                                         .badge-dark {
                                                           background-color: #1d1e3a; }
 
                                                           /* Navs & Tabs */
                                                           .nav-pills .nav-item.show .nav-link, .nav-pills .nav-link.active {
-                                                            background-color: #4ac18e; }
+                                                            background-color: #eb7475; }
 
                                                             .nav-pills > .active > a > .badge {
-                                                              color: #4ac18e; }
+                                                              color: #eb7475; }
 
                                                               /* List Group */
                                                               .list-group-item.active {
@@ -497,16 +492,16 @@ File: Main Css File
                                                                   color: #444444;
                                                                   z-index: 2; }
                                                                   .list-group-item.active:hover .list-group-item-text {
-                                                                    color: #4ac18e; }
+                                                                    color: #eb7475; }
                                                                     .list-group-item.active:focus {
                                                                       background-color: #dddddd;
                                                                       border-color: #dddddd;
                                                                       color: #444444;
                                                                       z-index: 2; }
                                                                       .list-group-item.active:focus .list-group-item-text {
-                                                                        color: #4ac18e; }
+                                                                        color: #eb7475; }
                                                                         .list-group-item.active .list-group-item-text {
-                                                                          color: #4ac18e; }
+                                                                          color: #eb7475; }
 
                                                                           .list-group-item {
                                                                             border-radius: 0;
@@ -523,7 +518,7 @@ File: Main Css File
                                                                                   font-weight: 300; }
 
                                                                                   .list-group-item.active > .badge {
-                                                                                    color: #4ac18e; }
+                                                                                    color: #eb7475; }
 
 /* =============
    Alerts
@@ -559,12 +554,12 @@ File: Main Css File
                         border-top-color: #e78821; }
 
                         .alert-danger {
-                          color: #e9595b;
-                          background-color: #fbe0e0; }
+                          color: #eb7475;
+                          background-color: #fbe3e4; }
                           .alert-danger .alert-link {
-                            color: #e32c2f; }
+                            color: #c31c1e; }
                             .alert-danger hr {
-                              border-top-color: #e32c2f; }
+                              border-top-color: #c31c1e; }
 
 /* ==============
   Helper Classes
@@ -856,145 +851,9 @@ File: Main Css File
           .icon-demo-content .col-sm-6 {
             margin-bottom: 30px; }
             .icon-demo-content .col-sm-6:hover i {
-              color: #4ac18e; }
+              color: #eb7475; }
 
-/* ==============
-  Buttons
-  ===================*/
-  .btn {
-    border-radius: 3px; }
 
-    .btn-primary, .btn-success, .btn-info, .btn-warning,
-    .btn-danger, .btn-dark {
-      color: #ffffff; }
-
-      .btn-secondary {
-        background-color: #ffffff;
-        border-color: rgba(29, 30, 58, 0.2); }
-
-        .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active, .btn-secondary.active,
-        .btn-secondary.focus, .btn-secondary:active, .btn-secondary:focus, .btn-secondary:hover,
-        .open > .dropdown-toggle.btn-secondary, .btn-secondary.active, .btn-secondary:active,
-        .show > .btn-secondary.dropdown-toggle {
-          background-color: rgba(29, 30, 58, 0.07);
-          border: 1px solid rgba(29, 30, 58, 0.2); }
-
-          .btn-primary {
-            background-color: #4ac18e;
-            border: 1px solid #4ac18e; }
-
-            .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active,
-            .btn-primary.focus, .btn-primary:active, .btn-primary:focus, .btn-primary:hover,
-            .open > .dropdown-toggle.btn-primary, .btn-outline-primary.active, .btn-outline-primary:active,
-            .show > .btn-outline-primary.dropdown-toggle, .btn-outline-primary:hover, .btn-primary.active,
-            .btn-primary:active, .show > .btn-primary.dropdown-toggle {
-              background-color: #3eb481;
-              border: 1px solid #3eb481; }
-
-              .btn-primary.focus, .btn-primary:focus, .btn-outline-primary.focus, .btn-outline-primary:focus {
-                -webkit-box-shadow: 0 0 0 2px rgba(74, 193, 142, 0.3);
-                box-shadow: 0 0 0 2px rgba(74, 193, 142, 0.3); }
-
-                .btn-success {
-                  background-color: #67a8e4;
-                  border: 1px solid #67a8e4; }
-
-                  .btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active,
-                  .btn-success.focus, .btn-success:active, .btn-success:focus, .btn-success:hover,
-                  .open > .dropdown-toggle.btn-success, .btn-outline-success.active, .btn-outline-success:active,
-                  .show > .btn-outline-success.dropdown-toggle, .btn-outline-success:hover, .btn-success.active,
-                  .btn-success:active, .show > .btn-success.dropdown-toggle {
-                    background-color: #519ce0;
-                    border: 1px solid #519ce0; }
-
-                    .btn-success.focus, .btn-success:focus, .btn-outline-success.focus, .btn-outline-success:focus {
-                      -webkit-box-shadow: 0 0 0 2px rgba(103, 168, 228, 0.3);
-                      box-shadow: 0 0 0 2px rgba(103, 168, 228, 0.3); }
-
-                      .btn-info {
-                        background-color: #47b8c6;
-                        border: 1px solid #47b8c6; }
-
-                        .btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .btn-info.focus,
-                        .btn-info:active, .btn-info:focus, .btn-info:hover, .open > .dropdown-toggle.btn-info,
-                        .btn-outline-info.active, .btn-outline-info:active,
-                        .show > .btn-outline-info.dropdown-toggle, .btn-outline-info:hover, .btn-info.active, .btn-info:active,
-                        .show > .btn-info.dropdown-toggle {
-                          background-color: #3aacba;
-                          border: 1px solid #3aacba; }
-
-                          .btn-warning {
-                            background-color: #eca14f;
-                            border: 1px solid #eca14f; }
-
-                            .btn-warning:hover, .btn-warning:focus, .btn-warning:active, .btn-warning.active,
-                            .btn-warning.focus, .btn-warning:active, .btn-warning:focus, .btn-warning:hover,
-                            .open > .dropdown-toggle.btn-warning, .btn-outline-warning.active, .btn-outline-warning:active,
-                            .show > .btn-outline-warning.dropdown-toggle, .btn-outline-warning:hover, .btn-warning.active,
-                            .btn-warning:active, .show > .btn-warning.dropdown-toggle {
-                              background-color: #ea9538;
-                              border: 1px solid #ea9538; }
-
-                              .btn-danger {
-                                background-color: #e9595b;
-                                border: 1px solid #e9595b; }
-
-                                .btn-danger:active, .btn-danger:focus, .btn-danger:hover, .btn-danger.active,
-                                .btn-danger.focus, .btn-danger:active, .btn-danger:focus, .btn-danger:hover,
-                                .open > .dropdown-toggle.btn-danger, .btn-outline-danger.active, .btn-outline-danger:active,
-                                .show > .btn-outline-danger.dropdown-toggle, .btn-outline-danger:hover, .btn-danger.active,
-                                .btn-danger:active, .show > .btn-danger.dropdown-toggle {
-                                  background-color: #e64245;
-                                  border: 1px solid #e64245; }
-
-                                  .btn-dark {
-                                    background-color: #1d1e3a;
-                                    border: 1px solid #1d1e3a;
-                                    color: #ffffff; }
-
-                                    .btn-dark:hover, .btn-dark:focus, .btn-dark:active, .btn-dark.active, .btn-dark.focus,
-                                    .btn-dark:active, .btn-dark:focus, .btn-dark:hover, .open > .dropdown-toggle.btn-dark,
-                                    .btn-outline-dark.active, .btn-outline-dark:active,
-                                    .show > .btn-outline-dark.dropdown-toggle, .btn-outline-dark:hover {
-                                      background-color: #151529;
-                                      border: 1px solid #151529;
-                                      color: #ffffff; }
-
-                                      .btn-dark.focus, .btn-dark:focus, .btn-outline-dark.focus, .btn-outline-dark:focus {
-                                        -webkit-box-shadow: 0 0 0 2px rgba(29, 30, 58, 0.3);
-                                        box-shadow: 0 0 0 2px rgba(29, 30, 58, 0.3); }
-
-                                        .btn-link {
-                                          color: #1d1e3a; }
-                                          .btn-link:hover {
-                                            color: #4ac18e; }
-
-                                            /* button Outline */
-                                            .btn-outline-primary {
-                                              color: #4ac18e;
-                                              border-color: #4ac18e; }
-
-                                              .btn-outline-success {
-                                                color: #67a8e4;
-                                                border-color: #67a8e4; }
-
-                                                .btn-outline-info {
-                                                  color: #47b8c6;
-                                                  border-color: #47b8c6; }
-
-                                                  .btn-outline-warning {
-                                                    color: #eca14f;
-                                                    border-color: #eca14f; }
-
-                                                    .btn-outline-danger {
-                                                      color: #e9595b;
-                                                      border-color: #e9595b; }
-
-                                                      .btn-outline-dark {
-                                                        color: #1d1e3a;
-                                                        background-image: none;
-                                                        background-color: transparent;
-                                                        border-color: #1d1e3a; }
 
 /* ==============
   Card
@@ -1003,12 +862,12 @@ File: Main Css File
     border: 1px solid rgba(112, 112, 112, 0.12); }
 
     .card-primary {
-      background-color: #4ac18e;
-      border-color: #4ac18e; }
+      background-color: #eb7475;
+      border-color: #eb7475; }
 
       .card-success {
-        background-color: #67a8e4;
-        border-color: #67a8e4; }
+        background-color: #4ac18e;
+        border-color: #4ac18e; }
 
         .card-info {
           background-color: #47b8c6;
@@ -1019,18 +878,18 @@ File: Main Css File
             border-color: #eca14f; }
 
             .card-danger {
-              background-color: #e9595b;
-              border-color: #e9595b; }
+              background-color: #67a8e4;
+              border-color: #67a8e4; }
 
 /* ==============
   Pagination
   ===================*/
   .page-link {
-    color: #4ac18e; }
+    color: #eb7475; }
 
     .page-item.active .page-link {
-      background-color: #4ac18e;
-      border-color: #4ac18e; }
+      background-color: #eb7475;
+      border-color: #eb7475; }
 
       .page-link:focus, .page-link:hover {
         color: #1d1e3a;
@@ -1040,7 +899,7 @@ File: Main Css File
   Progressbar
   ===================*/
   .progress-bar {
-    background-color: #4ac18e; }
+    background-color: #eb7475; }
 
 /* ==============
   Popover & Tooltips
@@ -1070,28 +929,28 @@ File: Main Css File
                   border: inherit; }
 
                   .swal2-icon.swal2-question {
-                    color: #4ac18e;
-                    border-color: #4ac18e; }
+                    color: #eb7475;
+                    border-color: #eb7475; }
 
                     .swal2-icon.swal2-success {
-                      border-color: #67a8e4; }
+                      border-color: #4ac18e; }
                       .swal2-icon.swal2-success .line {
-                        background-color: #67a8e4; }
+                        background-color: #4ac18e; }
                         .swal2-icon.swal2-success .placeholder {
-                          border-color: #67a8e4; }
+                          border-color: #4ac18e; }
 
                           .swal2-icon.swal2-warning {
                             color: #eca14f;
                             border-color: #eca14f; }
 
                             .swal2-icon.swal2-error {
-                              border-color: #e9595b; }
+                              border-color: #67a8e4; }
                               .swal2-icon.swal2-error .line {
-                                background-color: #e9595b; }
+                                background-color: #67a8e4; }
 
                                 .swal2-modal .swal2-file:focus, .swal2-modal .swal2-input:focus, .swal2-modal .swal2-textarea:focus {
                                   outline: 0;
-                                  border: 2px solid #4ac18e; }
+                                  border: 2px solid #eb7475; }
 
 /* =============
    Nestable
@@ -1105,7 +964,7 @@ File: Main Css File
     font-weight: normal;
     border-radius: 3px; }
     .custom-dd .dd-list .dd-item .dd-handle:hover {
-      color: #4ac18e; }
+      color: #eb7475; }
       .custom-dd .dd-list .dd-item button {
         height: auto;
         font-size: 25px;
@@ -1122,7 +981,7 @@ File: Main Css File
             color: inherit;
             top: 7px; }
             .custom-dd-empty .dd-list .dd3-handle:hover {
-              color: #4ac18e; }
+              color: #eb7475; }
               .custom-dd-empty .dd-list .dd3-content {
                 height: auto;
                 border: none;
@@ -1130,7 +989,7 @@ File: Main Css File
                 background: #f3f3f3;
                 font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
                 .custom-dd-empty .dd-list .dd3-content:hover {
-                  color: #4ac18e; }
+                  color: #eb7475; }
                   .custom-dd-empty .dd-list button {
                     width: 26px;
                     height: 26px;
@@ -1174,7 +1033,7 @@ File: Main Css File
         color: #ffffff; }
 
         .alertify-logs > .error {
-          background-color: #e9595b;
+          background-color: #eb7475;
           color: #ffffff; }
 
           .alertify-logs > *, .alertify-logs > .default {
@@ -1269,55 +1128,55 @@ File: Main Css File
                                 .ct-chart .ct-series.ct-series-a .ct-line,
                                 .ct-chart .ct-series.ct-series-a .ct-point,
                                 .ct-chart .ct-series.ct-series-a .ct-slice-donut {
-                                  stroke: #318e66; }
+                                  stroke: #da1f21; }
 
                                   .ct-chart .ct-series.ct-series-b .ct-bar,
                                   .ct-chart .ct-series.ct-series-b .ct-line,
                                   .ct-chart .ct-series.ct-series-b .ct-point,
                                   .ct-chart .ct-series.ct-series-b .ct-slice-donut {
-                                    stroke: #37a174; }
+                                    stroke: #e54749; }
 
                                     .ct-chart .ct-series.ct-series-c .ct-bar,
                                     .ct-chart .ct-series.ct-series-c .ct-line,
                                     .ct-chart .ct-series.ct-series-c .ct-point,
                                     .ct-chart .ct-series.ct-series-c .ct-slice-donut {
-                                      stroke: #3eb481; }
+                                      stroke: #e85e5f; }
 
                                       .ct-chart .ct-series.ct-series-d .ct-bar,
                                       .ct-chart .ct-series.ct-series-d .ct-line,
                                       .ct-chart .ct-series.ct-series-d .ct-point,
                                       .ct-chart .ct-series.ct-series-d .ct-slice-donut {
-                                        stroke: #4ac18e; }
+                                        stroke: #eb7475; }
 
                                         .ct-chart .ct-series.ct-series-e .ct-bar,
                                         .ct-chart .ct-series.ct-series-e .ct-line,
                                         .ct-chart .ct-series.ct-series-e .ct-point,
                                         .ct-chart .ct-series.ct-series-e .ct-slice-donut {
-                                          stroke: #5dc89a; }
+                                          stroke: #ee8a8b; }
 
                                           .ct-chart .ct-series.ct-series-f .ct-bar,
                                           .ct-chart .ct-series.ct-series-f .ct-line,
                                           .ct-chart .ct-series.ct-series-f .ct-point,
                                           .ct-chart .ct-series.ct-series-f .ct-slice-donut {
-                                            stroke: #70cea6; }
+                                            stroke: #f1a1a1; }
 
                                             .ct-chart .ct-series.ct-series-g .ct-bar,
                                             .ct-chart .ct-series.ct-series-g .ct-line,
                                             .ct-chart .ct-series.ct-series-g .ct-point,
                                             .ct-chart .ct-series.ct-series-g .ct-slice-donut {
-                                              stroke: #83d5b2; }
+                                              stroke: #f5b7b7; }
 
                                               .ct-series-a .ct-area,
                                               .ct-series-a .ct-slice-pie {
-                                                fill: #3eb481; }
+                                                fill: #e85e5f; }
 
                                                 .ct-series-b .ct-area,
                                                 .ct-series-b .ct-slice-pie {
-                                                  fill: #4ac18e; }
+                                                  fill: #eb7475; }
 
                                                   .ct-series-c .ct-area,
                                                   .ct-series-c .ct-slice-pie {
-                                                    fill: #5dc89a; }
+                                                    fill: #ee8a8b; }
 
                                                     .chartist-tooltip {
                                                       position: absolute;
@@ -1396,10 +1255,10 @@ File: Main Css File
 
           /* == Responsive Table ==*/
           table.focus-on tbody tr.focused th {
-            background-color: #4ac18e;
+            background-color: #eb7475;
             color: #ffffff; }
             table.focus-on tbody tr.focused td {
-              background-color: #4ac18e;
+              background-color: #eb7475;
               color: #ffffff; }
 
               .table-rep-plugin .btn-toolbar {
@@ -1409,8 +1268,8 @@ File: Main Css File
                   border-color: #dddddd;
                   margin-right: 5px; }
                   .table-rep-plugin .btn-default.btn-primary {
-                    background-color: #4ac18e;
-                    border-color: #4ac18e; }
+                    background-color: #eb7475;
+                    border-color: #eb7475; }
                     .table-rep-plugin .table-responsive {
                       border: none !important; }
                       .table-rep-plugin .btn-group.pull-right .dropdown-menu {
@@ -1469,8 +1328,8 @@ File: Main Css File
                                             background-color: #eeeeee;
                                             cursor: not-allowed; }
                                             .table-rep-plugin .checkbox-row input[type="checkbox"]:checked + label::before {
-                                              background-color: #4ac18e;
-                                              border-color: #4ac18e; }
+                                              background-color: #eb7475;
+                                              border-color: #eb7475; }
                                               .table-rep-plugin .checkbox-row input[type="checkbox"]:checked + label::after {
                                                 color: #ffffff; }
 
@@ -1478,10 +1337,10 @@ File: Main Css File
   Range slider
   ===================*/
   .irs-from, .irs-to, .irs-single {
-    background: #4ac18e; }
+    background: #eb7475; }
 
     .irs-from:after, .irs-to:after, .irs-single:after {
-      border-top-color: #4ac18e; }
+      border-top-color: #eb7475; }
 
 /* ==============
   Session Timeout
@@ -1492,26 +1351,26 @@ File: Main Css File
       display: none; }
       #session-timeout-dialog .btn-default {
         background-color: #ffffff;
-        color: #e9595b; }
+        color: #67a8e4; }
         #session-timeout-dialog .countdown-holder {
-          color: #e9595b;
+          color: #67a8e4;
           font-weight: 700; }
 
 /* ==============
   Form-elements
   ===================*/
   .form-control:focus {
-    border-color: #4ac18e; }
+    border-color: #eb7475; }
 
     .custom-control-input:checked ~ .custom-control-indicator {
-      background-color: #4ac18e; }
+      background-color: #eb7475; }
 
       .custom-control-input:focus ~ .custom-control-indicator {
-        -webkit-box-shadow: 0 0 0 1px #ffffff, 0 0 0 3px #4ac18e;
-        box-shadow: 0 0 0 1px #ffffff, 0 0 0 3px #4ac18e; }
+        -webkit-box-shadow: 0 0 0 1px #ffffff, 0 0 0 3px #eb7475;
+        box-shadow: 0 0 0 1px #ffffff, 0 0 0 3px #eb7475; }
 
         .has-success .form-control {
-          border-color: #4ac18e;
+          border-color: #eb7475;
           box-shadow: none; }
 
           .has-warning .form-control {
@@ -1519,7 +1378,7 @@ File: Main Css File
             box-shadow: none; }
 
             .has-error .form-control {
-              border-color: #e9595b;
+              border-color: #67a8e4;
               box-shadow: none; }
 
               .input-group-addon {
@@ -1533,7 +1392,7 @@ File: Main Css File
     color: #ff0000; }
 
     .parsley-error {
-      border-color: #e9595b; }
+      border-color: #ff0000; }
 
       .parsley-errors-list {
         display: none;
@@ -1546,7 +1405,7 @@ File: Main Css File
           .parsley-errors-list > li {
             font-size: 12px;
             list-style: none;
-            color: #e9595b;
+            color: #eb7475;
             margin-top: 5px; }
 
 /* ==============
@@ -1574,7 +1433,7 @@ File: Main Css File
     .datepicker table tr td.today.disabled:hover, .datepicker table tr td.today:hover, .datepicker table tr td.selected,
     .datepicker table tr td.selected.disabled, .datepicker table tr td.selected.disabled:hover,
     .datepicker table tr td.selected:hover {
-      background-color: #4ac18e !important;
+      background-color: #eb7475 !important;
       background-image: none;
       box-shadow: none;
       color: #ffffff; }
@@ -1595,7 +1454,7 @@ File: Main Css File
     background-color: #eeeeee !important; }
 
     .mce-menu-item:hover, .mce-menu-item.mce-selected, .mce-menu-item:focus {
-      background-color: #4ac18e !important; }
+      background-color: #eb7475 !important; }
 
       .mce-menu {
         background-color: #ffffff !important; }
@@ -1723,7 +1582,7 @@ File: Main Css File
                                   margin: 5px 0;
                                   padding: 5px 5px;
                                   text-align: center;
-                                  background-color: #4ac18e;
+                                  background-color: #eb7475;
                                   color: #ffffff !important; }
 
                                   .external-event {
@@ -1847,7 +1706,7 @@ File: Main Css File
                                   line-height: 30px;
                                   font-size: 20px;
                                   color: #ffffff;
-                                  background-color: #4ac18e;
+                                  background-color: #eb7475;
                                   border: 5px solid #ffffff; }
                                   .cd-timeline-img i {
                                     margin-left: 1px; }
@@ -1883,7 +1742,7 @@ File: Main Css File
                                                 .cd-timeline-content h2 {
                                                   margin-top: 0; }
                                                   .cd-timeline-content .cd-read-more {
-                                                    background: #4ac18e;
+                                                    background: #eb7475;
                                                     border-radius: 0.25em;
                                                     color: white;
                                                     display: inline-block;
@@ -1993,7 +1852,7 @@ Invoice
       color: #ffffff;
       font-size: 16px;
       line-height: 40px;
-      background: #4ac18e;
+      background: #eb7475;
       border-radius: 4px;
       padding: 10px 20px; }
 
@@ -2008,13 +1867,13 @@ Invoice
           bottom: -15px;
           border-left: 16px solid transparent;
           border-right: 16px solid transparent;
-          border-top: 16px solid #4ac18e; }
+          border-top: 16px solid #eb7475; }
 
           .gmaps-overlay_arrow.below {
             top: -15px;
             border-left: 16px solid transparent;
             border-right: 16px solid transparent;
-            border-bottom: 16px solid #4ac18e; }
+            border-bottom: 16px solid #eb7475; }
 
 /* ==============
   Account Pages
@@ -2227,7 +2086,7 @@ File: Menu
                                                                           display: none; }
 
                                                                           .button-menu-mobile-topbar {
-                                                                            background-color: #4ac18e;
+                                                                            background-color: #eb7475;
                                                                             color: #ffffff;
                                                                             font-size: 20px;
                                                                             height: 42px;
@@ -2269,7 +2128,7 @@ File: Menu
                                                                                           #sidebar-menu ul ul li {
                                                                                             border-top: 0; }
                                                                                             #sidebar-menu ul ul li.active a {
-                                                                                              color: #4ac18e; }
+                                                                                              color: #eb7475; }
                                                                                               #sidebar-menu ul ul a {
                                                                                                 color: rgba(29, 30, 58, 0.8);
                                                                                                 display: block;
