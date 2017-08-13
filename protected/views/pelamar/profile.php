@@ -70,42 +70,43 @@ $this->pageTitle='Data Diri - '.ucfirst($model->nama);
 			), array('class' => 'btn btn-success btn-sm pull-right', 'title'=>'Riwayat Keluarga'));
 	?><i class="ti-clipboard pull-left"></i> Keluarga</H4>
 
+	<div class="table-responsive">
+		<?php $this->widget('zii.widgets.grid.CGridView', array(
+			'id'=>'keluarga-grid',
+			'summaryText'=>'',
+			'dataProvider'=>$dataFamily,
+			'itemsCssClass' => 'table table-bordered table-striped dataTable table-hover',
+			'columns'=>array(
 
-	<?php $this->widget('zii.widgets.grid.CGridView', array(
-		'id'=>'keluarga-grid',
-		'summaryText'=>'',
-		'dataProvider'=>$dataFamily,
-		'itemsCssClass' => 'table table-bordered table-striped dataTable table-hover',
-		'columns'=>array(
+				array('name'=>'hubungan_keluarga','value'=>'Keluarga::model()->relationship_family($data->hubungan_keluarga)'),
+				'nama',
+				array('name'=>'jenis_kelamin','value'=>'Keluarga::model()->gender($data->jenis_kelamin)'),
+				'tempat_lahir',
+				'tanggal_lahir',
+				array('name'=>'pendidikan_terakhir','value'=>'Keluarga::model()->school($data->pendidikan_terakhir)'),
+				array('name'=>'jabatan_pekerjaan','value'=>'$data->Jabatan->nama'),
+				'nama_perusahaan',
+				'keterangan',
 
-			array('name'=>'hubungan_keluarga','value'=>'Keluarga::model()->relationship_family($data->hubungan_keluarga)'),
-			'nama',
-			array('name'=>'jenis_kelamin','value'=>'Keluarga::model()->gender($data->jenis_kelamin)'),
-			'tempat_lahir',
-			'tanggal_lahir',
-			array('name'=>'pendidikan_terakhir','value'=>'Keluarga::model()->school($data->pendidikan_terakhir)'),
-			array('name'=>'jabatan_pekerjaan','value'=>'$data->Jabatan->nama'),
-			'nama_perusahaan',
-			'keterangan',
-
-			array(
-				'class'=>'CButtonColumn',
-				'header'=>'Action',
-				'template'=>'{update}{delete}',
-				'buttons'=>array(
-					'update'=>
-					array(
-						'url'=>'Yii::app()->createUrl("keluarga/update", array("id"=>$data->id_keluarga))',
-						),
-					'delete'=>
-					array(
-						'url'=>'Yii::app()->createUrl("keluarga/delete", array("id"=>$data->id_keluarga))',
+				array(
+					'class'=>'CButtonColumn',
+					'header'=>'Action',
+					'template'=>'{update}{delete}',
+					'buttons'=>array(
+						'update'=>
+						array(
+							'url'=>'Yii::app()->createUrl("keluarga/update", array("id"=>$data->id_keluarga))',
+							),
+						'delete'=>
+						array(
+							'url'=>'Yii::app()->createUrl("keluarga/delete", array("id"=>$data->id_keluarga))',
+							),
 						),
 					),
-				),
 
-			),
-		)); ?>
+				),
+			)); ?>
+	</div>
 
 
 	<H4><?php echo CHtml::link('<i class="ti-plus"></i>', 
@@ -346,7 +347,7 @@ $this->pageTitle='Data Diri - '.ucfirst($model->nama);
 			'data'=>$dataKeahlian,
 			'htmlOptions'=>array("class"=>"table"),
 			'attributes'=>array(
-				
+
 				array('name'=>'bahasa_pascal','value'=>Keahlian::model()->check($dataKeahlian->bahasa_pascal)),
 				array('name'=>'c','value'=>Keahlian::model()->check($dataKeahlian->c)),
 
@@ -359,13 +360,15 @@ $this->pageTitle='Data Diri - '.ucfirst($model->nama);
 			'data'=>$dataKeahlian,
 			'htmlOptions'=>array("class"=>"table"),
 			'attributes'=>array(
-				
+
 				array('name'=>'php','value'=>Keahlian::model()->check($dataKeahlian->php)),
 				array('name'=>'java','value'=>Keahlian::model()->check($dataKeahlian->java)),
 
 				),
 			)); ?>
 	</div>
+
+
 
 	<?php }else{ ?>
 		<div class="alert alert-warning">
