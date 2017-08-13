@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.4.14
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 04, 2017 at 12:57 PM
--- Server version: 10.1.16-MariaDB
--- PHP Version: 7.0.9
+-- Generation Time: Aug 13, 2017 at 06:22 AM
+-- Server version: 5.6.26
+-- PHP Version: 5.6.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `dbskripsi_aplikasi_rekrutmen`
+-- Database: `i_recruitment`
 --
 
 -- --------------------------------------------------------
@@ -26,13 +26,13 @@ SET time_zone = "+00:00";
 -- Table structure for table `bagian`
 --
 
-CREATE TABLE `bagian` (
+CREATE TABLE IF NOT EXISTS `bagian` (
   `id_bagian` int(11) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `deskripsi` text NOT NULL,
   `psikotest` varchar(255) NOT NULL,
   `status` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `bagian`
@@ -59,10 +59,85 @@ INSERT INTO `bagian` (`id_bagian`, `nama`, `deskripsi`, `psikotest`, `status`) V
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `crips`
+--
+
+CREATE TABLE IF NOT EXISTS `crips` (
+  `id_crips` int(11) NOT NULL,
+  `kriteria_id` int(11) NOT NULL,
+  `keterangan` varchar(255) NOT NULL,
+  `nilai` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `crips`
+--
+
+INSERT INTO `crips` (`id_crips`, `kriteria_id`, `keterangan`, `nilai`) VALUES
+(2, 1, 'Sangat Buruk', 5),
+(3, 1, 'Buruk', 25),
+(4, 1, 'Cukup', 50),
+(5, 1, 'Baik', 75),
+(6, 1, 'Sangat Baik', 100),
+(7, 2, 'Sangat Tidak Mampu', 5),
+(8, 2, 'Tidak Mampu', 25),
+(9, 2, 'Cukup', 50),
+(10, 2, 'Mampu', 75),
+(11, 2, 'Sangat Mampu', 100),
+(12, 3, 'Sangat Tidak Mampu', 5),
+(13, 3, 'Tidak Mampu', 25),
+(14, 3, 'Cukup', 50),
+(15, 3, 'Mampu', 75),
+(16, 3, 'Sangat Mampu', 100),
+(17, 4, 'Sangat Kurang', 5),
+(18, 4, 'Kurang', 25),
+(19, 4, 'Cukup', 50),
+(20, 4, 'Baik', 75),
+(21, 4, 'Sangat Baik', 100),
+(22, 5, 'Sangat Mundur', 5),
+(23, 5, 'Mundur', 25),
+(24, 5, 'Statis', 50),
+(25, 5, 'Maju', 75),
+(26, 5, 'Sangat Maju', 100),
+(27, 6, 'Sangat Kurang', 5),
+(28, 6, 'Kurang', 25),
+(29, 6, 'Cukup', 50),
+(30, 6, 'Baik', 75),
+(31, 6, 'Sangat Baik', 100),
+(32, 7, 'Blacklist', 25),
+(33, 7, 'Netral', 50),
+(34, 7, 'Whitelist', 100);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `divisi`
+--
+
+CREATE TABLE IF NOT EXISTS `divisi` (
+  `id_divisi` int(11) NOT NULL,
+  `kode_divisi` varchar(50) NOT NULL,
+  `nama_divisi` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `divisi`
+--
+
+INSERT INTO `divisi` (`id_divisi`, `kode_divisi`, `nama_divisi`) VALUES
+(1, 'D000001', 'Olahraga'),
+(2, 'D000002', 'Administrasi Umum'),
+(3, 'D000003', 'Keuangan'),
+(4, 'D000004', 'Operasional'),
+(5, 'D000005', 'Produksi');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `file_lamaran`
 --
 
-CREATE TABLE `file_lamaran` (
+CREATE TABLE IF NOT EXISTS `file_lamaran` (
   `id` int(25) NOT NULL,
   `file_lamaran` varchar(250) NOT NULL,
   `id_people` int(25) NOT NULL,
@@ -76,26 +151,18 @@ CREATE TABLE `file_lamaran` (
   `test_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `file_lamaran`
---
-
-INSERT INTO `file_lamaran` (`id`, `file_lamaran`, `id_people`, `tanggal_upload`, `status_lamaran`, `tanggal_verifikasi`, `keterangan`, `verifikasi_id`, `lowongan_id`, `psikotest`, `test_id`) VALUES
-(28, 'Lamaran2832.pdf', 32, '2017-03-20 00:00:00', 'Diverifikasi', '2017-03-20 10:17:09', '', 1, 10, '', 1),
-(29, '', 30, '2017-03-20 00:00:00', 'Diterima', '2017-03-20 10:23:42', 'Oke', 1, 10, '', 2);
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `jabatan`
 --
 
-CREATE TABLE `jabatan` (
+CREATE TABLE IF NOT EXISTS `jabatan` (
   `id_jabatan` int(11) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `deskripsi` text NOT NULL,
   `status` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `jabatan`
@@ -112,7 +179,7 @@ INSERT INTO `jabatan` (`id_jabatan`, `nama`, `deskripsi`, `status`) VALUES
 -- Table structure for table `kota`
 --
 
-CREATE TABLE `kota` (
+CREATE TABLE IF NOT EXISTS `kota` (
   `id` char(4) COLLATE utf8_unicode_ci NOT NULL,
   `province_id` char(2) COLLATE utf8_unicode_ci NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL
@@ -641,13 +708,40 @@ INSERT INTO `kota` (`id`, `province_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `kriteria`
+--
+
+CREATE TABLE IF NOT EXISTS `kriteria` (
+  `id_kriteria` int(11) NOT NULL,
+  `kode` varchar(2) NOT NULL,
+  `nama` varchar(25) NOT NULL,
+  `atribut` int(11) NOT NULL,
+  `bobot` float NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `kriteria`
+--
+
+INSERT INTO `kriteria` (`id_kriteria`, `kode`, `nama`, `atribut`, `bobot`) VALUES
+(1, 'C1', 'Interview HR', 1, 0.25),
+(2, 'C2', 'Tes Komputer', 2, 0.2),
+(3, 'C3', 'Tes Psikotest', 1, 0.15),
+(4, 'C4', 'Tes Inventory', 2, 0.15),
+(5, 'C5', 'Tes Kemampuan', 1, 0.1),
+(6, 'C6', 'Tes Suara', 2, 0.1),
+(7, 'C7', 'Interview Client', 1, 0.05);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `level`
 --
 
-CREATE TABLE `level` (
+CREATE TABLE IF NOT EXISTS `level` (
   `level_ID` int(10) NOT NULL,
   `level` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `level`
@@ -664,7 +758,7 @@ INSERT INTO `level` (`level_ID`, `level`) VALUES
 -- Table structure for table `lowongan`
 --
 
-CREATE TABLE `lowongan` (
+CREATE TABLE IF NOT EXISTS `lowongan` (
   `id_lowongan` int(11) NOT NULL,
   `tanggal` date NOT NULL,
   `bagian` int(11) NOT NULL,
@@ -678,7 +772,7 @@ CREATE TABLE `lowongan` (
   `status` int(11) NOT NULL,
   `jeniskelamin` varchar(2) NOT NULL,
   `umur` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `lowongan`
@@ -701,7 +795,7 @@ INSERT INTO `lowongan` (`id_lowongan`, `tanggal`, `bagian`, `jabatan`, `tipe`, `
 -- Table structure for table `pelamar`
 --
 
-CREATE TABLE `pelamar` (
+CREATE TABLE IF NOT EXISTS `pelamar` (
   `id_people` int(11) NOT NULL,
   `nik` int(11) NOT NULL,
   `nama` varchar(255) NOT NULL,
@@ -720,23 +814,27 @@ CREATE TABLE `pelamar` (
   `status_menikah` int(11) NOT NULL,
   `tanggal_menikah` date NOT NULL,
   `no_jamsostek` varchar(50) NOT NULL,
-  `no_sim_a` varchar(50) NOT NULL,
-  `no_sim_b` varchar(50) NOT NULL
+  `no_sim` varchar(50) NOT NULL,
+  `no_npwp` varchar(50) NOT NULL,
+  `telephone_pribadi` varchar(50) NOT NULL,
+  `telephone_rumah` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pelamar`
 --
 
-INSERT INTO `pelamar` (`id_people`, `nik`, `nama`, `tempat_lahir`, `tanggal_lahir`, `agama`, `jenis_kelamin`, `golongan_darah`, `kewarganegaraan`, `id_user`, `kota_id`, `provinsi_id`, `hp`, `alamat_domisili`, `status_domisili`, `status_menikah`, `tanggal_menikah`, `no_jamsostek`, `no_sim_a`, `no_sim_b`) VALUES
-(1037231, 0, 'Syifa Andani', 'Bandung', '1998-06-10', 'Islam', 'L', 'A', 'WNI', 33, 3204, 32, '08724955', '', 0, 0, '0000-00-00', '', '', ''),
-(1194397, 0, 'Mugi Rachmat', 'Bandung', '1996-01-30', 'Islam', 'L', 'O', 'WNI', 30, 2101, 21, '', '', 0, 0, '0000-00-00', '', '', ''),
-(1196411, 0, 'Andika Pratyam', 'Jakatya', '1991-03-07', 'Islam', 'L', 'A', 'WNI', 31, 2101, 21, '', '', 0, 0, '0000-00-00', '', '', ''),
-(1393127, 0, '', '', '1970-01-01', '', '', '', '', 38, 0, 0, '', '', 0, 0, '0000-00-00', '', '', ''),
-(1459259, 0, 'Andi', 'Bandung', '1970-01-01', 'Islam', 'L', 'B', 'WNI', 34, 6411, 64, '08785959595', '', 0, 0, '0000-00-00', '', '', ''),
-(1527100, 0, 'Renika Auliya', 'Tuban', '1989-03-08', 'Islam', 'L', 'A', 'WNI', 32, 3523, 35, '087854848448', '', 0, 0, '0000-00-00', '', '', ''),
-(1684723, 6312144, 'admins', 'Jakarta', '1980-01-03', 'Islam', 'L', 'B', 'WNI', 41, 6501, 65, '087659595949', '', 0, 0, '0000-00-00', '', '', ''),
-(1910492, 132456, 'mehdi', 'Jakarta', '1982-01-22', 'Islam', 'L', 'B', 'WNI', 42, 3315, 33, '087824931504', '', 0, 0, '0000-00-00', '', '', '');
+INSERT INTO `pelamar` (`id_people`, `nik`, `nama`, `tempat_lahir`, `tanggal_lahir`, `agama`, `jenis_kelamin`, `golongan_darah`, `kewarganegaraan`, `id_user`, `kota_id`, `provinsi_id`, `hp`, `alamat_domisili`, `status_domisili`, `status_menikah`, `tanggal_menikah`, `no_jamsostek`, `no_sim`, `no_npwp`, `telephone_pribadi`, `telephone_rumah`) VALUES
+(1037231, 0, 'Syifa Andani', 'Bandung', '1998-06-10', 'Islam', 'L', 'A', 'WNI', 33, 3204, 32, '08724955', '', 0, 0, '0000-00-00', '', '', '', '', ''),
+(1194397, 0, 'Mugi Rachmat', 'Bandung', '1996-01-30', 'Islam', 'L', 'O', 'WNI', 30, 2101, 21, '', '', 0, 0, '0000-00-00', '', '', '', '', ''),
+(1196411, 0, 'Andika Pratyam', 'Jakatya', '1991-03-07', 'Islam', 'L', 'A', 'WNI', 31, 2101, 21, '', '', 0, 0, '0000-00-00', '', '', '', '', ''),
+(1277862, 123456789, 'Bima Ventor', '', '1970-01-01', '', '', '', '', 44, 0, 0, '', '', 0, 0, '1970-01-01', '', '', '', '', ''),
+(1278869, 258963, 'Krimo', 'Subaraya', '1999-01-30', 'Kristen', 'L', 'B', 'WNI', 45, 7107, 71, '087858488797', 'Bandung', 0, 1, '1970-01-01', '596596556565', '06565656445', '08854656545', '08415645615', '05494984917'),
+(1393127, 0, '', '', '1970-01-01', '', '', '', '', 38, 0, 0, '', '', 0, 0, '0000-00-00', '', '', '', '', ''),
+(1459259, 0, 'Andi', 'Bandung', '1970-01-01', 'Islam', 'L', 'B', 'WNI', 34, 6411, 64, '08785959595', '', 0, 0, '0000-00-00', '', '', '', '', ''),
+(1527100, 0, 'Renika Auliya', 'Tuban', '1989-03-08', 'Islam', 'L', 'A', 'WNI', 32, 3523, 35, '087854848448', '', 0, 0, '0000-00-00', '', '', '', '', ''),
+(1684723, 6312144, 'admins', 'Jakarta', '1980-01-03', 'Islam', 'L', 'B', 'WNI', 41, 6501, 65, '087659595949', '', 0, 0, '0000-00-00', '', '', '', '', ''),
+(1910492, 132456, 'mehdi', 'Jakarta', '1982-01-22', 'Islam', 'L', 'B', 'WNI', 42, 3315, 33, '087824931504', '', 0, 0, '0000-00-00', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -744,7 +842,7 @@ INSERT INTO `pelamar` (`id_people`, `nik`, `nama`, `tempat_lahir`, `tanggal_lahi
 -- Table structure for table `pelamar_bahasa`
 --
 
-CREATE TABLE `pelamar_bahasa` (
+CREATE TABLE IF NOT EXISTS `pelamar_bahasa` (
   `id_bahasa` int(11) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `berbicara` int(11) NOT NULL,
@@ -753,7 +851,7 @@ CREATE TABLE `pelamar_bahasa` (
   `mengerti` int(11) NOT NULL,
   `people_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pelamar_bahasa`
@@ -765,10 +863,68 @@ INSERT INTO `pelamar_bahasa` (`id_bahasa`, `nama`, `berbicara`, `menulis`, `memb
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pelamar_dokumen`
+--
+
+CREATE TABLE IF NOT EXISTS `pelamar_dokumen` (
+  `id_dokumen` int(11) NOT NULL,
+  `tanggal` datetime NOT NULL,
+  `cv` varchar(255) NOT NULL,
+  `ktp` varchar(255) NOT NULL,
+  `ijazah` varchar(255) NOT NULL,
+  `transkrip` varchar(255) NOT NULL,
+  `skck` varchar(255) NOT NULL,
+  `sertifikat` varchar(255) NOT NULL,
+  `people_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `verifikasi_id` int(11) NOT NULL,
+  `tanggal_verifikasi` datetime NOT NULL,
+  `status` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pelamar_dokumen`
+--
+
+INSERT INTO `pelamar_dokumen` (`id_dokumen`, `tanggal`, `cv`, `ktp`, `ijazah`, `transkrip`, `skck`, `sertifikat`, `people_id`, `user_id`, `verifikasi_id`, `tanggal_verifikasi`, `status`) VALUES
+(1, '2017-08-13 12:16:04', '', '', '', '', '', '', 1278869, 45, 0, '0000-00-00 00:00:00', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pelamar_keahlian`
+--
+
+CREATE TABLE IF NOT EXISTS `pelamar_keahlian` (
+  `id_keahlian` int(11) NOT NULL,
+  `word` int(11) NOT NULL,
+  `excel` int(11) NOT NULL,
+  `powerpoint` int(11) NOT NULL,
+  `sql` int(11) NOT NULL,
+  `lan` int(11) NOT NULL,
+  `wan` int(11) NOT NULL,
+  `bahasa_pascal` int(11) NOT NULL,
+  `php` int(11) NOT NULL,
+  `c` int(11) NOT NULL,
+  `java` int(11) NOT NULL,
+  `people_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pelamar_keahlian`
+--
+
+INSERT INTO `pelamar_keahlian` (`id_keahlian`, `word`, `excel`, `powerpoint`, `sql`, `lan`, `wan`, `bahasa_pascal`, `php`, `c`, `java`, `people_id`, `user_id`) VALUES
+(1, 1, 2, 1, 1, 1, 1, 2, 2, 2, 2, 1278869, 45);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `pelamar_keluarga`
 --
 
-CREATE TABLE `pelamar_keluarga` (
+CREATE TABLE IF NOT EXISTS `pelamar_keluarga` (
   `id_keluarga` int(11) NOT NULL,
   `hubungan_keluarga` int(11) NOT NULL,
   `nama` varchar(50) NOT NULL,
@@ -781,7 +937,7 @@ CREATE TABLE `pelamar_keluarga` (
   `keterangan` text NOT NULL,
   `people_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pelamar_keluarga`
@@ -795,10 +951,27 @@ INSERT INTO `pelamar_keluarga` (`id_keluarga`, `hubungan_keluarga`, `nama`, `jen
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pelamar_organisasi`
+--
+
+CREATE TABLE IF NOT EXISTS `pelamar_organisasi` (
+  `id_organisasi` int(11) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `tempat` varchar(50) NOT NULL,
+  `jenis_kegiatan` int(11) NOT NULL,
+  `tahun` year(4) NOT NULL,
+  `jabatan` varchar(50) NOT NULL,
+  `people_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `pelamar_pekerjaan`
 --
 
-CREATE TABLE `pelamar_pekerjaan` (
+CREATE TABLE IF NOT EXISTS `pelamar_pekerjaan` (
   `id_pekerjaan` int(11) NOT NULL,
   `instansi` varchar(100) DEFAULT NULL,
   `tahun` varchar(5) DEFAULT NULL,
@@ -806,7 +979,7 @@ CREATE TABLE `pelamar_pekerjaan` (
   `bagian` varchar(50) DEFAULT NULL,
   `people_id` int(11) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pelamar_pekerjaan`
@@ -821,7 +994,7 @@ INSERT INTO `pelamar_pekerjaan` (`id_pekerjaan`, `instansi`, `tahun`, `gaji`, `b
 -- Table structure for table `pelamar_pendidikan`
 --
 
-CREATE TABLE `pelamar_pendidikan` (
+CREATE TABLE IF NOT EXISTS `pelamar_pendidikan` (
   `id_pendidikan` int(11) NOT NULL,
   `jenjang` int(11) NOT NULL,
   `instansi` varchar(100) DEFAULT NULL,
@@ -837,7 +1010,7 @@ CREATE TABLE `pelamar_pendidikan` (
   `no_dokumen` varchar(50) NOT NULL,
   `people_id` int(11) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pelamar_pendidikan`
@@ -852,10 +1025,40 @@ INSERT INTO `pelamar_pendidikan` (`id_pendidikan`, `jenjang`, `instansi`, `kota`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `penilaian_saw`
+--
+
+CREATE TABLE IF NOT EXISTS `penilaian_saw` (
+  `id_penilaian_saw` int(11) NOT NULL,
+  `tanggal` date NOT NULL,
+  `penilai_id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `c1` int(11) NOT NULL,
+  `c2` int(11) NOT NULL,
+  `c3` int(11) NOT NULL,
+  `c4` int(11) NOT NULL,
+  `c5` int(11) NOT NULL,
+  `c6` int(11) NOT NULL,
+  `c7` int(11) NOT NULL,
+  `nilai` float NOT NULL,
+  `status` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `penilaian_saw`
+--
+
+INSERT INTO `penilaian_saw` (`id_penilaian_saw`, `tanggal`, `penilai_id`, `customer_id`, `c1`, `c2`, `c3`, `c4`, `c5`, `c6`, `c7`, `nilai`, `status`) VALUES
+(3, '2016-07-25', 1, 30, 6, 9, 15, 19, 25, 30, 34, 0.867, 1),
+(10, '2016-12-15', 3, 31, 2, 8, 15, 19, 24, 29, 32, 0.692, 2);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `provinsi`
 --
 
-CREATE TABLE `provinsi` (
+CREATE TABLE IF NOT EXISTS `provinsi` (
   `id` char(2) COLLATE utf8_unicode_ci NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -906,7 +1109,7 @@ INSERT INTO `provinsi` (`id`, `name`) VALUES
 -- Table structure for table `test`
 --
 
-CREATE TABLE `test` (
+CREATE TABLE IF NOT EXISTS `test` (
   `id_test` int(11) NOT NULL,
   `tanggal` date NOT NULL,
   `lamaran_id` int(11) NOT NULL,
@@ -918,7 +1121,7 @@ CREATE TABLE `test` (
   `berita_acara2` text NOT NULL,
   `status3` varchar(50) NOT NULL,
   `berita_acara3` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `test`
@@ -934,14 +1137,14 @@ INSERT INTO `test` (`id_test`, `tanggal`, `lamaran_id`, `lowongan_id`, `user_id`
 -- Table structure for table `user`
 --
 
-CREATE TABLE `user` (
+CREATE TABLE IF NOT EXISTS `user` (
   `id_user` int(10) NOT NULL,
   `username` varchar(250) NOT NULL,
   `password` varchar(250) NOT NULL,
   `email` varchar(250) NOT NULL,
   `date_create` date NOT NULL,
   `level_ID` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
@@ -957,7 +1160,10 @@ INSERT INTO `user` (`id_user`, `username`, `password`, `email`, `date_create`, `
 (34, 'akira', '21232f297a57a5a743894a0e4a801fc3', 'akira@gmail.com', '2017-07-11', 2),
 (40, 'okin', '21232f297a57a5a743894a0e4a801fc3', 'okin@gmail.com', '2017-08-02', 2),
 (41, 'admins', 'c3284d0f94606de1fd2af172aba15bf3', 'admins@fmi.com', '2017-08-03', 2),
-(42, 'mehdi', '77e2edcc9b40441200e31dc57dbb8829', 'mehdi@gmaiol.com', '2017-08-04', 2);
+(42, 'mehdi', '77e2edcc9b40441200e31dc57dbb8829', 'mehdi@gmaiol.com', '2017-08-04', 2),
+(43, 'andi', '21232f297a57a5a743894a0e4a801fc3', 'andi@gmail.com', '2017-08-13', 2),
+(44, 'bima', '21232f297a57a5a743894a0e4a801fc3', 'bima@gmail.com', '2017-08-13', 2),
+(45, 'krimo', '6ad4664ba23eac71b5ef5e826ea0c6cd', 'krimo@gmail.com', '2017-08-13', 2);
 
 --
 -- Indexes for dumped tables
@@ -968,6 +1174,12 @@ INSERT INTO `user` (`id_user`, `username`, `password`, `email`, `date_create`, `
 --
 ALTER TABLE `bagian`
   ADD PRIMARY KEY (`id_bagian`);
+
+--
+-- Indexes for table `crips`
+--
+ALTER TABLE `crips`
+  ADD PRIMARY KEY (`id_crips`);
 
 --
 -- Indexes for table `file_lamaran`
@@ -988,6 +1200,12 @@ ALTER TABLE `jabatan`
 ALTER TABLE `kota`
   ADD PRIMARY KEY (`id`),
   ADD KEY `regencies_province_id_index` (`province_id`);
+
+--
+-- Indexes for table `kriteria`
+--
+ALTER TABLE `kriteria`
+  ADD PRIMARY KEY (`id_kriteria`);
 
 --
 -- Indexes for table `level`
@@ -1015,6 +1233,18 @@ ALTER TABLE `pelamar_bahasa`
   ADD PRIMARY KEY (`id_bahasa`);
 
 --
+-- Indexes for table `pelamar_dokumen`
+--
+ALTER TABLE `pelamar_dokumen`
+  ADD PRIMARY KEY (`id_dokumen`);
+
+--
+-- Indexes for table `pelamar_keahlian`
+--
+ALTER TABLE `pelamar_keahlian`
+  ADD PRIMARY KEY (`id_keahlian`);
+
+--
 -- Indexes for table `pelamar_keluarga`
 --
 ALTER TABLE `pelamar_keluarga`
@@ -1031,6 +1261,12 @@ ALTER TABLE `pelamar_pekerjaan`
 --
 ALTER TABLE `pelamar_pendidikan`
   ADD PRIMARY KEY (`id_pendidikan`);
+
+--
+-- Indexes for table `penilaian_saw`
+--
+ALTER TABLE `penilaian_saw`
+  ADD PRIMARY KEY (`id_penilaian_saw`);
 
 --
 -- Indexes for table `provinsi`
@@ -1059,57 +1295,82 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `bagian`
 --
 ALTER TABLE `bagian`
-  MODIFY `id_bagian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_bagian` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+--
+-- AUTO_INCREMENT for table `crips`
+--
+ALTER TABLE `crips`
+  MODIFY `id_crips` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT for table `file_lamaran`
 --
 ALTER TABLE `file_lamaran`
-  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jabatan`
 --
 ALTER TABLE `jabatan`
-  MODIFY `id_jabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_jabatan` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `kriteria`
+--
+ALTER TABLE `kriteria`
+  MODIFY `id_kriteria` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `level`
 --
 ALTER TABLE `level`
-  MODIFY `level_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `level_ID` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `lowongan`
 --
 ALTER TABLE `lowongan`
-  MODIFY `id_lowongan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_lowongan` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `pelamar_bahasa`
 --
 ALTER TABLE `pelamar_bahasa`
-  MODIFY `id_bahasa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_bahasa` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `pelamar_dokumen`
+--
+ALTER TABLE `pelamar_dokumen`
+  MODIFY `id_dokumen` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `pelamar_keahlian`
+--
+ALTER TABLE `pelamar_keahlian`
+  MODIFY `id_keahlian` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `pelamar_keluarga`
 --
 ALTER TABLE `pelamar_keluarga`
-  MODIFY `id_keluarga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_keluarga` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `pelamar_pekerjaan`
 --
 ALTER TABLE `pelamar_pekerjaan`
-  MODIFY `id_pekerjaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_pekerjaan` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `pelamar_pendidikan`
 --
 ALTER TABLE `pelamar_pendidikan`
-  MODIFY `id_pendidikan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_pendidikan` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `penilaian_saw`
+--
+ALTER TABLE `penilaian_saw`
+  MODIFY `id_penilaian_saw` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `test`
 --
 ALTER TABLE `test`
-  MODIFY `id_test` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_test` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id_user` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=46;
 --
 -- Constraints for dumped tables
 --
