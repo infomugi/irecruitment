@@ -48,7 +48,7 @@ $this->pageTitle='Profile - '.$model->nama;
 	?>
 
 
-	<h3><span class="ti-user"></span> Profile - <?php echo $model->nama; ?></h3>
+	<h3><span class="ti-user"></span> Profile - <?php echo ucwords($model->nama); ?></h3>
 	<?php $this->widget('zii.widgets.CDetailView', array(
 		'data'=>$model,
 		'htmlOptions'=>array("class"=>"table"),

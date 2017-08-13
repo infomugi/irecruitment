@@ -208,7 +208,7 @@
 <script src="<?php echo $baseUrl;?>/admin/js/waves.js"></script>
 <script src="<?php echo $baseUrl;?>/admin/js/jquery.nicescroll.js"></script>
 <script src="<?php echo $baseUrl;?>/admin/js/jquery.scrollTo.min.js"></script>
-<script src="<?php echo $baseUrl;?>/admin/pages/dashborad.js"></script>
+
 
 <!-- App js -->
 <script src="<?php echo $baseUrl;?>/admin/js/app.js"></script>
