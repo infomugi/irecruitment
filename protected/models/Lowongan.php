@@ -301,4 +301,14 @@ class Lowongan extends CActiveRecord
         	}
         }             
 
+        public function gender($data){
+            if($data=="L"){
+                return "Laki-laki";
+            }elseif($data=="P"){
+                return "Perempuan";
+            }else{
+                return "Laki-laki atau Perempuan";
+            }
+        }
+
     }

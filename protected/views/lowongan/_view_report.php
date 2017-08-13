@@ -9,7 +9,7 @@ $hide = Lowongan::model()->hide($data->tanggal_kebutuhan);
 </h4>
 
 <?php
-$new=new CActiveDataProvider('FileLamaran',array('criteria'=>array('order'=>'id DESC')));
+$new=new CActiveDataProvider('FileLamaran',array('criteria'=>array('condition'=>'lowongan_id='.$data->id_lowongan.'','order'=>'id DESC')));
 $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'lowongan-grid',
 	'dataProvider'=>$new,
@@ -19,8 +19,12 @@ $this->widget('zii.widgets.grid.CGridView', array(
 
 		array(
 			'name'=>'id_people',
-			'value'=>'$data->Pelamar->nama',													
+			'value'=>'$data->Pelamar->email',													
 			),
+		array(
+			'name'=>'id_people',
+			'value'=>'$data->Pelamar->username',													
+			),		
 
 
 

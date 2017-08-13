@@ -55,7 +55,7 @@ class FileLamaran extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'Pelamar' => array(self::BELONGS_TO,'Pelamar', 'id_people'),
+			'Pelamar' => array(self::BELONGS_TO,'User', 'id_people'),
 			'Lowongan'=>array(self::BELONGS_TO,'Lowongan','lowongan_id'),			
 			);
 	}

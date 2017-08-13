@@ -43,7 +43,7 @@ if($lewat!="Telah lewat"){
 
 			array(
 				'name'=>'jeniskelamin',
-				'value'=>$model->jeniskelamin == "L" ? "Laki-laki" : "Perempuan",													
+				'value'=>Lowongan::model()->gender($model->jeniskelamin),													
 				),					
 
 			array(

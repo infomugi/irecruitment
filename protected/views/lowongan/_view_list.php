@@ -21,7 +21,7 @@ $this->widget('zii.widgets.CDetailView', array(
 
 		array(
 			'name'=>'jeniskelamin',
-			'value'=>$data->jeniskelamin == "L" ? "Laki-laki" : "Perempuan",													
+			'value'=>Lowongan::model()->gender($data->jeniskelamin),													
 			),					
 
 

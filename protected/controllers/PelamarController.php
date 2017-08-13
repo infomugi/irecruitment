@@ -207,7 +207,7 @@ class PelamarController extends Controller
 		{
 			$model->attributes=$_POST['Pelamar'];
 			$user->attributes=$_POST['User'];
-			$user->password = md5($user->password);
+			// $user->password = md5($user->password); 
 			if($model->save() && $user->save()){
 				if(Yii::app()->user->getLevel()==1){
 					$this->redirect(array('view','id'=>$model->id_people));
