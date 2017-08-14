@@ -215,7 +215,7 @@ class DokumenController extends Controller
 			if($model->update()){
 				if(strlen(trim($model->cv)) > 0) 
 					$tmp->saveAs(Yii::getPathOfAlias('webroot').'/lamaran/cv/'.$model->cv);				
-				$this->redirect(array('pelamar/profile'));
+				$this->redirect(array('pelamar/dokumen'));
 			}
 		}
 
@@ -244,7 +244,7 @@ class DokumenController extends Controller
 			if($model->update()){
 				if(strlen(trim($model->ktp)) > 0) 
 					$tmp->saveAs(Yii::getPathOfAlias('webroot').'/lamaran/ktp/'.$model->ktp);				
-				$this->redirect(array('pelamar/profile'));
+				$this->redirect(array('pelamar/dokumen'));
 			}
 		}
 
@@ -273,7 +273,7 @@ class DokumenController extends Controller
 			if($model->update()){
 				if(strlen(trim($model->ijazah)) > 0) 
 					$tmp->saveAs(Yii::getPathOfAlias('webroot').'/lamaran/ijazah/'.$model->ijazah);				
-				$this->redirect(array('pelamar/profile'));
+				$this->redirect(array('pelamar/dokumen'));
 			}
 		}
 
@@ -302,7 +302,7 @@ class DokumenController extends Controller
 			if($model->update()){
 				if(strlen(trim($model->transkrip)) > 0) 
 					$tmp->saveAs(Yii::getPathOfAlias('webroot').'/lamaran/transkrip/'.$model->transkrip);				
-				$this->redirect(array('pelamar/profile'));
+				$this->redirect(array('pelamar/dokumen'));
 			}
 		}
 
@@ -331,7 +331,7 @@ class DokumenController extends Controller
 			if($model->update()){
 				if(strlen(trim($model->skck)) > 0) 
 					$tmp->saveAs(Yii::getPathOfAlias('webroot').'/lamaran/skck/'.$model->skck);				
-				$this->redirect(array('pelamar/profile'));
+				$this->redirect(array('pelamar/dokumen'));
 			}
 		}
 
@@ -360,7 +360,7 @@ class DokumenController extends Controller
 			if($model->update()){
 				if(strlen(trim($model->sertifikat)) > 0) 
 					$tmp->saveAs(Yii::getPathOfAlias('webroot').'/lamaran/sertifikat/'.$model->sertifikat);				
-				$this->redirect(array('pelamar/profile'));
+				$this->redirect(array('pelamar/dokumen'));
 			}
 		}
 

@@ -59,7 +59,7 @@ return array(
 		*/
 
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=i_recruitment_2',
+			'connectionString' => 'mysql:host=localhost;dbname=i_recruitment',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => '',

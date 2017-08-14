@@ -63,6 +63,7 @@ class Dokumen extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'Pelamar' => array(self::HAS_MANY, 'Pelamar', 'people_id'),
 			);
 	}
 
