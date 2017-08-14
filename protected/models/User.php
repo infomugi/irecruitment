@@ -147,4 +147,10 @@ class User extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+	public static function avatar($data)
+	{
+		$model= User::model()->findByPk($data);
+		return $model->image;
+	}	
 }

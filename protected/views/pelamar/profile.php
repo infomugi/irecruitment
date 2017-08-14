@@ -68,7 +68,7 @@ $this->pageTitle='Data Diri - '.ucfirst($model->nama);
 			?><i class="ti-clipboard pull-left"></i> Foto</H4>
 
 			<center>
-				<img src="<?php echo Yii::app()->baseUrl. "/lamaran/foto/" .YII::app()->user->id; ?>" class="img-responsive">
+				<img src="<?php echo Yii::app()->baseUrl. "/lamaran/foto/" .User::model()->avatar(YII::app()->user->id); ?>" class="img-responsive">
 			</center>
 
 		</div>
