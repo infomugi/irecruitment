@@ -15,6 +15,7 @@
 	<link href="<?php echo $baseUrl;?>/assets/plugins/themify/themify-icons.css" rel="stylesheet">
 	<link href="<?php echo $baseUrl;?>/assets/css/style.css" rel="stylesheet">
 	<link href="<?php echo $baseUrl;?>/assets/css/responsive.css" rel="stylesheet">
+	<link rel="shortcut icon" href="<?php echo $baseUrl;?>/assets/images/favicon.ico">
 </head>
 
 <body>
@@ -39,114 +40,64 @@
 					
 
 					<div class="col-md-3">
+						<?php if(!YII::app()->user->isGuest){ ?>
 
-						<div class="job_title">Categories</div>
-						<div class="borderfull-width"></div>
-						<div class="clearfix"></div>
-						<div class="page-heading">
-							<div class="category">
-								<div class="col-md-1 p-l p-r">
-									<input type="checkbox" id="Accounting" name="ossm"> 
-								</div>
-								<div class="col-md-11 p-l p-r">
-									<label for="Accounting">Accounting Jobs</label> 
-								</div>
+
+							<div class="Resume">
+								<h1>My Account</h1>
+								<ul class="unstyled">
+
+									<?php $this->widget('zii.widgets.CMenu',array(
+										'htmlOptions'=>array('class'=>'unstyled'),
+										'encodeLabel'=>false,
+										'items'=>array(
+											array('label'=>'<i class="fa fa-caret-right"></i> Data Pribadi','url'=>array('/pelamar/profile'),'visible'=>yii::app()->user->getLevel()==2),
+											array('label'=>'<i class="fa fa-caret-right"></i> Dokumen Lamaran','url'=>array('/pelamar/dokumen'),'visible'=>yii::app()->user->getLevel()==2),                                  
+											array('label'=>'<i class="fa fa-caret-right"></i> Pengajuan Lamaran','url'=>array('/filelamaran/history'),'visible'=>yii::app()->user->getLevel()==2),                                  
+											array('label'=>'<i class="fa fa-caret-right"></i> Account Setting','url'=>array('/pelamar/update'),'visible'=>yii::app()->user->getLevel()==2),
+											array('label'=>'<i class="fa fa-caret-right"></i> Edit Password','url'=>array('/pelamar/password'),'visible'=>yii::app()->user->getLevel()==2),
+											),
+										)); ?>
+
+
+								</ul>
 							</div>
-							<div class="category">
-								<div class="col-md-1 p-l p-r">
-									<input type="checkbox" id="Interior" name="ossm" checked=""> 
+
+							<?php }else{ ?>
+
+								<div class="Resume">
+									<h1>Menu</h1>
+									<ul class="unstyled">
+
+										<?php $this->widget('zii.widgets.CMenu',array(
+											'htmlOptions'=>array('class'=>'unstyled'),
+											'encodeLabel'=>false,
+											'items'=>array(
+												array('label'=>'<i class="fa fa-caret-right"></i> Lowongan','url'=>array('/lowongan/terbaru')),
+												array('label'=>'<i class="fa fa-caret-right"></i> Register','url'=>array('/site/register')),
+												array('label'=>'<i class="fa fa-caret-right"></i> Login','url'=>array('/site/login')),
+												),
+											)); ?>
+
+
+									</ul>
 								</div>
-								<div class="col-md-11 p-l p-r">
-									<label for="Interior">Interior Design Jobs</label> 
-								</div>
+
+
+								<?php } ?>
 							</div>
-							<div class="category">
-								<div class="col-md-1 p-l p-r">
-									<input type="checkbox" id="Bank" name="ossm"> 
-								</div>
-								<div class="col-md-11 p-l p-r">
-									<label for="Bank">Bank Jobs</label> 
-								</div>
+
+							<div class="col-md-9">
+								<?php echo $content; ?>
 							</div>
-							<div class="category">
-								<div class="col-md-1 p-l p-r">
-									<input type="checkbox" id="Content" name="ossm"> 
-								</div>
-								<div class="col-md-11 p-l p-r">
-									<label for="Content">Content Writing Jobs</label> 
-								</div>
-							</div>
-							<div class="category">
-								<div class="col-md-1 p-l p-r">
-									<input type="checkbox" id="Consultant" name="ossm" checked=""> 
-								</div>
-								<div class="col-md-11 p-l p-r">
-									<label for="Consultant">Consultant Jobs</label> 
-								</div>
-							</div>
-							<div class="category">
-								<div class="col-md-1 p-l p-r">
-									<input type="checkbox" id="jobs" name="ossm" checked=""> 
-								</div>
-								<div class="col-md-11 p-l p-r">
-									<label for="jobs">Engineering Jobs</label> 
-								</div>
-							</div>
-							<div class="category">
-								<div class="col-md-1 p-l p-r">
-									<input type="checkbox" id="export" name="ossm"> 
-								</div>
-								<div class="col-md-11 p-l p-r">
-									<label for="export">Export Import Jobs</label> 
-								</div>
-							</div>
-							<div class="category">
-								<div class="col-md-1 p-l p-r">
-									<input type="checkbox" id="Merchandiser" name="ossm"> 
-								</div>
-								<div class="col-md-11 p-l p-r">
-									<label for="Merchandiser">Merchandiser Jobs </label> 
-								</div>
-							</div>
-							<div class="category">
-								<div class="col-md-1 p-l p-r">
-									<input type="checkbox" id="Security" name="ossm"> 
-								</div>
-								<div class="col-md-11 p-l p-r">
-									<label for="Security">Security  Jobs </label> 
-								</div>
-							</div>
-							<div class="category">
-								<div class="col-md-1 p-l p-r">
-									<input type="checkbox" id="hr" name="ossm"> 
-								</div>
-								<div class="col-md-11 p-l p-r">
-									<label for="hr">HR Jobs </label> 
-								</div>
-							</div>
-							<div class="category">
-								<div class="col-md-1 p-l p-r">
-									<input type="checkbox" id="hotel" name="ossm"> 
-								</div>
-								<div class="col-md-11 p-l p-r">
-									<label for="hotel">Hotel Jobs </label> 
-								</div>
-							</div>
+
 						</div>
-						
 					</div>
-
-					<div class="col-md-9">
-						<?php echo $content; ?>
-					</div>
-
 				</div>
-			</div>
-		</div>
-	</main>
+			</main>
 
-	<script src="<?php echo $baseUrl;?>/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-	<script src="<?php echo $baseUrl;?>/assets/js/common.js"></script>
+			<script src="<?php echo $baseUrl;?>/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+			<script src="<?php echo $baseUrl;?>/assets/js/common.js"></script>
 
-</body>
-</html>
+		</body>
+		</html>

@@ -113,9 +113,9 @@ if($lewat!="Telah lewat"){
 
 			echo "<br>";
 			echo "<div class='alert alert-warning'>Silahkan Login untuk Melamar Lowongan <b>".$model->Jabatan->nama ." ". $model->Bagian->nama ."</b>.</div>";
-			echo CHtml::link('Melamar', 
+			echo CHtml::link('Ajukan', 
 				array('filelamaran/lamar', 'job'=>$model->id_lowongan, 'user'=>YII::app()->user->id), 
-				array('class' => 'btn btn-success pull-right', 'title'=>'Melamar'));
+				array('class' => 'btn btn-success pull-right', 'title'=>'Aju'));
 			
 		}
 		endif;

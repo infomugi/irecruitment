@@ -1,201 +1,183 @@
 <?php
 $this->pageTitle='Beranda';
 ?>
-
 <div class="site-banner">
   <div class="container">
     <div class="row">
       <div class="col-md-9">
         <div class="banner-content">
-          <h1>Search between more them <br /> 50,000 open jobs.</h1>
-          <p>Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.<br /> Nam eget dui consequat vitae, eleifend ac etiam rhoncus</p>
+          <h1>Infomedia Solusi Humanika</h1>
+          <p>PT. Telkom Indonesia</p>
         </div>
-<!--         <div class="job-search">
-          <div class="form-group col-md-6 padding-left b-r radius">
-            <input type="text" class="form-control" placeholder="Job title / keywords" />
-            <div class="search_icon"><span class="ti-briefcase"></span></div>
-          </div>
-          <div class="form-group col-md-6 padding-left radius2">
-            <input type="text" class="form-control" placeholder="City / zip code" />
-            <div class="search_icon"><span class="ti-location-pin"></span></div>
-          </div>
-          <div class="btn-search">
-            <a href="index.html#" class="btn btn-default">Search Job Result</a>
-          </div>
-        </div> -->
       </div>
     </div>
   </div>
 </div>
-<main id="maincontent">
-  <div class="container skill">
-    <div class="row">
-      <div class="col-md-9">
-        <div class="page-heading">
-          <h2>Find Jobs by Skill, Industry & Location</h2>
-          <p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu.</p>
-        </div>  
-        <ul class="nav nav-tabs">
-          <li class="active"><a data-toggle="tab" href="index.html#Skills">Jobs By Skills</a></li>
-          <li><a data-toggle="tab" href="index.html#Industry">Jobs By Industry</a></li>
-          <li><a data-toggle="tab" href="index.html#Location">Jobs By Location</a></li>
-          <li class="pull-right"><a href="index.html#" class="view">View all jobs</a></li>
-        </ul>
-        <div class="tab-content">
-         <div id="Skills" class="tab-pane fade in active">
-          <div class="col-md-4 padding-left">
-            <ul class="unstyled">
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Mechanical Engineering Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> BPO Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Networking  Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Java Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Online Marketing Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Animation  Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Design Engineer Jobs</a></li>
-            </ul>
-          </div>
-          <div class="col-md-4 padding-left">
-            <ul class="unstyled">
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Analytics Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> UI/UX Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> NLP Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Marketing Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Banking Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> MBA Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Teaching Jobs</a></li>
-            </ul>
-          </div>
-          <div class="col-md-4 padding-left">
-            <ul class="unstyled">
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Accounting Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Retail Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Travel Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Merchandiser Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Architecture  Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Banking Insurance Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Music Jobs</a></li>
-            </ul>
-          </div>
-        </div>
-        <div id="Industry" class="tab-pane fade">
-          <div class="col-md-4 padding-left">
-            <ul class="unstyled">
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Mechanical Engineering Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> BPO Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Networking  Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Java Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Online Marketing Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Animation  Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Design Engineer Jobs</a></li>
-            </ul>
-          </div>
-          <div class="col-md-4 padding-left">
-            <ul class="unstyled">
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Analytics Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> UI/UX Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> NLP Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Marketing Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Banking Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> MBA Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Teaching Jobs</a></li>
-            </ul>
-          </div>
-          <div class="col-md-4 padding-left">
-            <ul class="unstyled">
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Accounting Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Retail Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Travel Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Merchandiser Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Architecture  Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Banking Insurance Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Music Jobs</a></li>
-            </ul>
-          </div>
-        </div>
-        <div id="Location" class="tab-pane fade">
-          <div class="col-md-4 padding-left">
-            <ul class="unstyled">
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Mechanical Engineering Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> BPO Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Networking  Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Java Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Online Marketing Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Animation  Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Design Engineer Jobs</a></li>
-            </ul>
-          </div>
-          <div class="col-md-4 padding-left">
-            <ul class="unstyled">
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Analytics Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> UI/UX Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> NLP Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Marketing Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Banking Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> MBA Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Teaching Jobs</a></li>
-            </ul>
-          </div>
-          <div class="col-md-4 padding-left">
-            <ul class="unstyled">
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Accounting Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Retail Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Travel Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Merchandiser Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Architecture  Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Banking Insurance Jobs</a></li>
-              <li><a href="index.html#"><i class="fa fa-angle-right"></i> Music Jobs</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="Resume">
-        <h1>Add your resume and let your next job find you.</h1>
-        <a href="index.html#" class="btn btn-cv btn-block">Upload Your CV</a>
-        <p> Max 3 MB, Type: doc, docx, pdf <strong>Already registered? </strong> <a href="index.html#">Login</a></p>
-        <div class="bottom">
-          <h1>Newsletter Subscription</h1>
-          <p> Get best Jobs on your Email.</p>  
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Email address..." />
-          </div>
-          <p class="text-right"><a href="index.html#">Subscribe Now</a></p>
-        </div>
-      </div>
-    </div>
-  </div> 
-</div>
 
-<section class="featured">
+<main id="maincontent">
+
   <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="page-heading">
-          <h2>Featured Jobs</h2>
+    <div class="col-md-8 col-xs-12 margin-bottom-20">
+      <div class="row quote-v1 survey ">
+        <div class="col-md-12 ">
+         <h4> <span><i class="fa fa-building"></i> Profil</span> </h4>
+       </div>
+     </div>
+     <div class="tab-content tab-bidang">
+      <div class="tab-pane row fade in active">
+        <div class="col-md-12">
+
+          <p>PT Infomedia Solusi Humanika atau dikenal dengan ISH merupakan anak perusahaan PT Infomedia Nusantara yang didirikan di Jakarta pada 24 Oktober 2012, ISH merupakan perusahaan yang bergerak dalam bidang Human Capital Services. Portofolio bisnis ISH meliputi BPO HR Solution, HR Process, dan HR Learning Solution. Saat ini, ISH telah mampu memberikan solusi layanan pengelolaan SDM terbaik kepada lebih dari 100 perusahaan yang tersebar di 420 kota dan mengelola lebih dari 22.115 karyawan di seluruh Indonesia.</p>
+
+
         </div>
       </div>
-    </div> 
-    <div class="row">
+    </div>
+  </div>
+
+
+
+  <div class="col-md-4 col-xs-12 pull-right margin-bottom-20">
+    <div class="row quote-v1 survey ">
       <div class="col-md-12">
-        <div class="table-bg">
+        <h4> <span><i class="fa fa-briefcase"></i> Open Recruitment</span> </h4>
+      </div>
+    </div>
+    <div class="tab-content tab-bidang">
+      <div class="tab-pane row fade in active">
+        <div class="col-md-12 col-xs-12">
+
+          <div class="row">
+            <div class="col-md-12 col-xs-12">
+              <p style="font-size:12px; font-weight:bold">Keterangan :</p>
+            </div>
+            <div class="col-md-6 col-xs-6">
+              <div class="col-md-3">
+                <div class="label label-success"> &nbsp <i class="fa fa-check"></i> &nbsp </div>
+              </div>
+              <div class="col-md-9">
+                <p style="font-size:12px; font-weight:bold">Tersedia</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-xs-6">
+              <div class="col-md-3">
+                <div class="label label-danger"> &nbsp <i class="fa fa-power-off"></i> &nbsp </div>
+              </div>
+              <div class="col-md-9">
+                <p style="font-size:12px; font-weight:bold">Kuota Penuh</p>
+              </div>
+            </div>
+          </div>
+
           <table class="table job-list-main">
             <tbody>
-
-
               <?php $this->widget('zii.widgets.CListView', array(
                 'dataProvider'=>$dataProvider,
                 'itemView'=>'_view_lowongan',
+                'summaryText'=>'',
                 )); ?>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
 
 
+
+    <div class="col-md-8 col-xs-12 margin-bottom-20">
+      <div class="row quote-v1 survey ">
+        <div class="col-md-8 ">
+          <h4> <span><i class="fa fa-book"></i> Persyaratan</span> </h4>
+        </div>
+      </div>
+      <div class="tab-content">
+        <div class="tab-pane row fade in active">
+          <div class="col-md-12 col-xs-12">
+            <table class="table table-striped table-hover">
+              <tbody>
+                <tr>
+                  <td>Pendidikan D3/S1 IT (CC, AS, AP, IP, DE, IS, PS, AB, PM, PP)</td>
+                </tr>
+                <tr>
+                  <td>Pendidikan S1 Manajemen Pemasaran/Manajemen Marketing/IT/Bisnis (SCI)</td>
+                </tr>
+                <tr>
+                  <td>Pendidikan S1 Teknik Industri/IT/Accounting/Manajemen (IE)</td>
+                </tr>
+                <tr>
+                  <td>Pendidikan S1 IT/Teknik Industri. (PCS)</td>
+                </tr>
+                <tr>
+                  <td>Usia Maksimal 27 Tahun (CC, SCI, PS, PCS)</td>
+                </tr>
+                <tr>
+                  <td>Usia Maksimal 30 Tahun (AS, AP, DE, IS, IP, IE)</td>
+                </tr>
+                <tr>
+                  <td>Memahami Bahasa Program PHP/Java/Javascript/ABAP dan konsep OOP, Database (AS, AP, DE)</td>
+                </tr>
+                <tr>
+                  <td>Memahami Teknik Dasar LAN WAN, dan Sistem Operasi (IS, IP)</td>
+                </tr>
+                <tr>
+                  <td>Kemampuan presentasi yang baik, teknik negosiasi yang handal dan kemampuan analisa yang kuat, serta dapat berkomunikasi dan bekerja sama dengan tim dan individual (SCI, PS)</td>
+                </tr>
+                <tr>
+                  <td>Berpengalaman sebagai Manajer/Asisten manajer di bidang IT/Computer-Software atau yang setara. Min. 5 tahun. (PM)</td>
+                </tr>
+                <tr>
+                  <td>Berpengalaman min. 3 tahun. (PP)</td>
+                </tr>
+                <tr>
+                  <td>Berwawasan yang cukup di bidang IT termasuk ERP</td>
+                </tr>
+                <tr>
+                  <td>Berwawasan yang cukup tentang Codeigniter or YII (PHP framework). (PP)</td>
+                </tr>
+                <tr>
+                  <td>Berwawasan di bidang SAP Tables, Fields, Domains dan creating Search Helps (AB)</td>
+                </tr>
+                <tr>
+                  <td>Menguasai aplikasi komputer minimal Ms. Word dan Ms. Excel (PCS)</td>
+                </tr>
+                <tr>
+                  <td>Mampu melakukan eksekusi pekerjaan sesuai jadwal dengan semua hal terkait di dalamnya (internal review, technologi review, pemilihan vendor, monitoring project, dll). (PM)</td>
+                </tr>
+                <tr>
+                  <td>Berkelakuan baik dan proaktif, team player. (PP)</td>
+                </tr>
+                <tr>
+                  <td>Komunikatif, jujur, teliti (PCS, PM)</td>
+                </tr>
+                <tr>
+                  <td>Mampu bekerja secara individual (PCS)</td>
+                </tr>
+                <tr>
+                  <td>Mampu bekerja secara tim (PCS, PM)</td>
+                </tr>
+                <tr>
+                  <td>Customer-oriented (PM)</td>
+                </tr>
+                <tr>
+                  <td>Mempunyai semangat belajar yang tinggi, aktif, kreatif, analisa yang kuat dan mampu bekerja di bawah tekanan</td>
+                </tr>
+                <tr>
+                  <td>Siap ditempatkan di seluruh Indonesia</td>
+                </tr>
               </tbody>
             </table>
           </div>
         </div>
-      </div> 
+      </div>
     </div>
-  </section>
+  </div>
+
+
+
+
+
 
 </main>
 
@@ -276,16 +258,13 @@ $this->pageTitle='Beranda';
     <div class="container">
       <div class="row">
         <div class="col-md-6 col-sm-6 padding-left">
-          <span>© 2017 Jobxpress. All rights reserved.</span>
-        </div>
-        <div class="col-md-6 col-sm-6 text-right padding-left">
-          <ul class="bottom_link">
-            <li><a href="index.html#">Link 1</a></li>
-            <li><a href="index.html#">Link 1</a></li>
-            <li><a href="index.html#">Link 1</a></li>
-          </ul>
+          <span>© <?php echo date('Y'); ?> <?php echo YII::app()->name; ?>. All rights reserved.</span>
         </div>
       </div>
     </div>
   </div>
 </footer>
+
+<style type="text/css">
+  #hide{display: none;}
+</style>
