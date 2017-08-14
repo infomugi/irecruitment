@@ -16,6 +16,78 @@ $this->pageTitle='Data Diri - '.ucwords($model->nama);
 $update = "Update " . Yii::app()->dateFormatter->formatDateTime(CDateTimeParser::parse($dataDokumen->tanggal, 'yyyy-MM-dd'),'medium',null);
 ?>
 
+<div class="modal fade" id="loadCV" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-body">
+				<center>
+					<img src="<?php echo Yii::app()->baseUrl. "/lamaran/cv/" .$dataDokumen->cv; ?>" class="img-responsive">
+				</center>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="loadKTP" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-body">
+				<center>
+					<img src="<?php echo Yii::app()->baseUrl. "/lamaran/ktp/" .$dataDokumen->ktp; ?>" class="img-responsive">
+				</center>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="loadIjazah" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-body">
+				<center>
+					<img src="<?php echo Yii::app()->baseUrl. "/lamaran/ijazah/" .$dataDokumen->ijazah; ?>" class="img-responsive">
+				</center>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="loadTranskrip" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-body">
+				<center>
+					<img src="<?php echo Yii::app()->baseUrl. "/lamaran/transkrip/" .$dataDokumen->transkrip; ?>" class="img-responsive">
+				</center>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="modal fade" id="loadSkck" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-body">
+				<center>
+					<img src="<?php echo Yii::app()->baseUrl. "/lamaran/skck/" .$dataDokumen->skck; ?>" class="img-responsive">
+				</center>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="loadSertifikat" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-body">
+				<center>
+					<img src="<?php echo Yii::app()->baseUrl. "/lamaran/sertifikat/" .$dataDokumen->sertifikat; ?>" class="img-responsive">
+				</center>
+			</div>
+		</div>
+	</div>
+</div>
 
 <div class="row">
 	<div class="col-md-12">
@@ -47,7 +119,7 @@ $update = "Update " . Yii::app()->dateFormatter->formatDateTime(CDateTimeParser:
 							</tr>
 
 							<tr>
-								<td><?php echo $dataDokumen->ijazah; ?></td>
+								<td><a href="#" data-toggle="modal" data-target="#loadIjazah"><?php echo $dataDokumen->ijazah; ?></a></td>
 								<td>
 									<?php echo CHtml::link('<i class="ti-id-badge"></i> Upload Ijazah', 
 										array('dokumen/uploadijazah', 'id'=>$model->id_people,
@@ -57,7 +129,7 @@ $update = "Update " . Yii::app()->dateFormatter->formatDateTime(CDateTimeParser:
 									</tr>
 
 									<tr>
-										<td><?php echo $dataDokumen->transkrip; ?></td>
+										<td><a href="#" data-toggle="modal" data-target="#loadTranskrip"><?php echo $dataDokumen->transkrip; ?></a></td>
 										<td>
 											<?php echo CHtml::link('<i class="ti-id-badge"></i> Upload Transkrip', 
 												array('dokumen/uploadtranskrip', 'id'=>$model->id_people,
@@ -67,7 +139,7 @@ $update = "Update " . Yii::app()->dateFormatter->formatDateTime(CDateTimeParser:
 											</tr>
 
 											<tr>
-												<td><?php echo $dataDokumen->skck; ?></td>
+												<td><a href="#" data-toggle="modal" data-target="#loadSkck"><?php echo $dataDokumen->skck; ?></a></td>
 												<td>
 													<?php echo CHtml::link('<i class="ti-id-badge"></i> Upload SKCK', 
 														array('dokumen/uploadskck', 'id'=>$model->id_people,
@@ -77,7 +149,7 @@ $update = "Update " . Yii::app()->dateFormatter->formatDateTime(CDateTimeParser:
 													</tr>
 
 													<tr>
-														<td><?php echo $dataDokumen->sertifikat; ?></td>
+														<td><a href="#" data-toggle="modal" data-target="#loadSertifikat"><?php echo $dataDokumen->sertifikat; ?></a></td>
 														<td>
 
 															<?php echo CHtml::link('<i class="ti-id-badge"></i> Sertifikat', 
@@ -94,42 +166,3 @@ $update = "Update " . Yii::app()->dateFormatter->formatDateTime(CDateTimeParser:
 													</div>
 												</div>
 
-
-												<!-- CV -->
-												<div id="loadCV" class="modal fade" role="dialog1">
-													<div class="modal-dialog">
-														<!-- Modal content-->
-														<div class="modal-content">
-															<div class="modal-header">
-																<button type="button" class="close" data-dismiss="modal">&times;</button>
-																<h5 class="modal-title">CV - @<?php echo YII::app()->user->name; ?></h5>
-															</div>
-															<div class="modal-body">
-																<center>
-																	<img src="<?php echo Yii::app()->baseUrl. "/lamaran/cv/" .$dataDokumen->cv; ?>" class="img-responsive">
-																</center>
-															</div>
-															<div class="modal-footer">
-															</div>
-														</div>
-													</div>
-
-
-													<!-- KTP -->
-													<div id="loadKTP" class="modal fade" role="dialog2">
-														<div class="modal-dialog">
-															<!-- Modal content-->
-															<div class="modal-content">
-																<div class="modal-header">
-																	<button type="button" class="close" data-dismiss="modal">&times;</button>
-																	<h5 class="modal-title">KTP - @<?php echo YII::app()->user->name; ?></h5>
-																</div>
-																<div class="modal-body">
-																	<center>
-																		<img src="<?php echo Yii::app()->baseUrl. "/lamaran/ktp/" .$dataDokumen->ktp; ?>" class="img-responsive">
-																	</center>
-																</div>
-																<div class="modal-footer">
-																</div>
-															</div>
-														</div>
