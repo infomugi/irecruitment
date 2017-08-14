@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 14, 2017 at 12:00 AM
+-- Generation Time: Aug 14, 2017 at 08:38 PM
 -- Server version: 5.5.39
 -- PHP Version: 5.4.31
 
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `bagian` (
   `deskripsi` text NOT NULL,
   `psikotest` varchar(255) NOT NULL,
   `status` varchar(25) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
 --
 -- Dumping data for table `bagian`
@@ -54,7 +54,8 @@ INSERT INTO `bagian` (`id_bagian`, `nama`, `deskripsi`, `psikotest`, `status`) V
 (13, 'Retail', 'Retail Jobs', '', 'Aktif'),
 (14, 'Merchandiser', 'Merchandiser Jobs', '', 'Aktif'),
 (15, 'Architecture', 'Architecture Jobs', '', 'Aktif'),
-(16, 'Banking Insurance', 'Banking Insurance Jobs', '', 'Aktif');
+(16, 'Banking Insurance', 'Banking Insurance Jobs', '', 'Aktif'),
+(17, 'Staff Pajak', 'Staff Pajak', 'staff Pajak.jpg', 'Aktif');
 
 -- --------------------------------------------------------
 
@@ -149,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `file_lamaran` (
   `lowongan_id` int(11) NOT NULL,
   `psikotest` varchar(255) NOT NULL,
   `test_id` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=54455 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=54457 ;
 
 --
 -- Dumping data for table `file_lamaran`
@@ -157,7 +158,9 @@ CREATE TABLE IF NOT EXISTS `file_lamaran` (
 
 INSERT INTO `file_lamaran` (`id`, `file_lamaran`, `id_people`, `tanggal_upload`, `status_lamaran`, `tanggal_verifikasi`, `keterangan`, `verifikasi_id`, `lowongan_id`, `psikotest`, `test_id`) VALUES
 (1, '', 46, '2017-08-14 00:00:00', 'Diverifikasi', '2017-08-14 02:36:31', '', 1, 10, '', 0),
-(54454, '', 46, '2017-08-14 00:00:00', 'Ditolak', '2017-08-14 03:45:44', '', 1, 3, '', 0);
+(54454, '', 46, '2017-08-14 00:00:00', 'Ditolak', '2017-08-14 03:45:44', '', 1, 3, '', 0),
+(54455, '', 46, '2017-08-14 00:00:00', 'Diverifikasi', '2017-08-14 11:43:09', '', 1, 10, '', 0),
+(54456, '', 46, '2017-08-14 00:00:00', 'Dibatalkan', '2017-08-14 11:49:09', '', 46, 10, '', 0);
 
 -- --------------------------------------------------------
 
@@ -928,7 +931,7 @@ CREATE TABLE IF NOT EXISTS `pelamar_keahlian` (
 
 INSERT INTO `pelamar_keahlian` (`id_keahlian`, `word`, `excel`, `powerpoint`, `sql`, `lan`, `wan`, `bahasa_pascal`, `php`, `c`, `java`, `people_id`, `user_id`) VALUES
 (1, 1, 2, 1, 1, 1, 1, 2, 2, 2, 2, 1278869, 45),
-(2, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1383148, 46);
+(2, 1, 2, 1, 1, 1, 1, 1, 2, 2, 2, 1383148, 46);
 
 -- --------------------------------------------------------
 
@@ -1178,7 +1181,7 @@ INSERT INTO `user` (`id_user`, `username`, `password`, `email`, `date_create`, `
 (43, 'andi', '21232f297a57a5a743894a0e4a801fc3', 'andi@gmail.com', '2017-08-13', 2),
 (44, 'bima', '21232f297a57a5a743894a0e4a801fc3', 'bima@gmail.com', '2017-08-13', 2),
 (45, 'krimo', '6ad4664ba23eac71b5ef5e826ea0c6cd', 'krimo@gmail.com', '2017-08-13', 2),
-(46, 'taufikramdan', '21232f297a57a5a743894a0e4a801fc3', 'taufik.ramdan96@gmail.com', '2017-08-14', 2);
+(46, 'taufikramdan', '1844156d4166d94387f1a4ad031ca5fa', 'taufik.ramdan96@gmail.com', '2017-08-14', 2);
 
 --
 -- Indexes for dumped tables
@@ -1306,7 +1309,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `bagian`
 --
 ALTER TABLE `bagian`
-MODIFY `id_bagian` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+MODIFY `id_bagian` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `crips`
 --
@@ -1316,7 +1319,7 @@ MODIFY `id_crips` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=35;
 -- AUTO_INCREMENT for table `file_lamaran`
 --
 ALTER TABLE `file_lamaran`
-MODIFY `id` int(25) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=54455;
+MODIFY `id` int(25) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=54457;
 --
 -- AUTO_INCREMENT for table `jabatan`
 --
