@@ -32,7 +32,7 @@ class UserController extends Controller
 				'users'=>array('*'),
 				),				
 			array('allow',
-				'actions'=>array('view','update'),
+				'actions'=>array('view','update','upload'),
 				'users'=>array('@'),
 				),					
 			array('allow',
@@ -203,4 +203,55 @@ class UserController extends Controller
 			Yii::app()->end();
 		}
 	}
+
+	public function actionImage($id)
+	{
+		$model=$this->loadModel($id);
+
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['User']))
+		{
+			$model->attributes=$_POST['User'];
+			$model->password = md5($model->password);
+			if($model->save()){
+				$this->redirect(array('view','id'=>$id));
+			}
+		}
+
+		$this->render('update',array(
+			'model'=>$model,
+			));
+	}
+
+	public function actionUpload()
+	{
+		$model=$this->loadModel(YII::app()->user->id);
+		$model->setScenario('upload');
+		
+		if(isset($_POST['User']))
+		{
+			$model->attributes=$_POST['User'];
+
+			$model->image=CUploadedFile::getInstance($model,'image');
+			$tmp;
+			if(strlen(trim(CUploadedFile::getInstance($model,'image'))) > 0) 
+			{ 
+				$tmp=CUploadedFile::getInstance($model,'image'); 
+				$model->image=YII::app()->user->name.'.'.$tmp->extensionName; 
+			}
+
+			if($model->update()){
+				if(strlen(trim($model->image)) > 0) 
+					$tmp->saveAs(Yii::getPathOfAlias('webroot').'/lamaran/foto/'.$model->image);				
+				$this->redirect(array('pelamar/profile'));
+			}
+		}
+
+		$this->render('update_image',array(
+			'model'=>$model,
+			));
+	}
+
 }

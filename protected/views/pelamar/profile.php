@@ -40,7 +40,7 @@ $this->pageTitle='Data Diri - '.ucfirst($model->nama);
 
 		</div>
 
-		<div class="col-md-5">
+		<div class="col-md-4">
 
 			<?php $this->widget('zii.widgets.CDetailView', array(
 				'data'=>$model,
@@ -59,7 +59,18 @@ $this->pageTitle='Data Diri - '.ucfirst($model->nama);
 					),
 				)); ?>
 		</div>
-		<div class="col-md-2">
+		<div class="col-md-3">
+
+
+			<H4><?php echo CHtml::link('<i class="ti-user"></i>', 
+				array('user/upload',
+					), array('class' => 'btn btn-success btn-sm pull-right', 'title'=>'Upload Foto'));
+			?><i class="ti-clipboard pull-left"></i> Foto</H4>
+
+			<center>
+				<img src="<?php echo Yii::app()->baseUrl. "/lamaran/foto/" .YII::app()->user->id; ?>" class="img-responsive">
+			</center>
+
 		</div>
 	</div>
 

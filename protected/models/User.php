@@ -8,12 +8,9 @@
  * @property string $username
  * @property string $password
  * @property string $email
+ * @property string $image
  * @property string $date_create
  * @property integer $level_ID
- *
- * The followings are the available model relations:
- * @property People[] $peoples
- * @property Level $level
  */
 class User extends CActiveRecord
 {
@@ -40,10 +37,13 @@ class User extends CActiveRecord
 			array('level_ID', 'default', 'value'=>'2', 'on'=>'register_user'),
 			
 			array('username, password, email', 'required','on'=>'create'),
+			array('image', 'required','on'=>'upload'),
 			array('username, email', 'unique'),
 			array('email', 'email'),
 			array('level_ID', 'numerical', 'integerOnly'=>true),
-			array('username, password, email', 'length', 'max'=>250),
+
+			array('username, email', 'length', 'max'=>50),
+			array('password, image', 'length', 'max'=>255),
 			array('username, email','unique'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -74,6 +74,7 @@ class User extends CActiveRecord
 			'username' => 'Username',
 			'password' => 'Password',
 			'email' => 'Email',
+			'image' => 'Foto',
 			'date_create' => 'Tanggal Registrasi',
 			'level_ID' => 'Level',
 			);
@@ -101,6 +102,7 @@ class User extends CActiveRecord
 		$criteria->compare('username',$this->username,true);
 		$criteria->compare('password',$this->password,true);
 		$criteria->compare('email',$this->email,true);
+		$criteria->compare('image',$this->image,true);
 		$criteria->compare('date_create',$this->date_create,true);
 		$criteria->compare('level_ID',$this->level_ID);
 
@@ -119,6 +121,7 @@ class User extends CActiveRecord
 		$criteria->compare('username',$this->username,true);
 		$criteria->compare('password',$this->password,true);
 		$criteria->compare('email',$this->email,true);
+		$criteria->compare('image',$this->image,true);
 		$criteria->compare('date_create',$this->date_create,true);
 		$criteria->compare('level_ID',$this->level_ID);
 
