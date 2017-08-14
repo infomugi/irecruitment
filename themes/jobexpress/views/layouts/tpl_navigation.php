@@ -9,7 +9,7 @@
   		<div class="row">
   			<div class="col-md-2">
   				<div class="site-logo">
-           <img src="<?php echo $baseUrl;?>/assets/images/home/logo.png" style="width:40px;" class="img-responsive" alt="logo">
+           <img src="<?php echo $baseUrl;?>/assets/images/home/logo-frontend.png" style="width:160px;" class="img-responsive" alt="logo">
          </div>
        </div>
        <div class="col-md-10">
