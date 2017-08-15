@@ -59,7 +59,7 @@ $this->breadcrumbs=array(
 		'tanggal_lahir',
 		/*
 		'pendidikan_terakhir',
-		'jabatan_pekerjaan',
+		'pekerjaan',
 		'nama_perusahaan',
 		'keterangan',
 		'user_id',

@@ -36,90 +36,109 @@ if(YII::app()->user->getLevel()==2){
 
 					<button class="btn btn-danger btn-flat" disabled>Lamaran telah Diverifikasi</button>
 
-					<?php }else{ ?>
+					<?php 
+					echo CHtml::link('<i class="fa fa-star"></i> Buat Penilaian', 
+						array('penilaiansaw/create', 'pelamar'=>$model->id_people, 'lowongan'=>$model->lowongan_id, 'lamaran'=>$model->id,
+							), array('class' => 'btn btn-danger pull-right btn-flat', 'title'=>'Buat Penilaian'));
+					?>
 
-						<?php 
-						echo CHtml::link('<i class="fa fa-check"></i> Verifikasi Lamaran', 
-							array('diterima', 'id'=>$model->id,
-								), array('class' => 'btn btn-danger btn-flat', 'title'=>'Terima Lamaran'));
-						?>
+					<HR>
 
-						<?php } ?>
+						<?php }else{ ?>
 
-					<?php endif; ?>
+							<?php 
+							echo CHtml::link('<i class="fa fa-check"></i> Verifikasi Lamaran', 
+								array('diterima', 'id'=>$model->id,
+									), array('class' => 'btn btn-danger btn-flat', 'title'=>'Terima Lamaran'));
+							?>
 
-					<?php if($model->status_lamaran!="Diverifikasi"): ?>
+							<HR>
 
-						<?php echo CHtml::link('<i class="fa fa-remove"></i> Tolak', 
-							array('ditolak', 'id'=>$model->id,
-								), array('class' => 'btn btn-danger btn-flat', 'title'=>'Tolak Lamaran'));
-								?>
+								<?php } ?>
+
 							<?php endif; ?>
-
-						<?php endif; ?>
-
-
-						<?php
-						if($model->status_lamaran=="Belum di Verifikasi"){
-							$alert = "warning";
-						}else if($model->status_lamaran=="Diverifikasi"){
-							$alert = "success";
-						}else{
-							$alert = "danger";
-						}
-						?>
-
-						<?php if(YII::app()->user->getLevel()==2): ?>
 
 							<?php if($model->status_lamaran!="Diverifikasi"): ?>
 
-								<?php echo CHtml::link('<i class="fa fa-close"></i> Batalkan Lamaran', 
-									array('dibatalkan', 'id'=>$model->id,
-										), array('class' => 'btn btn-warning btn-flat', 'title'=>'Batalkan Lamaran'));
+								<?php echo CHtml::link('<i class="fa fa-remove"></i> Tolak', 
+									array('ditolak', 'id'=>$model->id,
+										), array('class' => 'btn btn-danger btn-flat', 'title'=>'Tolak Lamaran'));
 										?>
-
 									<?php endif; ?>
 
 								<?php endif; ?>
 
-								<?php if($model->status_lamaran!="Lulus"){ ?>
 
-									<div class="alert alert-<?php echo $alert; ?>">File Lamaran ini <?php echo $model->status_lamaran; ?></div>
+								<?php
+								if($model->status_lamaran=="Belum di Verifikasi"){
+									$alert = "warning";
+								}else if($model->status_lamaran=="Diverifikasi"){
+									$alert = "success";
+								}else{
+									$alert = "danger";
+								}
+								?>
 
-									<?php }else{ ?>
+								<?php if(YII::app()->user->getLevel()==2): ?>
 
-										<?php if(YII::app()->user->getLevel()==2): ?>
+									<?php if($model->status_lamaran!="Diverifikasi"): ?>
 
-										<div class="alert alert-info">Selamat Anda Telah Lulus Seleksi, dan Menjadi Bagian dari Kami</div>
+										<?php echo CHtml::link('<i class="fa fa-close"></i> Batalkan Lamaran', 
+											array('dibatalkan', 'id'=>$model->id,
+												), array('class' => 'btn btn-warning btn-flat', 'title'=>'Batalkan Lamaran'));
+												?>
 
-									<?php endif; ?>
+											<?php endif; ?>
 
-									<?php } ?>
-									<div class="col-md-6">
+										<?php endif; ?>
 
-										<h4><i class="ti ti-user"></i> Data Pribadi</h4>
-										<?php
-										$data=Pelamar::model()->findByAttributes(array('id_user'=>$model->id_people));
-										$this->widget('zii.widgets.CDetailView', array(
-											'data' => $data,
-											'htmlOptions'=>array("class"=>"table "),
-											'attributes' => array(
+										<?php if($model->status_lamaran!="Lulus"){ ?>
+
+											<div class="alert alert-<?php echo $alert; ?>">File Lamaran ini <?php echo $model->status_lamaran; ?></div>
+
+											<?php }else{ ?>
+
+												<?php if(YII::app()->user->getLevel()==2): ?>
+
+												<div class="alert alert-info">Selamat Anda Telah Lulus Seleksi, dan Menjadi Bagian dari Kami</div>
+
+											<?php endif; ?>
+
+											<?php } ?>
 
 
-												'nama',
-												'tempat_lahir',
-												'tanggal_lahir',
-												'agama',
-												'jenis_kelamin',
-												'golongan_darah',
-												'kewarganegaraan',
-												array('label'=>'Umur','value'=>Pelamar::model()->countBirth($data->tanggal_lahir)." Tahun"),
-												'hp',
+											<div class="panel-group">
+												<div class="panel panel-default">
+													<div class="panel-heading">
+														<h4 class="panel-title">
+															<a data-toggle="collapse" href="#collapse1"><i class="ti ti-user"></i> Data Pribadi</a>
+														</h4>
+													</div>
+													<div id="collapse1" class="panel-collapse collapse">
+														<div class="panel-body">
 
-												'alamat_domisili',
-												array('name'=>'status_domisili','value'=>Pelamar::model()->domisili($data->status_domisili)),
-												array('name'=>'kota_id','value'=>$data->Kota->name),
-												array('name'=>'provinsi_id','value'=>$data->Provinsi->name),
+															<?php
+															$data=Pelamar::model()->findByAttributes(array('id_user'=>$model->id_people));
+															$this->widget('zii.widgets.CDetailView', array(
+																'data' => $data,
+																'htmlOptions'=>array("class"=>"table "),
+																'attributes' => array(
+
+
+																	'nama',
+																	'tempat_lahir',
+																	'tanggal_lahir',
+																	'agama',
+																	'jenis_kelamin',
+																	'golongan_darah',
+																	'kewarganegaraan',
+																	array('label'=>'Umur','value'=>Pelamar::model()->countBirth($data->tanggal_lahir)." Tahun"),
+																	'hp',
+
+																	'alamat_domisili',
+																	array('name'=>'status_domisili','value'=>Pelamar::model()->domisili($data->status_domisili)),
+																	array('name'=>'kota_id','value'=>$data->Kota->name),
+																	array('name'=>'provinsi_id','value'=>$data->Provinsi->name),
 
 																					// array('name'=>'status_menikah','value'=>Pelamar::model()->menikah($data->status_menikah)),
 																					// 'tanggal_menikah',
@@ -131,97 +150,104 @@ if(YII::app()->user->getLevel()==2){
 
 
 
-												),
-											));
-											?> 
-										</div>
-										<div class="col-md-6 col-lg-12 col-xs-12">
-											<h4><i class="fa fa-calendar"></i> File</h4>
-											<?php $this->widget('zii.widgets.CDetailView', array(
-												'data'=>$model,
-												'htmlOptions'=>array("class"=>"table"),
-												'attributes'=>array(
-													'tanggal_upload',
-																						// 'status_lamaran',
-													),
-													)); ?>
+																	),
+																));
+																?> 
 
-													<h4><i class="fa fa-file-o"></i> Lamaran</h4>
-													<?php $this->widget('zii.widgets.CDetailView', array(
-														'data'=>$model,
-														'htmlOptions'=>array("class"=>"table"),
-														'attributes'=>array(
+															</div>
+														</div>
+													</div>
+												</div>
 
-															array('label'=>'Bagian','value'=>$dataBagian->nama),
-															array('label'=>'Jabatan','value'=>$dataJabatan->nama),
+												<div class="panel-group">
+													<div class="panel panel-default">
+														<div class="panel-heading">
+															<h4 class="panel-title">
+																<a data-toggle="collapse" href="#collapse2"><i class="fa fa-file-o"></i> Lamaran</a>
+															</h4>
+														</div>
+														<div id="collapse2" class="panel-collapse collapse">
+															<div class="panel-body">
+																<div class="col-md-6 col-lg-12 col-xs-12">
 
-															),
-															)); ?>
+																	<?php $this->widget('zii.widgets.CDetailView', array(
+																		'data'=>$model,
+																		'htmlOptions'=>array("class"=>"table"),
+																		'attributes'=>array(
 
-															<?php if($model->verifikasi_id!=0): ?>
+																			'tanggal_upload',
+																			array('label'=>'Bagian','value'=>$dataBagian->nama),
+																			array('label'=>'Jabatan','value'=>$dataJabatan->nama),
 
-																<h4><i class="fa fa-eye"></i> Status</h4>
-																<?php $this->widget('zii.widgets.CDetailView', array(
-																	'data'=>$model,
-																	'htmlOptions'=>array("class"=>"table"),
-																	'attributes'=>array(
-																		'tanggal_verifikasi',
-																		'keterangan',
-																// 'verifikasi_id',
-																		),
-																		)); ?>	
-																	</div>
+																			),
+																			)); ?>
 
-																<?php endif; ?>
+																			<?php if($model->verifikasi_id!=0): ?>
 
-																<div class="col-md-12">
-
-
-																	<?php if(YII::app()->user->getLevel()==1): ?>
-																		<?php if($model->keterangan==""): ?>
-																			<div class="form-normal form-horizontal clearfix">
-																				<div class="col-md-9"> 
-
-																					<?php $form=$this->beginWidget('CActiveForm', array(
-																						'id'=>'people-form',
-																						'enableAjaxValidation'=>false,
-																						'enableClientValidation'=>true,
-																						'clientOptions'=>array('validateOnSubmit'=>true),
-																						'htmlOptions' => array('enctype' => 'multipart/form-data'),
-																						)); ?>
-
-																						<?php echo $form->errorSummary($model, null, null, array('class' => 'alert alert-warning')); ?>
-
-
-																						<div class="form-group">
-
-																							<div class="col-sm-4 control-label">
-																								<?php echo $form->labelEx($model,'keterangan'); ?>
-																							</div>   
-
-																							<div class="col-sm-8">
-																								<?php echo $form->error($model,'keterangan'); ?>
-																								<?php echo $form->textArea($model,'keterangan',array('class'=>'form-control')); ?>
-																							</div>
-
-																						</div>   	
-
-
-																						<div class="form-group">
-																							<div class="col-md-12">  
-																							</br></br>
-																							<?php echo CHtml::submitButton($model->isNewRecord ? 'Unggah' : 'Kirim', array('class' => 'btn btn-default btn-flat pull-right')); ?>
-																						</div>
+																				<?php $this->widget('zii.widgets.CDetailView', array(
+																					'data'=>$model,
+																					'htmlOptions'=>array("class"=>"table"),
+																					'attributes'=>array(
+																						'tanggal_verifikasi',
+																						'keterangan',
+																						),
+																						)); ?>	
 																					</div>
 
-																					<?php $this->endWidget(); ?>
-
-																				</div></div><!-- form -->		
-
-																			<?php endif; ?>
-																		<?php endif; ?>
+																				<?php endif; ?>
 
 
+																				<?php if(YII::app()->user->getLevel()==1): ?>
+																					<?php if($model->keterangan==""): ?>
+																						<div class="form-normal form-horizontal clearfix">
+																							<div class="col-md-9"> 
+
+																								<?php $form=$this->beginWidget('CActiveForm', array(
+																									'id'=>'people-form',
+																									'enableAjaxValidation'=>false,
+																									'enableClientValidation'=>true,
+																									'clientOptions'=>array('validateOnSubmit'=>true),
+																									'htmlOptions' => array('enctype' => 'multipart/form-data'),
+																									)); ?>
+
+																									<?php echo $form->errorSummary($model, null, null, array('class' => 'alert alert-warning')); ?>
+
+
+																									<div class="form-group">
+
+																										<div class="col-sm-4 control-label">
+																											<?php echo $form->labelEx($model,'keterangan'); ?>
+																										</div>   
+
+																										<div class="col-sm-8">
+																											<?php echo $form->error($model,'keterangan'); ?>
+																											<?php echo $form->textArea($model,'keterangan',array('class'=>'form-control')); ?>
+																										</div>
+
+																									</div>   	
+
+
+																									<div class="form-group">
+																										<div class="col-md-12">  
+																										</br></br>
+																										<?php echo CHtml::submitButton($model->isNewRecord ? 'Unggah' : 'Kirim', array('class' => 'btn btn-default btn-flat pull-right')); ?>
+																									</div>
+																								</div>
+
+																								<?php $this->endWidget(); ?>
+
+																							</div></div><!-- form -->		
+
+																						<?php endif; ?>
+																					<?php endif; ?>
+
+
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+
+																	<div class="col-md-12">
 
 																		<h4><span class="ti-user"></span> Status Seleksi</h4>
 																		<?php $this->widget('zii.widgets.grid.CGridView', array(

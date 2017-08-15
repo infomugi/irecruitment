@@ -11,10 +11,11 @@ $dataProvider=new CActiveDataProvider('FileLamaran',array('criteria'=>array('con
 $this->pageTitle="Detail Lowongan Pekerjaan";
 ?>
 
-
-<div class="job_title"><?php echo 'Lowongan '.$model->Jabatan->nama . " untuk " .$model->Bagian->nama; ?></div>
-<div class="borderfull-width"></div>
-<div class="clearfix"></div>
+<?php if(Yii::app()->user->getLevel()==2): ?>
+	<div class="job_title"><?php echo 'Lowongan '.$model->Jabatan->nama . " untuk " .$model->Bagian->nama; ?></div>
+	<div class="borderfull-width"></div>
+	<div class="clearfix"></div>
+<?php endif; ?>
 
 
 <?php 
@@ -140,8 +141,20 @@ if($lewat!="Telah lewat"){
 				'columns'=>array(
 					'tanggal_upload',
 					'status_lamaran',
-					),
-				));
+
+					array(
+						'class'=>'CButtonColumn',
+						'header'=>'Action',
+						'template'=>'{view}',
+						'buttons'=>array(
+							'view'=>
+							array(
+								'url'=>'Yii::app()->createUrl("filelamaran/view", array("id"=>$data->id))',
+								),
+							),
+
+						),
+					)));
 		endif;
 		endif;
 		?>

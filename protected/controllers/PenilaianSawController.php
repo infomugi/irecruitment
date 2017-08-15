@@ -67,7 +67,7 @@ class PenilaianSawController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate($id)
+	public function actionCreate($pelamar,$lowongan,$lamaran)
 	{
 		$model=new PenilaianSaw;
 
@@ -78,42 +78,21 @@ class PenilaianSawController extends Controller
 		{
 			$model->attributes=$_POST['PenilaianSaw'];
 			$model->penilai_id = YII::app()->user->id;
-			$model->customer_id = $id;
+			$model->pelamar_id = $pelamar;
 			$model->tanggal = date('Y-m-d');
-			$model->penilai_id = YII::app()->user->id;
 			$model->status = 0;
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_penilaian_saw));
+
+			$model->lowongan_id = $lowongan;
+			$model->lamaran_id = $lamaran;
+			if($model->save()){
+				$this->redirect(array('lowongan/view','id'=>$lowongan));
+			}
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
 			));
 	}
-
-
-	public function actionPegawai($id)
-	{
-		$model=new PenilaianSaw;
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['PenilaianSaw']))
-		{
-			$model->attributes=$_POST['PenilaianSaw'];
-			$model->tanggal = date('Y-m-d');
-			$model->penilai_id = YII::app()->user->id;
-			$model->customer_id = $id;
-			$model->status = 0;
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_penilaian_saw));
-		}
-
-		$this->render('nilai',array(
-			'model'=>$model,
-			));
-	}	
 
 	/**
 	 * Updates a particular model.

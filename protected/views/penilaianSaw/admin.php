@@ -25,7 +25,7 @@ $this->pageTitle='Kelola Penilaian SAW';
 				'style' => 'text-align: center;')),
 
 
-		// array('name'=>'customer_id','value'=>'$data->Pelamar->nama'),
+		// array('name'=>'pelamar_id','value'=>'$data->Pelamar->nama'),
 		array('name'=>'c1','value'=>'$data->Character->keterangan'),
 		array('name'=>'c2','value'=>'$data->Capacity->keterangan'),
 		array('name'=>'c3','value'=>'$data->Capital->keterangan'),

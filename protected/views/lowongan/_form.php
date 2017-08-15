@@ -29,7 +29,7 @@
     }); 
 </script>
 
-<div class="col-md-12 col-lg-12 col-xs-12">
+<div class="col-md-8">
 
 	<?php $form=$this->beginWidget('CActiveForm', array(
 		'id'=>'lowongan-form',
@@ -45,13 +45,13 @@
 		<?php echo $form->errorSummary($model, null, null, array('class' => 'alert alert-warning')); ?>
 
 
-		<div class="form-group">
+		<div class="form-group row">
 
-			<div class="col-md-4 col-lg-12 col-xs-12 control-label">
+			<div class="col-sm-4 control-label">
 				<?php echo $form->labelEx($model,'bagian'); ?>
 			</div>   
 
-			<div class="col-md-8 col-lg-12 col-xs-12">
+			<div class="col-md-8">
 				<?php echo $form->error($model,'bagian'); ?>
 				<?php echo $form->dropDownList($model, "bagian",
 					CHtml::listData(Bagian::model()->findAll(array('condition'=>'status = "Aktif"','order'=>'nama ASC')),
@@ -64,13 +64,13 @@
 			</div>  
 
 
-			<div class="form-group">
+			<div class="form-group row">
 
-				<div class="col-md-4 col-lg-12 col-xs-12 control-label">
+				<div class="col-sm-4 control-label">
 					<?php echo $form->labelEx($model,'jabatan'); ?>
 				</div>   
 
-				<div class="col-md-8 col-lg-12 col-xs-12">
+				<div class="col-md-8">
 					<?php echo $form->error($model,'jabatan'); ?>
 					<?php echo $form->dropDownList($model, "jabatan",
 						CHtml::listData(Jabatan::model()->findAll(array('condition'=>'status = "Aktif"','order'=>'nama ASC')),
@@ -82,13 +82,13 @@
 
 				</div>  
 
-				<div class="form-group">
+				<div class="form-group row">
 
-					<div class="col-md-4 col-lg-12 col-xs-12 control-label">
+					<div class="col-sm-4 control-label">
 						<?php echo $form->labelEx($model,'jumlah_orang'); ?>
 					</div>   
 
-					<div class="col-md-8 col-lg-12 col-xs-12">
+					<div class="col-md-8">
 						<?php echo $form->error($model,'jumlah_orang'); ?>
 						<?php echo $form->textField($model,'jumlah_orang',array('class'=>'form-control')); ?>
 					</div>
@@ -96,13 +96,13 @@
 				</div>  					
 
 
-				<div class="form-group">
+				<div class="form-group row">
 
-					<div class="col-md-4 col-lg-12 col-xs-12 control-label">
+					<div class="col-sm-4 control-label">
 						<?php echo $form->labelEx($model,'tipe'); ?>
 					</div>   
 
-					<div class="col-md-8 col-lg-12 col-xs-12">
+					<div class="col-md-8">
 						<?php echo $form->error($model,'tipe'); ?>
 						<?php
 						echo $form->radioButtonList($model,'tipe',
@@ -120,13 +120,13 @@
 
 					</div>  
 
-					<div class="form-group">
+					<div class="form-group row">
 
-						<div class="col-md-4 col-lg-12 col-xs-12 control-label">
+						<div class="col-sm-4 control-label">
 							<?php echo $form->labelEx($model,'jeniskelamin'); ?>
 						</div>   
 
-						<div class="col-md-8 col-lg-12 col-xs-12">
+						<div class="col-md-8">
 							<?php echo $form->error($model,'jeniskelamin'); ?>
 							<?php
 							echo $form->radioButtonList($model,'jeniskelamin',
@@ -145,13 +145,13 @@
 						</div>  		
 
 
-						<div class="form-group">
+						<div class="form-group row">
 
-							<div class="col-md-4 col-lg-12 col-xs-12 control-label">
+							<div class="col-sm-4 control-label">
 								<?php echo $form->labelEx($model,'umur'); ?>
 							</div>   
 
-							<div class="col-md-8 col-lg-12 col-xs-12">
+							<div class="col-md-8">
 								<?php echo $form->error($model,'umur'); ?>
 								<?php echo $form->textField($model,'umur',array('class'=>'form-control')); ?>
 							</div>
@@ -159,13 +159,13 @@
 						</div>  										
 
 
-						<div class="form-group">
+						<div class="form-group row">
 
-							<div class="col-md-4 col-lg-12 col-xs-12 control-label">
+							<div class="col-sm-4 control-label">
 								<?php echo $form->labelEx($model,'deskripsi_pekerjaan'); ?>
 							</div>   
 
-							<div class="col-md-8 col-lg-12 col-xs-12">
+							<div class="col-md-8">
 								<?php echo $form->error($model,'deskripsi_pekerjaan'); ?>
 								<?php echo $form->textArea($model,'deskripsi_pekerjaan',array('class'=>'form-control')); ?>
 							</div>
@@ -173,13 +173,13 @@
 						</div>  
 
 
-						<div class="form-group">
+						<div class="form-group row">
 
-							<div class="col-md-4 col-lg-12 col-xs-12 control-label">
+							<div class="col-sm-4 control-label">
 								<?php echo $form->labelEx($model,'deskripsi_kebutuhan'); ?>
 							</div>   
 
-							<div class="col-md-8 col-lg-12 col-xs-12">
+							<div class="col-md-8">
 								<?php echo $form->error($model,'deskripsi_kebutuhan'); ?>
 								<?php echo $form->textArea($model,'deskripsi_kebutuhan',array('class'=>'form-control')); ?>
 							</div>
@@ -187,13 +187,13 @@
 						</div>  
 
 
-						<div class="form-group">
+						<div class="form-group row">
 
-							<div class="col-md-4 col-lg-12 col-xs-12 control-label">
+							<div class="col-sm-4 control-label">
 								<?php echo $form->labelEx($model,'tanggal_kebutuhan'); ?>
 							</div>   
 
-							<div class="col-md-8 col-lg-12 col-xs-12">
+							<div class="col-md-8">
 								<?php echo $form->error($model,'tanggal_kebutuhan'); ?>
 								<?php
 								$this->widget('zii.widgets.jui.CJuiDatePicker', array(
@@ -223,13 +223,13 @@
 							</div>  
 
 
-							<div class="form-group">
+							<div class="form-group row">
 
-								<div class="col-md-4 col-lg-12 col-xs-12 control-label">
+								<div class="col-sm-4 control-label">
 									<?php echo $form->labelEx($model,'lokasi'); ?>
 								</div>   
 
-								<div class="col-md-8 col-lg-12 col-xs-12">
+								<div class="col-md-8">
 									<?php echo $form->error($model,'lokasi'); ?>
 									<?php echo $form->textField($model,'lokasi',array('id'=>'advanced-placepicker','class'=>'form-control','data-map-container-id'=>'collapseTwo')); ?>
 									
@@ -243,13 +243,13 @@
 							</div>  
 
 
-							<div class="form-group">
+							<div class="form-group row">
 
-								<div class="col-md-4 col-lg-12 col-xs-12 control-label">
+								<div class="col-sm-4 control-label">
 									<?php echo $form->labelEx($model,'status'); ?>
 								</div>   
 
-								<div class="col-md-8 col-lg-12 col-xs-12">
+								<div class="col-md-8">
 									<?php echo $form->error($model,'status'); ?>
 									<?php
 									echo $form->radioButtonList($model,'status',
@@ -267,7 +267,7 @@
 
 								</div>  
 
-								<div class="form-group">
+								<div class="form-group row">
 									<div class="col-md-12">  
 									</br></br>
 									<?php echo CHtml::submitButton($model->isNewRecord ? 'Simpan' : 'Edit', array('class' => 'btn btn-danger btn-flat pull-right')); ?>

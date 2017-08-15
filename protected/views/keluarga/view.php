@@ -73,7 +73,7 @@ $this->breadcrumbs=array(
 		'tempat_lahir',
 		'tanggal_lahir',
 		'pendidikan_terakhir',
-		'jabatan_pekerjaan',
+		'pekerjaan',
 		'nama_perusahaan',
 		'keterangan',
 		'user_id',

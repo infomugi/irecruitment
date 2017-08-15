@@ -47,8 +47,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'jabatan_pekerjaan'); ?>
-		<?php echo $form->textField($model,'jabatan_pekerjaan'); ?>
+		<?php echo $form->label($model,'pekerjaan'); ?>
+		<?php echo $form->textField($model,'pekerjaan'); ?>
 	</div>
 
 	<div class="row">

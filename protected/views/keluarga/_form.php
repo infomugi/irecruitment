@@ -162,59 +162,54 @@
 						<div class="form-group">
 
 							<div class="col-sm-4 control-label">
-								<?php echo $form->labelEx($model,'jabatan_pekerjaan'); ?>
+								<?php echo $form->labelEx($model,'pekerjaan'); ?>
 							</div>   
 
 							<div class="col-sm-8">
-								<?php echo $form->error($model,'jabatan_pekerjaan'); ?>
-								<?php echo $form->dropDownList($model, "jabatan_pekerjaan",
-									CHtml::listData(Jabatan::model()->findAll(array('condition'=>'status = "Aktif"','order'=>'nama ASC')),
-										'id_jabatan', 'nama'
-										),
-									array("empty"=>"-- Pilih Jabatan --", 'class'=>'form-control')
-									); ?> 
-								</div>
-
-							</div>  
-
-
-							<div class="form-group">
-
-								<div class="col-sm-4 control-label">
-									<?php echo $form->labelEx($model,'nama_perusahaan'); ?>
-								</div>   
-
-								<div class="col-sm-8">
-									<?php echo $form->error($model,'nama_perusahaan'); ?>
-									<?php echo $form->textField($model,'nama_perusahaan',array('class'=>'form-control')); ?>
-								</div>
-
-							</div>  
-
-
-							<div class="form-group">
-
-								<div class="col-sm-4 control-label">
-									<?php echo $form->labelEx($model,'keterangan'); ?>
-								</div>   
-
-								<div class="col-sm-8">
-									<?php echo $form->error($model,'keterangan'); ?>
-									<?php echo $form->textArea($model,'keterangan',array('class'=>'form-control')); ?>
-								</div>
-
-							</div>  
-
-
-							<div class="form-group">
-								<div class="col-md-12">  
-								</br></br>
-								<?php echo CHtml::submitButton($model->isNewRecord ? 'Submit' : 'Edit', array('class' => 'btn btn-success btn-flat pull-right')); ?>
+								<?php echo $form->error($model,'pekerjaan'); ?>
+								<?php echo $form->textField($model,'pekerjaan',array('class'=>'form-control')); ?>
 							</div>
+
+						</div>  
+
+
+						<div class="form-group">
+
+							<div class="col-sm-4 control-label">
+								<?php echo $form->labelEx($model,'nama_perusahaan'); ?>
+							</div>   
+
+							<div class="col-sm-8">
+								<?php echo $form->error($model,'nama_perusahaan'); ?>
+								<?php echo $form->textField($model,'nama_perusahaan',array('class'=>'form-control')); ?>
+							</div>
+
+						</div>  
+
+
+						<div class="form-group">
+
+							<div class="col-sm-4 control-label">
+								<?php echo $form->labelEx($model,'keterangan'); ?>
+							</div>   
+
+							<div class="col-sm-8">
+								<?php echo $form->error($model,'keterangan'); ?>
+								<?php echo $form->textArea($model,'keterangan',array('class'=>'form-control')); ?>
+							</div>
+
+						</div>  
+
+
+						<div class="form-group">
+							<div class="col-md-12">  
+							</br></br>
+							<?php echo CHtml::submitButton($model->isNewRecord ? 'Submit' : 'Edit', array('class' => 'btn btn-success btn-flat pull-right')); ?>
 						</div>
-
-						<?php $this->endWidget(); ?>
-
-
 					</div>
+
+					<?php $this->endWidget(); ?>
+
+
+				</div>
 <!-- form -->

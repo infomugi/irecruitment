@@ -194,7 +194,7 @@ $this->pageTitle='Analisis Penilaian Pelamar dengan Metode SAW';
 												'style' => 'text-align: center;')),
 
 										'nilai',
-										array('name'=>'customer_id','value'=>'$data->Customer->username'),
+										array('name'=>'pelamar_id','value'=>'$data->Pelamar->username'),
 										array(
 											'header' => 'Aksi',
 											'type' => 'raw',

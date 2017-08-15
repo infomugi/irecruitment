@@ -8,6 +8,8 @@
  * @property string $tanggal
  * @property integer $penilai_id
  * @property integer $pelamar_id
+ * @property integer $lamaran_id
+ * @property integer $lowongan_id
  * @property integer $c1
  * @property integer $c2
  * @property integer $c3
@@ -36,13 +38,13 @@ class PenilaianSaw extends CActiveRecord
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
 		return array(
-			array('tanggal, penilai_id, customer_id, c1, c2, c3, c4, c5, c6, c7, nilai', 'required','on'=>'create'),
+			array('tanggal, penilai_id, pelamar_id, lowongan_id, lamaran_id, c1, c2, c3, c4, c5, c6, c7, nilai', 'required','on'=>'create'),
 			array('status', 'required','on'=>'verifikasi'),
-			array('penilai_id, customer_id, c1, c2, c3, c4, c5, c6, c7, status', 'numerical', 'integerOnly'=>true),
+			array('penilai_id, pelamar_id, lowongan_id, lamaran_id, c1, c2, c3, c4, c5, c6, c7, status', 'numerical', 'integerOnly'=>true),
 			array('nilai', 'numerical'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
-			array('id_penilaian_saw, tanggal, penilai_id, customer_id, c1, c2, c3, c4, c5, c6, c7, nilai, status', 'safe', 'on'=>'search'),
+			array('id_penilaian_saw, tanggal, penilai_id, lowongan_id, pelamar_id, c1, c2, c3, c4, c5, c6, c7, nilai, status', 'safe', 'on'=>'search'),
 			);
 	}
 
@@ -55,7 +57,7 @@ class PenilaianSaw extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'Penilai'=>array(self::BELONGS_TO,'Account','penilai_id'),
-			'Customer'=>array(self::BELONGS_TO,'User','customer_id'),
+			'Pelamar'=>array(self::BELONGS_TO,'User','pelamar_id'),
 			'Character'=>array(self::BELONGS_TO,'Crips','c1'),
 			'Capacity'=>array(self::BELONGS_TO,'Crips','c2'),
 			'Capital'=>array(self::BELONGS_TO,'Crips','c3'),
@@ -75,7 +77,9 @@ class PenilaianSaw extends CActiveRecord
 			'id_penilaian_saw' => 'Id Penilaian Saw',
 			'tanggal' => 'Tanggal',
 			'penilai_id' => 'Penilai',
-			'customer_id' => 'Customer',
+			'pelamar_id' => 'Pelamar',
+			'lowongan_id' => 'Lowongan',
+			'lamaran_id' => 'Lamaran',
 			'c1' => 'Inverview HR',
 			'c2' => 'Tes Komputer',
 			'c3' => 'Tes Psikotest',
@@ -83,7 +87,7 @@ class PenilaianSaw extends CActiveRecord
 			'c5' => 'Tes Kemampuan',
 			'c6' => 'Tes Suara',
 			'c7' => 'Interview Client',
-			'nilai' => 'Hasil',
+			'nilai' => 'Hasil Penilaian',
 			'status' => 'Status',
 			);
 	}
@@ -109,7 +113,9 @@ class PenilaianSaw extends CActiveRecord
 		$criteria->compare('id_penilaian_saw',$this->id_penilaian_saw);
 		$criteria->compare('tanggal',$this->tanggal,true);
 		$criteria->compare('penilai_id',$this->penilai_id);
-		$criteria->compare('customer_id',$this->customer_id);
+		$criteria->compare('pelamar_id',$this->pelamar_id);
+		$criteria->compare('lowongan_id',$this->lowongan_id);
+		$criteria->compare('lamaran_id',$this->lamaran_id);
 		$criteria->compare('c1',$this->c1);
 		$criteria->compare('c2',$this->c2);
 		$criteria->compare('c3',$this->c3);
@@ -158,7 +164,7 @@ class PenilaianSaw extends CActiveRecord
 	} 	    
 
 	public function goodCustomer(){
-		$data = Yii::app()->db->createCommand("SELECT MAX(penilaian_saw.nilai) as nilai, customer.nama as nama  FROM penilaian_saw LEFT JOIN customer ON penilaian_saw.customer_id=customer.id_customer")->queryScalar();
+		$data = Yii::app()->db->createCommand("SELECT MAX(penilaian_saw.nilai) as nilai, customer.nama as nama  FROM penilaian_saw LEFT JOIN pelamar ON penilaian_saw.pelamar_id=pelamar.id_people")->queryScalar();
 		return round($data,4);
 	}    		
 

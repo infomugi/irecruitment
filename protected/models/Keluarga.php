@@ -11,7 +11,7 @@
  * @property string $tempat_lahir
  * @property string $tanggal_lahir
  * @property integer $pendidikan_terakhir
- * @property integer $jabatan_pekerjaan
+ * @property integer $pekerjaan
  * @property string $nama_perusahaan
  * @property string $keterangan
  * @property integer $people_id
@@ -35,12 +35,13 @@ class Keluarga extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('hubungan_keluarga, nama, jenis_kelamin, tempat_lahir, tanggal_lahir, pendidikan_terakhir, jabatan_pekerjaan, nama_perusahaan, keterangan, user_id', 'required'),
-			array('hubungan_keluarga, jenis_kelamin, pendidikan_terakhir, jabatan_pekerjaan, people_id, user_id', 'numerical', 'integerOnly'=>true),
+			array('hubungan_keluarga, nama, jenis_kelamin, tempat_lahir, tanggal_lahir, pendidikan_terakhir, pekerjaan, nama_perusahaan, keterangan, user_id', 'required'),
+			array('hubungan_keluarga, jenis_kelamin, pendidikan_terakhir, people_id, user_id', 'numerical', 'integerOnly'=>true),
 			array('nama, tempat_lahir, nama_perusahaan', 'length', 'max'=>50),
+			array('pekerjaan', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_keluarga, hubungan_keluarga, nama, jenis_kelamin, tempat_lahir, tanggal_lahir, pendidikan_terakhir, jabatan_pekerjaan, nama_perusahaan, keterangan, user_id', 'safe', 'on'=>'search'),
+			array('id_keluarga, hubungan_keluarga, nama, jenis_kelamin, tempat_lahir, tanggal_lahir, pendidikan_terakhir, pekerjaan, nama_perusahaan, keterangan, user_id', 'safe', 'on'=>'search'),
 			);
 	}
 
@@ -52,7 +53,7 @@ class Keluarga extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'Jabatan'=>array(self::BELONGS_TO,'Jabatan','jabatan_pekerjaan'),
+			'Jabatan'=>array(self::BELONGS_TO,'Jabatan','pekerjaan'),
 			);
 	}
 
@@ -69,7 +70,7 @@ class Keluarga extends CActiveRecord
 			'tempat_lahir' => 'Tempat Lahir',
 			'tanggal_lahir' => 'Tanggal Lahir',
 			'pendidikan_terakhir' => 'Pendidikan Terakhir',
-			'jabatan_pekerjaan' => 'Jabatan Pekerjaan',
+			'pekerjaan' => 'Jabatan Pekerjaan',
 			'nama_perusahaan' => 'Nama Perusahaan',
 			'keterangan' => 'Keterangan',
 			'people_id' => 'People',
@@ -102,7 +103,7 @@ class Keluarga extends CActiveRecord
 		$criteria->compare('tempat_lahir',$this->tempat_lahir,true);
 		$criteria->compare('tanggal_lahir',$this->tanggal_lahir,true);
 		$criteria->compare('pendidikan_terakhir',$this->pendidikan_terakhir);
-		$criteria->compare('jabatan_pekerjaan',$this->jabatan_pekerjaan);
+		$criteria->compare('pekerjaan',$this->pekerjaan);
 		$criteria->compare('nama_perusahaan',$this->nama_perusahaan,true);
 		$criteria->compare('keterangan',$this->keterangan,true);
 		$criteria->compare('people_id',$this->people_id);

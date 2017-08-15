@@ -4,7 +4,7 @@
 
 $this->breadcrumbs=array(
 	'Penilaian Saws'=>array('index'),
-	$model->Customer->nama,
+	$model->Pelamar->username,
 	);
 
 $this->pageTitle='Detail Penilaian SAW';
@@ -36,7 +36,7 @@ $this->pageTitle='Detail Penilaian SAW';
 								'attributes'=>array(
 									'tanggal',
 									array('name'=>'penilai_id','value'=>$model->Penilai->namaLengkap),
-									array('name'=>'customer_id','value'=>$model->Customer->nama),
+									array('name'=>'pelamar_id','value'=>$model->Pelamar->nama),
 									array('name'=>'c1','value'=>$model->Character->keterangan),
 									array('name'=>'c2','value'=>$model->Capacity->keterangan),
 									array('name'=>'c3','value'=>$model->Capital->keterangan),
@@ -69,14 +69,14 @@ $this->pageTitle='Detail Penilaian SAW';
 											<?php }else{ ?>
 												<?php
 												if($model->status==1){
-														$alert = "success";
-													}else if($model->status==2){
-														$alert = "info";
-													}else if($model->status==2){
-														$alert = "danger";
-													}else{
-														$alert = "warning";
-													}
+													$alert = "success";
+												}else if($model->status==2){
+													$alert = "info";
+												}else if($model->status==2){
+													$alert = "danger";
+												}else{
+													$alert = "warning";
+												}
 												?>
 												<div class="alert alert-<?php echo $alert ?>"><?php echo PenilaianSaw::model()->status($model->status); ?></div>
 

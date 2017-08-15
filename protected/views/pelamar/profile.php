@@ -95,7 +95,7 @@ $this->pageTitle='Data Diri - '.ucfirst($model->nama);
 				'tempat_lahir',
 				'tanggal_lahir',
 				array('name'=>'pendidikan_terakhir','value'=>'Keluarga::model()->school($data->pendidikan_terakhir)'),
-				array('name'=>'jabatan_pekerjaan','value'=>'$data->Jabatan->nama'),
+				array('name'=>'pekerjaan','value'=>'$data->pekerjaan'),
 				'nama_perusahaan',
 				'keterangan',
 

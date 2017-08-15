@@ -21,7 +21,7 @@
 					'attributes'=>array(
 						'tanggal',
 						array('name'=>'penilai_id','value'=>$data->Penilai->namaLengkap),
-						array('name'=>'customer_id','value'=>$data->Customer->nama),
+						array('name'=>'pelamar_id','value'=>$data->Customer->nama),
 						array('name'=>'c1','value'=>$data->Character->keterangan),
 						array('name'=>'c2','value'=>$data->Capacity->keterangan),
 						array('name'=>'c3','value'=>$data->Capital->keterangan),
