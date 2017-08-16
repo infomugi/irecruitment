@@ -149,4 +149,44 @@ class FileLamaran extends CActiveRecord
 		return TRUE;
 	}   
 
+	public function status($data){
+		if($data==0){
+			return "Belum di Verifikasi";
+		}elseif($data==1){
+			return "Sudah di Verifikasi";
+		}elseif($data==2){
+			return "Belum di Panggil";
+		}elseif($data==3){
+			return "Sudah di Panggil";
+		}elseif($data==4){
+			return "Diterima menjadi Karyawan";
+		}elseif($data==5){
+			return "Dipending menjadi Karyawan";
+		}elseif($data==6){
+			return "Ditolak menjadi Karyawan";
+		}else{
+			return "Tidak Diketahui";
+		}
+	}
+
+	public function statusLabel($data){
+		if($data==0){
+			return "alert-warning";
+		}elseif($data==1){
+			return "alert-success";
+		}elseif($data==2){
+			return "alert-info";
+		}elseif($data==3){
+			return "alert-success";
+		}elseif($data==4){
+			return "alert-success";
+		}elseif($data==5){
+			return "alert-warning";
+		}elseif($data==6){
+			return "alert-danger";
+		}else{
+			return "alert-primary";
+		}
+	}	
+
 }

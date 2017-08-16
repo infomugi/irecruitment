@@ -21,9 +21,10 @@ if($data->status_lamaran=="Belum di Verifikasi"){
 		<span class="mail-desc">
 			<?php echo CHtml::link(CHtml::encode("Lamaran : ".$dataBagian->nama." - ".$dataJabatan->nama), array('filelamaran/view', 'id'=>$data->id)); ?>
 		</span> 
-		<span class="label label-rouded label-<?php echo $alert; ?>">
-			<?php echo $data->status_lamaran; ?>
+		<span class="label label-rouded <?php echo FileLamaran::model()->statusLabel($data->status_lamaran); ?>">
+			<?php echo FileLamaran::model()->status($data->status_lamaran); ?>
 		</span>
+
 
 		<?php 
 		echo CHtml::link('<i class="ti-check text-success"></i>', 

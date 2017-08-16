@@ -33,7 +33,7 @@ class FileLamaranController extends Controller
 				'expression'=>'Yii::app()->user->getLevel()==2',
 				),			
 			array('allow',
-				'actions'=>array('create','update','view','delete','admin','index','history','diterima','ditolak','unverified','verified','reject','lulus','accept'),
+				'actions'=>array('create','update','view','delete','admin','index','history','diterima','ditolak','unverified','verified','reject','lulus','accept','call','uncall'),
 				'users'=>array('@'),
 				'expression'=>'Yii::app()->user->getLevel()==1',
 				),
@@ -139,7 +139,7 @@ class FileLamaranController extends Controller
 	public function actionUnverified()
 	{
 		$this->layout="admin";
-		$dataProvider=new CActiveDataProvider('FileLamaran',array('criteria'=>array('condition'=>'status_lamaran="Belum di Verifikasi"'), ));
+		$dataProvider=new CActiveDataProvider('FileLamaran',array('criteria'=>array('condition'=>'status_lamaran="0"'), ));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 			'pageTitle'=>"Belum di Verifikasi",
@@ -149,7 +149,27 @@ class FileLamaranController extends Controller
 	public function actionVerified()
 	{
 		$this->layout="admin";
-		$dataProvider=new CActiveDataProvider('FileLamaran',array('criteria'=>array('condition'=>'status_lamaran="Diverifikasi"'), 'sort'=>array('defaultOrder'=>'id DESC')));
+		$dataProvider=new CActiveDataProvider('FileLamaran',array('criteria'=>array('condition'=>'status_lamaran="1"'), 'sort'=>array('defaultOrder'=>'id DESC')));
+		$this->render('index',array(
+			'dataProvider'=>$dataProvider,
+			'title'=>"Diverifikasi",
+			));
+	}	
+
+	public function actionCall()
+	{
+		$this->layout="admin";
+		$dataProvider=new CActiveDataProvider('FileLamaran',array('criteria'=>array('condition'=>'status_lamaran="2"'), 'sort'=>array('defaultOrder'=>'id DESC')));
+		$this->render('index',array(
+			'dataProvider'=>$dataProvider,
+			'title'=>"Diverifikasi",
+			));
+	}	
+
+	public function actionUncall()
+	{
+		$this->layout="admin";
+		$dataProvider=new CActiveDataProvider('FileLamaran',array('criteria'=>array('condition'=>'status_lamaran="3"'), 'sort'=>array('defaultOrder'=>'id DESC')));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 			'title'=>"Diverifikasi",
@@ -159,22 +179,32 @@ class FileLamaranController extends Controller
 	public function actionAccept()
 	{
 		$this->layout="admin";
-		$dataProvider=new CActiveDataProvider('FileLamaran',array('criteria'=>array('condition'=>'status_lamaran="Diterima"'), 'sort'=>array('defaultOrder'=>'id DESC')));
+		$dataProvider=new CActiveDataProvider('FileLamaran',array('criteria'=>array('condition'=>'status_lamaran="4"'), 'sort'=>array('defaultOrder'=>'id DESC')));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 			'title'=>"Diterima",
 			));
 	}		
 
-	public function actionReject()
+	public function actionPending()
 	{
 		$this->layout="admin";
-		$dataProvider=new CActiveDataProvider('FileLamaran',array('criteria'=>array('condition'=>'status_lamaran="Ditolak"'), 'sort'=>array('defaultOrder'=>'id DESC')));
+		$dataProvider=new CActiveDataProvider('FileLamaran',array('criteria'=>array('condition'=>'status_lamaran="5"'), 'sort'=>array('defaultOrder'=>'id DESC')));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 			'title'=>"Ditolak",
 			));
-	}				
+	}	
+
+	public function actionReject()
+	{
+		$this->layout="admin";
+		$dataProvider=new CActiveDataProvider('FileLamaran',array('criteria'=>array('condition'=>'status_lamaran="6"'), 'sort'=>array('defaultOrder'=>'id DESC')));
+		$this->render('index',array(
+			'dataProvider'=>$dataProvider,
+			'title'=>"Ditolak",
+			));
+	}					
 
 	public function actionHistory()
 	{
