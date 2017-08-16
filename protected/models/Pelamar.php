@@ -26,6 +26,8 @@
  * @property string $no_npwp
  * @property string $telephone_pribadi
  * @property string $telephone_rumah
+ * @property integer $lowongan_id
+ * @property integer $lamaran_id
  */
 class Pelamar extends CActiveRecord
 {
@@ -49,7 +51,7 @@ class Pelamar extends CActiveRecord
 			array('nama, nik', 'required','on'=>'register_pelamar'),
 			array('nik','unique'),
 			array('nama, nik, tempat_lahir, tanggal_lahir, agama, jenis_kelamin, golongan_darah, kewarganegaraan, hp, kota_id, provinsi_id', 'required','on'=>'update_pelamar'),
-			array('id_people, id_user, kota_id, provinsi_id, nik, status_menikah, status_domisili', 'numerical', 'integerOnly'=>true),
+			array('id_people, id_user, kota_id, provinsi_id, nik, status_menikah, status_domisili, lamaran_id, lowongan_id', 'numerical', 'integerOnly'=>true),
 			array('nama, tanggal_lahir, nik, no_jamsostek, no_sim, no_npwp, alamat_domisili, telephone_pribadi, telephone_rumah, tanggal_lahir', 'length', 'max'=>255),
 			array('tempat_lahir, tanggal_lahir, agama, jenis_kelamin, golongan_darah, kewarganegaraan, hp', 'length', 'max'=>30),
 			// The following rule is used by search().
@@ -68,6 +70,7 @@ class Pelamar extends CActiveRecord
 		return array(
 			'Kota' => array(self::BELONGS_TO, 'Kota', 'kota_id'),
 			'Provinsi' => array(self::BELONGS_TO, 'Provinsi', 'provinsi_id'),
+			'Lowongan' => array(self::BELONGS_TO, 'Lowongan', 'lowongan_id'),
 			);
 	}
 
@@ -94,6 +97,8 @@ class Pelamar extends CActiveRecord
 			'no_sim' => 'No. SIM',
 			'no_npwp' => 'No. NPWP',
 			'kontak' => 'Kontak',
+			'lowongan_id' => 'Lowongan',
+			'lamaran_id' => 'Lamaran',
 			);
 	}
 

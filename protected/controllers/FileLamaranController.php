@@ -50,6 +50,9 @@ class FileLamaranController extends Controller
 	public function actionView($id)
 	{
 		$model=$this->loadModel($id);
+		$dataDokumen=$this->loadDokumen($model->id_people);
+		$dataProfile=$this->loadPelamar($model->id_people);
+
 		$model->setScenario('keterangan');
 
 		$criteria = new CDbCriteria;
@@ -73,6 +76,8 @@ class FileLamaranController extends Controller
 
 		$this->render('view',array(
 			'model'=>$model,
+			'dataDokumen'=>$dataDokumen,
+			'dataProfile'=>$dataProfile,
 			'dataProviders'=>$dataProviders,
 			));
 	}
@@ -89,115 +94,15 @@ class FileLamaranController extends Controller
 		$model->tanggal_upload = date('Y-m-d h:i:s');
 		$model->status_lamaran = "Belum di Verifikasi";
 		$model->save();
+
+		$pelamar=$this->loadPelamar($user);
+		$pelamar->lowongan_id = $job;
+		$pelamar->lamaran_id = $user;
+		$pelamar->user_id = $user;
+		$pelamar->save();
+
 		$this->redirect(array('history'));
 	}
-
-	public function actionUpload($job,$user)
-	{
-		$model=new FileLamaran;
-		$model->setScenario('lamar');
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['FileLamaran']))
-		{
-			$model->attributes=$_POST['FileLamaran'];
-			$model->lowongan_id = $job;
-			$model->id_people = $user;
-			$model->tanggal_upload = date('Y-m-d h:i:s');
-			$model->status_lamaran = "Belum di Verifikasi";
-			$model->test_id = 1;
-
-			$model->file_lamaran=CUploadedFile::getInstance($model,'file_lamaran');
-			$tmp;
-			if(strlen(trim(CUploadedFile::getInstance($model,'file_lamaran'))) > 0) 
-			{ 
-				$tmp=CUploadedFile::getInstance($model,'file_lamaran'); 
-				$model->file_lamaran=$model->lowongan_id.$model->id_people.rand(1000,2000).'-'.date('hms').'.'.$tmp->extensionName; 
-			}
-
-
-			if($model->save()){
-				if(strlen(trim($model->file_lamaran)) > 0) 
-					$tmp->saveAs(Yii::getPathOfAlias('webroot').'/lamaran/'.$model->file_lamaran);
-				$this->redirect(array('history'));
-			}
-		}
-
-		$this->render('create',array(
-			'model'=>$model,
-			));
-	}		
-
-	/**
-	 * Updates a particular model.
-	 * If update is successful, the browser will be redirected to the 'view' page.
-	 * @param integer $id the ID of the model to be updated
-	 */
-	public function actionUpdate($id)
-	{
-		$model=$this->loadModel($id);
-		$model->setScenario('lamar');
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['FileLamaran']))
-		{
-			$model->attributes=$_POST['FileLamaran'];
-			$model->test_id = 1;
-			$model->file_lamaran=CUploadedFile::getInstance($model,'file_lamaran');
-			$tmp;
-			if(strlen(trim(CUploadedFile::getInstance($model,'file_lamaran'))) > 0) 
-			{ 
-				$tmp=CUploadedFile::getInstance($model,'file_lamaran'); 
-				$model->file_lamaran="Lamaran".$model->id.$model->id_people.'.'.$tmp->extensionName; 
-			}
-
-			if($model->update()){
-				if(strlen(trim($model->file_lamaran)) > 0) 
-					$tmp->saveAs(Yii::getPathOfAlias('webroot').'/lamaran/'.$model->file_lamaran);				
-				$this->redirect(array('view','id'=>$model->id));
-			}
-		}
-
-		$this->render('update',array(
-			'model'=>$model,
-			));
-	}
-
-
-	public function actionPsikotest($id)
-	{
-		$model=$this->loadModel($id);
-		$model->setScenario('psikotest');
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['FileLamaran']))
-		{
-			$model->attributes=$_POST['FileLamaran'];
-
-			$model->psikotest=CUploadedFile::getInstance($model,'psikotest');
-			$tmp;
-			if(strlen(trim(CUploadedFile::getInstance($model,'psikotest'))) > 0) 
-			{ 
-				$tmp=CUploadedFile::getInstance($model,'psikotest'); 
-				$model->psikotest="Psikotest".$model->id.$model->id_people.'.'.$tmp->extensionName; 
-			}
-
-			if($model->update()){
-				if(strlen(trim($model->psikotest)) > 0) 
-					$tmp->saveAs(Yii::getPathOfAlias('webroot').'/psikotest/'.$model->psikotest);				
-				$this->redirect(array('view','id'=>$model->id));
-			}
-		}
-
-		$this->render('psikotest',array(
-			'model'=>$model,
-			));
-	}	
 
 	/**
 	 * Deletes a particular model.
@@ -237,6 +142,7 @@ class FileLamaranController extends Controller
 		$dataProvider=new CActiveDataProvider('FileLamaran',array('criteria'=>array('condition'=>'status_lamaran="Belum di Verifikasi"'), ));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
+			'pageTitle'=>"Belum di Verifikasi",
 			));
 	}	
 
@@ -246,6 +152,7 @@ class FileLamaranController extends Controller
 		$dataProvider=new CActiveDataProvider('FileLamaran',array('criteria'=>array('condition'=>'status_lamaran="Diverifikasi"'), 'sort'=>array('defaultOrder'=>'id DESC')));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
+			'title'=>"Diverifikasi",
 			));
 	}	
 
@@ -255,6 +162,7 @@ class FileLamaranController extends Controller
 		$dataProvider=new CActiveDataProvider('FileLamaran',array('criteria'=>array('condition'=>'status_lamaran="Diterima"'), 'sort'=>array('defaultOrder'=>'id DESC')));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
+			'title'=>"Diterima",
 			));
 	}		
 
@@ -264,6 +172,7 @@ class FileLamaranController extends Controller
 		$dataProvider=new CActiveDataProvider('FileLamaran',array('criteria'=>array('condition'=>'status_lamaran="Ditolak"'), 'sort'=>array('defaultOrder'=>'id DESC')));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
+			'title'=>"Ditolak",
 			));
 	}				
 
@@ -275,7 +184,6 @@ class FileLamaranController extends Controller
 			$this->layout="main";
 		}
 
-		
 		$dataProvider=new CActiveDataProvider('FileLamaran',
 			array(
 				'criteria'=>array('condition'=>'id_people='.YII::app()->user->id),
@@ -316,6 +224,23 @@ class FileLamaranController extends Controller
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
 	}
+
+	public function loadPelamar($id)
+	{
+		$model=Pelamar::model()->findByAttributes(array('id_user'=>$id));
+		if($model===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
+	}		
+
+	public function loadDokumen($id)
+	{
+		$model=Dokumen::model()->findByAttributes(array('user_id'=>$id));
+		if($model===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
+	}			
+
 
 	/**
 	 * Performs the AJAX validation.
@@ -379,5 +304,6 @@ class FileLamaranController extends Controller
 			$this->redirect(array('view','id'=>$model->id));
 		}
 	}	
+	
 
 }

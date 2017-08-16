@@ -48,8 +48,25 @@ class LowonganController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$model=$this->loadModel($id);
+		$dataNilai=new CActiveDataProvider('PenilaianSaw',
+			array('criteria'=>
+				array('condition'=>'lowongan_id='.$model->id_lowongan.'','order'=>'id_penilaian_saw DESC')
+				)
+			);
+
+		$dataProvider=new CActiveDataProvider('FileLamaran',
+			array('criteria'=>array(
+				'condition'=>'lowongan_id="'.$model->id_lowongan.'"',
+				'order'=>'id DESC',
+				
+				),'pagination'=>array('pageSize'=>'4')
+			));
+
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+			'dataProvider'=>$dataProvider,
+			'dataNilai'=>$dataNilai,
 			));
 	}
 

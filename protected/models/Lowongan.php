@@ -142,28 +142,36 @@ class Lowongan extends CActiveRecord
 		}
 	}	
 
-	protected function beforeSave()
-	{
-		$this->tanggal = date('Y-m-d', strtotime($this->tanggal));
-		$this->tanggal_kebutuhan = date('Y-m-d', strtotime($this->tanggal_kebutuhan));
-		return TRUE;
-	}
-	
-	protected function afterFind()
-	{
-		$this->tanggal = date('d-m-Y', strtotime($this->tanggal));
-		return TRUE;
-	}   
+    public function statusLabel($data){
+        if($data==1){
+            return "alert alert-success";
+        }else{
+            return "alert alert-danger";
+        }
+    }       
 
-	public function frmDate($date,$code){
-		$explode = explode("-",$date);
-		$year  = $explode[0];
-		(substr($explode[1],0,1)=="0")?$month=str_replace("0","",$explode[1]):$month=is_string($explode[1]);
-		$dated = $explode[2];
-		$explode_time = explode(" ",$dated);
-		$dates = $explode_time[0];        
+    protected function beforeSave()
+    {
+      $this->tanggal = date('Y-m-d', strtotime($this->tanggal));
+      $this->tanggal_kebutuhan = date('Y-m-d', strtotime($this->tanggal_kebutuhan));
+      return TRUE;
+  }
+  
+  protected function afterFind()
+  {
+      $this->tanggal = date('d-m-Y', strtotime($this->tanggal));
+      return TRUE;
+  }   
 
-		switch($code){
+  public function frmDate($date,$code){
+      $explode = explode("-",$date);
+      $year  = $explode[0];
+      (substr($explode[1],0,1)=="0")?$month=str_replace("0","",$explode[1]):$month=is_string($explode[1]);
+      $dated = $explode[2];
+      $explode_time = explode(" ",$dated);
+      $dates = $explode_time[0];        
+
+      switch($code){
                 // Per Object
                 case 4: $format = $dates; break;                                                            // 01
                 case 5: $format = $month; break;                                                            // 01
@@ -309,6 +317,31 @@ class Lowongan extends CActiveRecord
             }else{
                 return "Laki-laki atau Perempuan";
             }
+        }
+
+        public function cekLamaran($pelamar,$job,$user){
+            //Apabila Pelamar sedang dalam Proses Melamar
+            if($pelamar==0){   
+                echo CHtml::link('Ajukan', 
+                    array('filelamaran/lamar', 'job'=>$job, 'user'=>$user), 
+                    array('class' => 'btn btn-success pull-right', 'title'=>'Melamar'));
+            }else{
+                echo "<div class='alert alert-danger'>Lamaran Anda Sedang di Proses</div>";
+            }
+
+        }
+
+        public function notifikasiLamaran($type){
+            if($type==1){
+                echo "<div class='alert alert-danger'>Maaf, Lowongan Ini Sudah Ditutup (Kuota Penuh).</div>";
+            }elseif($type==2){
+                echo "<div class='alert alert-info'>Maaf, Lowongan Ini Sudah Tidak Tersedia.</div>";
+            }elseif($type==3){
+                echo "<div class='alert alert-success'>Lamaran Ini Masih Dibuka, Silahkan Login untuk Melamar.</div>";
+            }else{
+                echo "<div class='alert alert-info'>-</div>";
+            }
+
         }
 
     }

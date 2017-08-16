@@ -79,6 +79,7 @@ class PenilaianSawController extends Controller
 			$model->attributes=$_POST['PenilaianSaw'];
 			$model->penilai_id = YII::app()->user->id;
 			$model->pelamar_id = $pelamar;
+			$model->user_id = YII::app()->user->id;
 			$model->tanggal = date('Y-m-d');
 			$model->status = 0;
 

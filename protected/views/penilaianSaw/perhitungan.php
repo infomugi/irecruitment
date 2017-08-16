@@ -198,9 +198,6 @@ $this->pageTitle='Analisis Penilaian Pelamar dengan Metode SAW';
 										array(
 											'header' => 'Aksi',
 											'type' => 'raw',
-											// 'value' => function($data) {
-											// 	return CHtml::link("Verifikasi", array('/penilaiansaw/verifikasi', 'id' => $data->id_penilaian_saw));
-											// }
 											'value'=>'PenilaianSaw::model()->cek($data->id_penilaian_saw)',
 											),
 

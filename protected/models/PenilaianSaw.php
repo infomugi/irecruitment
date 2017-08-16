@@ -7,6 +7,7 @@
  * @property integer $id_penilaian_saw
  * @property string $tanggal
  * @property integer $penilai_id
+ * @property integer $user_id
  * @property integer $pelamar_id
  * @property integer $lamaran_id
  * @property integer $lowongan_id
@@ -38,9 +39,9 @@ class PenilaianSaw extends CActiveRecord
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
 		return array(
-			array('tanggal, penilai_id, pelamar_id, lowongan_id, lamaran_id, c1, c2, c3, c4, c5, c6, c7, nilai', 'required','on'=>'create'),
+			array('tanggal, penilai_id, user_id, pelamar_id, lowongan_id, lamaran_id, c1, c2, c3, c4, c5, c6, c7, nilai', 'required','on'=>'create'),
 			array('status', 'required','on'=>'verifikasi'),
-			array('penilai_id, pelamar_id, lowongan_id, lamaran_id, c1, c2, c3, c4, c5, c6, c7, status', 'numerical', 'integerOnly'=>true),
+			array('penilai_id, pelamar_id, user_id,  lowongan_id, lamaran_id, c1, c2, c3, c4, c5, c6, c7, status', 'numerical', 'integerOnly'=>true),
 			array('nilai', 'numerical'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
@@ -202,7 +203,7 @@ class PenilaianSaw extends CActiveRecord
 		if($models!=NULL){
 			return CHtml::link('Terima Pelamar', 
 				array('penilaiansaw/verifikasi', 'id'=>$data), 
-				array('class' => 'btn btn-info btn-sm btn-flat', 'title'=>'Cetak Laporan'));
+				array('class' => 'btn btn-info btn-sm btn-flat', 'title'=>'Terima Sebagai Pegawai'));
 		}else{
 			return CHtml::link('Verifikasi', 
 				array('penilaiansaw/verifikasi', 'id'=>$data), 

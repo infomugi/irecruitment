@@ -39,15 +39,23 @@ $this->menu=array(
 												), array('class' => 'btn btn-danger btn-flat', 'title'=>'Daftar Lamaran Ditolak'));
 												?>
 
-											<?php endif; ?>								
+											<?php endif; ?>			
 
-											<section class="resumes-section">
-												<div class="resumes-content">
+											<div class="col-md-12">
+												
+												<div class="comment-center">
 
 													<?php $this->widget('zii.widgets.CListView', array(
 														'dataProvider'=>$dataProvider,
 														'itemView'=>'_view',
+														'summaryText'=>'',
 														)); ?>
 
+
 													</div>
-												</section>
+
+												</div>					
+
+
+
+
