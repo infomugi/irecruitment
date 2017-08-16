@@ -6,7 +6,6 @@
  * The followings are the available columns in table 'file_lamaran':
  * @property integer $id
  * @property string $file_lamaran
- * @property integer $id_people
  * @property string $tanggal_upload
  * @property string $status_lamaran
  * @property string $tanggal_verifikasi
@@ -14,6 +13,8 @@
  * @property integer $verifikasi_id
  * @property integer $lowongan_id
  * @property integer $test_id
+ * @property integer $user_id
+ * @property integer $pelamar_id
  */
 class FileLamaran extends CActiveRecord
 {
@@ -33,9 +34,9 @@ class FileLamaran extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_people, lowongan_id', 'required','on'=>'lamar'),
+			array('user_id, pelamar_id, lowongan_id', 'required','on'=>'lamar'),
 			array('keterangan', 'required','on'=>'keterangan'),
-			array('id_people, verifikasi_id, lowongan_id, test_id', 'numerical', 'integerOnly'=>true),
+			array('user_id, verifikasi_id, lowongan_id, test_id', 'numerical', 'integerOnly'=>true),
 			array('file_lamaran, psikotest, keterangan', 'length', 'max'=>250),
 			array('status_lamaran', 'length', 'max'=>25),
 			array('file_lamaran', 'required','on'=>'lamar'),
@@ -43,7 +44,7 @@ class FileLamaran extends CActiveRecord
 			array('file_lamaran, psikotest', 'file', 'types' => 'pdf, doc, docx', 'allowEmpty' => true, 'maxSize' => 1024 * 1024 * 1, 'tooLarge' => 'The file was larger than 3 MB. Please upload a smaller file.'),			
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, file_lamaran, id_people, tanggal_upload, status_lamaran, tanggal_verifikasi, keterangan, verifikasi_id, lowongan_id', 'safe', 'on'=>'search'),
+			array('id, file_lamaran, user_id, tanggal_upload, status_lamaran, tanggal_verifikasi, keterangan, verifikasi_id, lowongan_id', 'safe', 'on'=>'search'),
 			);
 	}
 
@@ -55,7 +56,8 @@ class FileLamaran extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'Pelamar' => array(self::BELONGS_TO,'User', 'id_people'),
+			'User' => array(self::BELONGS_TO,'User', 'user_id'),
+			'Pelamar' => array(self::BELONGS_TO,'Pelamar', 'pelamar_id'),
 			'Lowongan'=>array(self::BELONGS_TO,'Lowongan','lowongan_id'),			
 			);
 	}
@@ -68,7 +70,7 @@ class FileLamaran extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'file_lamaran' => 'File Lamaran',
-			'id_people' => 'Nama',
+			'user_id' => 'User ID',
 			'tanggal_upload' => 'Tanggal Upload',
 			'status_lamaran' => 'Status Lamaran',
 			'tanggal_verifikasi' => 'Tanggal Verifikasi',
@@ -98,7 +100,7 @@ class FileLamaran extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('file_lamaran',$this->file_lamaran,true);
-		$criteria->compare('id_people',$this->id_people);
+		$criteria->compare('user_id',$this->user_id);
 		$criteria->compare('tanggal_upload',$this->tanggal_upload,true);
 		$criteria->compare('status_lamaran',$this->status_lamaran,true);
 		$criteria->compare('tanggal_verifikasi',$this->tanggal_verifikasi,true);
@@ -111,7 +113,7 @@ class FileLamaran extends CActiveRecord
 			));
 	}
 
-	public function getLamaran($id_people)
+	public function getLamaran($user_id)
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
@@ -119,7 +121,7 @@ class FileLamaran extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('file_lamaran',$this->file_lamaran,true);
-		$criteria->compare('id_people',$id_people);
+		$criteria->compare('user_id',$user_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -164,8 +166,12 @@ class FileLamaran extends CActiveRecord
 			return "Dipending menjadi Karyawan";
 		}elseif($data==6){
 			return "Ditolak menjadi Karyawan";
+		}elseif($data==7){
+			return "Lulus Seleksi";
+		}elseif($data==8){
+			return "Tidak Lulus Seleksi";
 		}else{
-			return "Tidak Diketahui";
+			return "Dibatalkan oleh Pelamar";
 		}
 	}
 
@@ -185,7 +191,7 @@ class FileLamaran extends CActiveRecord
 		}elseif($data==6){
 			return "alert-danger";
 		}else{
-			return "alert-primary";
+			return "alert-danger";
 		}
 	}	
 

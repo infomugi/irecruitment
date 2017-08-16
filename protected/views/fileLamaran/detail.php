@@ -4,7 +4,7 @@
 
 		<?php if($model->test_id==1): ?>
 			<?php echo CHtml::link('<i class="fa fa-plus"></i> Buat Pengumuman', 
-				array('test/create', 'loker'=>$model->lowongan_id, 'lamaran'=>$model->id, 'user'=>$model->id_people
+				array('test/create', 'loker'=>$model->lowongan_id, 'lamaran'=>$model->id, 'user'=>$model->user_id
 					), array('class' => 'btn btn-danger btn-flat', 'title'=>'Buat Pengumuman Test'));
 					?>	 	
 				<?php endif; ?>
@@ -19,7 +19,7 @@
 
 					<?php 
 					echo CHtml::link('<i class="fa fa-star"></i> Buat Penilaian', 
-						array('penilaiansaw/create', 'pelamar'=>$model->id_people, 'lowongan'=>$model->lowongan_id, 'lamaran'=>$model->id,
+						array('penilaiansaw/create', 'pelamar'=>$model->user_id, 'lowongan'=>$model->lowongan_id, 'lamaran'=>$model->id,
 							), array('class' => 'btn btn-danger pull-right btn-flat', 'title'=>'Buat Penilaian'));
 					?>
 

@@ -33,7 +33,7 @@ class FileLamaranController extends Controller
 				'expression'=>'Yii::app()->user->getLevel()==2',
 				),			
 			array('allow',
-				'actions'=>array('create','update','view','delete','admin','index','history','diterima','ditolak','unverified','verified','reject','lulus','accept','call','uncall'),
+				'actions'=>array('create','update','view','delete','admin','index','history','diterima','ditolak','unverified','verified','reject','lulus','accept','call','uncall','lulus','tidaklulus'),
 				'users'=>array('@'),
 				'expression'=>'Yii::app()->user->getLevel()==1',
 				),
@@ -50,14 +50,14 @@ class FileLamaranController extends Controller
 	public function actionView($id)
 	{
 		$model=$this->loadModel($id);
-		$dataDokumen=$this->loadDokumen($model->id_people);
-		$dataProfile=$this->loadPelamar($model->id_people);
+		$dataDokumen=$this->loadDokumen($model->user_id);
+		$dataProfile=$this->loadPelamar($model->user_id);
 
 		$model->setScenario('keterangan');
 
 		$criteria = new CDbCriteria;
 		$criteria->condition = 'user_id = :user_id';
-		$criteria->params = array(':user_id'=>$model->id_people);
+		$criteria->params = array(':user_id'=>$model->user_id);
 		$criteria->order = 'tahun_lulus DESC';		
 
 		$dataProviders=new CActiveDataProvider('Pendidikan',array(
@@ -86,11 +86,12 @@ class FileLamaranController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionLamar($job,$user)
+	public function actionLamar($job,$user,$pelamar)
 	{
 		$model=new FileLamaran;
 		$model->lowongan_id = $job;
-		$model->id_people = $user;
+		$model->user_id = $user;
+		$model->pelamar_id = $pelamar;
 		$model->tanggal_upload = date('Y-m-d h:i:s');
 		$model->status_lamaran = "Belum di Verifikasi";
 		$model->save();
@@ -98,7 +99,7 @@ class FileLamaranController extends Controller
 		$pelamar=$this->loadPelamar($user);
 		$pelamar->lowongan_id = $job;
 		$pelamar->lamaran_id = $user;
-		$pelamar->user_id = $user;
+		$pelamar->id_user = $user;
 		$pelamar->save();
 
 		$this->redirect(array('history'));
@@ -216,11 +217,11 @@ class FileLamaranController extends Controller
 
 		$dataProvider=new CActiveDataProvider('FileLamaran',
 			array(
-				'criteria'=>array('condition'=>'id_people='.YII::app()->user->id),
+				'criteria'=>array('condition'=>'user_id='.YII::app()->user->id),
 				'sort'=>array('defaultOrder'=>'id DESC')
 				)
 			);
-		$this->render('index',array(
+		$this->render('history',array(
 			'dataProvider'=>$dataProvider,
 			));
 	}	
@@ -288,29 +289,39 @@ class FileLamaranController extends Controller
 	public function actionLulus($id)
 	{
 		$model=$this->loadModel($id);
-		$model->status_lamaran = "Diterima";
+		$model->status_lamaran = 7;
 		$model->tanggal_verifikasi = date('Y-m-d h:i:s');
 		$model->verifikasi_id = YII::app()->user->id;
 		if($model->update())
 			$this->redirect(array('view','id'=>$model->id));
 	}	
+
+	public function actionTidakLulus($id)
+	{
+		$model=$this->loadModel($id);
+		$model->status_lamaran = 8;
+		$model->tanggal_verifikasi = date('Y-m-d h:i:s');
+		$model->verifikasi_id = YII::app()->user->id;
+		if($model->update())
+			$this->redirect(array('view','id'=>$model->id));
+	}		
 
 
 	public function actionDiterima($id)
 	{
 		$model=$this->loadModel($id);
-		$model->status_lamaran = "Diverifikasi";
+		$model->status_lamaran = 1;
 		$model->tanggal_verifikasi = date('Y-m-d h:i:s');
 		$model->verifikasi_id = YII::app()->user->id;
 		if($model->update())
 			$this->redirect(array('view','id'=>$model->id));
-			// $this->redirect(array('test/create','loker'=>$model->lowongan_id,'lamaran'=>$model->id,'user'=>$model->id_people));
+			// $this->redirect(array('test/create','loker'=>$model->lowongan_id,'lamaran'=>$model->id,'user'=>$model->user_id));
 	}	
 
 	public function actionDitolak($id)
 	{
 		$model=$this->loadModel($id);
-		$model->status_lamaran = "Ditolak";
+		$model->status_lamaran = 6;
 		$model->tanggal_verifikasi = date('Y-m-d h:i:s');
 		$model->verifikasi_id = YII::app()->user->id;
 
@@ -327,7 +338,7 @@ class FileLamaranController extends Controller
 	public function actionDibatalkan($id)
 	{
 		$model=$this->loadModel($id);
-		$model->status_lamaran = "Dibatalkan";
+		$model->status_lamaran = 9;
 		$model->tanggal_verifikasi = date('Y-m-d h:i:s');
 		$model->verifikasi_id = YII::app()->user->id;
 		if($model->update()){
