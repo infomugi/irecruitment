@@ -74,7 +74,7 @@ class FileLamaran extends CActiveRecord
 			'tanggal_upload' => 'Tanggal Upload',
 			'status_lamaran' => 'Status Lamaran',
 			'tanggal_verifikasi' => 'Tanggal Verifikasi',
-			'keterangan' => 'Kirim Pesan ke Pelamar',
+			'keterangan' => 'Pesan dari HRD',
 			'verifikasi_id' => 'Verifikasi',
 			'lowongan_id' => 'Lowongan',
 			);

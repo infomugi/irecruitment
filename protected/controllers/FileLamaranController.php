@@ -33,7 +33,7 @@ class FileLamaranController extends Controller
 				'expression'=>'Yii::app()->user->getLevel()==2',
 				),			
 			array('allow',
-				'actions'=>array('create','update','view','delete','admin','index','history','diterima','ditolak','unverified','verified','reject','lulus','accept','call','uncall','lulus','tidaklulus'),
+				'actions'=>array('create','update','view','delete','admin','index','history','diterima','ditolak','unverified','verified','reject','lulus','accept','call','uncall','lulus','tidaklulus','sudahdipanggil','belumdipanggil'),
 				'users'=>array('@'),
 				'expression'=>'Yii::app()->user->getLevel()==1',
 				),
@@ -341,9 +341,38 @@ class FileLamaranController extends Controller
 		$model->status_lamaran = 9;
 		$model->tanggal_verifikasi = date('Y-m-d h:i:s');
 		$model->verifikasi_id = YII::app()->user->id;
+		$model->keterangan = "Lamaran Anda Tidak Kami Proses, Anda sudah Membatalkan Lamaran ini Pada ".date('Y-m-d h:i:s');
 		if($model->update()){
+
+			$pelamar=$this->loadPelamar($model->user_id);
+			$pelamar->lowongan_id = 0;
+			$pelamar->lamaran_id = 0;
+			$pelamar->save();
+
 			$this->redirect(array('view','id'=>$model->id));
 		}
+	}	
+
+	public function actionSudahdiPanggil($id)
+	{
+		$model=$this->loadModel($id);
+		$model->status_lamaran = 3;
+		$model->tanggal_verifikasi = date('Y-m-d h:i:s');
+		$model->verifikasi_id = YII::app()->user->id;
+		if($model->update())
+			$this->redirect(array('view','id'=>$model->id));
+	}	
+
+
+
+	public function actionBelumdiPanggil($id)
+	{
+		$model=$this->loadModel($id);
+		$model->status_lamaran = 2;
+		$model->tanggal_verifikasi = date('Y-m-d h:i:s');
+		$model->verifikasi_id = YII::app()->user->id;
+		if($model->update())
+			$this->redirect(array('view','id'=>$model->id));
 	}	
 	
 

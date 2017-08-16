@@ -164,6 +164,7 @@ class SiteController extends Controller
 		{
 			$model->attributes=$_POST['User'];
 			$Pelamar->attributes=$_POST['Pelamar'];
+			$model->image = "avatar.jpg";
 			$model->password = md5($model->password);
 			if($model->save()){
 				$Pelamar->id_people = rand(1000000,2000000);

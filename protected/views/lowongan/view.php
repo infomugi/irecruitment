@@ -98,8 +98,12 @@ if($lewat!="Telah lewat"){
 
 			}else{
 
-				$gender = $model->jeniskelamin == "L" ? "Laki-laki" : "Perempuan";
-				echo "<div class='alert alert-warning'>Maaf, Lowongan Ini Diprioritaskan untuk ".$gender."</div>";
+				echo "<div class='alert alert-warning'>Lowongan Ini Diprioritaskan untuk ".Lowongan::model()->gender($model->jeniskelamin)."</div>";
+
+				if($model->jeniskelamin=="LP"):
+					//Apabila Pelamar sedang dalam Proses Melamar
+					echo Lowongan::model()->cekLamaran($profile->lowongan_id,$model->id_lowongan,YII::app()->user->id);
+				endif;
 
 			}
 

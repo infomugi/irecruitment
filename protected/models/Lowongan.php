@@ -322,8 +322,10 @@ class Lowongan extends CActiveRecord
         public function cekLamaran($pelamar,$job,$user){
             //Apabila Pelamar sedang dalam Proses Melamar
             if($pelamar==0){   
+                $data=Pelamar::model()->findByAttributes(array('id_user'=>$user));
+
                 echo CHtml::link('Ajukan', 
-                    array('filelamaran/lamar', 'job'=>$job, 'user'=>$user), 
+                    array('filelamaran/lamar', 'job'=>$job, 'user'=>$user, 'pelamar'=>$data->id_people), 
                     array('class' => 'btn btn-success pull-right', 'title'=>'Melamar'));
             }else{
                 echo "<div class='alert alert-danger'>Lamaran Anda Sedang di Proses</div>";

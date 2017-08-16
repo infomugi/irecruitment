@@ -50,7 +50,7 @@ class Pelamar extends CActiveRecord
 		return array(
 			array('nama, nik', 'required','on'=>'register_pelamar'),
 			array('nik','unique'),
-			array('nama, nik, tempat_lahir, tanggal_lahir, agama, jenis_kelamin, golongan_darah, kewarganegaraan, hp, kota_id, provinsi_id', 'required','on'=>'update_pelamar'),
+			array('nama, tempat_lahir, tanggal_lahir, agama, jenis_kelamin, golongan_darah, kewarganegaraan, hp, kota_id, provinsi_id', 'required','on'=>'update_pelamar'),
 			array('id_people, id_user, kota_id, provinsi_id, nik, status_menikah, status_domisili, lamaran_id, lowongan_id', 'numerical', 'integerOnly'=>true),
 			array('nama, tanggal_lahir, nik, no_jamsostek, no_sim, no_npwp, alamat_domisili, telephone_pribadi, telephone_rumah, tanggal_lahir', 'length', 'max'=>255),
 			array('tempat_lahir, tanggal_lahir, agama, jenis_kelamin, golongan_darah, kewarganegaraan, hp', 'length', 'max'=>30),

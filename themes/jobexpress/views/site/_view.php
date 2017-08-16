@@ -15,9 +15,9 @@ if($data->status_lamaran=="Belum di Verifikasi"){
 ?>
 
 <div class="comment-body">
-	<div class="user-img"> <img src="<?php echo YII::app()->baseUrl; ?>/lamaran/foto/<?php echo $data->Pelamar->image; ?>" alt="user" class="img-circle"></div>
+	<div class="user-img"> <img src="<?php echo YII::app()->baseUrl; ?>/lamaran/foto/<?php echo $data->User->image; ?>" alt="user" class="img-circle"></div>
 	<div class="mail-contnet">
-		<h5>Pavan kumar</h5> 
+		<h5><?php echo $data->Pelamar->nama; ?></h5> 
 		<span class="mail-desc">
 			<?php echo CHtml::link(CHtml::encode("Lamaran : ".$dataBagian->nama." - ".$dataJabatan->nama), array('filelamaran/view', 'id'=>$data->id)); ?>
 		</span> 

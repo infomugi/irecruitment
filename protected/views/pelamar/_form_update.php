@@ -29,7 +29,7 @@
 
 				<div class="col-sm-8">
 					<?php echo $form->error($model,'nik'); ?>
-					<?php echo $form->textField($model,'nik',array('class'=>'form-control')); ?>
+					<?php echo $model->nik; ?>
 				</div>
 				
 			</div>  
