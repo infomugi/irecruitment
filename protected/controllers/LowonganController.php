@@ -55,17 +55,22 @@ class LowonganController extends Controller
 				)
 			);
 
-		$dataProvider=new CActiveDataProvider('FileLamaran',
-			array('criteria'=>array(
-				'condition'=>'lowongan_id="'.$model->id_lowongan.'"',
-				'order'=>'id DESC',
-				
-				),'pagination'=>array('pageSize'=>'4')
-			));
+		// $dataProvider=new CActiveDataProvider('FileLamaran',
+		// 	array('criteria'=>array(
+		// 		'condition'=>'lowongan_id="'.$model->id_lowongan.'"',
+		// 		'order'=>'id DESC',
+
+		// 		),'pagination'=>array('pageSize'=>'4')
+		// 	));
+
+		$dataUnverify=new FileLamaran('search');
+		$dataUnverify->unsetAttributes();  // clear any default values
+		if(isset($_GET['FileLamaran']))
+			$dataUnverify->attributes=$_GET['FileLamaran'];
 
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
-			'dataProvider'=>$dataProvider,
+			'dataUnverify'=>$dataUnverify,
 			'dataNilai'=>$dataNilai,
 			));
 	}

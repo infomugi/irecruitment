@@ -68,7 +68,7 @@ class FileLamaran extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
+			'id' => 'ID Pengajuan',
 			'file_lamaran' => 'File Lamaran',
 			'user_id' => 'User ID',
 			'tanggal_upload' => 'Tanggal Upload',
@@ -113,7 +113,7 @@ class FileLamaran extends CActiveRecord
 			));
 	}
 
-	public function getLamaran($user_id)
+	public function findStatus($status,$lowongan)
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
@@ -121,12 +121,19 @@ class FileLamaran extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('file_lamaran',$this->file_lamaran,true);
-		$criteria->compare('user_id',$user_id);
+		$criteria->compare('user_id',$this->user_id);
+		$criteria->compare('tanggal_upload',$this->tanggal_upload,true);
+		$criteria->compare('status_lamaran',$status);
+		$criteria->compare('tanggal_verifikasi',$this->tanggal_verifikasi,true);
+		$criteria->compare('keterangan',$this->keterangan,true);
+		$criteria->compare('verifikasi_id',$this->verifikasi_id);
+		$criteria->compare('lowongan_id',$lowongan);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 			));
-	}	
+	}
+
 
 	/**
 	 * Returns the static model of the specified AR class.
@@ -157,7 +164,7 @@ class FileLamaran extends CActiveRecord
 		}elseif($data==1){
 			return "Sudah di Verifikasi";
 		}elseif($data==2){
-			return "Belum di Panggil";
+			return "Panggilan di Tunda";
 		}elseif($data==3){
 			return "Sudah di Panggil";
 		}elseif($data==4){

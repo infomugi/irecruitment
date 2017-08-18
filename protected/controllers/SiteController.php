@@ -34,6 +34,8 @@ class SiteController extends Controller
 			
 			$this->layout="admin";
 			$dataProvider=new CActiveDataProvider('FileLamaran',array('criteria'=>array('condition'=>'status_lamaran="Belum di Verifikasi"')));
+
+
 			$this->render('dashboard',array(
 				'dataProvider'=>$dataProvider,
 				));
@@ -47,7 +49,7 @@ class SiteController extends Controller
 			$this->render('index',array(
 				'dataProvider'=>$dataProvider,
 				));
-			
+
 		}
 
 	}

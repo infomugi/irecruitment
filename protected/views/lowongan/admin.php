@@ -16,7 +16,7 @@ $this->pageTitle='Kelola Job Order';
 	array('class' => 'btn btn-danger btn-flat'));
 	?>
 	<?php echo CHtml::link('Daftar Job Order',
-		array('index'),
+		array('list'),
 		array('class' => 'btn btn-danger btn-flat'));
 		?>
 

@@ -141,7 +141,7 @@ Yii::app()->clientScript->registerCoreScript('jquery');
                       </a>
                     </li>
                     <li>
-                      <a href="<?php echo $url;?>lowongan/list" class="waves-effect">
+                      <a href="<?php echo $url;?>lowongan/admin" class="waves-effect">
                         <i class=" fa fa-archive" data-icon="v"></i> 
                         <span class="hide-menu">Job Order</span>
                       </a>

@@ -18,8 +18,7 @@ $this->pageTitle='Beranda';
 
 			</div>
 
-		</div>					
-
+		</div>				
 
 
 	<?php endif; ?>
