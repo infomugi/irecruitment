@@ -37,11 +37,11 @@ class FileLamaran extends CActiveRecord
 			array('user_id, pelamar_id, lowongan_id', 'required','on'=>'lamar'),
 			array('keterangan', 'required','on'=>'keterangan'),
 			array('user_id, verifikasi_id, lowongan_id, test_id', 'numerical', 'integerOnly'=>true),
-			array('file_lamaran, psikotest, keterangan', 'length', 'max'=>250),
+			array('file_lamaran, penilaian_id, keterangan', 'length', 'max'=>250),
 			array('status_lamaran', 'length', 'max'=>25),
 			array('file_lamaran', 'required','on'=>'lamar'),
-			array('psikotest', 'required','on'=>'psikotest'),
-			array('file_lamaran, psikotest', 'file', 'types' => 'pdf, doc, docx', 'allowEmpty' => true, 'maxSize' => 1024 * 1024 * 1, 'tooLarge' => 'The file was larger than 3 MB. Please upload a smaller file.'),			
+			array('penilaian_id', 'required','on'=>'penilaian'),
+			// array('file_lamaran, penilaian_id', 'file', 'types' => 'pdf, doc, docx', 'allowEmpty' => true, 'maxSize' => 1024 * 1024 * 1, 'tooLarge' => 'The file was larger than 3 MB. Please upload a smaller file.'),			
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, file_lamaran, user_id, tanggal_upload, status_lamaran, tanggal_verifikasi, keterangan, verifikasi_id, lowongan_id', 'safe', 'on'=>'search'),
@@ -78,6 +78,7 @@ class FileLamaran extends CActiveRecord
 			'verifikasi_id' => 'Verifikasi',
 			'lowongan_id' => 'Lowongan',
 			'pelamar_id' => 'Nama',
+			'penilaian_id' => 'Kode Penilaian',
 			);
 	}
 
@@ -135,7 +136,6 @@ class FileLamaran extends CActiveRecord
 			));
 	}
 
-
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
@@ -184,6 +184,8 @@ class FileLamaran extends CActiveRecord
 			return "Pengajuan Lamaran di Tolak";
 		}elseif($data==11){
 			return "Rekomendasi Panggilan";
+		}elseif($data==12){
+			return "Sudah Dinilai";
 		}else{
 			return "Dibatalkan oleh Pelamar";
 		}
@@ -208,5 +210,13 @@ class FileLamaran extends CActiveRecord
 			return "alert-danger";
 		}
 	}	
+
+	public function cekPenilaian($data){
+		if($data==0){
+			return "Belum di Nilai";
+		}else{
+			return "Sudah di Nilai";
+		}
+	}		
 
 }

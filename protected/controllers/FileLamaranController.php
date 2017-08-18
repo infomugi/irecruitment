@@ -334,9 +334,10 @@ class FileLamaranController extends Controller
 			$this->redirect(array('view','id'=>$model->id));
 	}		
 
-	public function actionDiterima($id)
+	public function actionDiterima($id,$penilaian)
 	{
 		$model=$this->loadModel($id);
+		$model->penilaian_id = $penilaian;
 		$model->status_lamaran = 5;
 		$model->tanggal_verifikasi = date('Y-m-d h:i:s');
 		$model->verifikasi_id = YII::app()->user->id;

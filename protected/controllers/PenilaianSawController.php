@@ -82,10 +82,14 @@ class PenilaianSawController extends Controller
 			$model->user_id = YII::app()->user->id;
 			$model->tanggal = date('Y-m-d');
 			$model->status = 0;
-
 			$model->lowongan_id = $lowongan;
 			$model->lamaran_id = $lamaran;
 			if($model->save()){
+
+				$pelamar=$this->loadFileLamaran($lamaran);
+				$pelamar->penilaian_id = $model->id_penilaian_saw;
+				$pelamar->save();
+
 				$this->redirect(array('lowongan/view','id'=>$lowongan));
 			}
 		}
@@ -186,6 +190,15 @@ class PenilaianSawController extends Controller
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
 	}
+
+	public function loadFileLamaran($id)
+	{
+		$model=FileLamaran::model()->findByPk($id);
+		if($model===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
+	}			
+
 
 	/**
 	 * Performs the AJAX validation.

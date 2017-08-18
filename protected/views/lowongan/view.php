@@ -19,39 +19,39 @@ if(!YII::app()->user->isGuest):
 		?>
 
 
-	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+	<div class="panel-group" id="accordion" role="tablist" >
 		<div class="panel panel-default">
 			<div class="panel-heading" role="tab" id="headingOne">
 				<h4 class="panel-title">
-					<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+					<a role="button" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
 						<?php echo $this->pageTitle; ?>
 					</a>
 				</h4>
 			</div>
-			<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+			<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
 				<div class="panel-body">
 					<?php require_once('_detail_lowongan_admin.php'); ?>
 				</div>
 			</div>
 		</div>
 		<div class="panel panel-default">
-			<div class="panel-heading" role="tab" id="headingTwo">
+			<div class="panel-heading" role="tab" id="headingTwo" aria-multiselectable="true">
 				<h4 class="panel-title">
-					<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+					<a  role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
 						Lamaran <?php echo $this->pageTitle; ?>
 					</a>
 				</h4>
 			</div>
-			<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+			<div id="collapseTwo" class="panel-collapse  collapse in" role="tabpanel" aria-labelledby="headingTwo">
 				<div class="panel-body">
 					<div>	
 						<ul class="nav nav-tabs">
-							<li class="active"><a href="#0" data-toggle="tab"><i class="ti ti-bar-chart"></i> Belum di Verifikasi</a></a></li>
-							<li><a  href="#1" data-toggle="tab"><i class="ti ti-bar-chart"></i> Diverifikasi</a></a></li>
-							<li><a href="#2" data-toggle="tab"><i class="ti ti-bar-chart"></i> Dipanggil</a></a></li>
-							<li><a href="#4" data-toggle="tab"><i class="ti ti-bar-chart"></i> Rekomendasi Panggilan</a></a></li>
-							<li><a href="#5" data-toggle="tab"><i class="ti ti-bar-chart"></i> Diterima</a></a></li>
-							<li><a href="#6" data-toggle="tab"><i class="ti ti-bar-chart"></i> Ditolak (Tidak Lulus)</a></a></li>
+							<li class="active"><a href="#0" data-toggle="tab"><i class="ti ti-user"></i> Belum di Verifikasi</a></a></li>
+							<li><a  href="#1" data-toggle="tab"><i class="ti ti-user"></i> Diverifikasi</a></a></li>
+							<li><a href="#2" data-toggle="tab"><i class="ti ti-user"></i> Dipanggil</a></a></li>
+							<li><a href="#4" data-toggle="tab"><i class="ti ti-user"></i> Rekomendasi Panggilan</a></a></li>
+							<li><a href="#5" data-toggle="tab"><i class="ti ti-user"></i> Diterima</a></a></li>
+							<li><a href="#6" data-toggle="tab"><i class="ti ti-user"></i> Ditolak (Tidak Lulus)</a></a></li>
 						</ul>
 
 						<div class="tab-content ">
@@ -67,28 +67,11 @@ if(!YII::app()->user->isGuest):
 									'itemsCssClass' => 'table-responsive table table-striped table-hover table-vcenter',
 									'columns'=>array(
 
-										'id',
-										'tanggal_upload',
-										array('name'=>'pelamar_id','value'=>'$data->Pelamar->nama'),
-										array('name'=>'status_lamaran','value'=>'FileLamaran::model()->status($data->status_lamaran)'),
-
-
 										array(
 											'class'=>'CButtonColumn',
-											'header'=>'Aksi',
-											'template'=>'{verified}{reject}{view}',
+											'header'=>'Detail',
+											'template'=>'{view}',
 											'buttons'=>array(
-												'verified'=>
-												array(
-													'url'=>'Yii::app()->createUrl("filelamaran/verifikasi", array("id"=>$data->id))',
-													'imageUrl'=>'images/verifikasi.png',
-													'visible'=> '$data->status_lamaran == 0',
-													),
-												'reject'=>
-												array(
-													'url'=>'Yii::app()->createUrl("filelamaran/tidaklulus", array("id"=>$data->id))',
-													'imageUrl'=>'images/tolak.png',
-													),
 												'view'=>
 												array(
 													'url'=>'Yii::app()->createUrl("filelamaran/view", array("id"=>$data->id))',
@@ -96,6 +79,32 @@ if(!YII::app()->user->isGuest):
 													),
 												),
 											),
+
+										'id',
+										'tanggal_upload',
+										array('name'=>'pelamar_id','value'=>'$data->Pelamar->nama'),
+										array('header'=>'Status','value'=>'FileLamaran::model()->status($data->status_lamaran)'),
+
+
+										array(
+											'class'=>'CButtonColumn',
+											'header'=>'Aksi',
+											'template'=>'{Verifikasi}{Tolak}',
+											'buttons'=>array(
+												'Verifikasi'=>
+												array(
+													'url'=>'Yii::app()->createUrl("filelamaran/verifikasi", array("id"=>$data->id))',
+													'imageUrl'=>'images/verifikasi.png',
+													'visible'=> '$data->status_lamaran == 0',
+													),
+												'Tolak'=>
+												array(
+													'url'=>'Yii::app()->createUrl("filelamaran/tidaklulus", array("id"=>$data->id))',
+													'imageUrl'=>'images/tolak.png',
+													),
+												),
+											),
+
 										),
 										)); ?>
 
@@ -111,36 +120,47 @@ if(!YII::app()->user->isGuest):
 											'itemsCssClass' => 'table-responsive table table-striped table-hover table-vcenter',
 											'columns'=>array(
 
-												'id',
-												'tanggal_upload',
-												array('name'=>'pelamar_id','value'=>'$data->Pelamar->nama'),
-												array('name'=>'status_lamaran','value'=>'FileLamaran::model()->status($data->status_lamaran)'),
 
 												array(
 													'class'=>'CButtonColumn',
-													'header'=>'Aksi',
-													'template'=>'{pemanggilan}{rekomendasi}{tolak}{view}',
+													'header'=>'Detail',
+													'template'=>'{view}',
 													'buttons'=>array(
-														'pemanggilan'=>
-														array(
-															'url'=>'Yii::app()->createUrl("filelamaran/pemanggilan", array("id"=>$data->id))',
-															'imageUrl'=>'images/panggil.png',
-															),
-														'rekomendasi'=>
-														array(
-															'url'=>'Yii::app()->createUrl("filelamaran/rekomendasi", array("id"=>$data->id))',
-															'imageUrl'=>'images/rekomendasi.png',
-															),
-														'tolak'=>
-														array(
-															'url'=>'Yii::app()->createUrl("filelamaran/tidaklulus", array("id"=>$data->id))',
-															'imageUrl'=>'images/tolak.png',
-															),
 														'view'=>
 														array(
 															'url'=>'Yii::app()->createUrl("filelamaran/view", array("id"=>$data->id))',
 															'imageUrl'=>'images/detail.png',
 															),
+														),
+													),
+
+
+												'id',
+												'tanggal_upload',
+												array('name'=>'pelamar_id','value'=>'$data->Pelamar->nama'),
+												array('header'=>'Status','value'=>'FileLamaran::model()->status($data->status_lamaran)'),
+
+												array(
+													'class'=>'CButtonColumn',
+													'header'=>'Aksi',
+													'template'=>'{Panggil}{Rekomendasi}{Tolak}',
+													'buttons'=>array(
+														'Panggil'=>
+														array(
+															'url'=>'Yii::app()->createUrl("filelamaran/pemanggilan", array("id"=>$data->id))',
+															'imageUrl'=>'images/panggil.png',
+															),
+														'Rekomendasi'=>
+														array(
+															'url'=>'Yii::app()->createUrl("filelamaran/rekomendasi", array("id"=>$data->id))',
+															'imageUrl'=>'images/rekomendasi.png',
+															),
+														'Tolak'=>
+														array(
+															'url'=>'Yii::app()->createUrl("filelamaran/tidaklulus", array("id"=>$data->id))',
+															'imageUrl'=>'images/tolak.png',
+															),
+
 														),
 													),
 
@@ -160,36 +180,53 @@ if(!YII::app()->user->isGuest):
 													'itemsCssClass' => 'table-responsive table table-striped table-hover table-vcenter',
 													'columns'=>array(
 
-														'id',
-														'tanggal_upload',
-														array('name'=>'pelamar_id','value'=>'$data->Pelamar->nama'),
-														array('name'=>'status_lamaran','value'=>'FileLamaran::model()->status($data->status_lamaran)'),
-
 														array(
 															'class'=>'CButtonColumn',
-															'header'=>'Aksi',
-															'template'=>'{sudahdipanggil}{rekomendasi}{reject}{view}',
+															'header'=>'Detail',
+															'template'=>'{view}',
 															'buttons'=>array(
-																'sudahdipanggil'=>
-																array(
-																	'url'=>'Yii::app()->createUrl("filelamaran/sudahdipanggil", array("id"=>$data->id))',
-																	'imageUrl'=>'images/sudahdipanggil.png',
-																	),
-																'rekomendasi'=>
-																array(
-																	'url'=>'Yii::app()->createUrl("filelamaran/rekomendasi", array("id"=>$data->id))',
-																	'imageUrl'=>'images/rekomendasi.png',
-																	),
-																'reject'=>
-																array(
-																	'url'=>'Yii::app()->createUrl("filelamaran/tidaklulus", array("id"=>$data->id))',
-																	'imageUrl'=>'images/tolak.png',
-																	),
 																'view'=>
 																array(
 																	'url'=>'Yii::app()->createUrl("filelamaran/view", array("id"=>$data->id))',
 																	'imageUrl'=>'images/detail.png',
 																	),
+																),
+															),
+
+
+														'id',
+														'tanggal_upload',
+														array('name'=>'pelamar_id','value'=>'$data->Pelamar->nama'),
+														array('header'=>'HP','value'=>'$data->Pelamar->hp'),
+														array('header'=>'Telp. Rumah','value'=>'$data->Pelamar->telephone_rumah'),
+														array('header'=>'Status','value'=>'FileLamaran::model()->status($data->status_lamaran)'),
+
+														array(
+															'class'=>'CButtonColumn',
+															'header'=>'Aksi',
+															'template'=>'{Sudah di Panggil}{Rekomendasi}{Tolak}{Print}',
+															'buttons'=>array(
+																'Sudah di Panggil'=>
+																array(
+																	'url'=>'Yii::app()->createUrl("filelamaran/sudahdipanggil", array("id"=>$data->id))',
+																	'imageUrl'=>'images/sudahdipanggil.png',
+																	),
+																'Rekomendasi'=>
+																array(
+																	'url'=>'Yii::app()->createUrl("filelamaran/rekomendasi", array("id"=>$data->id))',
+																	'imageUrl'=>'images/rekomendasi.png',
+																	),
+																'Tolak'=>
+																array(
+																	'url'=>'Yii::app()->createUrl("filelamaran/tidaklulus", array("id"=>$data->id))',
+																	'imageUrl'=>'images/tolak.png',
+																	),
+																'Print'=>
+																array(
+																	'url'=>'Yii::app()->createUrl("filelamaran/print", array("id"=>$data->id))',
+																	'imageUrl'=>'images/print.png',
+																	),
+
 																),
 															),
 
@@ -210,30 +247,41 @@ if(!YII::app()->user->isGuest):
 															'itemsCssClass' => 'table-responsive table table-striped table-hover table-vcenter',
 															'columns'=>array(
 
-																'id',
-																'tanggal_upload',
-																array('name'=>'pelamar_id','value'=>'$data->Pelamar->nama'),
-																array('name'=>'status_lamaran','value'=>'FileLamaran::model()->status($data->status_lamaran)'),
-
 																array(
 																	'class'=>'CButtonColumn',
-																	'header'=>'Aksi',
-																	'template'=>'{penilaian}{reject}{view}',
+																	'header'=>'Detail',
+																	'template'=>'{view}',
 																	'buttons'=>array(
-																		'penilaian'=>
-																		array(
-																			'url'=>'Yii::app()->createUrl("penilaiansaw/create", array("pelamar"=>$data->user_id, "lowongan"=>$data->lowongan_id, "lamaran"=>$data->id))',
-																			'imageUrl'=>'images/penilaian.png',
-																			),
-																		'reject'=>
-																		array(
-																			'url'=>'Yii::app()->createUrl("filelamaran/tidaklulus", array("id"=>$data->id))',
-																			'imageUrl'=>'images/tolak.png',
-																			),
 																		'view'=>
 																		array(
 																			'url'=>'Yii::app()->createUrl("filelamaran/view", array("id"=>$data->id))',
 																			'imageUrl'=>'images/detail.png',
+																			),
+																		),
+																	),
+
+
+																'id',
+																'tanggal_upload',
+																array('name'=>'pelamar_id','value'=>'$data->Pelamar->nama'),
+																array('header'=>'HP','value'=>'$data->Pelamar->hp'),
+																array('header'=>'Telp. Rumah','value'=>'$data->Pelamar->telephone_rumah'),
+																array('header'=>'Status','value'=>'FileLamaran::model()->status($data->status_lamaran)'),
+
+																array(
+																	'class'=>'CButtonColumn',
+																	'header'=>'Aksi',
+																	'template'=>'{Penilaian}{Tolak}',
+																	'buttons'=>array(
+																		'Penilaian'=>
+																		array(
+																			'url'=>'Yii::app()->createUrl("penilaiansaw/create", array("pelamar"=>$data->user_id, "lowongan"=>$data->lowongan_id, "lamaran"=>$data->id))',
+																			'imageUrl'=>'images/penilaian.png',
+																			),
+																		'Tolak'=>
+																		array(
+																			'url'=>'Yii::app()->createUrl("filelamaran/tidaklulus", array("id"=>$data->id))',
+																			'imageUrl'=>'images/tolak.png',
 																			),
 																		),
 																	),
@@ -254,31 +302,42 @@ if(!YII::app()->user->isGuest):
 																	'itemsCssClass' => 'table-responsive table table-striped table-hover table-vcenter',
 																	'columns'=>array(
 
+																		array(
+																			'class'=>'CButtonColumn',
+																			'header'=>'Detail',
+																			'template'=>'{view}',
+																			'buttons'=>array(
+																				'view'=>
+																				array(
+																					'url'=>'Yii::app()->createUrl("filelamaran/view", array("id"=>$data->id))',
+																					'imageUrl'=>'images/detail.png',
+																					),
+																				),
+																			),
+
+
 																		'id',
+																		array('header'=>'Penilaian','value'=>'FileLamaran::model()->cekPenilaian($data->penilaian_id)'),
 																		'tanggal_upload',
 																		array('name'=>'pelamar_id','value'=>'$data->Pelamar->nama'),
-																		array('name'=>'status_lamaran','value'=>'FileLamaran::model()->status($data->status_lamaran)'),
+																		array('header'=>'Status','value'=>'FileLamaran::model()->status($data->status_lamaran)'),
 
 
 																		array(
 																			'class'=>'CButtonColumn',
 																			'header'=>'Aksi',
-																			'template'=>'{penilaian}{reject}{view}',
+																			'template'=>'{Penilaian}{Tolak}',
 																			'buttons'=>array(
-																				'penilaian'=>
+																				'Penilaian'=>
 																				array(
 																					'url'=>'Yii::app()->createUrl("penilaiansaw/create", array("pelamar"=>$data->user_id, "lowongan"=>$data->lowongan_id, "lamaran"=>$data->id))',
+																					'visible'=>'$data->penilaian_id==0',
 																					'imageUrl'=>'images/penilaian.png',
 																					),
-																				'reject'=>
+																				'Tolak'=>
 																				array(
 																					'url'=>'Yii::app()->createUrl("filelamaran/tidaklulus", array("id"=>$data->id))',
 																					'imageUrl'=>'images/tolak.png',
-																					),
-																				'view'=>
-																				array(
-																					'url'=>'Yii::app()->createUrl("filelamaran/view", array("id"=>$data->id))',
-																					'imageUrl'=>'images/detail.png',
 																					),
 																				),
 																			),
@@ -299,14 +358,9 @@ if(!YII::app()->user->isGuest):
 																			'itemsCssClass' => 'table-responsive table table-striped table-hover table-vcenter',
 																			'columns'=>array(
 
-																				'id',
-																				'tanggal_upload',
-																				array('name'=>'pelamar_id','value'=>'$data->Pelamar->nama'),
-																				array('name'=>'status_lamaran','value'=>'FileLamaran::model()->status($data->status_lamaran)'),
-
 																				array(
 																					'class'=>'CButtonColumn',
-																					'header'=>'Aksi',
+																					'header'=>'Detail',
 																					'template'=>'{view}',
 																					'buttons'=>array(
 																						'view'=>
@@ -316,6 +370,12 @@ if(!YII::app()->user->isGuest):
 																							),
 																						),
 																					),
+
+
+																				'id',
+																				'tanggal_upload',
+																				array('name'=>'pelamar_id','value'=>'$data->Pelamar->nama'),
+																				array('header'=>'Status','value'=>'FileLamaran::model()->status($data->status_lamaran)'),
 
 																				),
 																				)); ?>
@@ -332,14 +392,9 @@ if(!YII::app()->user->isGuest):
 																					'itemsCssClass' => 'table-responsive table table-striped table-hover table-vcenter',
 																					'columns'=>array(
 
-																						'id',
-																						'tanggal_upload',
-																						array('name'=>'pelamar_id','value'=>'$data->Pelamar->nama'),
-																						array('name'=>'status_lamaran','value'=>'FileLamaran::model()->status($data->status_lamaran)'),
-
 																						array(
 																							'class'=>'CButtonColumn',
-																							'header'=>'Aksi',
+																							'header'=>'Detail',
 																							'template'=>'{view}',
 																							'buttons'=>array(
 																								'view'=>
@@ -350,11 +405,15 @@ if(!YII::app()->user->isGuest):
 																								),
 																							),
 
+																						'id',
+																						'tanggal_upload',
+																						array('name'=>'pelamar_id','value'=>'$data->Pelamar->nama'),
+																						array('header'=>'Status','value'=>'FileLamaran::model()->status($data->status_lamaran)'),
+
 																						),
 																						)); ?>
 
 																					</div>
-
 
 
 																				</div>

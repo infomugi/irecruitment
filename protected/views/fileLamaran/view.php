@@ -427,10 +427,12 @@ $update = "Update " . Yii::app()->dateFormatter->formatDateTime(CDateTimeParser:
 																								<?php if($model->status_lamaran!=0): ?>
 																									<?php if(YII::app()->user->getLevel()==1): ?>
 
-																										<?php 
-																										echo CHtml::link('<i class="fa fa-tasks"></i> Nilai', 
-																											array('penilaiansaw/create', 'pelamar'=>$model->user_id, 'lowongan'=>$model->lowongan_id, 'lamaran'=>$model->id), array('class' => 'btn btn-info btn-flat', 'title'=>'Buat Penilaian'));
-																											?>
+																										<?php if($model->penilaian_id==0): ?>
+																											<?php 
+																											echo CHtml::link('<i class="fa fa-tasks"></i> Nilai', 
+																												array('penilaiansaw/create', 'pelamar'=>$model->user_id, 'lowongan'=>$model->lowongan_id, 'lamaran'=>$model->id), array('class' => 'btn btn-info btn-flat', 'title'=>'Buat Penilaian'));
+																												?>
+																											<?php endif; ?>
 
 																											<?php echo CHtml::link('<i class="fa fa-star"></i>', 
 																												array('rekomendasi', 'id'=>$model->id,
