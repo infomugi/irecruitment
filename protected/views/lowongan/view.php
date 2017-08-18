@@ -46,22 +46,21 @@ if(!YII::app()->user->isGuest):
 				<div class="panel-body">
 					<div>	
 						<ul class="nav nav-tabs">
-							<li class="active"><a href="#1" data-toggle="tab"><i class="ti ti-bar-chart"></i> Belum di Verifikasi</a></a></li>
-							<li><a  href="#2" data-toggle="tab"><i class="ti ti-bar-chart"></i> Diverifikasi</a></a></li>
-							<li><a href="#3" data-toggle="tab"><i class="ti ti-bar-chart"></i> Ditunda</a></a></li>	
-							<li><a href="#4" data-toggle="tab"><i class="ti ti-bar-chart"></i> Dipanggil</a></a></li>
-							<li><a href="#5" data-toggle="tab"><i class="ti ti-bar-chart"></i> Rekomendasi</a></a></li>
+							<li class="active"><a href="#0" data-toggle="tab"><i class="ti ti-bar-chart"></i> Belum di Verifikasi</a></a></li>
+							<li><a  href="#1" data-toggle="tab"><i class="ti ti-bar-chart"></i> Diverifikasi</a></a></li>
+							<li><a href="#2" data-toggle="tab"><i class="ti ti-bar-chart"></i> Dipanggil</a></a></li>
+							<li><a href="#4" data-toggle="tab"><i class="ti ti-bar-chart"></i> Rekomendasi Panggilan</a></a></li>
+							<li><a href="#5" data-toggle="tab"><i class="ti ti-bar-chart"></i> Diterima</a></a></li>
 							<li><a href="#6" data-toggle="tab"><i class="ti ti-bar-chart"></i> Ditolak</a></a></li>
-							<li><a href="#7" data-toggle="tab"><i class="ti ti-bar-chart"></i> Diterima</a></a></li>
 						</ul>
 
 						<div class="tab-content ">
 
 
-							<div class="tab-pane active" id="1">
-
+							<div class="tab-pane active" id="0">
+								<!-- Belum di Verifikasi -->
 								<?php $this->widget('zii.widgets.grid.CGridView', array(
-									'id'=>'file-1-grid',
+									'id'=>'file-0-grid',
 									'summaryText'=>'',
 									'dataProvider'=>$dataUnverify->findStatus(0,$model->id_lowongan),
 									'filter'=>$dataUnverify,
@@ -81,13 +80,13 @@ if(!YII::app()->user->isGuest):
 											'buttons'=>array(
 												'verified'=>
 												array(
-													'url'=>'Yii::app()->createUrl("filelamaran/verified", array("id"=>$data->id))',
+													'url'=>'Yii::app()->createUrl("filelamaran/verifikasi", array("id"=>$data->id))',
 													'imageUrl'=>'images/verifikasi.png',
-														// 'visible'=> '$data->status_lamaran == 0',
+													'visible'=> '$data->status_lamaran == 0',
 													),
 												'reject'=>
 												array(
-													'url'=>'Yii::app()->createUrl("filelamaran/reject", array("id"=>$data->id))',
+													'url'=>'Yii::app()->createUrl("filelamaran/tidaklulus", array("id"=>$data->id))',
 													'imageUrl'=>'images/tolak.png',
 													),
 												'view'=>
@@ -102,12 +101,12 @@ if(!YII::app()->user->isGuest):
 
 									</div>
 
-									<div class="tab-pane" id="2">
-
+									<div class="tab-pane" id="1">
+										<!-- Sudah di Verifikasi -->
 										<?php $this->widget('zii.widgets.grid.CGridView', array(
-											'id'=>'file-2-grid',
+											'id'=>'file-1-grid',
 											'summaryText'=>'',
-											'dataProvider'=>$dataUnverify->findStatus(2,$model->id_lowongan),
+											'dataProvider'=>$dataUnverify->findStatus(1,$model->id_lowongan),
 											'filter'=>$dataUnverify,
 											'itemsCssClass' => 'table-responsive table table-striped table-hover table-vcenter',
 											'columns'=>array(
@@ -120,21 +119,21 @@ if(!YII::app()->user->isGuest):
 												array(
 													'class'=>'CButtonColumn',
 													'header'=>'Aksi',
-													'template'=>'{call}{recommended}{reject}{view}',
+													'template'=>'{pemanggilan}{rekomendasi}{tolak}{view}',
 													'buttons'=>array(
-														'call'=>
+														'pemanggilan'=>
 														array(
-															'url'=>'Yii::app()->createUrl("filelamaran/call", array("id"=>$data->id))',
+															'url'=>'Yii::app()->createUrl("filelamaran/pemanggilan", array("id"=>$data->id))',
 															'imageUrl'=>'images/panggil.png',
 															),
-														'recommended'=>
+														'rekomendasi'=>
 														array(
-															'url'=>'Yii::app()->createUrl("filelamaran/recommended", array("id"=>$data->id))',
+															'url'=>'Yii::app()->createUrl("filelamaran/rekomendasi", array("id"=>$data->id))',
 															'imageUrl'=>'images/rekomendasi.png',
 															),
-														'reject'=>
+														'tolak'=>
 														array(
-															'url'=>'Yii::app()->createUrl("filelamaran/reject", array("id"=>$data->id))',
+															'url'=>'Yii::app()->createUrl("filelamaran/tidaklulus", array("id"=>$data->id))',
 															'imageUrl'=>'images/tolak.png',
 															),
 														'view'=>
@@ -151,12 +150,12 @@ if(!YII::app()->user->isGuest):
 
 											</div>
 
-											<div class="tab-pane" id="3">
-
+											<div class="tab-pane" id="2">
+												<!-- Pemanggilan -->
 												<?php $this->widget('zii.widgets.grid.CGridView', array(
-													'id'=>'file-3-grid',
+													'id'=>'file-2-grid',
 													'summaryText'=>'',
-													'dataProvider'=>$dataUnverify->findStatus(3,$model->id_lowongan),
+													'dataProvider'=>$dataUnverify->findStatus(2,$model->id_lowongan),
 													'filter'=>$dataUnverify,
 													'itemsCssClass' => 'table-responsive table table-striped table-hover table-vcenter',
 													'columns'=>array(
@@ -169,16 +168,21 @@ if(!YII::app()->user->isGuest):
 														array(
 															'class'=>'CButtonColumn',
 															'header'=>'Aksi',
-															'template'=>'{call}{reject}{view}',
+															'template'=>'{sudahdipanggil}{rekomendasi}{reject}{view}',
 															'buttons'=>array(
-																'call'=>
+																'sudahdipanggil'=>
 																array(
-																	'url'=>'Yii::app()->createUrl("filelamaran/call", array("id"=>$data->id))',
+																	'url'=>'Yii::app()->createUrl("filelamaran/sudahdipanggil", array("id"=>$data->id))',
 																	'imageUrl'=>'images/panggil.png',
+																	),
+																'rekomendasi'=>
+																array(
+																	'url'=>'Yii::app()->createUrl("filelamaran/rekomendasi", array("id"=>$data->id))',
+																	'imageUrl'=>'images/rekomendasi.png',
 																	),
 																'reject'=>
 																array(
-																	'url'=>'Yii::app()->createUrl("filelamaran/reject", array("id"=>$data->id))',
+																	'url'=>'Yii::app()->createUrl("filelamaran/tidaklulus", array("id"=>$data->id))',
 																	'imageUrl'=>'images/tolak.png',
 																	),
 																'view'=>
@@ -196,12 +200,12 @@ if(!YII::app()->user->isGuest):
 													</div>
 
 
-													<div class="tab-pane" id="4">
-
+													<div class="tab-pane" id="3">
+														<!-- Sudah di Panggil -->
 														<?php $this->widget('zii.widgets.grid.CGridView', array(
-															'id'=>'file-4-grid',
+															'id'=>'file-3-grid',
 															'summaryText'=>'',
-															'dataProvider'=>$dataUnverify->findStatus(4,$model->id_lowongan),
+															'dataProvider'=>$dataUnverify->findStatus(3,$model->id_lowongan),
 															'filter'=>$dataUnverify,
 															'itemsCssClass' => 'table-responsive table table-striped table-hover table-vcenter',
 															'columns'=>array(
@@ -218,12 +222,12 @@ if(!YII::app()->user->isGuest):
 																	'buttons'=>array(
 																		'penilaian'=>
 																		array(
-																			'url'=>'Yii::app()->createUrl("filelamaran/penilaian", array("id"=>$data->id))',
+																			'url'=>'Yii::app()->createUrl("penilaiansaw/create", array("pelamar"=>$data->user_id, "lowongan"=>$data->lowongan_id, "lamaran"=>$data->id))',
 																			'imageUrl'=>'images/penilaian.png',
 																			),
 																		'reject'=>
 																		array(
-																			'url'=>'Yii::app()->createUrl("filelamaran/reject", array("id"=>$data->id))',
+																			'url'=>'Yii::app()->createUrl("filelamaran/tidaklulus", array("id"=>$data->id))',
 																			'imageUrl'=>'images/tolak.png',
 																			),
 																		'view'=>
@@ -240,12 +244,12 @@ if(!YII::app()->user->isGuest):
 
 															</div>
 
-															<div class="tab-pane" id="5">
-
+															<div class="tab-pane" id="4">
+																<!-- Rekomendasi Panggilan -->
 																<?php $this->widget('zii.widgets.grid.CGridView', array(
-																	'id'=>'file-5-grid',
+																	'id'=>'file-4-grid',
 																	'summaryText'=>'',
-																	'dataProvider'=>$dataUnverify->findStatus(5,$model->id_lowongan),
+																	'dataProvider'=>$dataUnverify->findStatus(11,$model->id_lowongan),
 																	'filter'=>$dataUnverify,
 																	'itemsCssClass' => 'table-responsive table table-striped table-hover table-vcenter',
 																	'columns'=>array(
@@ -255,18 +259,42 @@ if(!YII::app()->user->isGuest):
 																		array('name'=>'pelamar_id','value'=>'$data->Pelamar->nama'),
 																		array('name'=>'status_lamaran','value'=>'FileLamaran::model()->status($data->status_lamaran)'),
 
+
+																		array(
+																			'class'=>'CButtonColumn',
+																			'header'=>'Aksi',
+																			'template'=>'{penilaian}{reject}{view}',
+																			'buttons'=>array(
+																				'penilaian'=>
+																				array(
+																					'url'=>'Yii::app()->createUrl("penilaiansaw/create", array("pelamar"=>$data->user_id, "lowongan"=>$data->lowongan_id, "lamaran"=>$data->id))',
+																					'imageUrl'=>'images/penilaian.png',
+																					),
+																				'reject'=>
+																				array(
+																					'url'=>'Yii::app()->createUrl("filelamaran/tidaklulus", array("id"=>$data->id))',
+																					'imageUrl'=>'images/tolak.png',
+																					),
+																				'view'=>
+																				array(
+																					'url'=>'Yii::app()->createUrl("filelamaran/view", array("id"=>$data->id))',
+																					'imageUrl'=>'images/detail.png',
+																					),
+																				),
+																			),
+
 																		),
 																		)); ?>
 
 																	</div>
 
 
-																	<div class="tab-pane" id="6">
-
+																	<div class="tab-pane" id="5">
+																		<!-- Diterima -->
 																		<?php $this->widget('zii.widgets.grid.CGridView', array(
-																			'id'=>'file-6-grid',
+																			'id'=>'file-5-grid',
 																			'summaryText'=>'',
-																			'dataProvider'=>$dataUnverify->findStatus(6,$model->id_lowongan),
+																			'dataProvider'=>$dataUnverify->findStatus(5,$model->id_lowongan),
 																			'filter'=>$dataUnverify,
 																			'itemsCssClass' => 'table-responsive table table-striped table-hover table-vcenter',
 																			'columns'=>array(
@@ -294,10 +322,10 @@ if(!YII::app()->user->isGuest):
 
 																			</div>
 
-																			<div class="tab-pane" id="7">
-
+																			<div class="tab-pane" id="6">
+																				<!-- Ditolak -->
 																				<?php $this->widget('zii.widgets.grid.CGridView', array(
-																					'id'=>'file-7-grid',
+																					'id'=>'file-6-grid',
 																					'summaryText'=>'',
 																					'dataProvider'=>$dataUnverify->findStatus(7,$model->id_lowongan),
 																					'filter'=>$dataUnverify,
@@ -321,7 +349,6 @@ if(!YII::app()->user->isGuest):
 																									),
 																								),
 																							),
-
 
 																						),
 																						)); ?>
@@ -388,13 +415,13 @@ if(!YII::app()->user->isGuest):
 																						)
 																						'),	
 
-				// 'nilai',
+																					// 'nilai',
 																					array('name'=>'pelamar_id','value'=>'$data->Pelamar->username'),
 
 																					array(
 																						'header' => 'Aksi',
 																						'type' => 'raw',
-																						'value'=>'PenilaianSaw::model()->cek($data->id_penilaian_saw)',
+																						'value'=>'PenilaianSaw::model()->cek($data->id_penilaian_saw,$data->lamaran_id)',
 																						),
 
 																					),

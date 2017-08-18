@@ -195,19 +195,19 @@ class PenilaianSaw extends CActiveRecord
 		}
 	}		
 
-	public function cek($data){
+	public function cek($data,$lamaran){
 		$Criteria = new CDbCriteria();
 		$Criteria->condition = "status!=0";
 		$models = PenilaianSaw::model()->findAll($Criteria);
 
 		if($models!=NULL){
-			return CHtml::link('Terima Pelamar', 
-				array('penilaiansaw/verifikasi', 'id'=>$data), 
+			return CHtml::link('Terima', 
+				array('filelamaran/diterima', 'id'=>$lamaran), 
 				array('class' => 'btn btn-info btn-sm btn-flat', 'title'=>'Terima Sebagai Pegawai'));
 		}else{
-			return CHtml::link('Verifikasi', 
-				array('penilaiansaw/verifikasi', 'id'=>$data), 
-				array('class' => 'btn btn-info btn-sm btn-flat', 'title'=>'Cetak Laporan'));
+			return CHtml::link('Terima', 
+				array('filelamaran/diterima', 'id'=>$lamaran), 
+				array('class' => 'btn btn-info btn-sm btn-flat', 'title'=>'Terima Sebagai Pegawai'));
 		}
 	}		
 

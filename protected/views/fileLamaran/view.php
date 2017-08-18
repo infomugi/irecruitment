@@ -428,32 +428,42 @@ $update = "Update " . Yii::app()->dateFormatter->formatDateTime(CDateTimeParser:
 																									<?php if(YII::app()->user->getLevel()==1): ?>
 
 																										<?php 
-																										echo CHtml::link('<i class="fa fa-star"></i> Buat Penilaian', 
+																										echo CHtml::link('<i class="fa fa-star"></i> Penilaian', 
 																											array('penilaiansaw/create', 'pelamar'=>$model->user_id, 'lowongan'=>$model->lowongan_id, 'lamaran'=>$model->id,
 																												), array('class' => 'btn btn-warning btn-flat', 'title'=>'Buat Penilaian'));
 																												?>
 
-																												<?php echo CHtml::link('<i class="fa fa-phone"></i> Sudah Panggil', 
+																												<?php echo CHtml::link('<i class="fa fa-phone"></i> Sudah di Panggil ?', 
 																													array('sudahdipanggil', 'id'=>$model->id,
 																														), array('class' => 'btn btn-success btn-flat', 'title'=>'Panggil Pelamar'));
 																														?>
 
-																														<?php echo CHtml::link('<i class="fa fa-phone"></i> Belum di Panggil', 
-																															array('belumdipanggil', 'id'=>$model->id,
-																																), array('class' => 'btn btn-danger btn-flat', 'title'=>'Panggil Pelamar'));
+																														<?php echo CHtml::link('<i class="fa fa-star"></i> Rekomendasi', 
+																															array('rekomendasi', 'id'=>$model->id,
+																																), array('class' => 'btn btn-danger btn-flat', 'title'=>'Rekomendasi Panggilan'));
 																																?>
 
-																																<?php echo CHtml::link('<i class="fa fa-remove"></i> Tolak', 
-																																	array('ditolak', 'id'=>$model->id,
-																																		), array('class' => 'btn btn-danger btn-flat pull-right', 'title'=>'Tolak Lamaran'));
+																																<?php echo CHtml::link('<i class="fa fa-check"></i> Diterima', 
+																																	array('diterima', 'id'=>$model->id,
+																																		), array('class' => 'btn btn-success btn-flat', 'title'=>'Diterima sebagai Pegawai'));
 																																		?>
 
-																																	<?php endif; ?>
-																																<?php endif; ?>																		
+																																		<?php echo CHtml::link('<i class="fa fa-check"></i> Lulus Seleksi', 
+																																			array('lulus', 'id'=>$model->id,
+																																				), array('class' => 'btn btn-success btn-flat', 'title'=>'Pelamar Lulus Seleksi'));
+																																				?>
+
+																																				<?php echo CHtml::link('<i class="fa fa-remove"></i> Tidak Lulus Seleksi', 
+																																					array('tidaklulus', 'id'=>$model->id,
+																																						), array('class' => 'btn btn-danger btn-flat pull-right', 'title'=>'Tidak Lulus Seleksi'));
+																																						?>
+
+																																					<?php endif; ?>
+																																				<?php endif; ?>																		
 
 
-																																<STYLE>
-																																	th{width:150px;}
-																																</STYLE>
+																																				<STYLE>
+																																					th{width:150px;}
+																																				</STYLE>
 
 

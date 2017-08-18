@@ -165,19 +165,25 @@ class FileLamaran extends CActiveRecord
 		}elseif($data==1){
 			return "Sudah di Verifikasi";
 		}elseif($data==2){
-			return "Panggilan di Tunda";
+			return "Pemanggilan";									
 		}elseif($data==3){
 			return "Sudah di Panggil";
 		}elseif($data==4){
-			return "Diterima menjadi Karyawan";
+			return "Panggilan di Tunda";
 		}elseif($data==5){
-			return "Dipending menjadi Karyawan";
+			return "Diterima menjadi Karyawan";
 		}elseif($data==6){
-			return "Ditolak menjadi Karyawan";
+			return "Dipending menjadi Karyawan";
 		}elseif($data==7){
-			return "Lulus Seleksi";
+			return "Ditolak menjadi Karyawan";
 		}elseif($data==8){
+			return "Lulus Seleksi";
+		}elseif($data==9){
 			return "Tidak Lulus Seleksi";
+		}elseif($data==10){
+			return "Pengajuan Lamaran di Tolak";
+		}elseif($data==11){
+			return "Rekomendasi Panggilan";
 		}else{
 			return "Dibatalkan oleh Pelamar";
 		}
