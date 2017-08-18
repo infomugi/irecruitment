@@ -51,7 +51,7 @@ class LowonganController extends Controller
 		$model=$this->loadModel($id);
 		$dataNilai=new CActiveDataProvider('PenilaianSaw',
 			array('criteria'=>
-				array('condition'=>'lowongan_id='.$model->id_lowongan.'','order'=>'id_penilaian_saw DESC')
+				array('condition'=>'lowongan_id='.$model->id_lowongan.'','order'=>'nilai DESC')
 				)
 			);
 

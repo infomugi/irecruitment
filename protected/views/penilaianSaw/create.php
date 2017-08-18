@@ -7,7 +7,7 @@ $this->breadcrumbs=array(
 	'Review',
 	);
 
-	$this->pageTitle='Review Nasabah';
-	?>
+$this->pageTitle='Review Pelamar';
+?>
 
-	<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

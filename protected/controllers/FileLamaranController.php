@@ -56,19 +56,7 @@ class FileLamaranController extends Controller
 		$model=$this->loadModel($id);
 		$dataDokumen=$this->loadDokumen($model->user_id);
 		$dataProfile=$this->loadPelamar($model->user_id);
-
 		$model->setScenario('keterangan');
-
-		$criteria = new CDbCriteria;
-		$criteria->condition = 'user_id = :user_id';
-		$criteria->params = array(':user_id'=>$model->user_id);
-		$criteria->order = 'tahun_lulus DESC';		
-
-		$dataProviders=new CActiveDataProvider('Pendidikan',array(
-			'criteria'=>$criteria,
-			'pagination'=>array(
-				'pageSize'=>'4',
-				)));
 
 		if(isset($_POST['FileLamaran']))
 		{
@@ -78,11 +66,88 @@ class FileLamaranController extends Controller
 			}
 		}
 
+
+		$profile=$this->loadPelamar($model->user_id);
+		$dataKeahlian=$this->loadKeahlian($model->user_id);
+		
+		$criteria = new CDbCriteria;
+		$criteria->condition = 'user_id = :id AND jenis=1';
+		$criteria->params = array(':id'=>$model->user_id);
+		$criteria->order = 'tahun_lulus DESC';		
+
+		$dataFormal=new CActiveDataProvider('Pendidikan',array(
+			'criteria'=>$criteria,
+			'pagination'=>array(
+				'pageSize'=>'4',
+				)));
+
+		$criteria1 = new CDbCriteria;
+		$criteria1->condition = 'user_id = :id AND jenis=2';
+		$criteria1->params = array(':id'=>$model->user_id);
+		$criteria1->order = 'tahun_lulus DESC';		
+
+		$dataNonFormal=new CActiveDataProvider('Pendidikan',array(
+			'criteria'=>$criteria1,
+			'pagination'=>array(
+				'pageSize'=>'4',
+				)));		
+
+		$criteria2 = new CDbCriteria;
+		$criteria2->condition = 'user_id = :id';
+		$criteria2->params = array(':id'=>$model->user_id);
+		$criteria2->order = 'tahun DESC';			
+
+		$dataJobs=new CActiveDataProvider('Pekerjaan',array(
+			'criteria'=>$criteria2,
+			'pagination'=>array(
+				'pageSize'=>'4',
+				)));
+
+		$criteria3 = new CDbCriteria;
+		$criteria3->condition = 'user_id = :id';
+		$criteria3->params = array(':id'=>$model->user_id);
+		$criteria3->order = 'id_keluarga DESC';			
+
+		$dataFamily=new CActiveDataProvider('Keluarga',array(
+			'criteria'=>$criteria3,
+			'pagination'=>array(
+				'pageSize'=>'4',
+				)));	
+
+		$criteria4 = new CDbCriteria;
+		$criteria4->condition = 'user_id = :id';
+		$criteria4->params = array(':id'=>$model->user_id);
+		$criteria4->order = 'id_bahasa DESC';			
+
+		$dataBahasa=new CActiveDataProvider('Bahasa',array(
+			'criteria'=>$criteria4,
+			'pagination'=>array(
+				'pageSize'=>'4',
+				)));
+
+		$criteria5 = new CDbCriteria;
+		$criteria5->condition = 'user_id = :id';
+		$criteria5->params = array(':id'=>$model->user_id);
+		$criteria5->order = 'id_organisasi DESC';			
+
+		$dataOrganisasi=new CActiveDataProvider('Organisasi',array(
+			'criteria'=>$criteria5,
+			'pagination'=>array(
+				'pageSize'=>'4',
+				)));			
+
 		$this->render('view',array(
 			'model'=>$model,
 			'dataDokumen'=>$dataDokumen,
 			'dataProfile'=>$dataProfile,
-			'dataProviders'=>$dataProviders,
+
+			'dataFormal'=>$dataFormal,
+			'dataNonFormal'=>$dataNonFormal,
+			'dataJobs'=>$dataJobs,
+			'dataFamily'=>$dataFamily,
+			'dataBahasa'=>$dataBahasa,
+			'dataOrganisasi'=>$dataOrganisasi,
+			'dataKeahlian'=>$dataKeahlian,			
 			));
 	}
 
@@ -221,7 +286,7 @@ class FileLamaranController extends Controller
 
 		$dataProvider=new CActiveDataProvider('FileLamaran',
 			array(
-				'criteria'=>array('condition'=>'user_id='.YII::app()->user->id),
+				'criteria'=>array('condition'=>'user_id='.$model->user_id),
 				'sort'=>array('defaultOrder'=>'id DESC')
 				)
 			);
@@ -274,7 +339,17 @@ class FileLamaranController extends Controller
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
-	}			
+	}	
+
+
+	public function loadKeahlian($id)
+	{
+		$model=Keahlian::model()->findByAttributes(array('user_id'=>$id));
+		if($model===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
+	}	
+
 
 
 	/**
@@ -296,7 +371,7 @@ class FileLamaranController extends Controller
 		$model=$this->loadModel($id);
 		$model->status_lamaran = 1;
 		$model->tanggal_verifikasi = date('Y-m-d h:i:s');
-		$model->verifikasi_id = YII::app()->user->id;
+		$model->verifikasi_id = $model->user_id;
 		if($model->update()){
 			$this->redirect(array('view','id'=>$model->id));
 		}
@@ -307,7 +382,7 @@ class FileLamaranController extends Controller
 		$model=$this->loadModel($id);
 		$model->status_lamaran = 2;
 		$model->tanggal_verifikasi = date('Y-m-d h:i:s');
-		$model->verifikasi_id = YII::app()->user->id;
+		$model->verifikasi_id = $model->user_id;
 		if($model->update())
 			$this->redirect(array('view','id'=>$model->id));
 	}	
@@ -318,7 +393,7 @@ class FileLamaranController extends Controller
 		$model=$this->loadModel($id);
 		$model->status_lamaran = 3;
 		$model->tanggal_verifikasi = date('Y-m-d h:i:s');
-		$model->verifikasi_id = YII::app()->user->id;
+		$model->verifikasi_id = $model->user_id;
 		if($model->update())
 			$this->redirect(array('view','id'=>$model->id));
 	}			
@@ -329,7 +404,7 @@ class FileLamaranController extends Controller
 		$model=$this->loadModel($id);
 		$model->status_lamaran = 4;
 		$model->tanggal_verifikasi = date('Y-m-d h:i:s');
-		$model->verifikasi_id = YII::app()->user->id;
+		$model->verifikasi_id = $model->user_id;
 		if($model->update())
 			$this->redirect(array('view','id'=>$model->id));
 	}		
@@ -340,7 +415,7 @@ class FileLamaranController extends Controller
 		$model->penilaian_id = $penilaian;
 		$model->status_lamaran = 5;
 		$model->tanggal_verifikasi = date('Y-m-d h:i:s');
-		$model->verifikasi_id = YII::app()->user->id;
+		$model->verifikasi_id = $model->user_id;
 		if($model->update())
 			$this->redirect(array('view','id'=>$model->id));
 	}		
@@ -350,7 +425,7 @@ class FileLamaranController extends Controller
 		$model=$this->loadModel($id);
 		$model->status_lamaran = 7;
 		$model->tanggal_verifikasi = date('Y-m-d h:i:s');
-		$model->verifikasi_id = YII::app()->user->id;
+		$model->verifikasi_id = $model->user_id;
 		if($model->update()){
 
 			$pelamar=$this->loadPelamar($model->user_id);
@@ -367,7 +442,7 @@ class FileLamaranController extends Controller
 		$model=$this->loadModel($id);
 		$model->status_lamaran = 8;
 		$model->tanggal_verifikasi = date('Y-m-d h:i:s');
-		$model->verifikasi_id = YII::app()->user->id;
+		$model->verifikasi_id = $model->user_id;
 		if($model->update())
 			$this->redirect(array('view','id'=>$model->id));
 	}		
@@ -377,7 +452,7 @@ class FileLamaranController extends Controller
 		$model=$this->loadModel($id);
 		$model->status_lamaran = 9;
 		$model->tanggal_verifikasi = date('Y-m-d h:i:s');
-		$model->verifikasi_id = YII::app()->user->id;
+		$model->verifikasi_id = $model->user_id;
 		if($model->update()){
 
 			$pelamar=$this->loadPelamar($model->user_id);
@@ -394,7 +469,7 @@ class FileLamaranController extends Controller
 		$model=$this->loadModel($id);
 		$model->status_lamaran = 11;
 		$model->tanggal_verifikasi = date('Y-m-d h:i:s');
-		$model->verifikasi_id = YII::app()->user->id;
+		$model->verifikasi_id = $model->user_id;
 		if($model->update())
 			$this->redirect(array('view','id'=>$model->id));
 	}			
@@ -404,7 +479,7 @@ class FileLamaranController extends Controller
 		$model=$this->loadModel($id);
 		$model->status_lamaran = 12;
 		$model->tanggal_verifikasi = date('Y-m-d h:i:s');
-		$model->verifikasi_id = YII::app()->user->id;
+		$model->verifikasi_id = $model->user_id;
 		$model->keterangan = "Lamaran Anda Tidak Kami Proses, Anda sudah Membatalkan Lamaran ini Pada ".date('Y-m-d h:i:s');
 		if($model->update()){
 

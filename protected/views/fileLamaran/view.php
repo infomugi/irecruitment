@@ -41,87 +41,106 @@ $update = "Update " . Yii::app()->dateFormatter->formatDateTime(CDateTimeParser:
 
 		<div class="tab-pane active" id="1">
 
-			<!-- START: DATA PRIBADI -->
-			<?php $this->widget('zii.widgets.CDetailView', array(
-				'data'=>$model,
-				'htmlOptions'=>array("class"=>"table"),
-				'attributes'=>array(
+			<div class="row">
+				<div class="col-md-4">
 
-					'tanggal_upload',
-					array('label'=>'Bagian','value'=>$dataBagian->nama),
-					array('label'=>'Jabatan','value'=>$dataJabatan->nama),
+					<H4><i class="ti-clipboard pull-left"></i> Foto</H4>
+					<center>
+						<img width="280px" title="Foto" src="<?php echo Yii::app()->baseUrl. "/lamaran/foto/" .User::model()->avatar($model->user_id); ?>" class="img-responsive">
+					</center>
 
-					),
-					)); ?>
+				</div>
 
-					<?php if($model->verifikasi_id!=0): ?>
-
-						<?php $this->widget('zii.widgets.CDetailView', array(
-							'data'=>$model,
-							'htmlOptions'=>array("class"=>"table"),
-							'attributes'=>array(
-								'tanggal_verifikasi',
-								'keterangan',
-								),
-								)); ?>	
-
-							<?php endif; ?>
+				<div class="col-md-8">
 
 
-							<?php if(YII::app()->user->getLevel()==1): ?>
-								<?php if($model->keterangan==""): ?>
-									<div class="form-normal form-horizontal clearfix">
-										<div class="col-md-9"> 
+					<!-- START: DATA PRIBADI -->
+					<H4><i class="ti-clipboard pull-left"></i> Detail Lamaran</H4>
+					<?php $this->widget('zii.widgets.CDetailView', array(
+						'data'=>$model,
+						'htmlOptions'=>array("class"=>"table"),
+						'attributes'=>array(
 
-											<?php $form=$this->beginWidget('CActiveForm', array(
-												'id'=>'people-form',
-												'enableAjaxValidation'=>false,
-												'enableClientValidation'=>true,
-												'clientOptions'=>array('validateOnSubmit'=>true),
-												'htmlOptions' => array('enctype' => 'multipart/form-data'),
-												)); ?>
+							'tanggal_upload',
+							array('label'=>'Bagian','value'=>$dataBagian->nama),
+							array('label'=>'Jabatan','value'=>$dataJabatan->nama),
 
-												<?php echo $form->errorSummary($model, null, null, array('class' => 'alert alert-warning')); ?>
+							),
+							)); ?>
+
+							<?php if($model->verifikasi_id!=0): ?>
+
+								<?php $this->widget('zii.widgets.CDetailView', array(
+									'data'=>$model,
+									'htmlOptions'=>array("class"=>"table"),
+									'attributes'=>array(
+										'tanggal_verifikasi',
+										'keterangan',
+										),
+										)); ?>	
+
+									<?php endif; ?>
 
 
-												<div class="form-group">
+									<?php if(YII::app()->user->getLevel()==1): ?>
+										<?php if($model->keterangan==""): ?>
+											<div class="form-normal form-horizontal clearfix">
+												<div class="col-md-9"> 
 
-													<div class="col-sm-4 control-label">
-														<?php echo $form->labelEx($model,'keterangan'); ?>
-													</div>   
+													<?php $form=$this->beginWidget('CActiveForm', array(
+														'id'=>'people-form',
+														'enableAjaxValidation'=>false,
+														'enableClientValidation'=>true,
+														'clientOptions'=>array('validateOnSubmit'=>true),
+														'htmlOptions' => array('enctype' => 'multipart/form-data'),
+														)); ?>
 
-													<div class="col-sm-8">
-														<?php echo $form->error($model,'keterangan'); ?>
-														<?php echo $form->textArea($model,'keterangan',array('class'=>'form-control')); ?>
+														<?php echo $form->errorSummary($model, null, null, array('class' => 'alert alert-warning')); ?>
+
+
+														<div class="form-group">
+
+															<div class="col-sm-4 control-label">
+																<?php echo $form->labelEx($model,'keterangan'); ?>
+															</div>   
+
+															<div class="col-sm-8">
+																<?php echo $form->error($model,'keterangan'); ?>
+																<?php echo $form->textArea($model,'keterangan',array('class'=>'form-control')); ?>
+															</div>
+
+														</div>   	
+
+
+														<div class="form-group">
+															<div class="col-md-12">  
+															</br></br>
+															<?php echo CHtml::submitButton($model->isNewRecord ? 'Unggah' : 'Kirim', array('class' => 'btn btn-default btn-flat pull-right')); ?>
+														</div>
 													</div>
 
-												</div>   	
+													<?php $this->endWidget(); ?>
 
-
-												<div class="form-group">
-													<div class="col-md-12">  
-													</br></br>
-													<?php echo CHtml::submitButton($model->isNewRecord ? 'Unggah' : 'Kirim', array('class' => 'btn btn-default btn-flat pull-right')); ?>
 												</div>
-											</div>
+											</div><!-- form -->		
 
-											<?php $this->endWidget(); ?>
 
-										</div>
-									</div><!-- form -->		
+										<?php endif; ?>
+									<?php endif; ?>
 
-								<?php endif; ?>
-							<?php endif; ?>
-
-							<!-- END: DATA PRIBADI -->
-
+								</div>
+							</div>
 						</div>
+						<!-- END: DATA PRIBADI -->
+
+
 
 						<div class="tab-pane" id="2">
 
 
 							<div class="row">
-								<div class="col-md-4">
+								<H4><i class="ti-clipboard pull-left"></i> Profil Pelamar</H4>
+								<div class="col-md-6">
 
 									<?php
 									$data=Pelamar::model()->findByAttributes(array('id_user'=>$model->user_id));
@@ -143,7 +162,7 @@ $update = "Update " . Yii::app()->dateFormatter->formatDateTime(CDateTimeParser:
 
 										</div>
 
-										<div class="col-md-4">
+										<div class="col-md-6">
 
 											<?php $this->widget('zii.widgets.CDetailView', array(
 												'data'=>$data,
@@ -162,15 +181,10 @@ $update = "Update " . Yii::app()->dateFormatter->formatDateTime(CDateTimeParser:
 													),
 													)); ?>
 												</div>
-												<div class="col-md-4">
 
 
-													<H4><i class="ti-clipboard pull-left"></i> Foto</H4>
-													<center>
-														<img width="180px" title="Foto" src="<?php echo Yii::app()->baseUrl. "/lamaran/foto/" .User::model()->avatar($model->user_id); ?>" class="img-responsive">
-													</center>
+												<?php echo require_once('detail_pelamar.php'); ?>
 
-												</div>
 											</div>
 
 

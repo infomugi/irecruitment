@@ -264,7 +264,7 @@
 										<div class="col-sm-8">
 											<?php echo $form->error($model,'status_domisili'); ?>
 											<?php
-											echo $form->radioButtonList($model,'status_menikah',
+											echo $form->radioButtonList($model,'status_domisili',
 												array('1'=>'Milik Sendiri','2'=>'Milik Orangtua','3'=>'Kontrak','4'=>'Kost','5'=>'Lainnya'),
 												array(
 													'template'=>'{input}{label}',
