@@ -77,6 +77,7 @@ class FileLamaran extends CActiveRecord
 			'keterangan' => 'Pesan dari HRD',
 			'verifikasi_id' => 'Verifikasi',
 			'lowongan_id' => 'Lowongan',
+			'pelamar_id' => 'Nama',
 			);
 	}
 

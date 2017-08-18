@@ -30,7 +30,7 @@ if(!YII::app()->user->isGuest):
 			</div>
 			<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 				<div class="panel-body">
-					<?php require_once('_detail_lowongan.php'); ?>
+					<?php require_once('_detail_lowongan_admin.php'); ?>
 				</div>
 			</div>
 		</div>

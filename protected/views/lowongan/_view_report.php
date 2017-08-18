@@ -17,14 +17,14 @@ $this->widget('zii.widgets.grid.CGridView', array(
 	'itemsCssClass' => 'table table-bordered table-striped dataTable table-hover',
 	'columns'=>array(
 
-		array(
-			'name'=>'id_people',
-			'value'=>'$data->Pelamar->email',													
-			),
-		array(
-			'name'=>'id_people',
-			'value'=>'$data->Pelamar->username',													
-			),		
+		// array(
+		// 	'name'=>'id_people',
+		// 	'value'=>'$data->Pelamar->email',													
+		// 	),
+		// array(
+		// 	'name'=>'id_people',
+		// 	'value'=>'$data->Pelamar->username',													
+		// 	),		
 
 
 

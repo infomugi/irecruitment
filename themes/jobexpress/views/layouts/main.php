@@ -54,7 +54,8 @@
 										'items'=>array(
 											array('label'=>'<i class="fa fa-caret-right"></i> Data Pribadi','url'=>array('/pelamar/profile'),'visible'=>yii::app()->user->getLevel()==2),
 											array('label'=>'<i class="fa fa-caret-right"></i> Dokumen Lamaran','url'=>array('/pelamar/dokumen'),'visible'=>yii::app()->user->getLevel()==2),                                  
-											array('label'=>'<i class="fa fa-caret-right"></i> Pengajuan Lamaran','url'=>array('/filelamaran/history'),'visible'=>yii::app()->user->getLevel()==2),                                  
+											array('label'=>'<i class="fa fa-caret-right"></i> Lowongan','url'=>array('/lowongan/terbaru')),
+											array('label'=>'Pengajuan Lamaran','url'=>array('/filelamaran/history'),'visible'=>yii::app()->user->getLevel()==2),                                  
 											array('label'=>'<i class="fa fa-caret-right"></i> Edit Data Pribadi','url'=>array('/pelamar/update'),'visible'=>yii::app()->user->getLevel()==2),
 											array('label'=>'<i class="fa fa-caret-right"></i> Edit Password','url'=>array('/pelamar/password'),'visible'=>yii::app()->user->getLevel()==2),
 											),
