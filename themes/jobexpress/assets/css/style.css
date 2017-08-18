@@ -761,7 +761,7 @@ ul.bottom_link li a {
 }
 /***********login page Css**********/
 .page_banner{
-  background: url(../images/login/banner_bg.jpg) no-repeat left top/cover;
+  background: url(/images/banner.jpg) no-repeat left top/cover;
   padding: 39px 0px;
   float: left;
   width: 100%;
@@ -937,7 +937,7 @@ ul.bottom_link li a {
 }
 /***********About Page**********/
 .about{
-  background: #900c10;
+  background: url(./images/banner.jpg) no-repeat left top/cover;
 }
 .about_us{ padding-bottom: 70px;}
 .banner .banner-heading{
