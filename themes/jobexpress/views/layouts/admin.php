@@ -182,11 +182,11 @@ Yii::app()->clientScript->registerCoreScript('jquery');
             <div id="page-wrapper">
               <div class="container-fluid">
                 <div class="row bg-title">
-                  <div class="col-lg-4 col-md-5 col-sm-4 col-xs-12">
+                  <div class="col-lg-5 col-md-5 col-sm-4 col-xs-12">
                     <h4 class="page-title"><?php echo $this->pageTitle; ?></h4>
                   </div>
-                  <div class="col-lg-8 col-sm-7 col-md-8 col-xs-12">
-                    <a href="#" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Logout</a>
+                  <div class="col-lg-7 col-sm-7 col-md-8 col-xs-12 visible-lg">
+                    <a href="<?php echo $url;?>site/logout" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Logout</a>
                     <ol class="breadcrumb">
                       <li><a href="#">Dashboard</a></li>
                       <li class="active"><?php echo $this->pageTitle; ?></li>

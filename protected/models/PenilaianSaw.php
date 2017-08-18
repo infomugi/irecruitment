@@ -205,9 +205,15 @@ class PenilaianSaw extends CActiveRecord
 				array('filelamaran/diterima', 'id'=>$lamaran), 
 				array('class' => 'btn btn-info btn-sm btn-flat', 'title'=>'Terima Sebagai Pegawai'));
 		}else{
-			return CHtml::link('Terima', 
+			$terima =  CHtml::link('<i class="fa fa-check"></i>', 
 				array('filelamaran/diterima', 'id'=>$lamaran), 
 				array('class' => 'btn btn-info btn-sm btn-flat', 'title'=>'Terima Sebagai Pegawai'));
+
+			$tolak =  CHtml::link('<i class="fa fa-close"></i>', 
+				array('filelamaran/tolak', 'id'=>$lamaran), 
+				array('class' => 'btn btn-info btn-sm btn-flat', 'title'=>'Terima Sebagai Pegawai'));
+
+			return $terima . $tolak;
 		}
 	}		
 

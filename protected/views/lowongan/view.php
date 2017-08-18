@@ -46,12 +46,12 @@ if(!YII::app()->user->isGuest):
 				<div class="panel-body">
 					<div>	
 						<ul class="nav nav-tabs">
-							<li class="active"><a href="#0" data-toggle="tab"><i class="ti ti-user"></i> Belum di Verifikasi</a></a></li>
-							<li><a  href="#1" data-toggle="tab"><i class="ti ti-user"></i> Diverifikasi</a></a></li>
-							<li><a href="#2" data-toggle="tab"><i class="ti ti-user"></i> Dipanggil</a></a></li>
-							<li><a href="#4" data-toggle="tab"><i class="ti ti-user"></i> Rekomendasi Panggilan</a></a></li>
-							<li><a href="#5" data-toggle="tab"><i class="ti ti-user"></i> Diterima</a></a></li>
-							<li><a href="#6" data-toggle="tab"><i class="ti ti-user"></i> Ditolak (Tidak Lulus)</a></a></li>
+							<li class="active"><a href="#0" data-toggle="tab"><i class="ti ti-user"></i> <span class="hidden-xs">Belum di Verifikasi</span></a></a></li>
+							<li><a  href="#1" data-toggle="tab"><i class="ti ti-user"></i> <span class="hidden-xs">Diverifikasi</span></a></a></li>
+							<li><a href="#2" data-toggle="tab"><i class="ti ti-user"></i> <span class="hidden-xs">Dipanggil</span></a></a></li>
+							<li><a href="#4" data-toggle="tab"><i class="ti ti-user"></i> <span class="hidden-xs">Rekomendasi Panggilan</span></a></a></li>
+							<li><a href="#5" data-toggle="tab"><i class="ti ti-user"></i> <span class="hidden-xs">Diterima</span></a></a></li>
+							<li><a href="#6" data-toggle="tab"><i class="ti ti-user"></i> <span class="hidden-xs">Ditolak (Tidak Lulus)</span></a></a></li>
 						</ul>
 
 						<div class="tab-content ">
