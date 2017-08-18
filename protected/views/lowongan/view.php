@@ -51,7 +51,7 @@ if(!YII::app()->user->isGuest):
 							<li><a href="#2" data-toggle="tab"><i class="ti ti-bar-chart"></i> Dipanggil</a></a></li>
 							<li><a href="#4" data-toggle="tab"><i class="ti ti-bar-chart"></i> Rekomendasi Panggilan</a></a></li>
 							<li><a href="#5" data-toggle="tab"><i class="ti ti-bar-chart"></i> Diterima</a></a></li>
-							<li><a href="#6" data-toggle="tab"><i class="ti ti-bar-chart"></i> Ditolak</a></a></li>
+							<li><a href="#6" data-toggle="tab"><i class="ti ti-bar-chart"></i> Ditolak (Tidak Lulus)</a></a></li>
 						</ul>
 
 						<div class="tab-content ">
@@ -173,7 +173,7 @@ if(!YII::app()->user->isGuest):
 																'sudahdipanggil'=>
 																array(
 																	'url'=>'Yii::app()->createUrl("filelamaran/sudahdipanggil", array("id"=>$data->id))',
-																	'imageUrl'=>'images/panggil.png',
+																	'imageUrl'=>'images/sudahdipanggil.png',
 																	),
 																'rekomendasi'=>
 																array(
@@ -327,7 +327,7 @@ if(!YII::app()->user->isGuest):
 																				<?php $this->widget('zii.widgets.grid.CGridView', array(
 																					'id'=>'file-6-grid',
 																					'summaryText'=>'',
-																					'dataProvider'=>$dataUnverify->findStatus(7,$model->id_lowongan),
+																					'dataProvider'=>$dataUnverify->findStatus(9,$model->id_lowongan),
 																					'filter'=>$dataUnverify,
 																					'itemsCssClass' => 'table-responsive table table-striped table-hover table-vcenter',
 																					'columns'=>array(
