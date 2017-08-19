@@ -278,15 +278,9 @@ class FileLamaranController extends Controller
 
 	public function actionHistory()
 	{
-		if(Yii::app()->user->getLevel()==1){
-			$this->layout="admin";
-		}else{
-			$this->layout="main";
-		}
-
 		$dataProvider=new CActiveDataProvider('FileLamaran',
 			array(
-				'criteria'=>array('condition'=>'user_id='.$model->user_id),
+				'criteria'=>array('condition'=>'user_id='.YII::app()->user->id),
 				'sort'=>array('defaultOrder'=>'id DESC')
 				)
 			);
@@ -424,7 +418,7 @@ class FileLamaranController extends Controller
 	{
 		$model=$this->loadModel($id);
 		$model->penilaian_id = $penilaian;
-		$model->status_lamaran = 7;
+		$model->status_lamaran = 9;
 		$model->tanggal_verifikasi = date('Y-m-d h:i:s');
 		$model->verifikasi_id = $model->user_id;
 		if($model->update()){

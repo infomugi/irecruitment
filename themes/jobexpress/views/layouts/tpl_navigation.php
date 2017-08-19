@@ -32,9 +32,6 @@
          'items'=>array(
           array('label'=>'Home', 'url'=>array('/site/index'),'visible'=>YII::app()->user->getLevel()!=2),
           array('label'=>'Register','url'=>array('/site/register'),'visible'=>yii::app()->user->isGuest),
-          // array('label'=>'Data Diri','url'=>array('/pelamar/profile'),'visible'=>yii::app()->user->getLevel()==2),
-          // array('label'=>'Pengajuan Lamaran','url'=>array('/lowongan/terbaru'),'visible'=>yii::app()->user->getLevel()==2),
-          // array('label'=>'Pengumuman','url'=>array('/filelamaran/history'),'visible'=>yii::app()->user->getLevel()==2),
 
           array('label'=>'Pengguna <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"), 
            'items'=>array(
