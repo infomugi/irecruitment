@@ -206,6 +206,18 @@ class FileLamaran extends CActiveRecord
 			return "alert-warning";
 		}elseif($data==6){
 			return "alert-danger";
+		}elseif($data==7){
+			return "alert-danger";
+		}elseif($data==8){
+			return "alert-success";
+		}elseif($data==9){
+			return "alert-warning";
+		}elseif($data==10){
+			return "alert-danger";
+		}elseif($data==11){
+			return "alert-info";
+		}elseif($data==12){
+			return "alert-success";
 		}else{
 			return "alert-danger";
 		}

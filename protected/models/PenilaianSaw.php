@@ -201,17 +201,20 @@ class PenilaianSaw extends CActiveRecord
 		$models = PenilaianSaw::model()->findAll($Criteria);
 
 		if($models!=NULL){
+
 			return CHtml::link('Terima', 
-				array('filelamaran/diterima', 'id'=>$lamaran), 
+				array('filelamaran/terima', 'id'=>$lamaran), 
 				array('class' => 'btn btn-info btn-sm btn-flat', 'title'=>'Terima Sebagai Pegawai'));
+			
 		}else{
+
 			$terima =  CHtml::link('<i class="fa fa-check"></i>', 
-				array('filelamaran/diterima', 'id'=>$lamaran), 
+				array('filelamaran/terima', 'id'=>$lamaran, 'penilaian'=>$data), 
 				array('class' => 'btn btn-info btn-sm btn-flat', 'title'=>'Terima Sebagai Pegawai'));
 
 			$tolak =  CHtml::link('<i class="fa fa-close"></i>', 
-				array('filelamaran/tolak', 'id'=>$lamaran), 
-				array('class' => 'btn btn-info btn-sm btn-flat', 'title'=>'Terima Sebagai Pegawai'));
+				array('filelamaran/tolak', 'id'=>$lamaran, 'penilaian'=>$data), 
+				array('class' => 'btn btn-danger btn-sm btn-flat', 'title'=>'Tidak Lulus Seleksi'));
 
 			return $terima . $tolak;
 		}

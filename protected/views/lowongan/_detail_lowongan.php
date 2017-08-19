@@ -75,7 +75,11 @@
 						echo "<br>";
 
 					//Apabila Pelamar sedang dalam Proses Melamar
-						echo Lowongan::model()->cekLamaran($profile->lowongan_id,$model->id_lowongan,YII::app()->user->id);
+						if($model->status==1){
+							echo Lowongan::model()->cekLamaran($profile->lowongan_id,$model->id_lowongan,YII::app()->user->id);
+						}else{
+							echo Lowongan::model()->notifikasiLamaran(1);
+						}
 
 					}else{
 
@@ -88,42 +92,47 @@
 					echo "<div class='alert alert-warning'>Lowongan Ini Diprioritaskan untuk ".Lowongan::model()->gender($model->jeniskelamin)."</div>";
 
 					if($model->jeniskelamin=="LP"):
-					//Apabila Pelamar sedang dalam Proses Melamar
-						echo Lowongan::model()->cekLamaran($profile->lowongan_id,$model->id_lowongan,YII::app()->user->id);
-					endif;
+						
+						if($model->status==1){
+							echo Lowongan::model()->cekLamaran($profile->lowongan_id,$model->id_lowongan,YII::app()->user->id);
+						}else{
+							echo Lowongan::model()->notifikasiLamaran(1);
+						}
+
+						endif;
+
+					}
+
+				}else{
+
+			// Cek: Status Lamaran
+					if($model->status==1){
+				//Notif: Lowongan Masih di Buka
+						echo Lowongan::model()->notifikasiLamaran(3);
+					}else{
+				//Notif: Maaf, Lowongan Ini Sudah Ditutup.
+						echo Lowongan::model()->notifikasiLamaran(1);
+					}
 
 				}
+				endif;
+
 
 			}else{
 
-			// Cek: Status Lamaran
-				if($model->status==1){
-				//Notif: Lowongan Masih di Buka
-					echo Lowongan::model()->notifikasiLamaran(3);
-				}else{
-				//Notif: Maaf, Lowongan Ini Sudah Ditutup.
-					echo Lowongan::model()->notifikasiLamaran(1);
-				}
+				if(YII::app()->user->isGuest):
 
+			//Notif: Maaf, Lowongan Ini Sudah Tidak Tersedia
+					echo Lowongan::model()->notifikasiLamaran(2);
+
+				endif;
+
+				if(YII::app()->user->getLevel()==2):
+
+			//Notif: Maaf, Lowongan Ini Sudah Tidak Tersedia
+					echo Lowongan::model()->notifikasiLamaran(2);
+
+				endif;
 			}
-			endif;
 
-
-		}else{
-
-			if(YII::app()->user->isGuest):
-
-			//Notif: Maaf, Lowongan Ini Sudah Tidak Tersedia
-				echo Lowongan::model()->notifikasiLamaran(2);
-
-			endif;
-
-			if(YII::app()->user->getLevel()==2):
-
-			//Notif: Maaf, Lowongan Ini Sudah Tidak Tersedia
-				echo Lowongan::model()->notifikasiLamaran(2);
-
-			endif;
-		}
-
-		?>
+			?>
