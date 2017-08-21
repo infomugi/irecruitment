@@ -472,7 +472,7 @@ class FileLamaranController extends Controller
 	public function actionDibatalkan($id)
 	{
 		$model=$this->loadModel($id);
-		$model->status_lamaran = 12;
+		$model->status_lamaran = 13;
 		$model->tanggal_verifikasi = date('Y-m-d h:i:s');
 		$model->verifikasi_id = $model->user_id;
 		$model->keterangan = "Lamaran Anda Tidak Kami Proses, Anda sudah Membatalkan Lamaran ini Pada ".date('Y-m-d h:i:s');

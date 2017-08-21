@@ -186,8 +186,10 @@ class FileLamaran extends CActiveRecord
 			return "Rekomendasi Panggilan";
 		}elseif($data==12){
 			return "Sudah Dinilai";
-		}else{
+		}elseif($data==13){
 			return "Dibatalkan oleh Pelamar";
+		}else{
+			return "-";
 		}
 	}
 
