@@ -19,7 +19,7 @@ $hide = Lowongan::model()->hide($data->tanggal_kebutuhan);
 				<span><strong>Berlaku: <i class="fa fa-calendar"></i></strong> <?php echo CHtml::encode($data->tanggal_kebutuhan); ?></span>
 			</div>		
 			<div class="contact_details col-md-3 col-sm-3">
-				<span><strong>Kebutuhan:</strong> <?php echo CHtml::encode($data->jumlah_orang); ?> Orang</span>
+				<span><strong>Jenis Kelamin:</strong> <?php echo CHtml::encode(Lowongan::model()->gender($data->jeniskelamin)); ?></span>
 			</div>				
 			<div class="contact_details col-md-3 col-sm-3">
 				<span><strong>Status Lowongan:</strong> <?php echo CHtml::encode(Lowongan::model()->deadline($data->tanggal_kebutuhan)); ?></span>

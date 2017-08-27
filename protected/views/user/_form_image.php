@@ -21,7 +21,7 @@
 
 			<?php echo $form->errorSummary($model, null, null, array('class' => 'alert alert-warning')); ?>
 
-
+			<div class="alert alert-warning">Menggunakan foto formal, ukuran maksimal 1 Mb.</div>
 
 			<div class="form-group">
 

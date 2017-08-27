@@ -11,6 +11,7 @@
  * @property string $jurusan
  * @property string $mulai
  * @property string $selesai
+ * @property string $tahun_mulai
  * @property string $tahun_lulus
  * @property integer $status
  * @property double $nilai
@@ -39,13 +40,13 @@ class Pendidikan extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			// array('jenjang, kota, mulai, selesai, status, jenis', 'required'),
-			array('jenjang, instansi, jurusan, nilai, tahun_lulus, kota, mulai, selesai, status, jenis', 'required','on'=>'formal'),
+			array('jenjang, instansi, nilai, tahun_mulai, tahun_lulus, kota, status, jenis', 'required','on'=>'formal'),
 			array('macam, instansi, no_dokumen, mulai, selesai, jenis', 'required','on'=>'nonformal'),
-			array('jenjang, status, jenis, people_id, user_id, macam', 'numerical', 'integerOnly'=>true),
+			array('jenjang, status, jenis, people_id, user_id, macam, nilai', 'numerical', 'integerOnly'=>true),
 			array('nilai', 'numerical'),
 			array('instansi', 'length', 'max'=>100),
 			array('kota, jurusan, no_dokumen, mulai, selesai', 'length', 'max'=>50),
-			array('tahun_lulus', 'length', 'max'=>5),
+			array('tahun_mulai, tahun_lulus', 'length', 'max'=>5),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id_pendidikan, jenjang, instansi, kota, jurusan, mulai, selesai, tahun_lulus, status, nilai, jenis, people_id, user_id', 'safe', 'on'=>'search'),

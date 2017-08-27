@@ -17,6 +17,7 @@
  * @property integer $status
  * @property string $jeniskelamin
  * @property integer $umur
+ * @property integer $perusahaan_id
  */
 class Lowongan extends CActiveRecord
 {
@@ -36,8 +37,8 @@ class Lowongan extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('tanggal, bagian, jabatan, tipe, deskripsi_pekerjaan, deskripsi_kebutuhan, jumlah_orang, tanggal_kebutuhan, lokasi, status, jeniskelamin, umur', 'required'),
-			array('bagian, jabatan, tipe, jumlah_orang, status, umur', 'numerical', 'integerOnly'=>true),
+			array('tanggal, bagian, jabatan, tipe, deskripsi_pekerjaan, deskripsi_kebutuhan, jumlah_orang, tanggal_kebutuhan, lokasi, status, jeniskelamin, umur, perusahaan_id', 'required'),
+			array('bagian, jabatan, tipe, jumlah_orang, status, umur, perusahaan_id', 'numerical', 'integerOnly'=>true),
 			array('lokasi, tanggal_kebutuhan', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -54,8 +55,9 @@ class Lowongan extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'Bagian' => array(self::BELONGS_TO, 'Bagian', 'bagian'),
-			'Jabatan' => array(self::BELONGS_TO, 'Jabatan', 'jabatan'),
-			);
+            'Jabatan' => array(self::BELONGS_TO, 'Jabatan', 'jabatan'),
+            'Perusahaan' => array(self::BELONGS_TO, 'Perusahaan', 'perusahaan_id'),
+            );
 	}
 
 	/**
@@ -76,8 +78,9 @@ class Lowongan extends CActiveRecord
 			'lokasi' => 'Lokasi',
 			'jeniskelamin' => 'Jenis Kelamin',
 			'status' => 'Status',
-			'umur' => 'Umur',
-			);
+            'umur' => 'Umur',
+            'perusahaan_id' => 'Project',
+            );
 	}
 
 	/**
@@ -346,4 +349,61 @@ class Lowongan extends CActiveRecord
 
         }
 
-    }
+        public function perusahaan($id){
+            $model=Perusahaan::model()->findByPk($id);
+            if($model===null){
+                return "-";
+            }else{
+                return $model->nama;
+            }
+        }
+
+        public function countApply($job){
+            return $count = Filelamaran::model()->countByAttributes(array(
+                'lowongan_id'=> $job
+                ));
+        }
+
+        public function countJob(){
+            return $count = Lowongan::model()->countByAttributes(array(
+                'status'=> 1
+                ));
+        }    
+
+        public function countApplicant(){
+            return $count = Filelamaran::model()->count();
+        }    
+
+        public function countMale(){
+            return $count = Pelamar::model()->countByAttributes(array(
+                'jenis_kelamin'=> "L"
+                ));
+        }   
+
+        public function countFemale(){
+            return $count = Pelamar::model()->countByAttributes(array(
+                'jenis_kelamin'=> "P"
+                ));
+        }                              
+
+        public static function getMonitor(){
+          $sql = "
+          SELECT j.nama as nama, count(f.id) as total 
+          FROM lowongan as l 
+          LEFT JOIN file_lamaran as f ON l.id_lowongan=f.lowongan_id
+          LEFT JOIN jabatan as j ON l.jabatan=j.id_jabatan";
+          $command = YII::app()->db->createCommand($sql);
+          return $command->queryAll();
+      }
+
+      public function jobName($id){
+        $model=Lowongan::model()->findByPk($id);
+        if($model===null){
+            return "-";
+        }else{
+            return $model->Perusahaan->nama . " - " . $model->Jabatan->nama . " - " . $model->Bagian->nama;
+        }
+    }      
+
+
+}

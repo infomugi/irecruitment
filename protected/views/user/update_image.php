@@ -8,7 +8,7 @@ $this->breadcrumbs=array(
 	'Edit',
 	);
 
-$this->pageTitle='Upload Image';
+$this->pageTitle='Upload Pas Foto';
 ?>
 
 <?php echo $this->renderPartial('_form_image', array('model'=>$model)); ?>

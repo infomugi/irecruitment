@@ -123,26 +123,34 @@
 						<div class="col-sm-8">
 							<?php echo $form->error($model,'tanggal_lahir'); ?>
 							<?php
-							$this->widget('zii.widgets.jui.CJuiDatePicker', array(
-								'options'=>array(
-									'showAnim'=>'fold',
-									),
-								'model'=>$model,
-								'attribute'=>'tanggal_lahir',
-								'value'=>Yii::app()->dateFormatter->format("dd-MM-yyyy",strtotime($model->tanggal_lahir)),
-								'htmlOptions'=>array(
-									'class'=>'form-control',
-									'tabindex'=>2
-									),
-								'options'=>array(
-									'dateFormat' => 'd-mm-yy',
-												'showAnim'=>'drop',//'drop','fold','slideDown','fadeIn','blind','bounce','clip','drop'
-												'showButtonPanel'=>true,
-												'changeMonth'=>true,
-												'changeYear'=>true,
-												'defaultDate'=>'+1w',
-												),
+							$this->widget('CMaskedTextField', array(
+								'model' => $model,
+								'attribute' => 'tanggal_lahir',
+								'mask' => '99-99-9999',
+								'htmlOptions' => array('class'=>'form-control','placeholder'=>'Format: Tanggal - Bulan - Tahun')
 								));
+								?>
+								<?php
+							// $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+							// 	'options'=>array(
+							// 		'showAnim'=>'fold',
+							// 		),
+							// 	'model'=>$model,
+							// 	'attribute'=>'tanggal_lahir',
+							// 	'value'=>Yii::app()->dateFormatter->format("dd-MM-yyyy",strtotime($model->tanggal_lahir)),
+							// 	'htmlOptions'=>array(
+							// 		'class'=>'form-control',
+							// 		'tabindex'=>2
+							// 		),
+							// 	'options'=>array(
+							// 		'dateFormat' => 'd-mm-yy',
+							// 					'showAnim'=>'drop',//'drop','fold','slideDown','fadeIn','blind','bounce','clip','drop'
+							// 					'showButtonPanel'=>true,
+							// 					'changeMonth'=>true,
+							// 					'changeYear'=>true,
+							// 					'defaultDate'=>'+1w',
+							// 					),
+							// 	));
 								?>
 							</div>
 

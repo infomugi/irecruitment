@@ -420,8 +420,22 @@ if(!YII::app()->user->isGuest):
 																				)
 																				'),	
 
-																					// 'nilai',
+																			// 'nilai',
 																			array('name'=>'pelamar_id','value'=>'$data->Pelamar->username'),
+
+
+																			array(
+																				'class'=>'CButtonColumn',
+																				'header'=>'Profil',
+																				'template'=>'{view}',
+																				'buttons'=>array(
+																					'view'=>
+																					array(
+																						'url'=>'Yii::app()->createUrl("pelamar/view", array("id"=>Pelamar::model()->applicant($data->pelamar_id)))',
+																						'imageUrl'=>'images/detail.png',
+																						),
+																					),
+																				),
 
 																			array(
 																				'header' => 'Aksi',

@@ -21,7 +21,8 @@
 
 	<div class="form-group">
 		<label> <?php echo $form->labelEx($Pelamar,'nik'); ?></label>
-		<?php echo $form->textField($Pelamar,'nik', array('class' => 'form-control', 'placeholder'=>'NIK')); ?>
+		<?php $this->widget('CMaskedTextField',array('model'=>$Pelamar,'attribute'=>'nik','mask'=>'9999999999999999','htmlOptions'=>array('class'=>'form-control', 'placeholder'=>'NIK')));
+		?>
 		<div class="search_icon"><span class="ti-credit-card"></span></div>
 	</div>
 

@@ -53,20 +53,35 @@ class PelamarController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$model=Pelamar::model()->findByPk($id);
+		$profile=$this->loadProfile($model->id_user);
+		$dataKeahlian=$this->loadKeahlian($model->id_user);
+		
 		$criteria = new CDbCriteria;
-		$criteria->condition = 'people_id = :id';
-		$criteria->params = array(':id'=>$id);
+		$criteria->condition = 'user_id = :id AND jenis=1';
+		$criteria->params = array(':id'=>$model->id_user);
 		$criteria->order = 'tahun_lulus DESC';		
 
-		$dataProvider=new CActiveDataProvider('Pendidikan',array(
+		$dataFormal=new CActiveDataProvider('Pendidikan',array(
 			'criteria'=>$criteria,
 			'pagination'=>array(
 				'pageSize'=>'4',
 				)));
 
+		$criteria1 = new CDbCriteria;
+		$criteria1->condition = 'user_id = :id AND jenis=2';
+		$criteria1->params = array(':id'=>$model->id_user);
+		$criteria1->order = 'tahun_lulus DESC';		
+
+		$dataNonFormal=new CActiveDataProvider('Pendidikan',array(
+			'criteria'=>$criteria1,
+			'pagination'=>array(
+				'pageSize'=>'4',
+				)));		
+
 		$criteria2 = new CDbCriteria;
-		$criteria2->condition = 'people_id = :id';
-		$criteria2->params = array(':id'=>$id);
+		$criteria2->condition = 'user_id = :id';
+		$criteria2->params = array(':id'=>$model->id_user);
 		$criteria2->order = 'tahun DESC';			
 
 		$dataJobs=new CActiveDataProvider('Pekerjaan',array(
@@ -76,21 +91,47 @@ class PelamarController extends Controller
 				)));
 
 		$criteria3 = new CDbCriteria;
-		$criteria3->condition = 'people_id = :id';
-		$criteria3->params = array(':id'=>$id);
-		$criteria3->order = 'tahun DESC';			
+		$criteria3->condition = 'user_id = :id';
+		$criteria3->params = array(':id'=>$model->id_user);
+		$criteria3->order = 'id_keluarga DESC';			
 
 		$dataFamily=new CActiveDataProvider('Keluarga',array(
 			'criteria'=>$criteria3,
 			'pagination'=>array(
 				'pageSize'=>'4',
-				)));		
+				)));	
+
+		$criteria4 = new CDbCriteria;
+		$criteria4->condition = 'user_id = :id';
+		$criteria4->params = array(':id'=>$model->id_user);
+		$criteria4->order = 'id_bahasa DESC';			
+
+		$dataBahasa=new CActiveDataProvider('Bahasa',array(
+			'criteria'=>$criteria4,
+			'pagination'=>array(
+				'pageSize'=>'4',
+				)));
+
+		$criteria5 = new CDbCriteria;
+		$criteria5->condition = 'user_id = :id';
+		$criteria5->params = array(':id'=>$model->id_user);
+		$criteria5->order = 'id_organisasi DESC';			
+
+		$dataOrganisasi=new CActiveDataProvider('Organisasi',array(
+			'criteria'=>$criteria5,
+			'pagination'=>array(
+				'pageSize'=>'4',
+				)));							
 
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
-			'dataProvider'=>$dataProvider,
+			'dataFormal'=>$dataFormal,
+			'dataNonFormal'=>$dataNonFormal,
 			'dataJobs'=>$dataJobs,
 			'dataFamily'=>$dataFamily,
+			'dataBahasa'=>$dataBahasa,
+			'dataOrganisasi'=>$dataOrganisasi,
+			'dataKeahlian'=>$dataKeahlian,
 			));
 	}
 

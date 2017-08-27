@@ -652,7 +652,6 @@ hr {
 }
 /***********footer**************/
 #footer{
-  padding: 100px 0 0px;
   background: #900c10;
   background-size: cover;
   position: relative;
@@ -743,7 +742,6 @@ ul.follow li:hover{ margin: -10px 5px; }
   background-color: #b30c11;
   padding: 20px 0px;
   color: #aad4d9;
-  margin-top: 100px;
   font-size: 13px;
 }
 ul.bottom_link {

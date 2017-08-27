@@ -71,7 +71,7 @@ class FileLamaran extends CActiveRecord
 			'id' => 'ID Pengajuan',
 			'file_lamaran' => 'File Lamaran',
 			'user_id' => 'User ID',
-			'tanggal_upload' => 'Tanggal Upload',
+			'tanggal_upload' => 'Tanggal Pengajuan',
 			'status_lamaran' => 'Status Lamaran',
 			'tanggal_verifikasi' => 'Tanggal Verifikasi',
 			'keterangan' => 'Pesan dari HRD',

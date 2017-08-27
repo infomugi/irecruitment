@@ -35,7 +35,7 @@ class Keluarga extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('hubungan_keluarga, nama, jenis_kelamin, tempat_lahir, tanggal_lahir, pendidikan_terakhir, pekerjaan, nama_perusahaan, keterangan, user_id', 'required'),
+			array('hubungan_keluarga, nama, jenis_kelamin, tempat_lahir, tanggal_lahir, pendidikan_terakhir, keterangan, user_id', 'required'),
 			array('hubungan_keluarga, jenis_kelamin, pendidikan_terakhir, people_id, user_id', 'numerical', 'integerOnly'=>true),
 			array('nama, tempat_lahir, nama_perusahaan', 'length', 'max'=>50),
 			array('pekerjaan', 'length', 'max'=>100),
@@ -70,7 +70,7 @@ class Keluarga extends CActiveRecord
 			'tempat_lahir' => 'Tempat Lahir',
 			'tanggal_lahir' => 'Tanggal Lahir',
 			'pendidikan_terakhir' => 'Pendidikan Terakhir',
-			'pekerjaan' => 'Jabatan Pekerjaan',
+			'pekerjaan' => 'Pekerjaan',
 			'nama_perusahaan' => 'Nama Perusahaan',
 			'keterangan' => 'Keterangan',
 			'people_id' => 'People',

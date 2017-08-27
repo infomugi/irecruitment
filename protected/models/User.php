@@ -35,7 +35,7 @@ class User extends CActiveRecord
 			array('username, password, email', 'required','on'=>'update_user'),
 			array('date_create', 'default', 'value'=>date('Y-m-d H:i:s'), 'on'=>'register_user'),
 			array('level_ID', 'default', 'value'=>'2', 'on'=>'register_user'),
-			
+			array('username', 'match', 'pattern' => '/^[A-Za-z0-9_]+$/u'),
 			array('username, password, email', 'required','on'=>'create'),
 			array('image', 'required','on'=>'upload'),
 			array('username, email', 'unique'),

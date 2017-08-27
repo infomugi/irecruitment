@@ -1,6 +1,6 @@
 <?php
 
-class LowonganController extends Controller
+class PerusahaanController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -26,13 +26,9 @@ class LowonganController extends Controller
 	 */
 	public function accessRules()
 	{
-		return array(
+		return array(			
 			array('allow',
-				'actions'=>array('index','view','detail','terbaru','search'),
-				'users'=>array('*'),
-				),
-			array('allow',
-				'actions'=>array('create','update','view','delete','admin','index','view','terbaru','list','listreport'),
+				'actions'=>array('create','update','view','delete','admin','index'),
 				'users'=>array('@'),
 				'expression'=>'Yii::app()->user->getLevel()==1',
 				),
@@ -42,45 +38,25 @@ class LowonganController extends Controller
 			);
 	}
 
+
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
 	 */
 	public function actionView($id)
 	{
-		$model=$this->loadModel($id);
-		$dataNilai=new CActiveDataProvider('PenilaianSaw',
-			array('criteria'=>
-				array('condition'=>'lowongan_id='.$model->id_lowongan.'','order'=>'nilai DESC')
-				)
-			);
-
-		// $dataProvider=new CActiveDataProvider('FileLamaran',
-		// 	array('criteria'=>array(
-		// 		'condition'=>'lowongan_id="'.$model->id_lowongan.'"',
-		// 		'order'=>'id DESC',
-
-		// 		),'pagination'=>array('pageSize'=>'4')
-		// 	));
-
-		$dataUnverify=new FileLamaran('search');
-		$dataUnverify->unsetAttributes();  // clear any default values
-		if(isset($_GET['FileLamaran']))
-			$dataUnverify->attributes=$_GET['FileLamaran'];
-
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-			'dataUnverify'=>$dataUnverify,
-			'dataNilai'=>$dataNilai,
-			));
-	}
-
-
-	public function actionDetail($id)
-	{
-		$this->render('detail',array(
-			'model'=>$this->loadModel($id),
-			));
+		if(Yii::app()->request->isAjaxRequest)
+		{
+			$this->renderPartial('view',array(
+				'model'=>$this->loadModel($id),
+				), false, true);
+		}
+		else
+		{
+			$this->render('view',array(
+				'model'=>$this->loadModel($id),
+				));
+		}
 	}
 
 	/**
@@ -89,17 +65,16 @@ class LowonganController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Lowongan;
+		$model=new Perusahaan;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Lowongan']))
+		if(isset($_POST['Perusahaan']))
 		{
-			$model->attributes=$_POST['Lowongan'];
-			$model->tanggal = date('Y-m-d h:m:s');
+			$model->attributes=$_POST['Perusahaan'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_lowongan));
+				$this->redirect(array('view','id'=>$model->id_perusahaan));
 		}
 
 		$this->render('create',array(
@@ -119,11 +94,11 @@ class LowonganController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Lowongan']))
+		if(isset($_POST['Perusahaan']))
 		{
-			$model->attributes=$_POST['Lowongan'];
+			$model->attributes=$_POST['Perusahaan'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_lowongan));
+				$this->redirect(array('view','id'=>$model->id_perusahaan));
 		}
 
 		$this->render('update',array(
@@ -150,8 +125,7 @@ class LowonganController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$this->layout="list";
-		$dataProvider=new CActiveDataProvider('Lowongan',array('criteria'=>array('order'=>'id_lowongan DESC')));
+		$dataProvider=new CActiveDataProvider('Perusahaan');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 			));
@@ -162,10 +136,10 @@ class LowonganController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Lowongan('search');
+		$model=new Perusahaan('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Lowongan']))
-			$model->attributes=$_GET['Lowongan'];
+		if(isset($_GET['Perusahaan']))
+			$model->attributes=$_GET['Perusahaan'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -176,12 +150,12 @@ class LowonganController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Lowongan the loaded model
+	 * @return Perusahaan the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Lowongan::model()->findByPk($id);
+		$model=Perusahaan::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -189,51 +163,30 @@ class LowonganController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Lowongan $model the model to be validated
+	 * @param Perusahaan $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='lowongan-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='perusahaan-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
 	}
 
-	public function actionTerbaru()
+	public function actionEnable($id)
 	{
-		$this->layout="list";
-		$dataProvider=new CActiveDataProvider('Lowongan',array('criteria'=>array('order'=>'id_lowongan DESC')));
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-			));
+		$model=$this->loadModel($id);
+		$model->status = 1;
+		$model->save();
+		$this->redirect(array('index'));
 	}	
 
-	public function actionList()
+	public function actionDisable($id)
 	{
-		$this->layout="admin";
-		$dataProvider=new CActiveDataProvider('Lowongan',array('criteria'=>array('order'=>'id_lowongan DESC')));
-		$this->render('list',array(
-			'dataProvider'=>$dataProvider,
-			));
-	}
-
-
-	public function actionListReport()
-	{
-		$this->layout="admin";
-		$dataProvider=new CActiveDataProvider('Lowongan',array('criteria'=>array('order'=>'id_lowongan DESC')));
-		$this->render('list_report',array(
-			'dataProvider'=>$dataProvider,
-			));
-	}	
-
-	public function actionSearch($string=''){
-		$criteria = new CDbCriteria();
-		if(strlen($string)>0)
-			$criteria->addSearchCondition('id_lowongan', $string, true, 'OR');
-		$dataProvider = new CActiveDataProvider('Lowongan', array('criteria'=>$criteria));
-		$this->render('list', array('dataProvider'=>$dataProvider));		
-	}	
-
+		$model=$this->loadModel($id);
+		$model->status = 0;
+		$model->save();
+		$this->redirect(array('index'));
+	}			
 }

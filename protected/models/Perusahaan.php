@@ -1,26 +1,27 @@
 <?php
 
 /**
- * This is the model class for table "pelamar_bahasa".
+ * This is the model class for table "perusahaan".
  *
- * The followings are the available columns in table 'pelamar_bahasa':
- * @property integer $id_bahasa
+ * The followings are the available columns in table 'perusahaan':
+ * @property integer $id_perusahaan
  * @property string $nama
- * @property integer $berbicara
- * @property integer $menulis
- * @property integer $membaca
- * @property integer $mengerti
- * @property integer $people_id
- * @property integer $user_id
+ * @property string $alamat
+ * @property string $kontak
+ * @property string $email
+ * @property string $nama_pic
+ * @property string $kontak_pic
+ * @property string $industri
+ * @property integer $status
  */
-class Bahasa extends CActiveRecord
+class Perusahaan extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'pelamar_bahasa';
+		return 'perusahaan';
 	}
 
 	/**
@@ -31,12 +32,13 @@ class Bahasa extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nama, berbicara, menulis, membaca, mengerti, people_id, user_id', 'required'),
-			array('berbicara, menulis, membaca, mengerti, people_id, user_id', 'numerical', 'integerOnly'=>true),
-			array('nama', 'length', 'max'=>50),
+			array('nama, alamat, kontak, email, nama_pic, kontak_pic, industri, status', 'required'),
+			array('id_perusahaan, status', 'numerical', 'integerOnly'=>true),
+			array('nama, nama_pic, industri', 'length', 'max'=>50),
+			array('kontak, email, kontak_pic', 'length', 'max'=>25),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_bahasa, nama, berbicara, menulis, membaca, mengerti, people_id, user_id', 'safe', 'on'=>'search'),
+			array('id_perusahaan, nama, alamat, kontak, email, nama_pic, kontak_pic, industri, status', 'safe', 'on'=>'search'),
 			);
 	}
 
@@ -48,6 +50,7 @@ class Bahasa extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'Perusahaan' => array(self::HAS_MANY, 'Perusahaan', 'id_perusahaan'),
 			);
 	}
 
@@ -57,14 +60,15 @@ class Bahasa extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id_bahasa' => 'Id Bahasa',
-			'nama' => 'Bahasa',
-			'berbicara' => 'Berbicara',
-			'menulis' => 'Menulis',
-			'membaca' => 'Membaca',
-			'mengerti' => 'Mengerti',
-			'people_id' => 'People',
-			'user_id' => 'User',
+			'id_perusahaan' => 'Id Perusahaan',
+			'nama' => 'Nama',
+			'alamat' => 'Alamat',
+			'kontak' => 'Kontak Perusahaan',
+			'email' => 'Email Perusahaan',
+			'nama_pic' => 'Nama PIC',
+			'kontak_pic' => 'Kontak PIC',
+			'industri' => 'Industri',
+			'status' => 'Status',
 			);
 	}
 
@@ -86,14 +90,15 @@ class Bahasa extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id_bahasa',$this->id_bahasa);
+		$criteria->compare('id_perusahaan',$this->id_perusahaan);
 		$criteria->compare('nama',$this->nama,true);
-		$criteria->compare('berbicara',$this->berbicara);
-		$criteria->compare('menulis',$this->menulis);
-		$criteria->compare('membaca',$this->membaca);
-		$criteria->compare('mengerti',$this->mengerti);
-		$criteria->compare('people_id',$this->people_id);
-		$criteria->compare('user_id',$this->user_id);
+		$criteria->compare('alamat',$this->alamat,true);
+		$criteria->compare('kontak',$this->kontak,true);
+		$criteria->compare('email',$this->email,true);
+		$criteria->compare('nama_pic',$this->nama_pic,true);
+		$criteria->compare('kontak_pic',$this->kontak_pic,true);
+		$criteria->compare('industri',$this->industri,true);
+		$criteria->compare('status',$this->status);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -104,24 +109,10 @@ class Bahasa extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Bahasa the static model class
+	 * @return Perusahaan the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
-	}
-
-	public function grade($data){
-		if($data==1){
-			return "Sangat Kurang";
-		}else if($data==2){
-			return "Kurang";
-		}else if($data==3){
-			return "Baik";
-		}else if($data==4){
-			return "Sangat Baik";
-		}else{
-			return "-";
-		}
 	}
 }

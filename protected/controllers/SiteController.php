@@ -30,11 +30,14 @@ class SiteController extends Controller
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
 
+		$dataProvider=new CActiveDataProvider('Lowongan',array('criteria'=>array('condition'=>'status=1','order'=>'tanggal_kebutuhan DESC')),array('pagination'=>array(
+			'pageSize'=>'4',
+			)));
+
+
 		if (!YII::app()->user->isGuest){
 			
 			$this->layout="admin";
-			$dataProvider=new CActiveDataProvider('FileLamaran',array('criteria'=>array('condition'=>'status_lamaran="Belum di Verifikasi"')));
-
 
 			$this->render('dashboard',array(
 				'dataProvider'=>$dataProvider,
@@ -43,9 +46,7 @@ class SiteController extends Controller
 		}else{
 
 			$this->layout="frontend";
-			$dataProvider=new CActiveDataProvider('Lowongan',array('criteria'=>array('order'=>'id_lowongan DESC')),array('pagination'=>array(
-				'pageSize'=>'4',
-				)));
+
 			$this->render('index',array(
 				'dataProvider'=>$dataProvider,
 				));
@@ -137,11 +138,12 @@ class SiteController extends Controller
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login())
 				if(Yii::app()->user->getLevel()==1){
-					$this->redirect(array('filelamaran/unverified'));
+					$this->redirect(Yii::app()->homeUrl);
+					// $this->redirect(array('filelamaran/unverified'));
 				}else if(Yii::app()->user->getLevel()==2){
 					$this->redirect(array('pelamar/profile'));
 				}else{
-					$this->redirect(array('test/report'));
+					// $this->redirect(array('test/report'));
 				}
 			}
 		// display the login form
@@ -162,33 +164,53 @@ class SiteController extends Controller
 		$dokumen=new Dokumen;
 		$dokumen->setScenario('register_dokumen');
 
+		$this->performAjaxValidation(array($model,$Pelamar));
 		if(isset($_POST['User'],$_POST['Pelamar']))
 		{
 			$model->attributes=$_POST['User'];
 			$Pelamar->attributes=$_POST['Pelamar'];
+			$valid=$model->validate();
+			$valid=$Pelamar->validate() && $valid;
 			$model->image = "avatar.jpg";
 			$model->password = md5($model->password);
-			if($model->save()){
-				$Pelamar->id_people = rand(1000000,2000000);
-				$Pelamar->id_user = $model->id_user;
-				$Pelamar->save();
-				$keahlian->people_id = $Pelamar->id_people;
-				$keahlian->user_id = $Pelamar->id_user;
-				$keahlian->save();
-				$dokumen->people_id = $Pelamar->id_people;
-				$dokumen->user_id = $Pelamar->id_user;
-				$dokumen->status = 0;
-				$dokumen->tanggal = date('Y-m-d h:i:s');
-				$dokumen->save();
-				Yii::app()->user->setFlash('success', 'Selamat '.$model->username.' berhasil registrasi, silahkan login.');
-				$this->redirect(array('site/login'));
+			if($valid)
+			{
+				if($model->save(false)){
+					$Pelamar->id_people = rand(1000000,2000000);
+					$Pelamar->id_user = $model->id_user;
+					$Pelamar->save();
+					$keahlian->people_id = $Pelamar->id_people;
+					$keahlian->user_id = $Pelamar->id_user;
+					$keahlian->save();
+					$dokumen->people_id = $Pelamar->id_people;
+					$dokumen->user_id = $Pelamar->id_user;
+					$dokumen->status = 0;
+					$dokumen->tanggal = date('Y-m-d h:i:s');
+					$dokumen->save(false);
+					Yii::app()->user->setFlash('success', 'Selamat '.$model->username.' berhasil registrasi, silahkan login.');
+					$this->redirect(array('site/login'));
+				}
+
+
 			}
+
+
+
 		}
 
 		$this->render('register',array(
 			'model'=>$model,
 			'Pelamar'=>$Pelamar,
 			));
+	}	
+
+	protected function performAjaxValidation($models)
+	{
+		if(isset($_POST['ajax']) && $_POST['ajax']==='user-form')
+		{
+			echo CActiveForm::validate($models);
+			Yii::app()->end();
+		}
 	}		
 
 	/**

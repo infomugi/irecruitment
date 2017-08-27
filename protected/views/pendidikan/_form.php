@@ -120,6 +120,21 @@
 			<div class="form-group">
 
 				<div class="col-sm-4 control-label">
+					<?php echo $form->labelEx($model,'tahun_mulai'); ?>
+				</div>   
+
+				<div class="col-sm-8">
+					<?php echo $form->error($model,'tahun_mulai'); ?>
+					<?php echo $form->textField($model,'tahun_mulai',array('class'=>'form-control')); ?>
+				</div>
+
+			</div>  
+
+
+
+			<div class="form-group">
+
+				<div class="col-sm-4 control-label">
 					<?php echo $form->labelEx($model,'tahun_lulus'); ?>
 				</div>   
 
@@ -164,7 +179,7 @@
 
 					<div class="col-sm-8">
 						<?php echo $form->error($model,'nilai'); ?>
-						<?php echo $form->textField($model,'nilai',array('class'=>'form-control')); ?>
+						<?php echo $form->textField($model,'nilai',array('class'=>'form-control','placeHolder'=>'Format Penulisan : Skala 0 - 100')); ?>
 					</div>
 
 				</div>  

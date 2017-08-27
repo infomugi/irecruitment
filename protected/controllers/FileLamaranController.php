@@ -34,9 +34,9 @@ class FileLamaranController extends Controller
 				),			
 			array('allow',
 				'actions'=>array('create','update','view','delete','admin','index','history','diterima','ditolak','unverified','verified','reject','lulus','accept','call','uncall','lulus','tidaklulus',
-
-					'sudahdipanggil','panggilanditunda',
+					'sudahdipanggil','panggilanditunda',	
 					'verifikasi','tolak','rekomendasi','pemanggilan',
+					'search',
 					),
 				'users'=>array('@'),
 				'expression'=>'Yii::app()->user->getLevel()==1',
@@ -486,5 +486,14 @@ class FileLamaranController extends Controller
 			$this->redirect(array('view','id'=>$model->id));
 		}
 	}	
+
+	public function actionSearch($string=''){
+		$criteria = new CDbCriteria();
+		if(strlen($string)>0)
+			$criteria->addSearchCondition('id', $string, true, 'OR');
+		$dataProvider = new CActiveDataProvider('FileLamaran', array('criteria'=>$criteria));
+		$this->render('index', array('dataProvider'=>$dataProvider));		
+	}	
+
 
 }

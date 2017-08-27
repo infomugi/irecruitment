@@ -134,10 +134,8 @@ $this->pageTitle='Data Diri - '.ucfirst($model->nama);
 		'columns'=>array(
 
 			'instansi',
-			'mulai',
-			'selesai',
+			'tahun_mulai',
 			'tahun_lulus',
-			'nilai',
 			'jurusan',
 			'nilai',
 

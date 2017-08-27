@@ -9,8 +9,12 @@ $this->breadcrumbs=array(
 $this->pageTitle='Laporan Lamaran';
 ?>
 
-<?php $this->widget('zii.widgets.CListView', array(
-	'dataProvider'=>$dataProvider,
-	'itemView'=>'_view_report',
-	)); ?>
 
+<div class="panel-group" id="accordion" role="tablist" >
+
+	<?php $this->widget('zii.widgets.CListView', array(
+		'dataProvider'=>$dataProvider,
+		'itemView'=>'_view_report',
+		)); ?>
+
+	</div>

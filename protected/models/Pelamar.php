@@ -49,10 +49,10 @@ class Pelamar extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('nama, nik', 'required','on'=>'register_pelamar'),
-			array('nik','unique'),
+			array('nik','unique','on'=>'register_pelamar'),
 			array('nama, tempat_lahir, tanggal_lahir, agama, jenis_kelamin, golongan_darah, kewarganegaraan, hp, kota_id, provinsi_id', 'required','on'=>'update_pelamar'),
 			array('id_people, id_user, kota_id, provinsi_id, nik, status_menikah, status_domisili, lamaran_id, lowongan_id', 'numerical', 'integerOnly'=>true),
-			array('nama, tanggal_lahir, nik, no_jamsostek, no_sim, no_npwp, alamat_domisili, telephone_pribadi, telephone_rumah, tanggal_lahir, alamat_domisili', 'length', 'max'=>255),
+			array('nama, tanggal_lahir, no_jamsostek, no_sim, no_npwp, alamat_domisili, telephone_pribadi, telephone_rumah, tanggal_lahir, alamat_domisili', 'length', 'max'=>255),
 			array('tempat_lahir, tanggal_lahir, agama, jenis_kelamin, golongan_darah, kewarganegaraan, hp, status_domisili', 'length', 'max'=>30),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -191,5 +191,22 @@ class Pelamar extends CActiveRecord
 			return "Belum Menikah";
 		}
 	}		
+
+
+	public static function getApplicant(){
+		$sql = "
+		SELECT * FROM pelamar as p LEFT JOIN user u ON u.id_user=p.id_user  ORDER BY p.id_people DESC LIMIT 3";
+		$command = YII::app()->db->createCommand($sql);
+		return $command->queryAll();
+	}
+
+	public function applicant($id){
+		$model=Pelamar::model()->findByAttributes(array('id_user'=>$id));
+		if($model===null){
+			return "-";
+		}else{
+			return $model->id_people;
+		}
+	}
 
 }

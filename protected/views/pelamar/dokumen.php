@@ -161,7 +161,7 @@ $update = "Update " . Yii::app()->dateFormatter->formatDateTime(CDateTimeParser:
 
 														</table>
 														<div class="alert text-right">
-															* Dokumen dalam bentuk PDF. 
+															* Dokumen dalam bentuk PDF atau JPEG. 
 														</div>
 													</div>
 												</div>

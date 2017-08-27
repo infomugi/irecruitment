@@ -276,192 +276,162 @@ $update = "Update " . Yii::app()->dateFormatter->formatDateTime(CDateTimeParser:
 													<td><b>Upload</b></td>
 												</tr>
 												<tr>
-													<td><a href="#" data-toggle="modal" data-target="#loadCV"><?php echo $dataDokumen->cv; ?></a></td>
-													<td>
-														<?php echo CHtml::link('<i class="ti-id-badge"></i> Upload CV', 
-															array('dokumen/uploadcv', 'id'=>$model->user_id,
-																), array('class' => 'btn btn-success btn-sm', 'title'=>'CV'));
-																?>
-															</td>
-														</tr>
-														<tr>
-															<td><a href="#" data-toggle="modal" data-target="#loadKTP"><?php echo $dataDokumen->ktp; ?></a></td>
-															<td>
-																<?php echo CHtml::link('<i class="ti-id-badge"></i> Upload KTP', 
-																	array('dokumen/uploadktp', 'id'=>$model->user_id,
-																		), array('class' => 'btn btn-success btn-sm', 'title'=>'KTP'));
+													<td><?php echo $dataDokumen->cv; ?></td>
+													<td><a href="#" data-toggle="modal" class="btn btn-info" data-target="#loadCV">Lihat CV</a></td>
+													
+												</tr>
+												<tr>
+													<td><?php echo $dataDokumen->ktp; ?></td>
+													<td><a href="#" data-toggle="modal" class="btn btn-info" data-target="#loadKTP">Lihat KTP</a></td>
+												</tr>
+
+												<tr>
+													<td><?php echo $dataDokumen->ijazah; ?></td>
+													<td><a href="#" data-toggle="modal" class="btn btn-info" data-target="#loadIjazah">LIHAT Ijazah</a></td>
+
+												</tr>
+
+												<tr>
+													<td><?php echo $dataDokumen->transkrip; ?></td>
+													<td><a href="#" data-toggle="modal" class="btn btn-info" data-target="#loadTranskrip">Lihat Transkrip</a></td>
+
+												</tr>
+
+												<tr>
+													<td><?php echo $dataDokumen->skck; ?></td>
+													<td><a href="#" data-toggle="modal" class="btn btn-info" data-target="#loadSkck">Lihat SKCK</a></td>
+
+												</tr>
+
+												<tr>
+													<td><?php echo $dataDokumen->sertifikat; ?>/td>
+														<td><a href="#" data-toggle="modal" class="btn btn-info" data-target="#loadSertifikat">Lihat Sertifikat</a></td>
+
+													</tr>
+
+												</table>
+
+
+												<!-- END: DOKUMEN -->
+
+											</div>
+
+
+											<div class="tab-pane" id="4">
+												<?php $this->widget('zii.widgets.grid.CGridView', array(
+													'id'=>'test-grid',
+													'dataProvider'=>$dataProvider,
+													'itemsCssClass' => 'table table-bordered table-striped dataTable table-hover',
+													'columns'=>array(
+
+														array(
+															'header'=>'Test 1',
+															'visible'=>Yii::app()->user->getLevel()==1,
+															'class' => 'CButtonColumn',
+															'template' => '{update}',
+															'class'=>'CButtonColumn',
+															'updateButtonUrl' => 'Yii::app()->controller->createUrl("test/update1",array("id"=>$data->id_test,))'
+															),		
+
+														'status1',
+														'berita_acara1',
+
+														),
+														)); ?>		
+
+												<?php $this->widget('zii.widgets.grid.CGridView', array(
+													'id'=>'test-grid',
+													'dataProvider'=>$dataProvider,
+													'itemsCssClass' => 'table table-bordered table-striped dataTable table-hover',
+													'columns'=>array(
+
+
+														array(
+															'header'=>'Test 2',
+															'visible'=>Yii::app()->user->getLevel()==1,
+															'class' => 'CButtonColumn',
+															'template' => '{update}',
+															'class'=>'CButtonColumn',
+															'updateButtonUrl' => 'Yii::app()->controller->createUrl("test/update2",array("id"=>$data->id_test,))'
+															),		
+
+														'status2',
+														'berita_acara2',
+
+
+
+														),
+														)); ?>	
+
+												<?php $this->widget('zii.widgets.grid.CGridView', array(
+													'id'=>'test-grid',
+													'dataProvider'=>$dataProvider,
+													'itemsCssClass' => 'table table-bordered table-striped dataTable table-hover',
+													'columns'=>array(
+
+
+
+														array(
+															'header'=>'Test 3',
+															'visible'=>Yii::app()->user->getLevel()==1,
+															'class' => 'CButtonColumn',
+															'template' => '{update}',
+															'class'=>'CButtonColumn',
+															'updateButtonUrl' => 'Yii::app()->controller->createUrl("test/update3",array("id"=>$data->id_test,))'
+															),		
+
+
+														'status3',
+														'berita_acara3',
+
+														),
+														)); ?>		
+													</div>
+
+												</div>
+											</div>
+
+
+
+											<?php if(YII::app()->user->getLevel()==2): ?>
+												<?php if($model->status_lamaran==0): ?>
+
+													<?php echo CHtml::link('<i class="fa fa-close"></i> Batalkan', 
+														array('dibatalkan', 'id'=>$model->id,
+															), array('class' => 'btn btn-danger pull-right btn-flat', 'title'=>'Batalkan Lamaran'));
+															?>
+
+														<?php endif; ?>
+													<?php endif; ?>
+
+
+
+													<?php if($model->status_lamaran!=0): ?>
+														<?php if(YII::app()->user->getLevel()==1): ?>
+															<?php if($model->penilaian_id==0): ?>
+																<?php 
+																echo CHtml::link('<i class="fa fa-tasks"></i> Nilai', 
+																	array('penilaiansaw/create', 'pelamar'=>$model->user_id, 'lowongan'=>$model->lowongan_id, 'lamaran'=>$model->id), array('class' => 'btn btn-info btn-flat', 'title'=>'Buat Penilaian'));
+																	?>
+																<?php endif; ?>
+
+																<?php echo CHtml::link('<i class="fa fa-phone"></i> Panggil', 
+																	array('panggil', 'id'=>$model->id,
+																		), array('class' => 'btn btn-warning btn-flat', 'title'=>'Panggil Pelamar'));
 																		?>
 
-																	</td>
-																</tr>
-
-																<tr>
-																	<td><a href="#" data-toggle="modal" data-target="#loadIjazah"><?php echo $dataDokumen->ijazah; ?></a></td>
-																	<td>
-																		<?php echo CHtml::link('<i class="ti-id-badge"></i> Upload Ijazah', 
-																			array('dokumen/uploadijazah', 'id'=>$model->user_id,
-																				), array('class' => 'btn btn-success btn-sm', 'title'=>'Ijazah'));
+																		<?php echo CHtml::link('<i class="fa fa-phone"></i> Sudah di Panggil', 
+																			array('sudahdipanggil', 'id'=>$model->id,
+																				), array('class' => 'btn btn-success btn-flat', 'title'=>'Sudah di Panggil ?'));
 																				?>
-																			</td>
-																		</tr>
-
-																		<tr>
-																			<td><a href="#" data-toggle="modal" data-target="#loadTranskrip"><?php echo $dataDokumen->transkrip; ?></a></td>
-																			<td>
-																				<?php echo CHtml::link('<i class="ti-id-badge"></i> Upload Transkrip', 
-																					array('dokumen/uploadtranskrip', 'id'=>$model->user_id,
-																						), array('class' => 'btn btn-success btn-sm', 'title'=>'Transkrip'));
-																						?>
-																					</td>
-																				</tr>
-
-																				<tr>
-																					<td><a href="#" data-toggle="modal" data-target="#loadSkck"><?php echo $dataDokumen->skck; ?></a></td>
-																					<td>
-																						<?php echo CHtml::link('<i class="ti-id-badge"></i> Upload SKCK', 
-																							array('dokumen/uploadskck', 'id'=>$model->user_id,
-																								), array('class' => 'btn btn-success btn-sm', 'title'=>'SKCK'));
-																								?>	
-																							</td>
-																						</tr>
-
-																						<tr>
-																							<td><a href="#" data-toggle="modal" data-target="#loadSertifikat"><?php echo $dataDokumen->sertifikat; ?></a></td>
-																							<td>
-
-																								<?php echo CHtml::link('<i class="ti-id-badge"></i> Sertifikat', 
-																									array('dokumen/uploadsertifikat', 'id'=>$model->user_id,
-																										), array('class' => 'btn btn-success btn-sm', 'title'=>'Sertifikat'));
-																										?>		
-																									</td>
-																								</tr>
-
-																							</table>
-																							<div class="alert text-left">
-																								* Dokumen dalam bentuk PDF. 
-																							</div>
 
 
-																							<!-- END: DOKUMEN -->
-
-																						</div>
-
-
-																						<div class="tab-pane" id="4">
-																							<?php $this->widget('zii.widgets.grid.CGridView', array(
-																								'id'=>'test-grid',
-																								'dataProvider'=>$dataProvider,
-																								'itemsCssClass' => 'table table-bordered table-striped dataTable table-hover',
-																								'columns'=>array(
-
-																									array(
-																										'header'=>'Test 1',
-																										'visible'=>Yii::app()->user->getLevel()==1,
-																										'class' => 'CButtonColumn',
-																										'template' => '{update}',
-																										'class'=>'CButtonColumn',
-																										'updateButtonUrl' => 'Yii::app()->controller->createUrl("test/update1",array("id"=>$data->id_test,))'
-																										),		
-
-																									'status1',
-																									'berita_acara1',
-
-																									),
-																									)); ?>		
-
-																							<?php $this->widget('zii.widgets.grid.CGridView', array(
-																								'id'=>'test-grid',
-																								'dataProvider'=>$dataProvider,
-																								'itemsCssClass' => 'table table-bordered table-striped dataTable table-hover',
-																								'columns'=>array(
+																			<?php endif; ?>
+																		<?php endif; ?>																		
 
 
-																									array(
-																										'header'=>'Test 2',
-																										'visible'=>Yii::app()->user->getLevel()==1,
-																										'class' => 'CButtonColumn',
-																										'template' => '{update}',
-																										'class'=>'CButtonColumn',
-																										'updateButtonUrl' => 'Yii::app()->controller->createUrl("test/update2",array("id"=>$data->id_test,))'
-																										),		
-
-																									'status2',
-																									'berita_acara2',
-
-
-
-																									),
-																									)); ?>	
-
-																							<?php $this->widget('zii.widgets.grid.CGridView', array(
-																								'id'=>'test-grid',
-																								'dataProvider'=>$dataProvider,
-																								'itemsCssClass' => 'table table-bordered table-striped dataTable table-hover',
-																								'columns'=>array(
-
-
-
-																									array(
-																										'header'=>'Test 3',
-																										'visible'=>Yii::app()->user->getLevel()==1,
-																										'class' => 'CButtonColumn',
-																										'template' => '{update}',
-																										'class'=>'CButtonColumn',
-																										'updateButtonUrl' => 'Yii::app()->controller->createUrl("test/update3",array("id"=>$data->id_test,))'
-																										),		
-
-
-																									'status3',
-																									'berita_acara3',
-
-																									),
-																									)); ?>		
-																								</div>
-
-																							</div>
-																						</div>
-
-
-
-																						<?php if(YII::app()->user->getLevel()==2): ?>
-																							<?php if($model->status_lamaran==0): ?>
-
-																								<?php echo CHtml::link('<i class="fa fa-close"></i> Batalkan', 
-																									array('dibatalkan', 'id'=>$model->id,
-																										), array('class' => 'btn btn-danger pull-right btn-flat', 'title'=>'Batalkan Lamaran'));
-																										?>
-
-																									<?php endif; ?>
-																								<?php endif; ?>
-
-
-
-																								<?php if($model->status_lamaran!=0): ?>
-																									<?php if(YII::app()->user->getLevel()==1): ?>
-																										<?php if($model->penilaian_id==0): ?>
-																											<?php 
-																											echo CHtml::link('<i class="fa fa-tasks"></i> Nilai', 
-																												array('penilaiansaw/create', 'pelamar'=>$model->user_id, 'lowongan'=>$model->lowongan_id, 'lamaran'=>$model->id), array('class' => 'btn btn-info btn-flat', 'title'=>'Buat Penilaian'));
-																												?>
-																											<?php endif; ?>
-
-																											<?php echo CHtml::link('<i class="fa fa-phone"></i> Panggil', 
-																												array('panggil', 'id'=>$model->id,
-																													), array('class' => 'btn btn-warning btn-flat', 'title'=>'Panggil Pelamar'));
-																													?>
-
-																													<?php echo CHtml::link('<i class="fa fa-phone"></i> Sudah di Panggil', 
-																														array('sudahdipanggil', 'id'=>$model->id,
-																															), array('class' => 'btn btn-success btn-flat', 'title'=>'Sudah di Panggil ?'));
-																															?>
-
-
-																														<?php endif; ?>
-																													<?php endif; ?>																		
-
-
-																													<STYLE>
-																														th{width:150px;}
-																													</STYLE>
+																		<STYLE>
+																			th{width:150px;}
+																		</STYLE>
 
 
