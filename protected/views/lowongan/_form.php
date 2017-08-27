@@ -229,18 +229,17 @@
 
 								</div>  
 
-
 								<div class="form-group row">
 
 									<div class="col-sm-4 control-label">
-										<?php echo $form->labelEx($model,'status'); ?>
+										<?php echo $form->labelEx($model,'jenjang'); ?>
 									</div>   
 
 									<div class="col-md-8">
-										<?php echo $form->error($model,'status'); ?>
+										<?php echo $form->error($model,'jenjang'); ?>
 										<?php
-										echo $form->radioButtonList($model,'status',
-											array('1'=>'Tersedia','2'=>'Ditutup'),
+										echo $form->radioButtonList($model,'jenjang',
+											array('1'=>'SMA / SMK','2'=>'Diploma / Sarjana / Magister'),
 											array(
 												'template'=>'{input}{label}',
 												'separator'=>'',
@@ -254,14 +253,53 @@
 
 									</div>  
 
+
 									<div class="form-group row">
-										<div class="col-md-12">  
-										</br></br>
-										<?php echo CHtml::submitButton($model->isNewRecord ? 'Simpan' : 'Edit', array('class' => 'btn btn-danger btn-flat pull-right')); ?>
+
+										<div class="col-sm-4 control-label">
+											<?php echo $form->labelEx($model,'nilai'); ?>
+										</div>   
+
+										<div class="col-md-8">
+											<?php echo $form->error($model,'nilai'); ?>
+											<?php echo $form->textField($model,'nilai',array('class'=>'form-control')); ?>
+										</div>
+
+									</div> 
+
+
+									<div class="form-group row">
+
+										<div class="col-sm-4 control-label">
+											<?php echo $form->labelEx($model,'status'); ?>
+										</div>   
+
+										<div class="col-md-8">
+											<?php echo $form->error($model,'status'); ?>
+											<?php
+											echo $form->radioButtonList($model,'status',
+												array('1'=>'Tersedia','2'=>'Ditutup'),
+												array(
+													'template'=>'{input}{label}',
+													'separator'=>'',
+													'labelOptions'=>array(
+														'class'=>'minimal', 'style'=>'padding-right:20px;margin-left:5px'),
+
+													)                              
+												);
+												?>
+											</div>
+
+										</div>  
+
+										<div class="form-group row">
+											<div class="col-md-12">  
+											</br></br>
+											<?php echo CHtml::submitButton($model->isNewRecord ? 'Simpan' : 'Edit', array('class' => 'btn btn-danger btn-flat pull-right')); ?>
+										</div>
 									</div>
-								</div>
 
-								<?php $this->endWidget(); ?>
+									<?php $this->endWidget(); ?>
 
-							</div><!-- form -->
+								</div><!-- form -->
 

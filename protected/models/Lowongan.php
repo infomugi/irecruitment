@@ -18,6 +18,9 @@
  * @property string $jeniskelamin
  * @property integer $umur
  * @property integer $perusahaan_id
+ * @property integer $monitor
+ * @property integer $jenjang
+ * @property integer $nilai
  */
 class Lowongan extends CActiveRecord
 {
@@ -37,13 +40,14 @@ class Lowongan extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('tanggal, bagian, jabatan, tipe, deskripsi_pekerjaan, deskripsi_kebutuhan, jumlah_orang, tanggal_kebutuhan, lokasi, status, jeniskelamin, umur, perusahaan_id', 'required'),
+			array('tanggal, bagian, jabatan, tipe, deskripsi_pekerjaan, deskripsi_kebutuhan, jumlah_orang, tanggal_kebutuhan, lokasi, status, jeniskelamin, umur, perusahaan_id, jenjang, nilai', 'required'),
 			array('bagian, jabatan, tipe, jumlah_orang, status, umur, perusahaan_id', 'numerical', 'integerOnly'=>true),
-			array('lokasi, tanggal_kebutuhan', 'length', 'max'=>255),
+            array('lokasi, tanggal_kebutuhan', 'length', 'max'=>255),
+            array('nilai', 'length', 'max'=>5),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_lowongan, tanggal, bagian, jabatan, tipe, deskripsi_pekerjaan, deskripsi_kebutuhan, jumlah_orang, tanggal_kebutuhan, lokasi, status', 'safe', 'on'=>'search'),
-			);
+            array('id_lowongan, tanggal, bagian, jabatan, tipe, deskripsi_pekerjaan, deskripsi_kebutuhan, jumlah_orang, tanggal_kebutuhan, lokasi, status', 'safe', 'on'=>'search'),
+            );
 	}
 
 	/**
@@ -80,6 +84,8 @@ class Lowongan extends CActiveRecord
 			'status' => 'Status',
             'umur' => 'Umur',
             'perusahaan_id' => 'Project',
+            'jenjang' => 'Jenjang Pendidikan',
+            'nilai' => 'Nilai / IPK',
             );
 	}
 
@@ -403,7 +409,18 @@ class Lowongan extends CActiveRecord
         }else{
             return $model->Perusahaan->nama . " - " . $model->Jabatan->nama . " - " . $model->Bagian->nama;
         }
-    }      
+    }     
+
+
+    public function educationLevel($data){
+        if($data==1){
+            return "SMK / SMA";
+        }elseif($data==2){
+            return "Diploma / Sarjana / Magister";
+        }else{
+            return "-";
+        }
+    }     
 
 
 }

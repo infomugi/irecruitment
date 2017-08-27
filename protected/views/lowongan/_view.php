@@ -25,11 +25,21 @@ $hide = Lowongan::model()->hide($data->tanggal_kebutuhan);
 				<span><strong>Status Lowongan:</strong> <?php echo CHtml::encode(Lowongan::model()->deadline($data->tanggal_kebutuhan)); ?></span>
 			</div>
 			<p class="col-md-12"><?php echo CHtml::encode($data->deskripsi_kebutuhan); ?></p>
+
+			<?php 
+			
+			echo CHtml::link('Detail',
+				array('lowongan/view','id'=>$data->id_lowongan),
+				array('class' => 'btn btn-success pull-right btn-flat','title'=>'Detail Lowongan'));
+			
+
+				?>
+
+			</div>
 		</div>
 	</div>
-</div>
 
-<style type="text/css">
-	.Telah{display: none;}
-</style>
+	<style type="text/css">
+		.Telah{display: none;}
+	</style>
 

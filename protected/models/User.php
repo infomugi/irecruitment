@@ -153,4 +153,20 @@ class User extends CActiveRecord
 		$model= User::model()->findByPk($data);
 		return $model->image;
 	}	
+
+	public function level($data){
+		if($data==1){
+			return "Administrator";
+		}else if($data==2){
+			return "Pelamar";
+		}else if($data==3){
+			return "Pimpinan";
+		}else if($data==4){
+			return "Manager";
+		}else if($data==5){
+			return "Staff";
+		}else{
+			return "-";
+		}
+	}
 }

@@ -6,6 +6,7 @@
 		'htmlOptions'=>array("class"=>"table"),
 		'attributes'=>array(
 			'tanggal',
+
 			array(
 				'name'=>'jabatan',
 				'value'=>$model->Jabatan->nama,
@@ -54,7 +55,13 @@
 			array(
 				'name'=>'lokasi',
 				'value'=>$model->lokasi,													
-				),								
+				),	
+
+			array(
+				'name'=>'jenjang',
+				'value'=>Lowongan::model()->educationLevel($model->jenjang),													
+				),	
+			'nilai',							
 
 			))); 
 
