@@ -143,14 +143,14 @@ class PenilaianSaw extends CActiveRecord
 		return parent::model($className);
 	}
 
-	public function Check($atribut,$nilai,$id,$criteria){
+	public function Check($atribut,$nilai,$id,$criteria,$lowongan){
 		$kriteria=Kriteria::model()->findByPk($atribut);
 		if($kriteria->atribut==1){
-			$data = Yii::app()->db->createCommand("SELECT MAX(".$criteria.") FROM penilaian_saw")->queryScalar();
+			$data = Yii::app()->db->createCommand("SELECT MAX(".$criteria.") FROM penilaian_saw WHERE lowongan_id=".$lowongan." AND status=0")->queryScalar();
 			$max = Crips::model()->findByPk($data);
 			return round($nilai/$max->nilai,2);
 		}else{
-			$data = Yii::app()->db->createCommand("SELECT MIN(".$criteria.") FROM penilaian_saw")->queryScalar();
+			$data = Yii::app()->db->createCommand("SELECT MIN(".$criteria.") FROM penilaian_saw WHERE lowongan_id=".$lowongan." AND status=0")->queryScalar();
 			$min = Crips::model()->findByPk($data);
 			return round($min->nilai/$nilai,2);	
 		}
