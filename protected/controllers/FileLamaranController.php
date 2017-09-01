@@ -344,6 +344,15 @@ class FileLamaranController extends Controller
 		return $model;
 	}	
 
+	public function loadPenilaian($id)
+	{
+		$model=PenilaianSaw::model()->findByPk($id);
+		// $model=PenilaianSaw::model()->findByAttributes(array('pelamar_id'=>$id));
+		if($model===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
+	}		
+
 
 
 	/**
@@ -410,8 +419,14 @@ class FileLamaranController extends Controller
 		$model->status_lamaran = 5;
 		$model->tanggal_verifikasi = date('Y-m-d h:i:s');
 		$model->verifikasi_id = $model->user_id;
-		if($model->update())
+		if($model->update()){
+
+			$value=$this->loadPenilaian($model->penilaian_id);
+			$value->status = 1;
+			$value->save();
+
 			$this->redirect(array('view','id'=>$model->id));
+		}
 	}		
 
 	public function actionTolak($id,$penilaian)

@@ -3,7 +3,6 @@
 /* @var $model FileLamaran */
 $dataBagian=Bagian::model()->findByPk($model->Lowongan->bagian);
 $dataJabatan=Jabatan::model()->findByPk($model->Lowongan->jabatan);
-$dataProvider=new CActiveDataProvider('Test',array('criteria'=>array('condition'=>'lamaran_id='.$model->id)));
 
 $this->breadcrumbs=array(
 	'File Lamarans'=>array('index'),
@@ -32,8 +31,6 @@ $update = "Update " . Yii::app()->dateFormatter->formatDateTime(CDateTimeParser:
 		<li><a  href="#2" data-toggle="tab"><i class="ti ti-user"></i> Profil</a></a></li>
 		<li><a href="#3" data-toggle="tab"><i class="ti ti-receipt"></i> Dokumen</a></a>
 		</li>	
-		<li><a href="#4" data-toggle="tab"><i class="ti ti-bar-chart"></i> Seleksi</a></a>
-		</li>
 	</ul>
 
 	<div class="tab-content ">
@@ -44,7 +41,7 @@ $update = "Update " . Yii::app()->dateFormatter->formatDateTime(CDateTimeParser:
 			<div class="row">
 				<div class="col-md-4">
 
-					<H4><i class="ti-clipboard pull-left"></i> Foto</H4>
+					<H4><i class="ti-clipboard pull-left"></i> &nbsp Pas Foto</H4>
 					<center>
 						<img width="280px" title="Foto" src="<?php echo Yii::app()->baseUrl. "/lamaran/foto/" .User::model()->avatar($model->user_id); ?>" class="img-responsive">
 					</center>
@@ -55,7 +52,7 @@ $update = "Update " . Yii::app()->dateFormatter->formatDateTime(CDateTimeParser:
 
 
 					<!-- START: DATA PRIBADI -->
-					<H4><i class="ti-clipboard pull-left"></i> Detail Lamaran</H4>
+					<H4><i class="ti-clipboard pull-left"></i> &nbsp Detail Lamaran</H4>
 					<?php $this->widget('zii.widgets.CDetailView', array(
 						'data'=>$model,
 						'htmlOptions'=>array("class"=>"table"),
@@ -128,8 +125,13 @@ $update = "Update " . Yii::app()->dateFormatter->formatDateTime(CDateTimeParser:
 										<?php endif; ?>
 									<?php endif; ?>
 
+
+
 								</div>
 							</div>
+
+							<?php require_once('_view_auto_selection.php');  ?>
+
 						</div>
 						<!-- END: DATA PRIBADI -->
 
@@ -316,122 +318,50 @@ $update = "Update " . Yii::app()->dateFormatter->formatDateTime(CDateTimeParser:
 
 											</div>
 
-
-											<div class="tab-pane" id="4">
-												<?php $this->widget('zii.widgets.grid.CGridView', array(
-													'id'=>'test-grid',
-													'dataProvider'=>$dataProvider,
-													'itemsCssClass' => 'table table-bordered table-striped dataTable table-hover',
-													'columns'=>array(
-
-														array(
-															'header'=>'Test 1',
-															'visible'=>Yii::app()->user->getLevel()==1,
-															'class' => 'CButtonColumn',
-															'template' => '{update}',
-															'class'=>'CButtonColumn',
-															'updateButtonUrl' => 'Yii::app()->controller->createUrl("test/update1",array("id"=>$data->id_test,))'
-															),		
-
-														'status1',
-														'berita_acara1',
-
-														),
-														)); ?>		
-
-												<?php $this->widget('zii.widgets.grid.CGridView', array(
-													'id'=>'test-grid',
-													'dataProvider'=>$dataProvider,
-													'itemsCssClass' => 'table table-bordered table-striped dataTable table-hover',
-													'columns'=>array(
-
-
-														array(
-															'header'=>'Test 2',
-															'visible'=>Yii::app()->user->getLevel()==1,
-															'class' => 'CButtonColumn',
-															'template' => '{update}',
-															'class'=>'CButtonColumn',
-															'updateButtonUrl' => 'Yii::app()->controller->createUrl("test/update2",array("id"=>$data->id_test,))'
-															),		
-
-														'status2',
-														'berita_acara2',
+										</div>
+									</div>
 
 
 
-														),
-														)); ?>	
+									<?php if(YII::app()->user->getLevel()==2): ?>
+										<?php if($model->status_lamaran==0): ?>
 
-												<?php $this->widget('zii.widgets.grid.CGridView', array(
-													'id'=>'test-grid',
-													'dataProvider'=>$dataProvider,
-													'itemsCssClass' => 'table table-bordered table-striped dataTable table-hover',
-													'columns'=>array(
+											<?php echo CHtml::link('<i class="fa fa-close"></i> Batalkan', 
+												array('dibatalkan', 'id'=>$model->id,
+													), array('class' => 'btn btn-danger pull-right btn-flat', 'title'=>'Batalkan Lamaran'));
+													?>
 
-
-
-														array(
-															'header'=>'Test 3',
-															'visible'=>Yii::app()->user->getLevel()==1,
-															'class' => 'CButtonColumn',
-															'template' => '{update}',
-															'class'=>'CButtonColumn',
-															'updateButtonUrl' => 'Yii::app()->controller->createUrl("test/update3",array("id"=>$data->id_test,))'
-															),		
-
-
-														'status3',
-														'berita_acara3',
-
-														),
-														)); ?>		
-													</div>
-
-												</div>
-											</div>
+												<?php endif; ?>
+											<?php endif; ?>
 
 
 
-											<?php if(YII::app()->user->getLevel()==2): ?>
-												<?php if($model->status_lamaran==0): ?>
-
-													<?php echo CHtml::link('<i class="fa fa-close"></i> Batalkan', 
-														array('dibatalkan', 'id'=>$model->id,
-															), array('class' => 'btn btn-danger pull-right btn-flat', 'title'=>'Batalkan Lamaran'));
+											<?php if($model->status_lamaran!=0): ?>
+												<?php if(YII::app()->user->getLevel()==1): ?>
+													<?php if($model->penilaian_id==0): ?>
+														<?php 
+														echo CHtml::link('<i class="fa fa-tasks"></i> Nilai', 
+															array('penilaiansaw/create', 'pelamar'=>$model->user_id, 'lowongan'=>$model->lowongan_id, 'lamaran'=>$model->id), array('class' => 'btn btn-info btn-flat', 'title'=>'Buat Penilaian'));
 															?>
-
 														<?php endif; ?>
-													<?php endif; ?>
 
+														<?php echo CHtml::link('<i class="fa fa-phone"></i> Panggil', 
+															array('panggil', 'id'=>$model->id,
+																), array('class' => 'btn btn-warning btn-flat', 'title'=>'Panggil Pelamar'));
+																?>
 
-
-													<?php if($model->status_lamaran!=0): ?>
-														<?php if(YII::app()->user->getLevel()==1): ?>
-															<?php if($model->penilaian_id==0): ?>
-																<?php 
-																echo CHtml::link('<i class="fa fa-tasks"></i> Nilai', 
-																	array('penilaiansaw/create', 'pelamar'=>$model->user_id, 'lowongan'=>$model->lowongan_id, 'lamaran'=>$model->id), array('class' => 'btn btn-info btn-flat', 'title'=>'Buat Penilaian'));
-																	?>
-																<?php endif; ?>
-
-																<?php echo CHtml::link('<i class="fa fa-phone"></i> Panggil', 
-																	array('panggil', 'id'=>$model->id,
-																		), array('class' => 'btn btn-warning btn-flat', 'title'=>'Panggil Pelamar'));
+																<?php echo CHtml::link('<i class="fa fa-phone"></i> Sudah di Panggil', 
+																	array('sudahdipanggil', 'id'=>$model->id,
+																		), array('class' => 'btn btn-success btn-flat', 'title'=>'Sudah di Panggil ?'));
 																		?>
 
-																		<?php echo CHtml::link('<i class="fa fa-phone"></i> Sudah di Panggil', 
-																			array('sudahdipanggil', 'id'=>$model->id,
-																				), array('class' => 'btn btn-success btn-flat', 'title'=>'Sudah di Panggil ?'));
-																				?>
+
+																	<?php endif; ?>
+																<?php endif; ?>																		
 
 
-																			<?php endif; ?>
-																		<?php endif; ?>																		
-
-
-																		<STYLE>
-																			th{width:150px;}
-																		</STYLE>
+																<STYLE>
+																	th{width:150px;}
+																</STYLE>
 
 

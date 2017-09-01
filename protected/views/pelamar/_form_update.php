@@ -350,93 +350,132 @@
 												<div class="form-group">
 
 													<div class="col-sm-4 control-label">
-														<?php echo $form->labelEx($model,'hp'); ?>
+														<?php echo $form->labelEx($model,'jenjang'); ?>
 													</div>   
 
 													<div class="col-sm-8">
-														<?php echo $form->error($model,'hp'); ?>
-														<?php echo $form->textField($model,'hp',array('class'=>'form-control','placeHolder'=>'HP')); ?>
-													</div>
+														<?php echo $form->error($model,'jenjang'); ?>
+														<?php
+														echo $form->radioButtonList($model,'jenjang',
+															array('1'=>'SMA / SMK','2'=>'Diploma / Sarjana / Magister'),
+															array(
+																'template'=>'{input}{label}',
+																'separator'=>'',
+																'labelOptions'=>array(
+																	'class'=>'minimal', 'style'=>'padding-right:20px;margin-left:5px'),
 
-												</div>  
-
-												<div class="form-group">
-
-													<div class="col-sm-4 control-label">
-														<?php echo $form->labelEx($model,'no_jamsostek'); ?>
-													</div>   
-
-													<div class="col-sm-8">
-														<?php echo $form->error($model,'no_jamsostek'); ?>
-														<?php echo $form->textField($model,'no_jamsostek',array('class'=>'form-control','placeHolder'=>'No. JAMSOSTEK')); ?>
-													</div>
-
-												</div>  
-
-
-
-												<div class="form-group">
-
-													<div class="col-sm-4 control-label">
-														<?php echo $form->labelEx($model,'no_sim'); ?>
-													</div>   
-
-													<div class="col-sm-8">
-														<?php echo $form->error($model,'no_sim'); ?>
-														<?php echo $form->textField($model,'no_sim',array('class'=>'form-control','placeHolder'=>'No. SIM')); ?>
-													</div>
-
-												</div>  
-
-
-
-												<div class="form-group">
-
-													<div class="col-sm-4 control-label">
-														<?php echo $form->labelEx($model,'no_npwp'); ?>
-													</div>   
-
-													<div class="col-sm-8">
-														<?php echo $form->error($model,'no_npwp'); ?>
-														<?php echo $form->textField($model,'no_npwp',array('class'=>'form-control','placeHolder'=>'No. NPWP')); ?>
-													</div>
-
-												</div>  
-
-
-												<div class="form-group">
-
-													<div class="col-sm-4 control-label">
-														<?php echo $form->labelEx($model,'kontak'); ?>
-													</div>   
-
-													<div class="col-sm-8">
-														<div class="col-sm-6 no-padding">
-															<?php echo $form->error($model,'telephone_pribadi'); ?>
-															<?php echo $form->textField($model,'telephone_pribadi',array('class'=>'form-control','placeHolder'=>'Telp. Pribadi')); ?>
+																)                              
+															);
+															?>
 														</div>
-														<div class="col-sm-6 no-padding">
-															<?php echo $form->error($model,'telephone_rumah'); ?>
-															<?php echo $form->textField($model,'telephone_rumah',array('class'=>'form-control','placeHolder'=>'Telp. Rumah')); ?>
+
+													</div>  
+
+
+													<div class="form-group">
+
+														<div class="col-sm-4 control-label">
+															<?php echo $form->labelEx($model,'nilai'); ?>
+														</div>   
+
+														<div class="col-sm-8">
+															<?php echo $form->error($model,'nilai'); ?>
+															<?php echo $form->textField($model,'nilai',array('class'=>'form-control','placeHolder'=>'Nilai Terakhir / IPK')); ?>
 														</div>
+
+													</div>  
+
+
+													<div class="form-group">
+
+														<div class="col-sm-4 control-label">
+															<?php echo $form->labelEx($model,'hp'); ?>
+														</div>   
+
+														<div class="col-sm-8">
+															<?php echo $form->error($model,'hp'); ?>
+															<?php echo $form->textField($model,'hp',array('class'=>'form-control','placeHolder'=>'HP')); ?>
+														</div>
+
+													</div>  
+
+													<div class="form-group">
+
+														<div class="col-sm-4 control-label">
+															<?php echo $form->labelEx($model,'no_jamsostek'); ?>
+														</div>   
+
+														<div class="col-sm-8">
+															<?php echo $form->error($model,'no_jamsostek'); ?>
+															<?php echo $form->textField($model,'no_jamsostek',array('class'=>'form-control','placeHolder'=>'No. JAMSOSTEK')); ?>
+														</div>
+
+													</div>  
+
+
+
+													<div class="form-group">
+
+														<div class="col-sm-4 control-label">
+															<?php echo $form->labelEx($model,'no_sim'); ?>
+														</div>   
+
+														<div class="col-sm-8">
+															<?php echo $form->error($model,'no_sim'); ?>
+															<?php echo $form->textField($model,'no_sim',array('class'=>'form-control','placeHolder'=>'No. SIM')); ?>
+														</div>
+
+													</div>  
+
+
+
+													<div class="form-group">
+
+														<div class="col-sm-4 control-label">
+															<?php echo $form->labelEx($model,'no_npwp'); ?>
+														</div>   
+
+														<div class="col-sm-8">
+															<?php echo $form->error($model,'no_npwp'); ?>
+															<?php echo $form->textField($model,'no_npwp',array('class'=>'form-control','placeHolder'=>'No. NPWP')); ?>
+														</div>
+
+													</div>  
+
+
+													<div class="form-group">
+
+														<div class="col-sm-4 control-label">
+															<?php echo $form->labelEx($model,'kontak'); ?>
+														</div>   
+
+														<div class="col-sm-8">
+															<div class="col-sm-6 no-padding">
+																<?php echo $form->error($model,'telephone_pribadi'); ?>
+																<?php echo $form->textField($model,'telephone_pribadi',array('class'=>'form-control','placeHolder'=>'Telp. Pribadi')); ?>
+															</div>
+															<div class="col-sm-6 no-padding">
+																<?php echo $form->error($model,'telephone_rumah'); ?>
+																<?php echo $form->textField($model,'telephone_rumah',array('class'=>'form-control','placeHolder'=>'Telp. Rumah')); ?>
+															</div>
+														</div>
+
+													</div>  
+
+
+
+
+
+
+
+
+													<div class="form-group">
+														<div class="col-md-12">  
+														</br></br>
+														<?php echo CHtml::submitButton($model->isNewRecord ? 'Registrasi' : 'Edit', array('class' => 'btn btn-success btn-flat pull-right')); ?>
 													</div>
-
-												</div>  
-
-
-
-
-
-
-
-
-												<div class="form-group">
-													<div class="col-md-12">  
-													</br></br>
-													<?php echo CHtml::submitButton($model->isNewRecord ? 'Registrasi' : 'Edit', array('class' => 'btn btn-success btn-flat pull-right')); ?>
 												</div>
-											</div>
 
-											<?php $this->endWidget(); ?>
+												<?php $this->endWidget(); ?>
 
 </div></div><!-- form -->

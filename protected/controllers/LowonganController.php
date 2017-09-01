@@ -51,17 +51,9 @@ class LowonganController extends Controller
 		$model=$this->loadModel($id);
 		$dataNilai=new CActiveDataProvider('PenilaianSaw',
 			array('criteria'=>
-				array('condition'=>'lowongan_id='.$model->id_lowongan.'','order'=>'nilai DESC')
+				array('condition'=>'status=0 AND lowongan_id='.$model->id_lowongan.'','order'=>'nilai DESC')
 				)
 			);
-
-		// $dataProvider=new CActiveDataProvider('FileLamaran',
-		// 	array('criteria'=>array(
-		// 		'condition'=>'lowongan_id="'.$model->id_lowongan.'"',
-		// 		'order'=>'id DESC',
-
-		// 		),'pagination'=>array('pageSize'=>'4')
-		// 	));
 
 		$dataUnverify=new FileLamaran('search');
 		$dataUnverify->unsetAttributes();  // clear any default values

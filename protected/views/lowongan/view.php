@@ -7,6 +7,7 @@ $this->breadcrumbs=array(
 	$model->id_lowongan,
 	);
 
+require_once('_view_excel.php');
 
 $this->pageTitle="Lowongan ".$model->Jabatan->nama. " ". $model->Bagian->nama;;
 
@@ -17,8 +18,6 @@ if(!YII::app()->user->isGuest):
 	if(YII::app()->user->getLevel()==1):
 
 		?>
-
-
 	<div class="panel-group" id="accordion" role="tablist" >
 		<div class="panel panel-default">
 			<div class="panel-heading" role="tab" id="headingOne">
@@ -30,6 +29,13 @@ if(!YII::app()->user->isGuest):
 			</div>
 			<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
 				<div class="panel-body">
+
+					<!-- START: Notifikasi Download Report -->
+					<div class="alert alert-danger">
+						<center><h2 class="text-white">Laporan Pelamar Per Job Order telah disimpan ke Excel, <b class="label label-warning"><a href="<?php echo YII::app()->baseUrl; ?>/Report - Per Job Order.xls"/>Download Laporan</a></b></h2></center>
+					</div>
+					<!-- END: Notifikasi Download Report -->
+					
 					<?php require_once('_detail_lowongan_admin.php'); ?>
 				</div>
 			</div>
@@ -58,6 +64,12 @@ if(!YII::app()->user->isGuest):
 
 
 							<div class="tab-pane active" id="0">
+
+								<div class="alert alert-danger">
+									<center><h2 class="text-white">Laporan Seleksi yang Belum di Verifikasi disimpan ke Excel, <b class="label label-warning"><a href="<?php echo YII::app()->baseUrl; ?>/Report - Belum di Verifikasi.xls"/>Download Laporan</a></b></h2></center>
+								</div>
+
+
 								<!-- Belum di Verifikasi -->
 								<?php $this->widget('zii.widgets.grid.CGridView', array(
 									'id'=>'file-0-grid',
@@ -111,6 +123,12 @@ if(!YII::app()->user->isGuest):
 									</div>
 
 									<div class="tab-pane" id="1">
+										<!-- START: Notifikasi Download Report -->
+										<div class="alert alert-success">
+											<center><h2 class="text-white">Laporan Seleksi yang Telah di Verifikasi disimpan ke Excel, <b class="label label-warning"><a href="<?php echo YII::app()->baseUrl; ?>/Report - Telah di Verifikasi.xls"/>Download Laporan</a></b></h2></center>
+										</div>
+										<!-- END: Notifikasi Download Report -->
+
 										<!-- Sudah di Verifikasi -->
 										<?php $this->widget('zii.widgets.grid.CGridView', array(
 											'id'=>'file-1-grid',
@@ -171,6 +189,11 @@ if(!YII::app()->user->isGuest):
 											</div>
 
 											<div class="tab-pane" id="2">
+												<!-- START: Notifikasi Download Report -->
+												<div class="alert alert-info">
+													<center><h2 class="text-white">Laporan Seleksi yang Dipanggil disimpan ke Excel, <b class="label label-warning"><a href="<?php echo YII::app()->baseUrl; ?>/Report - Dipanggil.xls"/>Download Laporan</a></b></h2></center>
+												</div>
+												<!-- END: Notifikasi Download Report -->
 												<!-- Pemanggilan -->
 												<?php $this->widget('zii.widgets.grid.CGridView', array(
 													'id'=>'file-2-grid',
@@ -238,6 +261,11 @@ if(!YII::app()->user->isGuest):
 
 
 													<div class="tab-pane" id="3">
+														<!-- START: Notifikasi Download Report -->
+														<div class="alert alert-success">
+															<center><h2 class="text-white">Laporan Seleksi yang telah Dipanggil disimpan ke Excel, <b class="label label-warning"><a href="<?php echo YII::app()->baseUrl; ?>/Report - Telah Dipanggil.xls"/>Download Laporan</a></b></h2></center>
+														</div>
+														<!-- END: Notifikasi Download Report -->
 														<!-- Sudah di Panggil -->
 														<?php $this->widget('zii.widgets.grid.CGridView', array(
 															'id'=>'file-4-grid',
@@ -295,6 +323,11 @@ if(!YII::app()->user->isGuest):
 
 
 															<div class="tab-pane" id="5">
+																<!-- START: Notifikasi Download Report -->
+																<div class="alert alert-primary">
+																	<center><h2 class="text-white">Laporan Seleksi yang telah Diterima disimpan ke Excel, <b class="label label-warning"><a href="<?php echo YII::app()->baseUrl; ?>/Report - Telah Diterima.xls"/>Download Laporan</a></b></h2></center>
+																</div>
+																<!-- END: Notifikasi Download Report -->
 																<!-- Diterima -->
 																<?php $this->widget('zii.widgets.grid.CGridView', array(
 																	'id'=>'file-5-grid',
@@ -329,6 +362,11 @@ if(!YII::app()->user->isGuest):
 																	</div>
 
 																	<div class="tab-pane" id="6">
+																		<!-- START: Notifikasi Download Report -->
+																		<div class="alert alert-danger">
+																			<center><h2 class="text-white">Laporan Seleksi yang telah Gagal disimpan ke Excel, <b class="label label-warning"><a href="<?php echo YII::app()->baseUrl; ?>/Report - Gagal Seleksi.xls"/>Download Laporan</a></b></h2></center>
+																		</div>
+																		<!-- END: Notifikasi Download Report -->
 																		<!-- Ditolak -->
 																		<?php $this->widget('zii.widgets.grid.CGridView', array(
 																			'id'=>'file-6-grid',
@@ -381,103 +419,37 @@ if(!YII::app()->user->isGuest):
 
 
 																	<?php
-																	echo CHtml::link('Pembobotan Kriteria',
-																		array('kriteria/admin'),
-																		array('class' => 'btn btn-success pull-right btn-flat','title'=>'Pembobotan Kriteria'));
+																	require_once('_view_nilai.php');
+																	require_once('_view_nilai_saw.php');
+																	?>
 
-																	echo "<h4>Penilaian Hasil Seleksi</h4>";
-																	$this->widget('zii.widgets.grid.CGridView', array(
-																		'id'=>'penilaian-saw-grid',
-																		'summaryText'=>'',
-																		'dataProvider'=>$dataNilai,
-																		'itemsCssClass' => 'table table-bordered table-striped dataTable table-hover',
-																		'columns'=>array(
+																</div>
+															</div>
+														</div>
+													</div>
 
-																			array(
-																				'header'=>'Rank',
-																				'value'=>'$this->grid->dataProvider->pagination->currentPage*$this->grid->dataProvider->pagination->pageSize + $row+1',
-																				'htmlOptions'=>array('width'=>'10px', 
-																					'style' => 'text-align: center;')),
+													<?php 
+													endif;
+													endif;
+													?>
 
-																			array('name'=>'c1','value'=>'PenilaianSaw::model()->check($data->Character->kriteria_id,$data->Character->nilai,$data->c1,"c1",$data->lowongan_id)*PenilaianSaw::model()->bobot("C1")'),
-																			array('name'=>'c2','value'=>'PenilaianSaw::model()->check($data->Capacity->kriteria_id,$data->Capacity->nilai,$data->c2,"c2",$data->lowongan_id)*PenilaianSaw::model()->bobot("C2")'),
-																			array('name'=>'c3','value'=>'PenilaianSaw::model()->check($data->Capital->kriteria_id,$data->Capital->nilai,$data->c3,"c3",$data->lowongan_id)*PenilaianSaw::model()->bobot("C3")'),
-																			array('name'=>'c4','value'=>'PenilaianSaw::model()->check($data->Collateral->kriteria_id,$data->Collateral->nilai,$data->c4,"c4",$data->lowongan_id)*PenilaianSaw::model()->bobot("C4")'),
-																			array('name'=>'c5','value'=>'PenilaianSaw::model()->check($data->Condition->kriteria_id,$data->Condition->nilai,$data->c5,"c5",$data->lowongan_id)*PenilaianSaw::model()->bobot("C5")'),
-																			array('name'=>'c6','value'=>'PenilaianSaw::model()->check($data->Cashflow->kriteria_id,$data->Cashflow->nilai,$data->c6,"c6",$data->lowongan_id)*PenilaianSaw::model()->bobot("C6")'),
-																			array('name'=>'c7','value'=>'PenilaianSaw::model()->check($data->Culture->kriteria_id,$data->Culture->nilai,$data->c7,"c7",$data->lowongan_id)*PenilaianSaw::model()->bobot("C7")'),
+													<?php
+													if(YII::app()->user->isGuest){ 
+														require_once('_detail_lowongan.php'); 
+													}else{
+														if(YII::app()->user->getLevel()==2):
+															require_once('_detail_lowongan.php'); 
+														endif;
+													}
 
-																			array('header'=>'Hasil','value'=>'
-																				PenilaianSaw::model()->result(
-																				PenilaianSaw::model()->check($data->Character->kriteria_id,$data->Character->nilai,$data->c1,"c1",$data->lowongan_id)*PenilaianSaw::model()->bobot("C1") +
-																				PenilaianSaw::model()->check($data->Capacity->kriteria_id,$data->Capacity->nilai,$data->c2,"c2",$data->lowongan_id)*PenilaianSaw::model()->bobot("C2") +
-																				PenilaianSaw::model()->check($data->Capital->kriteria_id,$data->Capital->nilai,$data->c3,"c3",$data->lowongan_id)*PenilaianSaw::model()->bobot("C3") +
-																				PenilaianSaw::model()->check($data->Collateral->kriteria_id,$data->Collateral->nilai,$data->c4,"c4",$data->lowongan_id)*PenilaianSaw::model()->bobot("C4") +
-																				PenilaianSaw::model()->check($data->Condition->kriteria_id,$data->Condition->nilai,$data->c5,"c5",$data->lowongan_id)*PenilaianSaw::model()->bobot("C5") +
-																				PenilaianSaw::model()->check($data->Cashflow->kriteria_id,$data->Cashflow->nilai,$data->c6,"c6",$data->lowongan_id)*PenilaianSaw::model()->bobot("C6") +
-																				PenilaianSaw::model()->check($data->Culture->kriteria_id,$data->Culture->nilai,$data->c7,"c7",$data->lowongan_id)*PenilaianSaw::model()->bobot("C7")
-																				, $data->id_penilaian_saw
-																				)
-																				'),	
-
-																			// 'nilai',
-																			array('name'=>'pelamar_id','value'=>'$data->Pelamar->username'),
-
-
-																			array(
-																				'class'=>'CButtonColumn',
-																				'header'=>'Profil',
-																				'template'=>'{view}',
-																				'buttons'=>array(
-																					'view'=>
-																					array(
-																						'url'=>'Yii::app()->createUrl("pelamar/view", array("id"=>Pelamar::model()->applicant($data->pelamar_id)))',
-																						'imageUrl'=>'images/detail.png',
-																						),
-																					),
-																				),
-
-																			array(
-																				'header' => 'Aksi',
-																				'type' => 'raw',
-																				'value'=>'PenilaianSaw::model()->cek($data->id_penilaian_saw,$data->lamaran_id)',
-																				),
-
-																			),
-)); 
-
-?>
-
-
-
-
-</div>
-</div>
-</div>
-</div>
-
-<?php 
-endif;
-endif;
-?>
-
-<?php
-if(YII::app()->user->isGuest){ 
-	require_once('_detail_lowongan.php'); 
-}else{
-	if(YII::app()->user->getLevel()==2):
-		require_once('_detail_lowongan.php'); 
-	endif;
-}
-
-?>
+													?>
 
 
 
 
 
 
-<STYLE>
-	th{width:200px;}
-</STYLE>
+													<STYLE>
+														th{width:200px;}
+													</STYLE>
 

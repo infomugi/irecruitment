@@ -221,4 +221,19 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+
+
+	public function actionReport()
+	{
+		$this->layout="admin";
+		$dataProvider=new CActiveDataProvider('PenilaianSaw',
+			array(
+				'criteria'=>array(
+					'condition'=>'status=0',
+					'order'=>'nilai DESC'))
+			);
+		$this->render('report',array(
+			'dataProvider'=>$dataProvider,
+			));
+	}	
 }

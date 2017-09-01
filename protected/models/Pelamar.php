@@ -50,10 +50,10 @@ class Pelamar extends CActiveRecord
 		return array(
 			array('nama, nik', 'required','on'=>'register_pelamar'),
 			array('nik','unique','on'=>'register_pelamar'),
-			array('nama, tempat_lahir, tanggal_lahir, agama, jenis_kelamin, golongan_darah, kewarganegaraan, hp, kota_id, provinsi_id', 'required','on'=>'update_pelamar'),
-			array('id_people, id_user, kota_id, provinsi_id, nik, status_menikah, status_domisili, lamaran_id, lowongan_id', 'numerical', 'integerOnly'=>true),
+			array('nama, tempat_lahir, tanggal_lahir, agama, jenis_kelamin, golongan_darah, kewarganegaraan, hp, kota_id, provinsi_id, jenjang, nilai', 'required','on'=>'update_pelamar'),
+			array('id_people, id_user, kota_id, provinsi_id, nik, status_menikah, status_domisili, lamaran_id, lowongan_id, jenjang', 'numerical', 'integerOnly'=>true),
 			array('nama, tanggal_lahir, no_jamsostek, no_sim, no_npwp, alamat_domisili, telephone_pribadi, telephone_rumah, tanggal_lahir, alamat_domisili', 'length', 'max'=>255),
-			array('tempat_lahir, tanggal_lahir, agama, jenis_kelamin, golongan_darah, kewarganegaraan, hp, status_domisili', 'length', 'max'=>30),
+			array('tempat_lahir, tanggal_lahir, agama, jenis_kelamin, golongan_darah, kewarganegaraan, hp, status_domisili, jenjang, nilai', 'length', 'max'=>30),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id_people, nama, tempat_lahir, tanggal_lahir, agama, jenis_kelamin, golongan_darah, kewarganegaraan, id_user', 'safe', 'on'=>'search'),
@@ -99,6 +99,8 @@ class Pelamar extends CActiveRecord
 			'kontak' => 'Kontak',
 			'lowongan_id' => 'Lowongan',
 			'lamaran_id' => 'Lamaran',
+			'nilai' => 'Nilai / IPK Terakhir',
+			'jenjang' => 'Pendidikan Terakhir',
 			);
 	}
 
@@ -206,6 +208,15 @@ class Pelamar extends CActiveRecord
 			return "-";
 		}else{
 			return $model->id_people;
+		}
+	}
+
+	public function getIdentity($id){
+		$model=Pelamar::model()->findByAttributes(array('id_user'=>$id));
+		if($model===null){
+			return "-";
+		}else{
+			return $model;
 		}
 	}
 
