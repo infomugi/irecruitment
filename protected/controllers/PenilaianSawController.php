@@ -32,20 +32,10 @@ class PenilaianSawController extends Controller
 				'users'=>array('@'),
 				),			
 			array('allow', 
-				'actions'=>array('create','update','index','view','admin','view','delete','perhitungan','perhitunganahp','pegawai','verifikasi'),
+				'actions'=>array('create','update','index','view','admin','view','delete','perhitungan','verifikasi'),
 				'users'=>array('@'),
 				'expression'=>'Yii::app()->user->getLevel()==1',
 				),
-			array('allow', 
-				'actions'=>array('index','view','admin','perhitungan','listterima','listpending','listtolak','listverifikasi','verifikasi','terima','pending','tolak'),
-				'users'=>array('@'),
-				'expression'=>'Yii::app()->user->getLevel()==2',
-				),			
-			array('allow', 
-				'actions'=>array('create','update','index','view','admin','view','delete','perhitungan','perhitunganahp','pegawai','verifikasi'),
-				'users'=>array('@'),
-				'expression'=>'Yii::app()->user->getLevel()==2',
-				),			
 			array('deny',  // deny all users
 				'users'=>array('*'),
 				),
@@ -148,18 +138,6 @@ class PenilaianSawController extends Controller
 			));
 	}
 
-
-	public function actionPerhitungan()
-	{
-		$this->layout="admin";
-		$dataProvider=new CActiveDataProvider('PenilaianSaw');
-		$dataNilai=new CActiveDataProvider('PenilaianSaw');
-		$this->render('perhitungan',array(
-			'dataProvider'=>$dataProvider,
-			'dataNilai'=>$dataNilai,
-			));
-	}
-
 	/**
 	 * Manages all models.
 	 */
@@ -237,42 +215,6 @@ class PenilaianSawController extends Controller
 			));
 	}
 
-	public function actionListVerifikasi()
-	{
-		$this->layout="admin";
-		$dataProvider=new CActiveDataProvider('PenilaianSaw',array('criteria'=>array('condition'=>'status=0','order'=>'nilai DESC')));
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-			));
-	}		
-
-	public function actionListTerima()
-	{
-		$this->layout="admin";
-		$dataProvider=new CActiveDataProvider('PenilaianSaw',array('criteria'=>array('condition'=>'status=1','order'=>'nilai DESC')));
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-			));
-	}	
-
-	public function actionListPending()
-	{
-		$this->layout="admin";
-		$dataProvider=new CActiveDataProvider('PenilaianSaw',array('criteria'=>array('condition'=>'status=2','order'=>'nilai DESC')));
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-			));
-	}	
-
-	public function actionListTolak()
-	{
-		$this->layout="admin";
-		$dataProvider=new CActiveDataProvider('PenilaianSaw',array('criteria'=>array('condition'=>'status=3','order'=>'nilai DESC')));
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-			));
-	}		
-
 	public function actionTerima($id)
 	{
 		$model=$this->loadModel($id);
@@ -307,15 +249,5 @@ class PenilaianSawController extends Controller
 			'model'=>$this->loadModel($id),
 			));
 	}
-
-	public function actionListLaporan()
-	{
-		$this->layout = "print";
-		$dataProvider=new CActiveDataProvider('PenilaianSaw',array('criteria'=>array('condition'=>'status=1','order'=>'nilai DESC')));
-		$this->render('laporan',array(
-			'dataProvider'=>$dataProvider,
-			));
-	}		
-
 
 }

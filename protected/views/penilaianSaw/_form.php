@@ -4,7 +4,7 @@
 /* @var $form CActiveForm */
 ?>
 <div class="form-normal form-horizontal clearfix">
-	<div class="col-md-9"> 
+	<div class="col-md-8 col-md-offset-2"> 
 
 		<?php $form=$this->beginWidget('CActiveForm', array(
 			'id'=>'penilaian-saw-form',

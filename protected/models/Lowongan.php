@@ -70,7 +70,7 @@ class Lowongan extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id_lowongan' => 'Id Lowongan',
+			'id_lowongan' => 'Id Job Order',
 			'tanggal' => 'Tanggal Posting',
 			'bagian' => 'Bagian',
 			'jabatan' => 'Jabatan',
@@ -421,6 +421,18 @@ class Lowongan extends CActiveRecord
             return "-";
         }
     }     
+
+
+    public function checkEmployee($quantity,$accept){
+        if($quantity <= $accept){
+            return "Terpenuhi";
+        }elseif($accept >= $quantity){
+            return "Melebihi Kuantias";
+        }else{
+            $data = $quantity - $accept;
+            return "Tesisa " . $data;
+        }
+    }
 
 
 }

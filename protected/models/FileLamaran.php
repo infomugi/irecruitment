@@ -233,4 +233,59 @@ class FileLamaran extends CActiveRecord
 		}
 	}		
 
+	public function countApplicantAll($lowongan){
+		$data = Yii::app()->db->createCommand("
+			SELECT count(id) 
+			FROM file_lamaran
+			LEFT JOIN lowongan
+			ON file_lamaran.lowongan_id=lowongan.id_lowongan
+			WHERE lowongan.id_lowongan=".$lowongan."
+			")->queryScalar();
+		return $data;
+	} 
+
+
+	public function countApplicant($status,$lowongan){
+		$data = Yii::app()->db->createCommand("
+			SELECT count(id) 
+			FROM file_lamaran
+			LEFT JOIN lowongan
+			ON file_lamaran.lowongan_id=lowongan.id_lowongan
+			WHERE file_lamaran.status_lamaran=".$status." AND lowongan.id_lowongan=".$lowongan."
+			")->queryScalar();
+		return $data;
+	} 
+
+	public function countStatus($status,$lowongan){
+		$data = Yii::app()->db->createCommand("
+			SELECT count(id) 
+			FROM file_lamaran
+			LEFT JOIN lowongan
+			ON file_lamaran.lowongan_id=lowongan.id_lowongan
+			WHERE file_lamaran.status_lamaran=".$status." AND lowongan.id_lowongan=".$lowongan."
+			")->queryScalar();
+		if($data==0){
+			return "-";
+		}else{
+			return $data . " Pelamar";
+		}
+	} 	
+
+
+
+	public function countStatusAll($lowongan){
+		$data = Yii::app()->db->createCommand("
+			SELECT count(id) 
+			FROM file_lamaran
+			LEFT JOIN lowongan
+			ON file_lamaran.lowongan_id=lowongan.id_lowongan
+			WHERE lowongan.id_lowongan=".$lowongan."
+			")->queryScalar();
+		if($data==0){
+			return "-";
+		}else{
+			return $data . " Pelamar";
+		}
+	} 	
+
 }

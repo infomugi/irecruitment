@@ -139,11 +139,12 @@ class SiteController extends Controller
 			if($model->validate() && $model->login())
 				if(Yii::app()->user->getLevel()==1){
 					$this->redirect(Yii::app()->homeUrl);
-					// $this->redirect(array('filelamaran/unverified'));
 				}else if(Yii::app()->user->getLevel()==2){
 					$this->redirect(array('pelamar/profile'));
+				}else if(Yii::app()->user->getLevel()==5){
+					$this->redirect(array('lowongan/admin'));
 				}else{
-					// $this->redirect(array('test/report'));
+					$this->redirect(Yii::app()->homeUrl);
 				}
 			}
 		// display the login form

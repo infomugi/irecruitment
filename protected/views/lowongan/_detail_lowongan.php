@@ -13,7 +13,7 @@
 
 					$umur = Pelamar::model()->countBirth($profile->tanggal_lahir);
 
-					if($model->umur>$umur){
+					if($model->umur>=$umur){
 						echo "<br>";
 
 					//Apabila Pelamar sedang dalam Proses Melamar

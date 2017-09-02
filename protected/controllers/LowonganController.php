@@ -36,6 +36,11 @@ class LowonganController extends Controller
 				'users'=>array('@'),
 				'expression'=>'Yii::app()->user->getLevel()==1',
 				),
+			array('allow',
+				'actions'=>array('create','update','view','delete','admin','index','view','terbaru','list'),
+				'users'=>array('@'),
+				'expression'=>'Yii::app()->user->getLevel()==5',
+				),			
 			array('deny',
 				'users'=>array('*'),
 				),
@@ -51,7 +56,10 @@ class LowonganController extends Controller
 		$model=$this->loadModel($id);
 		$dataNilai=new CActiveDataProvider('PenilaianSaw',
 			array('criteria'=>
-				array('condition'=>'status=0 AND lowongan_id='.$model->id_lowongan.'','order'=>'nilai DESC')
+				array(
+					'condition'=>'status=0 AND 
+					lowongan_id='.$model->id_lowongan.'',
+					'order'=>'nilai DESC')
 				)
 			);
 

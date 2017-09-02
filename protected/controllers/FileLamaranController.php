@@ -33,14 +33,19 @@ class FileLamaranController extends Controller
 				'expression'=>'Yii::app()->user->getLevel()==2',
 				),			
 			array('allow',
-				'actions'=>array('create','update','view','delete','admin','index','history','diterima','ditolak','unverified','verified','reject','lulus','accept','call','uncall','lulus','tidaklulus',
-					'sudahdipanggil','panggilanditunda',	
-					'verifikasi','tolak','rekomendasi','pemanggilan',
-					'search',
+				'actions'=>array(
+					'create','update','view','delete','admin','index','history','diterima','ditolak','unverified','verified','reject','lulus','accept','call','uncall','lulus','tidaklulus', 'sudahdipanggil','panggilanditunda', 'verifikasi','tolak','rekomendasi','pemanggilan', 'search'
 					),
 				'users'=>array('@'),
 				'expression'=>'Yii::app()->user->getLevel()==1',
 				),
+			array('allow',
+				'actions'=>array(
+					'create','update','view','delete','admin','index','history','diterima','ditolak','unverified','verified','reject','lulus','accept','call','uncall','lulus','tidaklulus', 'sudahdipanggil','panggilanditunda', 'verifikasi','tolak','rekomendasi','pemanggilan', 'search'
+					),
+				'users'=>array('@'),
+				'expression'=>'Yii::app()->user->getLevel()==5',
+				),			
 			array('deny',
 				'users'=>array('*'),
 				),
@@ -140,7 +145,6 @@ class FileLamaranController extends Controller
 			'model'=>$model,
 			'dataDokumen'=>$dataDokumen,
 			'dataProfile'=>$dataProfile,
-
 			'dataFormal'=>$dataFormal,
 			'dataNonFormal'=>$dataNonFormal,
 			'dataJobs'=>$dataJobs,
@@ -204,77 +208,7 @@ class FileLamaranController extends Controller
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 			));
-	}
-
-	public function actionUnverified()
-	{
-		$this->layout="admin";
-		$dataProvider=new CActiveDataProvider('FileLamaran',array('criteria'=>array('condition'=>'status_lamaran="0"'), ));
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-			'pageTitle'=>"Belum di Verifikasi",
-			));
 	}	
-
-	public function actionVerified()
-	{
-		$this->layout="admin";
-		$dataProvider=new CActiveDataProvider('FileLamaran',array('criteria'=>array('condition'=>'status_lamaran="1"'), 'sort'=>array('defaultOrder'=>'id DESC')));
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-			'title'=>"Diverifikasi",
-			));
-	}	
-
-	public function actionCall()
-	{
-		$this->layout="admin";
-		$dataProvider=new CActiveDataProvider('FileLamaran',array('criteria'=>array('condition'=>'status_lamaran="2"'), 'sort'=>array('defaultOrder'=>'id DESC')));
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-			'title'=>"Diverifikasi",
-			));
-	}	
-
-	public function actionUncall()
-	{
-		$this->layout="admin";
-		$dataProvider=new CActiveDataProvider('FileLamaran',array('criteria'=>array('condition'=>'status_lamaran="3"'), 'sort'=>array('defaultOrder'=>'id DESC')));
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-			'title'=>"Diverifikasi",
-			));
-	}	
-
-	public function actionAccept()
-	{
-		$this->layout="admin";
-		$dataProvider=new CActiveDataProvider('FileLamaran',array('criteria'=>array('condition'=>'status_lamaran="4"'), 'sort'=>array('defaultOrder'=>'id DESC')));
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-			'title'=>"Diterima",
-			));
-	}		
-
-	public function actionPending()
-	{
-		$this->layout="admin";
-		$dataProvider=new CActiveDataProvider('FileLamaran',array('criteria'=>array('condition'=>'status_lamaran="5"'), 'sort'=>array('defaultOrder'=>'id DESC')));
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-			'title'=>"Ditolak",
-			));
-	}	
-
-	public function actionReject()
-	{
-		$this->layout="admin";
-		$dataProvider=new CActiveDataProvider('FileLamaran',array('criteria'=>array('condition'=>'status_lamaran="6"'), 'sort'=>array('defaultOrder'=>'id DESC')));
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-			'title'=>"Ditolak",
-			));
-	}					
 
 	public function actionHistory()
 	{
@@ -354,7 +288,6 @@ class FileLamaranController extends Controller
 	}		
 
 
-
 	/**
 	 * Performs the AJAX validation.
 	 * @param FileLamaran $model the model to be validated
@@ -375,6 +308,7 @@ class FileLamaranController extends Controller
 		$model->status_lamaran = 1;
 		$model->tanggal_verifikasi = date('Y-m-d h:i:s');
 		$model->verifikasi_id = $model->user_id;
+		$model->keterangan = "Lamaran Anda Telah Kami Verifikasi, Pada ".date('Y-m-d h:i:s')." Tahap Selanjutnya Pemanggilan.";
 		if($model->update()){
 			$this->redirect(array('view','id'=>$model->id));
 		}
@@ -386,6 +320,7 @@ class FileLamaranController extends Controller
 		$model->status_lamaran = 2;
 		$model->tanggal_verifikasi = date('Y-m-d h:i:s');
 		$model->verifikasi_id = $model->user_id;
+		$model->keterangan = "HRD akan segera menghubungi anda, untuk mengkonfirmasi pemanggilan. , Terakhir Diverifikasi Pada ".date('Y-m-d h:i:s');
 		if($model->update())
 			$this->redirect(array('view','id'=>$model->id));
 	}	
@@ -397,6 +332,7 @@ class FileLamaranController extends Controller
 		$model->status_lamaran = 3;
 		$model->tanggal_verifikasi = date('Y-m-d h:i:s');
 		$model->verifikasi_id = $model->user_id;
+		$model->keterangan = "Telah dilakukan Pemanggilan untuk Tahap Selanjutnya Penilaian, Terakhir Diverifikasi Pada ".date('Y-m-d h:i:s');
 		if($model->update())
 			$this->redirect(array('view','id'=>$model->id));
 	}			
@@ -419,11 +355,17 @@ class FileLamaranController extends Controller
 		$model->status_lamaran = 5;
 		$model->tanggal_verifikasi = date('Y-m-d h:i:s');
 		$model->verifikasi_id = $model->user_id;
+		$model->keterangan = "Selamat Anda Lulus Seleksi & Diterima Menjadi Karyawan, Terakhir Diverifikasi Pada ".date('Y-m-d h:i:s');
 		if($model->update()){
 
 			$value=$this->loadPenilaian($model->penilaian_id);
 			$value->status = 1;
 			$value->save();
+
+			$pelamar=$this->loadPelamar($model->user_id);
+			$pelamar->lowongan_id = 0;
+			$pelamar->lamaran_id = 0;
+			$pelamar->save();			
 
 			$this->redirect(array('view','id'=>$model->id));
 		}
@@ -436,6 +378,7 @@ class FileLamaranController extends Controller
 		$model->status_lamaran = 9;
 		$model->tanggal_verifikasi = date('Y-m-d h:i:s');
 		$model->verifikasi_id = $model->user_id;
+		$model->keterangan = "Maaf ".$model->Pelamar->nama.", Lamaran anda tidak dapat kami terima. Terimakasih telah mengikuti Seleksi ini. Anda dapat mencoba mengajukan lamaran lain. Terakhir Diverifikasi Pada ".date('Y-m-d h:i:s');
 		if($model->update()){
 
 			$pelamar=$this->loadPelamar($model->user_id);
@@ -463,6 +406,7 @@ class FileLamaranController extends Controller
 		$model->status_lamaran = 9;
 		$model->tanggal_verifikasi = date('Y-m-d h:i:s');
 		$model->verifikasi_id = $model->user_id;
+		$model->keterangan = "Maaf ".$model->Pelamar->nama.", Anda Gagal, Terimakasih telah mengikuti Seleksi ini. Anda dapat mencoba mengajukan lamaran lain. Terakhir Diverifikasi Pada ".date('Y-m-d h:i:s');
 		if($model->update()){
 
 			$pelamar=$this->loadPelamar($model->user_id);

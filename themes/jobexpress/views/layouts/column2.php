@@ -1,4 +1,4 @@
-<?php if(Yii::app()->user->getLevel()==1){ ?>
+<?php if(Yii::app()->user->getLevel()!=2 && !Yii::app()->user->isGuest){ ?>
 
 	<?php $this->beginContent('//layouts/admin'); ?>
 	<!-- Include content pages -->

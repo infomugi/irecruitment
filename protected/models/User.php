@@ -104,33 +104,12 @@ class User extends CActiveRecord
 		$criteria->compare('email',$this->email,true);
 		$criteria->compare('image',$this->image,true);
 		$criteria->compare('date_create',$this->date_create,true);
-		$criteria->compare('level_ID',$this->level_ID);
+		$criteria->compare('level_ID',$this->level_ID, true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 			));
 	}
-
-	public function getUser($level_ID)
-	{
-		// @todo Please modify the following code to remove attributes that should not be searched.
-
-		$criteria=new CDbCriteria;
-
-		$criteria->compare('id_user',$this->id_user);
-		$criteria->compare('username',$this->username,true);
-		$criteria->compare('password',$this->password,true);
-		$criteria->compare('email',$this->email,true);
-		$criteria->compare('image',$this->image,true);
-		$criteria->compare('date_create',$this->date_create,true);
-		$criteria->compare('level_ID',$this->level_ID);
-
-		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-			));
-	}
-
-
 
 	/**
 	 * Returns the static model of the specified AR class.
@@ -156,7 +135,7 @@ class User extends CActiveRecord
 
 	public function level($data){
 		if($data==1){
-			return "Administrator";
+			return "Admin / Manager";
 		}else if($data==2){
 			return "Pelamar";
 		}else if($data==3){

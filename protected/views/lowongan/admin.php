@@ -83,13 +83,23 @@ $this->pageTitle='Kelola Job Order';
 					'header'=>'Total Pelamar',
 					'value'=>'Lowongan::model()->countApply($data->id_lowongan)',
 					),		
-				
+
+
+
 				array(
-					'header'=>'Action',
 					'class'=>'CButtonColumn',
-					'htmlOptions'=>array('width'=>'100px', 
-						'style' => 'text-align: center;'),
+					'header'=>'Detail',
+					'template'=>'{view}{update}',
+					'buttons'=>array(
+						'view'=>
+						array(
+							'url'=>'Yii::app()->createUrl("lowongan/view", array("id"=>$data->id_lowongan))',
+							// 'imageUrl'=>'images/detail.png',
+							),
+						),
 					),
+				
+				
 				),
 				)); ?>
 

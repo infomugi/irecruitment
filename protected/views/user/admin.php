@@ -26,7 +26,11 @@ $this->pageTitle='Kelola Pengguna';
 		'date_create',
 		'username',
 		'email',
-		'level_ID',
+
+		array('name'=>'level_ID',
+			'value'=>'User::model()->level($data->level_ID)',
+			'filter'=>array('0'=>'-','1'=>'Admin / Manager','5'=>'Staff','2'=>'Pelamar',),
+			),
 
 		array(
 			'class'=>'CButtonColumn',

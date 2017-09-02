@@ -10,7 +10,7 @@ $this->breadcrumbs=array(
 	);
 
 if(YII::app()->user->getLevel()==2){
-	$this->pageTitle='Detail File Lamaran';
+	$this->pageTitle='Detail File Lamaran - #'.$model->id;
 }else{
 	$this->pageTitle='Verifikasi File Lamaran';
 }
@@ -52,7 +52,7 @@ $update = "Update " . Yii::app()->dateFormatter->formatDateTime(CDateTimeParser:
 
 
 					<!-- START: DATA PRIBADI -->
-					<H4><i class="ti-clipboard pull-left"></i> &nbsp Detail Lamaran</H4>
+					<H4><i class="ti-clipboard pull-left"></i> &nbsp Detail Lamaran #<?php echo $model->id; ?></H4>
 					<?php $this->widget('zii.widgets.CDetailView', array(
 						'data'=>$model,
 						'htmlOptions'=>array("class"=>"table"),
@@ -306,62 +306,51 @@ $update = "Update " . Yii::app()->dateFormatter->formatDateTime(CDateTimeParser:
 												</tr>
 
 												<tr>
-													<td><?php echo $dataDokumen->sertifikat; ?>/td>
-														<td><a href="#" data-toggle="modal" class="btn btn-info" data-target="#loadSertifikat">Lihat Sertifikat</a></td>
+													<td><?php echo $dataDokumen->sertifikat; ?></td>
+													<td><a href="#" data-toggle="modal" class="btn btn-info" data-target="#loadSertifikat">Lihat Sertifikat</a></td>
 
-													</tr>
+												</tr>
 
-												</table>
+											</table>
 
 
-												<!-- END: DOKUMEN -->
-
-											</div>
+											<!-- END: DOKUMEN -->
 
 										</div>
+
 									</div>
+								</div>
 
 
 
-									<?php if(YII::app()->user->getLevel()==2): ?>
-										<?php if($model->status_lamaran==0): ?>
+								<?php if(YII::app()->user->getLevel()==2): ?>
+									<?php if($model->status_lamaran==0): ?>
 
-											<?php echo CHtml::link('<i class="fa fa-close"></i> Batalkan', 
-												array('dibatalkan', 'id'=>$model->id,
-													), array('class' => 'btn btn-danger pull-right btn-flat', 'title'=>'Batalkan Lamaran'));
-													?>
+										<?php echo CHtml::link('<i class="fa fa-close"></i> Batalkan', 
+											array('dibatalkan', 'id'=>$model->id,
+												), array('class' => 'btn btn-danger pull-right btn-flat', 'title'=>'Batalkan Lamaran'));
+												?>
 
-												<?php endif; ?>
 											<?php endif; ?>
+										<?php endif; ?>
 
 
 
-											<?php if($model->status_lamaran!=0): ?>
-												<?php if(YII::app()->user->getLevel()==1): ?>
-													<?php if($model->penilaian_id==0): ?>
-														<?php 
-														echo CHtml::link('<i class="fa fa-tasks"></i> Nilai', 
-															array('penilaiansaw/create', 'pelamar'=>$model->user_id, 'lowongan'=>$model->lowongan_id, 'lamaran'=>$model->id), array('class' => 'btn btn-info btn-flat', 'title'=>'Buat Penilaian'));
-															?>
-														<?php endif; ?>
 
-														<?php echo CHtml::link('<i class="fa fa-phone"></i> Panggil', 
-															array('panggil', 'id'=>$model->id,
-																), array('class' => 'btn btn-warning btn-flat', 'title'=>'Panggil Pelamar'));
-																?>
+										<?php if(YII::app()->user->getLevel()==1){ ?>
 
-																<?php echo CHtml::link('<i class="fa fa-phone"></i> Sudah di Panggil', 
-																	array('sudahdipanggil', 'id'=>$model->id,
-																		), array('class' => 'btn btn-success btn-flat', 'title'=>'Sudah di Panggil ?'));
-																		?>
+											<?php require_once('_button_verification.php'); ?>																		
+
+											<?php }elseif(YII::app()->user->getLevel()==5){ ?>
+
+												<?php require_once('_button_verification.php'); ?>	
+
+												<?php } ?>
 
 
-																	<?php endif; ?>
-																<?php endif; ?>																		
 
-
-																<STYLE>
-																	th{width:150px;}
-																</STYLE>
+												<STYLE>
+													th{width:150px;}
+												</STYLE>
 
 

@@ -67,3 +67,9 @@ $this->widget('zii.widgets.grid.CGridView', array(
 
 	?>
 
+
+	<div class="alert alert-success">
+		<center><span class="text-white">Hi <?php echo YII::app()->user->name; ?>, Rekomendasi Pelamar dengan Nilai Tertinggi berdasarkan ID Job Order #<?php echo $model->id_lowongan; ?>, Jatuh Kepada <b>@<?php echo PenilaianSaw::model()->topApplicantName($model->id_lowongan); ?></b> dengan Nilai <?php echo PenilaianSaw::model()->topApplicantValue($model->id_lowongan); ?>.
+		</span></center>
+	</div>
+

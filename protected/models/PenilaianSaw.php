@@ -162,12 +162,44 @@ class PenilaianSaw extends CActiveRecord
 		$model->nilai = $nilai;
 		$model->update();
 		return $model->nilai;
-	} 	    
+	} 	   
 
-	public function goodCustomer(){
-		$data = Yii::app()->db->createCommand("SELECT MAX(penilaian_saw.nilai) as nilai, customer.nama as nama  FROM penilaian_saw LEFT JOIN pelamar ON penilaian_saw.pelamar_id=pelamar.id_people")->queryScalar();
+	public function countApplicant($lowongan){
+		$data = Yii::app()->db->createCommand("
+			SELECT count(id_penilaian_saw) 
+			FROM penilaian_saw 
+			LEFT JOIN lowongan
+			ON penilaian_saw.lowongan_id=lowongan.id_lowongan
+			WHERE penilaian_saw.status=0 AND lowongan.id_lowongan=".$lowongan."
+			")->queryScalar();
+		return $data;
+	}  
+
+	public function topApplicantValue($lowongan){
+		$data = Yii::app()->db->createCommand("
+			SELECT MAX(penilaian_saw.nilai) as nilai  
+			FROM penilaian_saw 
+			LEFT JOIN user 
+			ON penilaian_saw.pelamar_id=user.id_user
+			LEFT JOIN lowongan
+			ON penilaian_saw.lowongan_id=lowongan.id_lowongan
+			WHERE penilaian_saw.status=0 AND lowongan.id_lowongan=".$lowongan."
+			")->queryScalar();
 		return round($data,4);
-	}    		
+	} 
+
+	public function topApplicantName($lowongan){
+		$data = Yii::app()->db->createCommand("
+			SELECT user.username as username, MAX(penilaian_saw.nilai) as nilai
+			FROM penilaian_saw 
+			LEFT JOIN user 
+			ON penilaian_saw.pelamar_id=user.id_user
+			LEFT JOIN lowongan
+			ON penilaian_saw.lowongan_id=lowongan.id_lowongan
+			WHERE penilaian_saw.status=0 AND lowongan.id_lowongan=".$lowongan."
+			")->queryScalar();
+		return $data;
+	} 	   		
 
 	public function bobot($kode){
 		$bobot = Yii::app()->db->createCommand("SELECT bobot FROM kriteria where kode='".$kode."'")->queryScalar();
@@ -202,9 +234,16 @@ class PenilaianSaw extends CActiveRecord
 
 		if($models!=NULL){
 
-			return CHtml::link('<i class="fa fa-check"></i>', 
+
+			$terima =  CHtml::link('<i class="fa fa-check"></i>', 
 				array('filelamaran/diterima', 'id'=>$lamaran, 'penilaian'=>$data), 
 				array('class' => 'btn btn-info btn-sm btn-flat', 'title'=>'Terima Sebagai Pegawai'));
+
+			$tolak =  CHtml::link('<i class="fa fa-close"></i>', 
+				array('filelamaran/tolak', 'id'=>$lamaran, 'penilaian'=>$data), 
+				array('class' => 'btn btn-danger btn-sm btn-flat', 'title'=>'Tidak Lulus Seleksi'));
+
+			return $terima . $tolak;
 			
 		}else{
 
