@@ -50,7 +50,7 @@ $this->pageTitle='Beranda';
 	</div>
 	<div class="col-lg-3 col-sm-6 col-xs-12">
 		<div class="white-box">
-			<h3 class="box-title">Pelamar Wanita</h3>
+			<h3 class="box-title">Pelamar Pria</h3>
 			<ul class="list-inline two-part">
 				<li><i class="ti-user text-danger"></i></li>
 				<li class="text-right"><span class=""><?php echo Lowongan::model()->countMale(); ?></span></li>
@@ -59,7 +59,7 @@ $this->pageTitle='Beranda';
 	</div>
 	<div class="col-lg-3 col-sm-6 col-xs-12">
 		<div class="white-box">
-			<h3 class="box-title">Pelamar Pria</h3>
+			<h3 class="box-title">Pelamar Wanita</h3>
 			<ul class="list-inline two-part">
 				<li><i class="ti-user text-success"></i></li>
 				<li class="text-right"><span class=""><?php echo Lowongan::model()->countFemale(); ?></span></li>
