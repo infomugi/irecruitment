@@ -1,0 +1,28 @@
+=====================================================================
+Program Skripsi 1 Form Bisa Lulus dengan Mulus
+Trik Jitu Proyek Akhir Informatika 
+Tanpa Ditanya 
+Database, Relasi, Validasi, Script
+---------------------------------------------------------------------
+Salah masuk jurusan, 
+Bingung mau ngambil judul apa,
+Sidang takut ditanya program,
+Takut ngambil metode ngga kesampean,
+Banyak referensi tapi sulit dimengerti,
+---------------------------------------------------------------------================================================================================
+RESEARCH.INFOMUGI.COM - PUSAT RISET, KAJIAN, dan PENGEMBANGAN PERANGKAT LUNAK
+================================================================================
+Algoritma Kriptografi: Asimetris RSA (Penyandian Data)
+Algoritma K-Means & K-Menoid (Penambangan Data)
+Algoritma Djikstra (Penentuan Rute Terdekat)
+Fuzzy Logic Sugeno (Pencarian, Controllling)
+Fuzzy Logic Mamdani (Pencarian, Controllling)
+Search Engine Optimize with Google (Optimalisasi)
+Social Media Optimization with API (Optimalisasi)
+Analytics Hierarchy Proccess (Pendukung Keputusan)
+Regresi Linier (Prediksi)
+Sistem Pakar Forward & Backward Chaining (Pendukung Keputusan)
+Net Present Value (Prediksi)
+Profile Matching (Pendukung Keputusan)
+Simple Additive Weight (Pendukung Keputusan)
+======================================================================

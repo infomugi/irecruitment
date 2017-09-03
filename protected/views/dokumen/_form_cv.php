@@ -10,18 +10,17 @@
 
 		<?php $form=$this->beginWidget('CActiveForm', array(
 			'id'=>'dokumen-form',
-			'enableAjaxValidation'=>false,
-			'enableClientValidation' => true,
-			'clientOptions' => array(
-				'validateOnSubmit' => true,
-				),
-			'errorMessageCssClass' => 'label label-danger',
-			'htmlOptions' => array('enctype' => 'multipart/form-data','autocomplete'=>'off'),
-			)); ?>
+			'method'=>'post',
+	'enableAjaxValidation'=>false,
+	'enableClientValidation' => true,
+	'clientOptions' => array(
+		'validateOnSubmit' => true,
+		),
+	'errorMessageCssClass' => 'label label-info',
+	'htmlOptions' => array('enctype' => 'multipart/form-data','autocomplete'=>'off'),
+	)); ?>
 
-			<?php echo $form->errorSummary($model, null, null, array('class' => 'alert alert-warning')); ?>
-
-
+	<?php echo $form->errorSummary($model, null, null, array('class' => 'alert alert-warning')); ?>
 
 			<div class="form-group">
 

@@ -44,7 +44,8 @@ class Dokumen extends CActiveRecord
 			array('tanggal, skck','required','on'=>'upload_skck'),
 			array('tanggal, sertifikat','required','on'=>'upload_sertifikat'),
 
-			array('cv, ktp, ijazah, transkrip, skck, sertifikat', 'file', 'types' => 'pdf, doc, docx', 'allowEmpty' => true, 'maxSize' => 1024 * 1024 * 1, 'tooLarge' => 'The file was larger than 3 MB. Please upload a smaller file.'),		
+			// array('cv, ktp, ijazah, transkrip, skck, sertifikat', 'file', 'on'=>'upload', 'types' => 'pdf, doc, docx', 'allowEmpty' => true, 'maxSize' => 1024 * 1024 * 1, 'tooLarge' => 'The file was larger than 3 MB. Please upload a smaller file.'),		
+			array('cv', 'file', 'on'=>'cv', 'types' => 'pdf, doc, docx', 'on'=>'upload', 'wrongType'=>'File type is Invalid', 'allowEmpty' => false, 'maxSize' => 1024 * 1024 * 1, 'tooLarge' => 'The file was larger than 3 MB. Please upload a smaller file.'),		
 
 			// array('tanggal, cv, ktp, ijazah, transkrip, skck, sertifikat, people_id, user_id, verifikasi_id, tanggal_verifikasi, status', 'required'),
 			array('people_id, user_id, verifikasi_id, status', 'numerical', 'integerOnly'=>true),

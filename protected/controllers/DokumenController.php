@@ -197,9 +197,10 @@ class DokumenController extends Controller
 
 	public function actionUploadCV($id)
 	{
-		$model=$this->loadModel($id);
+		$model=$this->loadModel($id,'cv');
+		$model->setScenario('cv');
 		$model->setScenario('upload_cv');
-
+		$this->performAjaxValidation($model);
 		if(isset($_POST['Dokumen']))
 		{
 			$model->attributes=$_POST['Dokumen'];
@@ -211,11 +212,12 @@ class DokumenController extends Controller
 				$tmp=CUploadedFile::getInstance($model,'cv'); 
 				$model->cv=$model->user_id." - CV Lamaran - ".$model->people_id.'.'.$tmp->extensionName; 
 			}
-
+			if($model->validate()){	
 			if($model->update()){
 				if(strlen(trim($model->cv)) > 0) 
 					$tmp->saveAs(Yii::getPathOfAlias('webroot').'/lamaran/cv/'.$model->cv);				
 				$this->redirect(array('pelamar/dokumen'));
+			}
 			}
 		}
 
