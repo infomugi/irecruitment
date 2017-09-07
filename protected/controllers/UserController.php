@@ -32,7 +32,7 @@ class UserController extends Controller
 				'users'=>array('*'),
 				),				
 			array('allow',
-				'actions'=>array('view','update','upload'),
+				'actions'=>array('view','update','upload','editstaff','viewstaff','editstaffpassword'),
 				'users'=>array('@'),
 				),					
 			array('allow',
@@ -41,7 +41,7 @@ class UserController extends Controller
 				'expression'=>'Yii::app()->user->getLevel()==2',
 				),			
 			array('allow',
-				'actions'=>array('create','update','view','delete','admin','index'),
+				'actions'=>array('create','update','view','delete','admin','index','staff'),
 				'users'=>array('@'),
 				'expression'=>'Yii::app()->user->getLevel()==1',
 				),
@@ -214,7 +214,6 @@ class UserController extends Controller
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];
-			$model->password = md5($model->password);
 			if($model->save()){
 				$this->redirect(array('view','id'=>$id));
 			}
@@ -253,5 +252,80 @@ class UserController extends Controller
 			'model'=>$model,
 			));
 	}
+
+	public function actionStaff()
+	{
+		$model=new User;
+		$model->setScenario('register_staff');
+		// Uncomment the following line if AJAX validation is needed
+		$this->performAjaxValidation($model);
+
+		if(isset($_POST['User']))
+		{
+			$model->attributes=$_POST['User'];
+
+			$model->password = md5($model->password);
+			if($model->save()){
+				Yii::app()->user->setFlash('success', 'Selamat '.$model->username.' berhasil registrasi, silahkan login.');
+				Yii::app()->user->logout();
+				$this->redirect(array('site/login'));
+			}
+
+		}
+
+		$this->render('staff',array(
+			'model'=>$model,
+			));
+	}
+
+	public function actionEditStaff()
+	{
+		$model=$this->loadModel(Yii::app()->user->id);
+		$model->setScenario('register_staff');
+		// Uncomment the following line if AJAX validation is needed
+		$this->performAjaxValidation($model);
+
+		if(isset($_POST['User']))
+		{
+			$model->attributes=$_POST['User'];
+			if($model->save()){
+				$this->redirect(array('view','id'=>$model->id_user));
+			}
+		}
+
+		$this->render('staff',array(
+			'model'=>$model,
+			));
+	}
+
+
+	public function actionEditStaffPassword()
+	{
+		$model=$this->loadModel(Yii::app()->user->id);
+		$model->setScenario('password_staff');
+		// Uncomment the following line if AJAX validation is needed
+		$this->performAjaxValidation($model);
+
+		if(isset($_POST['User']))
+		{
+			$model->attributes=$_POST['User'];
+			$model->password = md5($model->password);
+			if($model->save()){
+				$this->redirect(array('view','id'=>$model->id_user));
+			}
+		}
+
+		$this->render('staff_password',array(
+			'model'=>$model,
+			));
+	}
+
+	public function actionViewStaff()
+	{
+		$this->layout = 'admin';
+		$this->render('view',array(
+			'model'=>$this->loadModel(YII::app()->user->id),
+			));
+	}	
 
 }

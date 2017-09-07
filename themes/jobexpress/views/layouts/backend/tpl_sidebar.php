@@ -8,8 +8,9 @@
         <div><img src="<?php echo $frontUrl; ?>/assets/images/home/logo.png" alt="logo" class="img-responsive"></div>
         <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile Saya<span class="caret"></span></a>
         <ul class="dropdown-menu animated flipInY">
-          <li><a href="<?php echo $url;?>user/profile"><i class="ti-user"></i> Lihat Profil</a></li>
-          <li><a href="<?php echo $url;?>user/edit"><i class="ti-settings"></i> Edit Profile</a></li>
+          <li><a href="<?php echo $url;?>user/viewstaff"><i class="ti-user"></i> Lihat Profil</a></li>
+          <li><a href="<?php echo $url;?>user/editstaff"><i class="ti-settings"></i> Edit Profile</a></li>
+          <li><a href="<?php echo $url;?>user/editstaffpassword"><i class="ti-lock"></i> Edit Password</a></li>
         </ul>
       </div>
     </div>

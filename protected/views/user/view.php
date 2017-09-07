@@ -11,38 +11,34 @@ $this->pageTitle='Detail User';
 ?>
 
 
-<span class="hidden-xs">
 
-	<?php echo CHtml::link('Tambah',
-		array('create'),
-		array('class' => 'btn btn-danger btn-flat','title'=>'Add User'));
-		?>
-		<?php echo CHtml::link('Kelola',
+<?php if(YII::app()->user->getLevel()==1): ?>
+	<span class="hidden-xs">
+
+		<?php echo CHtml::link('Kelola Akun',
 			array('admin'),
 			array('class' => 'btn btn-danger btn-flat','title'=>'Manage User'));
 			?>
-			<?php echo CHtml::link('Edit', 
-				array('update', 'id'=>$model->id_user,
-					), array('class' => 'btn btn-danger btn-flat', 'title'=>'Edit User'));
-					?>
-					<?php echo CHtml::link('Delete', 
-						array('delete', 'id'=>$model->id_user,
-							),  array('class' => 'btn btn-danger btn-flat', 'title'=>'Hapus User'));
-							?>
 
-						</span>
+			<?php echo CHtml::link('Edit Password',
+				array('editstaffpassword'),
+				array('class' => 'btn btn-danger btn-flat','title'=>'Password'));
+				?>
 
-						<?php $this->widget('zii.widgets.CDetailView', array(
-							'data'=>$model,
-							'htmlOptions'=>array("class"=>"table"),
-							'attributes'=>array(
-								'username',
-								'email',
-								'date_create',
-								),
-								)); ?>
+			</span>
+		<?php endif; ?>
 
-						<STYLE>
-							th{width:150px;}
-						</STYLE>
+		<?php $this->widget('zii.widgets.CDetailView', array(
+			'data'=>$model,
+			'htmlOptions'=>array("class"=>"table"),
+			'attributes'=>array(
+				'username',
+				'email',
+				'date_create',
+				),
+				)); ?>
+
+		<STYLE>
+			th{width:150px;}
+		</STYLE>
 
