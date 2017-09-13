@@ -13,42 +13,84 @@
 	</div>
 	<div id="<?php echo $data->id_lowongan; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
 		<div class="panel-body">
-			
 
 			<?php
-			$new=new CActiveDataProvider('FileLamaran',array('criteria'=>array('condition'=>'lowongan_id='.$data->id_lowongan.'','order'=>'id DESC')));
-			$this->widget('zii.widgets.grid.CGridView', array(
-				'id'=>'lowongan-grid',
-				'dataProvider'=>$new,
-			// 'filter'=>$model,
-				'itemsCssClass' => 'table table-bordered table-striped dataTable table-hover',
-				'columns'=>array(
+			echo CHtml::beginForm(array('filelamaran/getperiodic'));
+			?>
+			<div class="row no-padding">
+				<div class="col-lg-5">
 
-					'id',
-					array(
-						'name'=>'lowongan_id',
-						'value'=>'Lowongan::model()->jobName($data->lowongan_id)',										
+					<?php
+					echo CHtml::dropDownList('bulan', '', array(
+						'01'=>'Januari',
+						'02'=>'Februari',
+						'03'=>'Maret',
+						'04'=>'April',
+						'05'=>'Mei',
+						'06'=>'Juni',
+						'07'=>'Juli',
+						'08'=>'Agustus',
+						'08'=>'September',
+						'10'=>'Oktober',
+						'11'=>'November',
+						'12'=>'Desember',
 						),
-
-					array(
-						'name'=>'pelamar_id',
-						'value'=>'$data->Pelamar->nama',													
-						),
-
-					array(
-						'name'=>'status_lamaran',
-						'value'=>'FileLamaran::model()->status($data->status_lamaran)',													
-						),		
-
-					'tanggal_upload',
-					'tanggal_verifikasi',
-
-					),
-					)); ?>
-
-
-
+					array('empty'=>'-- Pilih Bulan --','class'=>'form-control'));
+					?>
 				</div>
-			</div>
-		</div>
+
+				<div class="col-lg-5">
+					<?php
+					echo CHtml::dropDownList('tahun', '', FileLamaran::model()->getYear(),
+						array('empty'=>'-- Pilih Tahun --','class'=>'form-control'));
+						?>
+					</div>
+
+					<div class="col-lg-2">
+						<?php
+						echo CHtml::submitButton('Tampilkan',array('class'=>'btn btn-info'));
+						echo CHtml::endForm();
+						?>
+					</div>
+				</div>
+
+				<HR>
+
+
+					<?php
+					$new = new CActiveDataProvider('FileLamaran',array('criteria'=>array('condition'=>'lowongan_id='.$data->id_lowongan.'','order'=>'id DESC')));
+					$this->widget('zii.widgets.grid.CGridView', array(
+						'id'=>'lowongan-grid',
+						'dataProvider'=>$new,
+						// 'filter'=>$model,
+						'itemsCssClass' => 'table table-bordered table-striped dataTable table-hover',
+						'columns'=>array(
+
+							'id',
+							array(
+								'name'=>'lowongan_id',
+								'value'=>'Lowongan::model()->jobName($data->lowongan_id)',										
+								),
+
+							array(
+								'name'=>'pelamar_id',
+								'value'=>'$data->Pelamar->nama',													
+								),
+
+							array(
+								'name'=>'status_lamaran',
+								'value'=>'FileLamaran::model()->status($data->status_lamaran)',													
+								),		
+
+							'tanggal_upload',
+							'tanggal_verifikasi',
+
+							),
+							)); ?>
+
+
+
+						</div>
+					</div>
+				</div>
 

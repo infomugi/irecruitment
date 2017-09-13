@@ -236,4 +236,19 @@ class LowonganController extends Controller
 		$this->render('list', array('dataProvider'=>$dataProvider));		
 	}	
 
+	public function actionGetReport()
+	{
+		$this->layout="admin";
+		$dataProvider=new CActiveDataProvider('Lowongan',array('criteria'=>array('order'=>'id_lowongan DESC')));
+
+		$criteria = new CDbCriteria();
+		$criteria->condition = "DATE_FORMAT(paid_on,'%m')=:monthno";
+		$criteria->params = array(':monthno'=>'05');
+		$model= YourModel::model()->findAll($criteria);
+		
+		$this->render('list_report',array(
+			'dataProvider'=>$dataProvider,
+			));
+	}	
+
 }

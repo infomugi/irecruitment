@@ -34,7 +34,7 @@ class FileLamaranController extends Controller
 				),			
 			array('allow',
 				'actions'=>array(
-					'create','update','view','delete','admin','index','history','diterima','ditolak','unverified','verified','reject','lulus','accept','call','uncall','lulus','tidaklulus', 'sudahdipanggil','panggilanditunda', 'verifikasi','tolak','rekomendasi','pemanggilan', 'search'
+					'create','update','view','delete','admin','index','history','diterima','ditolak','unverified','verified','reject','lulus','accept','call','uncall','lulus','tidaklulus', 'sudahdipanggil','panggilanditunda', 'verifikasi','tolak','rekomendasi','pemanggilan', 'search','getperiodic'
 					),
 				'users'=>array('@'),
 				'expression'=>'Yii::app()->user->getLevel()==1',
@@ -454,5 +454,23 @@ class FileLamaranController extends Controller
 		$this->render('index', array('dataProvider'=>$dataProvider));		
 	}	
 
+
+	public function actionGetPeriodic($month,$year)
+	{
+		$criteria = new CDbCriteria();
+		$criteria->condition = "DATE_FORMAT(tanggal_upload,'%m')=:monthno AND DATE_FORMAT(tanggal_upload,'%Y')=:yearto";
+		$criteria->params = array(':monthno'=> $month,':yearto'=> $year);
+		$criteria->order = 'id DESC';		
+
+		$dataProvider=new CActiveDataProvider('FileLamaran',array(
+			'criteria'=>$criteria,
+			'pagination'=>array(
+				'pageSize'=>'100',
+				)));
+
+		$this->render('history',array(
+			'dataProvider'=>$dataProvider,
+			));
+	}
 
 }
