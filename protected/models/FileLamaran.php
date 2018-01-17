@@ -288,4 +288,18 @@ class FileLamaran extends CActiveRecord
 		}
 	} 	
 
+	public function getYear() {
+		$yearNow = date("Y");
+		$yearFrom = $yearNow - 10;
+		$yearTo = $yearNow;
+
+		$arrYears = array();
+		foreach (range($yearFrom, $yearTo) as $number) {
+			$arrYears[$number] = $number; 
+		}
+		$arrYears2 = array_reverse($arrYears, true);
+
+		return $arrYears2;
+	}
+
 }
