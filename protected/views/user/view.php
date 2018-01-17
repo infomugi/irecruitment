@@ -7,12 +7,13 @@ $this->breadcrumbs=array(
 	$model->id_user,
 	);
 
-$this->pageTitle='Detail User';
+$this->pageTitle='Profil - '.ucfirst($model->username);
 ?>
 
 
 
 <?php if(YII::app()->user->getLevel()==1): ?>
+
 	<span class="hidden-xs">
 
 		<?php echo CHtml::link('Kelola Akun',
@@ -26,6 +27,7 @@ $this->pageTitle='Detail User';
 				?>
 
 			</span>
+
 		<?php endif; ?>
 
 		<?php $this->widget('zii.widgets.CDetailView', array(
@@ -39,6 +41,6 @@ $this->pageTitle='Detail User';
 				)); ?>
 
 		<STYLE>
-			th{width:150px;}
+			th{width:200px;}
 		</STYLE>
 

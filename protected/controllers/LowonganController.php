@@ -28,7 +28,7 @@ class LowonganController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions'=>array('index','view','detail','terbaru','search'),
+				'actions'=>array('index','view','detail','terbaru','search','data'),
 				'users'=>array('*'),
 				),
 			array('allow',
@@ -37,9 +37,9 @@ class LowonganController extends Controller
 				'expression'=>'Yii::app()->user->getLevel()==1',
 				),
 			array('allow',
-				'actions'=>array('create','update','view','delete','admin','index','view','terbaru','list'),
+				'actions'=>array('add','update','view','delete','perusahaan','index','view','terbaru','list'),
 				'users'=>array('@'),
-				'expression'=>'Yii::app()->user->getLevel()==5',
+				'expression'=>'Yii::app()->user->getLevel()==3',
 				),			
 			array('deny',
 				'users'=>array('*'),
@@ -98,6 +98,7 @@ class LowonganController extends Controller
 		{
 			$model->attributes=$_POST['Lowongan'];
 			$model->tanggal = date('Y-m-d h:m:s');
+			$model->user_id = YII::app()->user->id;
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id_lowongan));
 		}
@@ -187,6 +188,14 @@ class LowonganController extends Controller
 		return $model;
 	}
 
+	public function loadPerusahaan($id)
+	{
+		$model=Perusahaan::model()->findByAttributes(array('user_id'=>$id));
+		if($model===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
+	}	
+
 	/**
 	 * Performs the AJAX validation.
 	 * @param Lowongan $model the model to be validated
@@ -234,6 +243,51 @@ class LowonganController extends Controller
 			$criteria->addSearchCondition('id_lowongan', $string, true, 'OR');
 		$dataProvider = new CActiveDataProvider('Lowongan', array('criteria'=>$criteria));
 		$this->render('list', array('dataProvider'=>$dataProvider));		
+	}	
+
+	public function actionAdd()
+	{
+		$model=new Lowongan;
+		$load=$this->loadPerusahaan(YII::app()->user->id);
+		// Uncomment the following line if AJAX validation is needed
+		$this->performAjaxValidation($model);
+
+		if(isset($_POST['Lowongan']))
+		{
+			$model->attributes=$_POST['Lowongan'];
+			$model->tanggal = date('Y-m-d h:m:s');
+			$model->user_id = YII::app()->user->id;
+			$model->perusahaan_id = $load->id_perusahaan;
+			if($model->save()){
+				$this->redirect(array('view','id'=>$model->id_lowongan));
+			}
+		}
+
+		$this->render('add',array(
+			'model'=>$model,
+			));
+	}
+
+	public function actionPerusahaan()
+	{
+		$model=new Lowongan('searchCompany');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Lowongan']))
+			$model->attributes=$_GET['Lowongan'];
+
+		$this->render('admin_perusahaan',array(
+			'model'=>$model,
+			));
+	}
+
+	public function actionData()
+	{
+		$data=Jabatan::model()->findAll('bagian_id=:bagian_id', 
+			array(':bagian_id'=>(int) $_POST['bagian_id']));
+		$data=CHtml::listData($data,'id_jabatan','nama');
+		echo "<option value=''>-- Pilih Jabatan --</option>";
+		foreach($data as $value=>$nama)
+			echo CHtml::tag('option', array('value'=>$value),CHtml::encode($nama),true);
 	}	
 
 }

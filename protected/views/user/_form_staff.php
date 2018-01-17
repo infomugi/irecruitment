@@ -75,7 +75,7 @@
 						<?php echo $form->error($model,'level_ID'); ?>
 						<?php
 						echo $form->radioButtonList($model,'level_ID',
-							array('1'=>'Manager','5'=>'Staff'),
+							array('1'=>'Administrator','4'=>'Staff'),
 							array(
 								'template'=>'{input}{label}',
 								'separator'=>'',
@@ -93,12 +93,11 @@
 
 				<div class="form-group">
 					<div class="col-md-12">  
-					</br></br>
-					<?php echo CHtml::submitButton($model->isNewRecord ? 'Registrasi' : 'Edit', array('class' => 'btn btn-danger btn-flat pull-right')); ?>
+						<?php echo CHtml::submitButton($model->isNewRecord ? 'Registrasi' : 'Edit', array('class' => 'btn btn-danger btn-flat pull-right')); ?>
+					</div>
 				</div>
+
+				<?php $this->endWidget(); ?>
+
 			</div>
-
-			<?php $this->endWidget(); ?>
-
-		</div>
 </div><!-- form -->

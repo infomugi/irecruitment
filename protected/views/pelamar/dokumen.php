@@ -11,7 +11,7 @@ $this->menu=array(
 	array('label'=>'Daftar Pelamar', 'url'=>array('index')),
 	array('label'=>'Kelola Pelamar', 'url'=>array('admin')),
 	);
-$this->pageTitle='Data Diri - '.ucwords($model->nama);
+$this->pageTitle='Dokumen Lamaran - '.ucwords($model->nama);
 
 $update = "Update " . Yii::app()->dateFormatter->formatDateTime(CDateTimeParser::parse($dataDokumen->tanggal, 'yyyy-MM-dd'),'medium',null);
 ?>
@@ -91,7 +91,7 @@ $update = "Update " . Yii::app()->dateFormatter->formatDateTime(CDateTimeParser:
 
 <div class="row">
 	<div class="col-md-12">
-		<H4><i class="ti-clipboard pull-left"></i> Dokumen Lamaran - <?php echo $update; ?></H4>
+		<H4><i class="ti-clipboard pull-left"></i> Dokumen Lamaran <span class="hidden-xs">- <?php echo $update; ?></span></H4>
 
 		<table class="table">
 			<tr>

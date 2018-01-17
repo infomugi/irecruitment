@@ -2,7 +2,7 @@
 $countApplicant  = FileLamaran::model()->countApplicant(1,$model->id_lowongan); 
 if($countApplicant==0){ ?>
 
-	<div class="alert alert-info">Belum ada Data Baru dengan status (Verifikasi) yang masuk pada ID Job Order #<?php echo $model->id_lowongan; ?></div>
+	<div class="alert alert-info">Belum ada Data Baru dengan status (Verifikasi) yang masuk pada ID Lowongan #<?php echo $model->id_lowongan; ?></div>
 
 	<?php }else{ ?>
 
@@ -30,7 +30,7 @@ if($countApplicant==0){ ?>
 						'view'=>
 						array(
 							'url'=>'Yii::app()->createUrl("filelamaran/view", array("id"=>$data->id))',
-							'imageUrl'=>'images/detail.png',
+							'imageUrl'=>YII::app()->baseUrl.'images/detail.png',
 							),
 						),
 					),
@@ -49,17 +49,17 @@ if($countApplicant==0){ ?>
 						'Panggil'=>
 						array(
 							'url'=>'Yii::app()->createUrl("filelamaran/pemanggilan", array("id"=>$data->id))',
-							'imageUrl'=>'images/panggil.png',
+							'imageUrl'=>YII::app()->baseUrl.'images/panggil.png',
 							),
 														// 'Rekomendasi'=>
 														// array(
 														// 	'url'=>'Yii::app()->createUrl("filelamaran/rekomendasi", array("id"=>$data->id))',
-														// 	'imageUrl'=>'images/rekomendasi.png',
+														// 	'imageUrl'=>YII::app()->baseUrl.'images/rekomendasi.png',
 														// 	),
 						'Tolak'=>
 						array(
 							'url'=>'Yii::app()->createUrl("filelamaran/tidaklulus", array("id"=>$data->id))',
-							'imageUrl'=>'images/tolak.png',
+							'imageUrl'=>YII::app()->baseUrl.'images/tolak.png',
 							),
 
 						),

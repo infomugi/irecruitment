@@ -5,7 +5,8 @@
  *
  * The followings are the available columns in table 'pelamar':
  * @property integer $id_people
- * @property integer $nik
+ * @property string $nik
+ * @property string $no_kk
  * @property string $nama
  * @property string $tempat_lahir
  * @property string $tanggal_lahir
@@ -20,6 +21,8 @@
  * @property string $alamat_domisili
  * @property integer $status_domisili
  * @property integer $status_menikah
+ * @property integer $rt
+ * @property integer $rw
  * @property string $tanggal_menikah
  * @property string $no_jamsostek
  * @property string $no_sim
@@ -48,12 +51,13 @@ class Pelamar extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nama, nik', 'required','on'=>'register_pelamar'),
+			array('hp, nik', 'required','on'=>'register_pelamar'),
 			array('nik','unique','on'=>'register_pelamar'),
 			array('nama, tempat_lahir, tanggal_lahir, agama, jenis_kelamin, golongan_darah, kewarganegaraan, hp, kota_id, provinsi_id, jenjang, nilai', 'required','on'=>'update_pelamar'),
-			array('id_people, id_user, kota_id, provinsi_id, nik, status_menikah, status_domisili, lamaran_id, lowongan_id, jenjang', 'numerical', 'integerOnly'=>true),
+			array('id_people, id_user, kota_id, provinsi_id, kecamatan_id, kelurahan_id, nik, status_menikah, status_domisili, lamaran_id, lowongan_id, jenjang', 'numerical', 'integerOnly'=>true),
 			array('nama, tanggal_lahir, no_jamsostek, no_sim, no_npwp, alamat_domisili, telephone_pribadi, telephone_rumah, tanggal_lahir, alamat_domisili', 'length', 'max'=>255),
 			array('tempat_lahir, tanggal_lahir, agama, jenis_kelamin, golongan_darah, kewarganegaraan, hp, status_domisili, jenjang, nilai', 'length', 'max'=>30),
+			array('kecamatan, kelurahan, no_kk', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id_people, nama, tempat_lahir, tanggal_lahir, agama, jenis_kelamin, golongan_darah, kewarganegaraan, id_user', 'safe', 'on'=>'search'),
@@ -82,6 +86,7 @@ class Pelamar extends CActiveRecord
 		return array(
 			'id_people' => 'Id People',
 			'nik' => 'No. KTP',
+			'nok_kk' => 'No. KK',
 			'nama' => 'Nama Lengkap',
 			'tempat_lahir' => 'Tempat Lahir',
 			'tanggal_lahir' => 'Tanggal Lahir',
@@ -92,6 +97,10 @@ class Pelamar extends CActiveRecord
 			'id_user' => 'Id User',
 			'kota_id' => 'Kota',
 			'provinsi_id' => 'Provinsi',
+			'kecamatan_id' => 'Kecamatan',
+			'kelurahan_id' => 'Kelurahan',
+			'kecamatan' => 'Kecamatan',
+			'kelurahan' => 'Kelurahan',
 			'hp' => 'HP',
 			'no_jamsostek' => 'No. JAMSOSTEK',
 			'no_sim' => 'No. SIM',
@@ -162,7 +171,11 @@ class Pelamar extends CActiveRecord
 	protected function afterFind()
 	{
 		$this->tanggal_lahir = date('d-m-Y', strtotime($this->tanggal_lahir));
-		$this->tanggal_menikah = date('d-m-Y', strtotime($this->tanggal_menikah));
+		if($this->tanggal_menikah==NULL){
+			return "-";
+		}else{
+			$this->tanggal_menikah = date('d-m-Y', strtotime($this->tanggal_menikah));
+		}
 		return TRUE;
 	}
 
@@ -195,6 +208,15 @@ class Pelamar extends CActiveRecord
 	}		
 
 
+	public function jenjang($data){
+		if($data==1){
+			return "Diploma / Sarjana";
+		}else{
+			return "SMA / SMK";
+		}
+	}		
+
+
 	public static function getApplicant(){
 		$sql = "
 		SELECT * FROM pelamar as p LEFT JOIN user u ON u.id_user=p.id_user  ORDER BY p.id_people DESC LIMIT 3";
@@ -219,5 +241,62 @@ class Pelamar extends CActiveRecord
 			return $model;
 		}
 	}
+
+	public function getNik($id){
+		$url = "https://devinfokerja.kemnaker.go.id/tools/check_nik/".$id."";
+		$json = file_get_contents($url);
+		$json = json_decode($json);
+		return $json->NAMA_LGKP;
+	}
+
+	public function getReligion($data){
+		if($data=="ISLAM"){
+			return "1";
+		}elseif($data=="KRISTEN"){
+			return "2";
+		}elseif($data=="HINDU"){
+			return "3";
+		}elseif($data=="BUDHA"){
+			return "4";
+		}else{
+			return "-";
+		}
+	}
+
+	public function religion($data){
+		if($data==1){
+			return "Islam";
+		}elseif($data==2){
+			return "Kristen";
+		}elseif($data==3){
+			return "Hindu";
+		}elseif($data==4){
+			return "Budha";
+		}else{
+			return "-";
+		}
+	}
+
+
+	public function getNational($data){
+		if($data=="WNI"){
+			return "1";
+		}elseif($data=="WNA"){
+			return "2";
+		}else{
+			return "-";
+		}
+	}	
+
+
+	public function national($data){
+		if($data=="1"){
+			return "WNI";
+		}elseif($data=="2"){
+			return "WNA";
+		}else{
+			return "-";
+		}
+	}		
 
 }

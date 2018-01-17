@@ -9,7 +9,8 @@ $this->breadcrumbs=array(
 
 require_once('_view_excel.php');
 
-$this->pageTitle="Lowongan ".$model->Jabatan->nama. " ". $model->Bagian->nama;;
+// $this->pageTitle="Lowongan ".$model->Jabatan->nama. " ". $model->Bagian->nama;;
+$this->pageTitle="Lowongan ".$model->Bagian->nama;;
 
 ?>
 <?php
@@ -33,7 +34,7 @@ if(!YII::app()->user->isGuest):
 					$countApplicant  = FileLamaran::model()->countApplicantAll($model->id_lowongan); 
 					if($countApplicant==0){ ?>
 
-						<div class="alert alert-info">Hi <?php echo YII::app()->user->name; ?>, Belum ada data Pelamar yang masuk pada ID Job Order #<?php echo $model->id_lowongan; ?></div>
+						<div class="alert alert-info">Hi <?php echo YII::app()->user->name; ?>, Belum ada data Pelamar yang masuk pada ID Lowongan #<?php echo $model->id_lowongan; ?></div>
 						
 						<?php }else{ ?>
 
@@ -64,12 +65,12 @@ if(!YII::app()->user->isGuest):
 						<div class="panel-body">
 							<div>	
 								<ul class="nav nav-tabs">
-									<li class="active"><a href="#0" data-toggle="tab"><i class="ti ti-user"></i> <span class="hidden-xs">Belum di Verifikasi</span></a></a></li>
-									<li><a  href="#1" data-toggle="tab"><i class="ti ti-user"></i> <span class="hidden-xs">Diverifikasi</span></a></a></li>
-									<li><a href="#2" data-toggle="tab"><i class="ti ti-user"></i> <span class="hidden-xs">Dipanggil</span></a></a></li>
-									<li><a href="#3" data-toggle="tab"><i class="ti ti-user"></i> <span class="hidden-xs">Sudah di Panggil</span></a></a></li>
-									<li><a href="#5" data-toggle="tab"><i class="ti ti-user"></i> <span class="hidden-xs">Diterima</span></a></a></li>
-									<li><a href="#6" data-toggle="tab"><i class="ti ti-user"></i> <span class="hidden-xs">Ditolak (Tidak Lulus)</span></a></a></li>
+									<li class="active"><a href="#0" data-toggle="tab">1. <i class="ti ti-user"></i> <span class="hidden-xs">Belum di Verifikasi</span></a></a></li>
+									<li><a  href="#1" data-toggle="tab">2. <i class="ti ti-user"></i> <span class="hidden-xs">Diverifikasi</span></a></a></li>
+									<li><a href="#2" data-toggle="tab">3. <i class="ti ti-user"></i> <span class="hidden-xs">Dipanggil</span></a></a></li>
+									<li><a href="#3" data-toggle="tab">4. <i class="ti ti-user"></i> <span class="hidden-xs">Sudah di Panggil</span></a></a></li>
+									<li><a href="#5" data-toggle="tab">5. <i class="ti ti-user"></i> <span class="hidden-xs">Diterima</span></a></a></li>
+									<li><a href="#6" data-toggle="tab">6. <i class="ti ti-user"></i> <span class="hidden-xs">Ditolak (Tidak Lulus)</span></a></a></li>
 								</ul>
 
 								<div class="tab-content ">

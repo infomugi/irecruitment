@@ -12,7 +12,7 @@ $this->pageTitle='Kelola Pengguna';
 <?php if(YII::app()->user->getLevel()==1){ ?>
 	<span class="hidden-xs">
 
-		<?php echo CHtml::link('Tambah Staff',
+		<?php echo CHtml::link('Tambah User',
 			array('staff'),
 			array('class' => 'btn btn-danger btn-flat','title'=>'Add User'));
 		?>

@@ -17,6 +17,12 @@ $this->pageTitle='Kelola Pelamar';
 ?>
 
 
+<!-- START: Notifikasi Download Report -->
+<div class="alert alert-success">
+	<center><h2 class="text-white">Laporan Pencari Kerja Kab. Bandung disimpan ke Excel, <b class="label label-warning"><a href="<?php echo YII::app()->baseUrl; ?>/Report - Pencari Kerja (<?php echo date('d-m-Y'); ?>).xls"/>Download Laporan</a></b></h2></center>
+</div>
+<!-- END: Notifikasi Download Report -->
+
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'pelamar-grid',
 	'dataProvider'=>$model->search(),
@@ -31,13 +37,14 @@ $this->pageTitle='Kelola Pelamar';
 				'style' => 'text-align: center;')),
 
 		'nama',
-		'tempat_lahir',
-		'tanggal_lahir',
-		'agama',
 		'jenis_kelamin',
+		array('header'=>'Umur','value'=>'Pelamar::model()->countBirth($data->tanggal_lahir)'),
+		'hp',
+		array('name'=>'jenjang','value'=>'Pelamar::model()->jenjang($data->jenjang)'),
+		'alamat_domisili',
 
 		array(
-			'header'=>'Action',
+			'header'=>'Detail',
 			'class'=>'CButtonColumn',
 			'template'=>'{view}',
 			'htmlOptions'=>array('width'=>'100px', 
@@ -45,4 +52,24 @@ $this->pageTitle='Kelola Pelamar';
 			),
 		),
 		)); ?>
+
+<?php
+$this->widget('EExcelWriter', array(
+	'dataProvider'=>$model->search(),
+	'title'        => 'EExcelWriter',
+	'stream'       => FALSE,
+	'fileName'     => 'Report - Pencari Kerja ('.date('d-m-Y').').xls',
+	'columns'      => array(
+
+		'nama',
+		'jenis_kelamin',
+		array('header'=>'Umur','value'=>'Pelamar::model()->countBirth($data->tanggal_lahir)'),
+		'hp',
+		array('name'=>'jenjang','value'=>'Pelamar::model()->jenjang($data->jenjang)'),
+		'alamat_domisili',
+
+		),
+	));
+	?>
+
 

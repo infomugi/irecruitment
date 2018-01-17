@@ -44,18 +44,28 @@
 						<?php if(!YII::app()->user->isGuest){ ?>
 
 
-							<div class="Resume">
+							<div class="Resume hidden-xs">
 								<h1>My Account</h1>
+
+								<H4><?php echo CHtml::link('<i class="ti-user"></i> Edit Foto', 
+									array('user/upload',
+										), array('class' => 'btn btn-success btn-sm pull-right', 'title'=>'Upload Foto'));
+								?><i class="ti-clipboard pull-left"></i> Foto</H4>
+
+								<center>
+									<img src="<?php echo Yii::app()->baseUrl. "/lamaran/foto/" .User::model()->avatar(YII::app()->user->id); ?>" class="img-responsive">
+								</center>
+								
 								<ul class="unstyled">
 
 									<?php $this->widget('zii.widgets.CMenu',array(
 										'htmlOptions'=>array('class'=>'unstyled'),
 										'encodeLabel'=>false,
 										'items'=>array(
-											array('label'=>'<i class="fa fa-caret-right"></i> Data Pribadi','url'=>array('/pelamar/profile'),'visible'=>yii::app()->user->getLevel()==2),
-											array('label'=>'<i class="fa fa-caret-right"></i> Dokumen Lamaran','url'=>array('/pelamar/dokumen'),'visible'=>yii::app()->user->getLevel()==2),                                  
 											array('label'=>'<i class="fa fa-caret-right"></i> Lowongan','url'=>array('/lowongan/terbaru')),
+											array('label'=>'<i class="fa fa-caret-right"></i> Dokumen Lamaran','url'=>array('/pelamar/dokumen'),'visible'=>yii::app()->user->getLevel()==2),                                  
 											array('label'=>'<i class="fa fa-caret-right"></i> Pengajuan Lamaran','url'=>array('/filelamaran/history'),'visible'=>yii::app()->user->getLevel()==2),                                  
+											array('label'=>'<i class="fa fa-caret-right"></i> Data Pribadi','url'=>array('/pelamar/profile'),'visible'=>yii::app()->user->getLevel()==2),
 											array('label'=>'<i class="fa fa-caret-right"></i> Edit Data Pribadi','url'=>array('/pelamar/update'),'visible'=>yii::app()->user->getLevel()==2),
 											array('label'=>'<i class="fa fa-caret-right"></i> Edit Password','url'=>array('/pelamar/password'),'visible'=>yii::app()->user->getLevel()==2),
 											),
@@ -67,7 +77,7 @@
 
 							<?php }else{ ?>
 
-								<div class="Resume">
+								<div class="Resume hidden-xs">
 									<h1>Menu</h1>
 									<ul class="unstyled">
 
@@ -76,7 +86,8 @@
 											'encodeLabel'=>false,
 											'items'=>array(
 												array('label'=>'<i class="fa fa-caret-right"></i> Lowongan','url'=>array('/lowongan/terbaru')),
-												array('label'=>'<i class="fa fa-caret-right"></i> Register','url'=>array('/site/register')),
+												array('label'=>'<i class="fa fa-caret-right"></i> Register Pencaker','url'=>array('/site/pencaker')),
+												array('label'=>'<i class="fa fa-caret-right"></i> Register Perusahaan','url'=>array('/site/perusahaan')),
 												array('label'=>'<i class="fa fa-caret-right"></i> Login','url'=>array('/site/login')),
 												),
 											)); ?>

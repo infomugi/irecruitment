@@ -7,45 +7,23 @@ $this->breadcrumbs=array(
 	'Add',
 	);
 
-$this->pageTitle=Yii::app()->name . ' - Registrasi';
+$this->pageTitle='Registrasi';
 ?>
 
 
-<main id="maincontent">
-	<div class="container">
-		<div class="row">
+<main>
 
-			<div class="col-md-6 col-md-offset-3">
-				<div class="page-tab">
-					<div id="form">
-						<div id="userform">
-							<ul class="nav nav-tabs nav-justified" role="tablist">
-								<li class="active border-right"><a href="#login" role="tab" data-toggle="tab">Registrasi</a></li>
-							</ul>
-							<div class="tab-content">
-								<div class="tab-pane fade active in" id="login">
+	<div class="login-block">
+		<img src="<?php echo YII::app()->theme->baseUrl;?>/frontend/img/logo-alt.png" alt="logo-alt">
+		<h1>Registrasi Pencari Kerja</h1>
 
-									<div id="login">
+		<?php echo $this->renderPartial('_form_register', array('model'=>$model,'Pelamar'=>$Pelamar)); ?>
 
-
-
-										<?php echo $this->renderPartial('_form_register', array('model'=>$model,'Pelamar'=>$Pelamar)); ?>
-
-
-
-
-									</div>
-
-								</div>
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-		</div>
 	</div>
+
+	<div class="login-links">
+		<a class="pull-left" href="<?php echo YII::app()->baseUrl; ?>/site/index"><span class="hidden-xs">Kembali ke</span> Home</a>
+		<a class="pull-right" href="<?php echo YII::app()->baseUrl; ?>/site/login"><span class="hidden-xs">Sudah Punya Akun ?</span> Login Disini</a>
+	</div>
+
 </main>
-
-

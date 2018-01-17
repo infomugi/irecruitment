@@ -6,7 +6,7 @@
 
 
 <div class="form-normal form-horizontal clearfix">
-	<div class="col-lg-9 col-md-10"> 
+	<div class="col-md-12"> 
 
 		<?php $form=$this->beginWidget('CActiveForm', array(
 			'id'=>'dokumen-form',
@@ -35,16 +35,13 @@
 				</div>
 
 			</div>  
-
-
 			
 			<div class="form-group">
 				<div class="col-md-12">  
-				</br></br>
-				<?php echo CHtml::submitButton($model->isNewRecord ? 'Submit' : 'Edit', array('class' => 'btn btn-success btn-flat pull-right')); ?>
+					<?php echo CHtml::submitButton($model->isNewRecord ? 'Submit' : 'Upload', array('class' => 'btn btn-success btn-flat pull-right')); ?>
+				</div>
 			</div>
-		</div>
 
-		<?php $this->endWidget(); ?>
+			<?php $this->endWidget(); ?>
 
 </div></div><!-- form -->

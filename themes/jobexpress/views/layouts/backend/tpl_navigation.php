@@ -17,15 +17,12 @@
       <li class="dropdown"> <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="blank.html#" aria-expanded="false"><i class="fa fa-bell"></i>
         <div class="notify"><span class="heartbit"></span><span class="point"></span></div>
       </a>
-      <ul class="dropdown-menu mailbox animated bounceInDown">
-        <li>
-          <div class="drop-title">3 Pelamar Terbaru</div>
-        </li>
+      <ul class="dropdown-menu mailbox">
         <li>
           <div class="message-center">
 
             <?php foreach (Pelamar::getApplicant() as $data) { ?>
-              <a href="<?php echo $url."pelamar/view&id=".$data['id_people']; ?>">
+              <a href="<?php echo $url."pelamar/view/id/".$data['id_people']; ?>">
                 <div class="user-img"> <img src="<?php echo YII::app()->baseUrl."/lamaran/foto/".$data['image']; ?>" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
                 <div class="mail-contnet">
                   <h5><?php echo $data['nama']; ?></h5>

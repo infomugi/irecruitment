@@ -64,18 +64,7 @@ class BagianController extends Controller
 		if(isset($_POST['Bagian']))
 		{
 			$model->attributes=$_POST['Bagian'];
-
-			$model->psikotest=CUploadedFile::getInstance($model,'psikotest');
-			$tmp;
-			if(strlen(trim(CUploadedFile::getInstance($model,'psikotest'))) > 0) 
-			{ 
-				$tmp=CUploadedFile::getInstance($model,'psikotest'); 
-				$model->psikotest=lcfirst($model->nama).'.'.$tmp->extensionName;  
-			}
-
-			if($model->save()){
-				if(strlen(trim($model->psikotest)) > 0) 
-					$tmp->saveAs(Yii::getPathOfAlias('webroot').'/psikotest/'.$model->psikotest);				
+			if($model->save()){		
 				$this->redirect(array('view','id'=>$model->id_bagian));
 			}
 		}

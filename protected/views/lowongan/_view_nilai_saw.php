@@ -50,7 +50,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
 				'view'=>
 				array(
 					'url'=>'Yii::app()->createUrl("pelamar/view", array("id"=>Pelamar::model()->applicant($data->pelamar_id)))',
-					'imageUrl'=>'images/detail.png',
+					'imageUrl'=>YII::app()->baseUrl.'images/detail.png',
 					),
 				),
 			),

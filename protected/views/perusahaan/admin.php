@@ -25,11 +25,11 @@ $this->pageTitle='Manage Perusahaan';
 
 		<span class="hidden-xs">
 
-			<?php echo CHtml::link('Add Perusahaan',
+			<?php echo CHtml::link('Tambah',
 				array('create'),
 				array('class' => 'btn btn-primary btn-flat'));
 				?>
-				<?php echo CHtml::link('List Perusahaan',
+				<?php echo CHtml::link('Daftar',
 					array('index'),
 					array('class' => 'btn btn-primary btn-flat'));
 					?>

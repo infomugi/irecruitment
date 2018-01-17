@@ -43,7 +43,7 @@
 						<?php if(!YII::app()->user->isGuest){ ?>
 
 
-							<div class="Resume">
+							<div class="Resume hidden-xs">
 								<h1>My Account</h1>
 								<ul class="unstyled">
 
@@ -51,10 +51,10 @@
 										'htmlOptions'=>array('class'=>'unstyled'),
 										'encodeLabel'=>false,
 										'items'=>array(
-											array('label'=>'<i class="fa fa-caret-right"></i> Data Pribadi','url'=>array('/pelamar/profile'),'visible'=>yii::app()->user->getLevel()==2),
-											array('label'=>'<i class="fa fa-caret-right"></i> Dokumen Lamaran','url'=>array('/pelamar/dokumen'),'visible'=>yii::app()->user->getLevel()==2),                                  
 											array('label'=>'<i class="fa fa-caret-right"></i> Lowongan','url'=>array('/lowongan/terbaru')),
+											array('label'=>'<i class="fa fa-caret-right"></i> Dokumen Lamaran','url'=>array('/pelamar/dokumen'),'visible'=>yii::app()->user->getLevel()==2),                                  
 											array('label'=>'<i class="fa fa-caret-right"></i> Pengajuan Lamaran','url'=>array('/filelamaran/history'),'visible'=>yii::app()->user->getLevel()==2),                                  
+											array('label'=>'<i class="fa fa-caret-right"></i> Data Pribadi','url'=>array('/pelamar/profile'),'visible'=>yii::app()->user->getLevel()==2),
 											array('label'=>'<i class="fa fa-caret-right"></i> Edit Data Pribadi','url'=>array('/pelamar/update'),'visible'=>yii::app()->user->getLevel()==2),
 											array('label'=>'<i class="fa fa-caret-right"></i> Edit Password','url'=>array('/pelamar/password'),'visible'=>yii::app()->user->getLevel()==2),
 											),
@@ -66,7 +66,7 @@
 
 							<?php }else{ ?>
 
-								<div class="Resume">
+								<div class="Resume hidden-xs">
 									<h1>Menu</h1>
 									<ul class="unstyled">
 
@@ -75,7 +75,8 @@
 											'encodeLabel'=>false,
 											'items'=>array(
 												array('label'=>'<i class="fa fa-caret-right"></i> Lowongan','url'=>array('/lowongan/terbaru')),
-												array('label'=>'<i class="fa fa-caret-right"></i> Register','url'=>array('/site/register')),
+												array('label'=>'<i class="fa fa-caret-right"></i> Register Pencaker','url'=>array('/site/pencaker')),
+												array('label'=>'<i class="fa fa-caret-right"></i> Register Perusahaan','url'=>array('/site/perusahaan')),
 												array('label'=>'<i class="fa fa-caret-right"></i> Login','url'=>array('/site/login')),
 												),
 											)); ?>

@@ -7,7 +7,6 @@
  * @property integer $id_bagian
  * @property string $nama
  * @property string $deskripsi
- * @property string $psikotest
  * @property string $status
  */
 class Bagian extends CActiveRecord
@@ -31,10 +30,9 @@ class Bagian extends CActiveRecord
 			array('nama, deskripsi, status', 'required'),
 			array('nama', 'length', 'max'=>50),
 			array('status', 'length', 'max'=>25),
-			array('psikotest', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_bagian, nama, deskripsi, psikotest, status', 'safe', 'on'=>'search'),
+			array('id_bagian, nama, deskripsi, status', 'safe', 'on'=>'search'),
 			);
 	}
 
@@ -58,7 +56,6 @@ class Bagian extends CActiveRecord
 			'id_bagian' => 'Id Bagian',
 			'nama' => 'Nama',
 			'deskripsi' => 'Deskripsi',
-			'psikotest' => 'Soal Psikotest',
 			'status' => 'Status',
 			);
 	}
@@ -84,7 +81,6 @@ class Bagian extends CActiveRecord
 		$criteria->compare('id_bagian',$this->id_bagian);
 		$criteria->compare('nama',$this->nama,true);
 		$criteria->compare('deskripsi',$this->deskripsi,true);
-		$criteria->compare('psikotest',$this->psikotest,true);
 		$criteria->compare('status',$this->status,true);
 
 		return new CActiveDataProvider($this, array(

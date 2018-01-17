@@ -119,6 +119,7 @@ input[type=checkbox], input[type=radio]{
 }
 .site-logo{
   margin: 15px 0px;
+  float: left;
 }
 .navbar-default{
   margin: 0px;
@@ -135,8 +136,9 @@ input[type=checkbox], input[type=radio]{
   background: transparent;
 }   
 .navbar-default .navbar-toggle, .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus{
-  background-color: #2196f3;
-  border-color: #2196f3;
+  background-color: #4caf50;
+  border-color: #4caf50;
+  margin-top: 20px;
 }
 .navbar-default .navbar-toggle .icon-bar{ background-color: #fff;}
 /***********dropdown Menu**********/
@@ -244,7 +246,7 @@ input[type=checkbox], input[type=radio]{
 }
 /***********main-content*********/
 #maincontent{
-  padding: 80px 0px;
+  padding: 20px 0px;
   position: relative;
   overflow: hidden;
   float: left;
@@ -299,10 +301,11 @@ input[type=checkbox], input[type=radio]{
   overflow: hidden;
 }
 .Resume{
-  box-shadow: 0px 0px 53px -25px rgba(0,0,0,0.75);
-  padding: 20px;
-  border-bottom: solid 4px #b30c11;
-  border-radius: 4px;
+ box-shadow: 0px 0px 53px -25px rgba(0,0,0,0.75);
+ padding: 20px;
+ padding-bottom: 20px;
+ border-bottom: solid 4px #4caf50;
+ border-radius: 4px;
 }
 .Resume h1{
   font-size: 16px;

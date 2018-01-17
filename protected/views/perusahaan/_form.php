@@ -82,34 +82,6 @@
 			<div class="form-group">
 
 				<div class="col-sm-4 control-label">
-					<?php echo $form->labelEx($model,'nama_pic'); ?>
-				</div>   
-
-				<div class="col-sm-8">
-					<?php echo $form->error($model,'nama_pic'); ?>
-					<?php echo $form->textField($model,'nama_pic',array('class'=>'form-control')); ?>
-				</div>
-
-			</div>  
-
-
-			<div class="form-group">
-
-				<div class="col-sm-4 control-label">
-					<?php echo $form->labelEx($model,'kontak_pic'); ?>
-				</div>   
-
-				<div class="col-sm-8">
-					<?php echo $form->error($model,'kontak_pic'); ?>
-					<?php echo $form->textField($model,'kontak_pic',array('class'=>'form-control')); ?>
-				</div>
-
-			</div>  
-
-
-			<div class="form-group">
-
-				<div class="col-sm-4 control-label">
 					<?php echo $form->labelEx($model,'industri'); ?>
 				</div>   
 
@@ -138,7 +110,7 @@
 							'labelOptions'=>array(
 								'style'=> '
 								padding-left:5px;
-								width: 75px;
+								width: 125px;
 								float: left;
 								'),
 							'style'=>'float:left;',
@@ -151,11 +123,10 @@
 
 				<div class="form-group">
 					<div class="col-md-12">  
-					</br></br>
-					<?php echo CHtml::submitButton($model->isNewRecord ? 'Simpan' : 'Edit', array('class' => 'btn btn-info btn-flat pull-right')); ?>
+						<?php echo CHtml::submitButton($model->isNewRecord ? 'Simpan' : 'Edit Perusahaan', array('class' => 'btn btn-info btn-flat pull-right')); ?>
+					</div>
 				</div>
-			</div>
 
-			<?php $this->endWidget(); ?>
+				<?php $this->endWidget(); ?>
 
 </div></div><!-- form -->

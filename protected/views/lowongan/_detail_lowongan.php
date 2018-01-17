@@ -143,3 +143,9 @@
 			}
 
 			?>
+
+
+			<STYLE>
+				th{width:100px;}
+			</STYLE>
+

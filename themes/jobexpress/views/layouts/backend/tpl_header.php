@@ -3,7 +3,7 @@
 <?php
 $baseUrl = Yii::app()->theme->baseUrl."/backend"; 
 $frontUrl = Yii::app()->theme->baseUrl; 
-$url = Yii::app()->baseUrl."/index.php?r="; 
+$url = Yii::app()->baseUrl."/"; 
 $cs = Yii::app()->getClientScript();
 Yii::app()->clientScript->registerCoreScript('jquery');
 ?>
@@ -19,7 +19,7 @@ Yii::app()->clientScript->registerCoreScript('jquery');
   <link href="<?php echo $baseUrl;?>/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet">
   <link href="<?php echo $baseUrl;?>/css/animate.css" rel="stylesheet">
   <link href="<?php echo $baseUrl;?>/css/style.css" rel="stylesheet">
-  <link href="<?php echo $baseUrl;?>/css/colors/default.css" id="theme" rel="stylesheet">
+  <link href="<?php echo $baseUrl;?>/css/colors/blue.css" id="theme" rel="stylesheet">
   <link href="<?php echo $frontUrl;?>/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="<?php echo $frontUrl;?>/assets/plugins/themify/themify-icons.css" rel="stylesheet">
 </head>

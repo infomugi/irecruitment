@@ -68,10 +68,10 @@ class FileLamaran extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID Pengajuan',
+			'id' => 'ID Lamaran',
 			'file_lamaran' => 'File Lamaran',
 			'user_id' => 'User ID',
-			'tanggal_upload' => 'Tanggal Pengajuan',
+			'tanggal_upload' => 'Tanggal Lamaran',
 			'status_lamaran' => 'Status Lamaran',
 			'tanggal_verifikasi' => 'Tanggal Verifikasi',
 			'keterangan' => 'Pesan dari HRD',

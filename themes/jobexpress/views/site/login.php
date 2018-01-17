@@ -2,76 +2,62 @@
 /* @var $this SiteController */
 /* @var $model LoginForm */
 /* @var $form CActiveForm  */
-
-$this->pageTitle=Yii::app()->name . ' - Login';
+$this->pageTitle='Login';
 $this->breadcrumbs=array(
 	'Login',
   );
   ?>
+  <main>
 
-  <main id="maincontent">
-    <div class="container">
-      <div class="row">
+    <div class="login-block">
+     <img src="<?php echo YII::app()->theme->baseUrl;?>/frontend/img/logo-alt.png" alt="logo-alt">
+     <h1>Masuk</h1>
 
-        <div class="col-md-6 col-md-offset-3">
-          <div class="page-tab">
-            <div id="form">
-              <div id="userform">
-                <ul class="nav nav-tabs nav-justified" role="tablist">
-                  <li class="active border-right"><a href="#login" role="tab" data-toggle="tab">Masuk</a></li>
-                </ul>
-                <div class="tab-content">
-                  <div class="tab-pane fade active in" id="login">
+     <?php
+     foreach(Yii::app()->user->getFlashes() as $key => $message) {
+      echo '</BR><div class="alert alert-' . $key . '">' . $message . "</div>\n";
+    }
+    ?>
 
-                    <div id="login">
+    <?php $form=$this->beginWidget('CActiveForm', array(
+      'id'=>'login-form',
+      'enableAjaxValidation'=>false,
+      'enableClientValidation' => true,
+      'clientOptions' => array(
+        'validateOnSubmit' => true,
+        ),
+      'errorMessageCssClass' => 'label label-info',
+      'htmlOptions' => array('enctype' => 'multipart/form-data','autocomplete'=>'off'),
+      )); ?>
 
-                      <?php
-                      foreach(Yii::app()->user->getFlashes() as $key => $message) {
-                        echo '</BR><div class="alert alert-' . $key . '">' . $message . "</div>\n";
-                      }
-                      ?>
+      <?php echo $form->errorSummary($model, null, null, array('class' => 'alert alert-danger text-left')); ?>
 
-                      <?php $form=$this->beginWidget('CActiveForm', array(
-                        'id'=>'login-form',
-                        'enableAjaxValidation'=>false,
-                        'enableClientValidation' => true,
-                        'clientOptions' => array(
-                          'validateOnSubmit' => true,
-                          ),
-                        'errorMessageCssClass' => 'label label-info',
-                        'htmlOptions' => array('enctype' => 'multipart/form-data','autocomplete'=>'off'),
-                        )); ?>
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="ti-email"></i></span>
+          <?php echo $form->textField($model,'username', array('class' => 'form-control', 'placeholder'=>'Username atau Email')); ?>
+        </div>
+      </div>
 
-                        <?php echo $form->errorSummary($model, null, null, array('class' => 'alert alert-warning')); ?>
+      <hr class="hr-xs">
 
-                        <div class="form-group">
-                          <label> Username atau E-mail</label>
-                          <?php echo $form->textField($model,'username', array('class' => 'form-control', 'placeholder'=>'Username atau Email')); ?>
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="ti-unlock"></i></span>
+          <?php echo $form->passwordField($model,'password', array('class' => 'form-control','placeholder'=>'Password')); ?>
+        </div>
+      </div>
 
-                          <div class="search_icon"><span class="ti-user"></span></div>
-                        </div>
-                        <div class="form-group">
-                          <label> Password</label>
-                          <?php echo $form->passwordField($model,'password', array('class' => 'form-control','placeholder'=>'Password')); ?>
-                          <div class="search_icon"><span class="ti-pin"></span></div>
-                        </div>
-                        <div class="mrgn-30-top">
-                         <?php echo CHtml::submitButton('Login',array('class'=>'btn btn-larger btn-block')); ?>
-                       </div>
+      <?php echo CHtml::submitButton('Login',array('class'=>'btn btn-primary btn-block')); ?>
 
-                       <?php $this->endWidget(); ?>  
 
-                     </div>
 
-                   </div>
+      <?php $this->endWidget(); ?>  
+    </div>
 
-                 </div>
-               </div>
-             </div>
-           </div>
-         </div>
+    <div class="login-links">
+      <a class="pull-left" href="<?php echo YII::app()->baseUrl; ?>/site/index"><span class="hidden-xs">Kembali ke</span> Home</a>
+      <a class="pull-right" href="<?php echo YII::app()->baseUrl; ?>/site/pencaker"><span class="hidden-xs">Belum Punya Akun ?</span> Daftar Disini</a>
+    </div>
 
-       </div>
-     </div>
-   </main>
-
+  </main>

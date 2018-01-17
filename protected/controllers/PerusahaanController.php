@@ -32,6 +32,11 @@ class PerusahaanController extends Controller
 				'users'=>array('@'),
 				'expression'=>'Yii::app()->user->getLevel()==1',
 				),
+			array('allow',
+				'actions'=>array('edit'),
+				'users'=>array('@'),
+				'expression'=>'Yii::app()->user->getLevel()==3',
+				),			
 			array('deny',
 				'users'=>array('*'),
 				),
@@ -161,6 +166,14 @@ class PerusahaanController extends Controller
 		return $model;
 	}
 
+	public function loadCompany($id)
+	{
+		$model=Perusahaan::model()->findByAttributes(array('user_id'=>$id));
+		if($model===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
+	}	
+
 	/**
 	 * Performs the AJAX validation.
 	 * @param Perusahaan $model the model to be validated
@@ -188,5 +201,25 @@ class PerusahaanController extends Controller
 		$model->status = 0;
 		$model->save();
 		$this->redirect(array('index'));
-	}			
+	}		
+
+	public function actionEdit()
+	{
+		$model=$this->loadCompany(YII::app()->user->id);
+
+		// Uncomment the following line if AJAX validation is needed
+		$this->performAjaxValidation($model);
+
+		if(isset($_POST['Perusahaan']))
+		{
+			$model->attributes=$_POST['Perusahaan'];
+			if($model->save()){
+				$this->refresh();
+			}
+		}
+
+		$this->render('update',array(
+			'model'=>$model,
+			));
+	}		
 }

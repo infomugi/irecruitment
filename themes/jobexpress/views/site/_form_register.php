@@ -16,44 +16,63 @@
 	'htmlOptions' => array('enctype' => 'multipart/form-data','autocomplete'=>'off'),
 	)); ?>
 
-	<?php echo $form->errorSummary($model, null, null, array('class' => 'alert alert-warning')); ?>
-	<?php echo $form->errorSummary($Pelamar, null, null, array('class' => 'alert alert-warning')); ?>
-
-	<div class="form-group">
-		<label> <?php echo $form->labelEx($Pelamar,'nik'); ?></label>
-		<?php $this->widget('CMaskedTextField',array('model'=>$Pelamar,'attribute'=>'nik','mask'=>'9999999999999999','htmlOptions'=>array('class'=>'form-control', 'placeholder'=>'NIK')));
-		?>
-		<div class="search_icon"><span class="ti-credit-card"></span></div>
-	</div>
-
-	<div class="form-group">
-		<label> Username</label>
-		<?php echo $form->textField($model,'username', array('class' => 'form-control', 'placeholder'=>'Username')); ?>
-		<div class="search_icon"><span class="ti-credit-card"></span></div>
-	</div>
+	<?php echo $form->errorSummary($model, null, null, array('class' => 'alert alert-danger text-left')); ?>
+	<?php echo $form->errorSummary($Pelamar, null, null, array('class' => 'alert alert-danger text-left')); ?>
 
 
 	<div class="form-group">
-		<label> <?php echo $form->labelEx($Pelamar,'nama'); ?></label>
-		<?php echo $form->textField($Pelamar,'nama', array('class' => 'form-control', 'placeholder'=>'Nama Lengkap')); ?>
-		<div class="search_icon"><span class="ti-user"></span></div>
+		<div class="input-group">
+			<span class="input-group-addon"><i class="ti-credit-card"></i></span>
+			<?php 
+			// $this->widget('CMaskedTextField',array('model'=>$Pelamar,'attribute'=>'nik','mask'=>'9999999999999999','htmlOptions'=>array('class'=>'form-control', 'placeholder'=>'Nomor Induk KTP')));
+			?>
+			<?php echo $form->textField($Pelamar,'nik', array('class' => 'form-control', 'placeholder'=>'Nomor Induk KTP')); ?>
+		</div>
 	</div>
-
+	<hr class="hr-xs">
 	<div class="form-group">
-		<label> Email</label>
-		<?php echo $form->textField($model,'email', array('class' => 'form-control', 'placeholder'=>'Email')); ?>
-		<div class="search_icon"><span class="ti-email"></span></div>
+		<div class="input-group">
+			<span class="input-group-addon"><i class="ti-credit-card"></i></span>
+			<?php
+			// $this->widget('CMaskedTextField',array('model'=>$Pelamar,'attribute'=>'no_kk','mask'=>'9999999999999999','htmlOptions'=>array('class'=>'form-control', 'placeholder'=>'Nomor Kartu Kuning')));
+			?>
+			<?php echo $form->textField($Pelamar,'no_kk', array('class' => 'form-control', 'placeholder'=>'Nomor Kartu Kuning')); ?>
+		</div>
 	</div>
-
+	<hr class="hr-xs">	
 	<div class="form-group">
-		<label> Password</label>
-		<?php echo $form->passwordField($model,'password', array('class' => 'form-control','placeholder'=>'Password')); ?>
-		<div class="search_icon"><span class="ti-pin"></span></div>
+		<div class="input-group">
+			<span class="input-group-addon"><i class="ti-user"></i></span>
+			<?php echo $form->textField($model,'username', array('class' => 'form-control', 'placeholder'=>'Username')); ?>
+		</div>
 	</div>
 
-	<div class="mrgn-30-top">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Next' : 'Edit', array('class' => 'btn btn-larger btn-block')); ?>
+	<hr class="hr-xs">
+	<div class="form-group">
+		<div class="input-group">
+			<span class="input-group-addon"><i class="ti-mobile"></i></span>
+			<?php echo $form->textField($Pelamar,'hp', array('class' => 'form-control', 'placeholder'=>'No. HP')); ?>
+		</div>
 	</div>
+
+	<hr class="hr-xs">
+	<div class="form-group">
+		<div class="input-group">
+			<span class="input-group-addon"><i class="ti-email"></i></span>
+			<?php echo $form->textField($model,'email', array('class' => 'form-control', 'placeholder'=>'Email')); ?>
+		</div>
+	</div>
+
+	<hr class="hr-xs">
+	<div class="form-group">
+		<div class="input-group">
+			<span class="input-group-addon"><i class="ti-pin"></i></span>
+			<?php echo $form->passwordField($model,'password', array('class' => 'form-control', 'placeholder'=>'Password')); ?>
+		</div>
+	</div>
+
+	<?php echo CHtml::submitButton('Daftar',array('class'=>'btn btn-success btn-block')); ?>
+
 
 	<?php $this->endWidget(); ?>  
 

@@ -7,7 +7,7 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'Infomedia Solusi Humanika',
+	'name'=>'SIREKO',
 	'theme' => 'jobexpress',
 	'timeZone' => 'Asia/Jakarta',
 	'language'=>'id',
@@ -47,16 +47,29 @@ return array(
 		// 	'class'=>'bootstrap.components.Bootstrap',
 		// ),
 		// uncomment the following to enable URLs in path-format
-		/*
+		// uncomment the following to enable URLs in path-format
+			// uncomment the following to enable URLs in path-format
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'rules'=>array(
-				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
-				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+				
+				'<controller:w+>/<id:d+>'=>'<controller>/view',
+				'<controller:w+>/<action:w+>/<id:d+>'=>'<controller>/<action>',
+				'<controller:w+>/<action:w+>'=>'<controller>/<action>',
+
+				//Page URL Default Settings
+				'login' => 'site/login',
+				'logout' => 'site/logout',
+				'dashboard' => 'site/dashboard',
+				'home' => 'site/home', 
+				'index' => 'site/index',
+				),
+
+			'showScriptName'=>false,
+			'caseSensitive'=>false,
+			// 'urlSuffix'=>'.aspx'
 			),
-		),
-		*/
+
 
 		'db'=>array(
 			'connectionString' => 'mysql:host=localhost;dbname=i_recruitment',

@@ -2,7 +2,7 @@
 $countApplicant  = FileLamaran::model()->countApplicant(9,$model->id_lowongan); 
 if($countApplicant==0){ ?>
 
-	<div class="alert alert-info">Belum ada Data Baru dengan status (Ditolak) yang masuk pada ID Job Order #<?php echo $model->id_lowongan; ?></div>
+	<div class="alert alert-info">Belum ada Data Baru dengan status (Ditolak) yang masuk pada ID Lowongan #<?php echo $model->id_lowongan; ?></div>
 
 	<?php }else{ ?>
 
@@ -29,7 +29,7 @@ if($countApplicant==0){ ?>
 						'view'=>
 						array(
 							'url'=>'Yii::app()->createUrl("filelamaran/view", array("id"=>$data->id))',
-							'imageUrl'=>'images/detail.png',
+							'imageUrl'=>YII::app()->baseUrl.'images/detail.png',
 							),
 						),
 					),

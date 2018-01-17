@@ -17,10 +17,13 @@
  * @property integer $status
  * @property string $jeniskelamin
  * @property integer $umur
- * @property integer $perusahaan_id
  * @property integer $monitor
  * @property integer $jenjang
  * @property integer $nilai
+ * @property integer $perusahaan_id
+ * @property integer $user_id
+ * @property integer $verifikasi_id
+ * @property string $verifikasi_tanggal
  */
 class Lowongan extends CActiveRecord
 {
@@ -41,8 +44,8 @@ class Lowongan extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('tanggal, bagian, jabatan, tipe, deskripsi_pekerjaan, deskripsi_kebutuhan, jumlah_orang, tanggal_kebutuhan, lokasi, status, jeniskelamin, umur, perusahaan_id, jenjang, nilai', 'required'),
-			array('bagian, jabatan, tipe, jumlah_orang, status, umur, perusahaan_id', 'numerical', 'integerOnly'=>true),
-            array('lokasi, tanggal_kebutuhan', 'length', 'max'=>255),
+			array('bagian, jabatan, tipe, jumlah_orang, status, umur, perusahaan_id, user_id, verifikasi_id', 'numerical', 'integerOnly'=>true),
+            array('lokasi, tanggal_kebutuhan, verifikasi_tanggal', 'length', 'max'=>255),
             array('nilai', 'length', 'max'=>5),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -70,22 +73,25 @@ class Lowongan extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id_lowongan' => 'Id Job Order',
+			'id_lowongan' => 'Id Lowongan',
 			'tanggal' => 'Tanggal Posting',
 			'bagian' => 'Bagian',
 			'jabatan' => 'Jabatan',
 			'tipe' => 'Tipe',
 			'deskripsi_pekerjaan' => 'Deskripsi Pekerjaan',
-			'deskripsi_kebutuhan' => 'Deskripsi Kebutuhan',
-			'jumlah_orang' => 'Kuantitas',
+			'deskripsi_kebutuhan' => 'Keahlian Khusus',
+			'jumlah_orang' => 'Jumlah Orang',
 			'tanggal_kebutuhan' => 'Batas Waktu',
-			'lokasi' => 'Lokasi',
+			'lokasi' => 'Lokasi Penempatan',
 			'jeniskelamin' => 'Jenis Kelamin',
 			'status' => 'Status',
-            'umur' => 'Umur',
-            'perusahaan_id' => 'Project',
+            'umur' => 'Maksimal Umur',
             'jenjang' => 'Jenjang Pendidikan',
-            'nilai' => 'Nilai / IPK',
+            'nilai' => 'Nilai / IPK Minimal',
+            'perusahaan_id' => 'Perusahaan',
+            'user_id' => 'Diposting Oleh',
+            'verifikasi_id' => 'Diverifikasi Oleh',
+            'verifikasi_tanggal' => 'Verifikasi Tanggal',
             );
 	}
 
@@ -124,6 +130,32 @@ class Lowongan extends CActiveRecord
 			));
 	}
 
+
+    public function searchCompany($id)
+    {
+        // @todo Please modify the following code to remove attributes that should not be searched.
+
+        $criteria=new CDbCriteria;
+
+        $criteria->compare('id_lowongan',$this->id_lowongan);
+        $criteria->compare('tanggal',$this->tanggal,true);
+        $criteria->compare('bagian',$this->bagian);
+        $criteria->compare('jabatan',$this->jabatan);
+        $criteria->compare('tipe',$this->tipe);
+        $criteria->compare('deskripsi_pekerjaan',$this->deskripsi_pekerjaan,true);
+        $criteria->compare('deskripsi_kebutuhan',$this->deskripsi_kebutuhan,true);
+        $criteria->compare('jumlah_orang',$this->jumlah_orang);
+        $criteria->compare('tanggal_kebutuhan',$this->tanggal_kebutuhan,true);
+        $criteria->compare('lokasi',$this->lokasi,true);
+        $criteria->compare('status',$this->status);
+        $criteria->condition = "user_id = :user_id";
+        $criteria->params=(array(':user_id'=>$id));
+
+        return new CActiveDataProvider($this, array(
+            'criteria'=>$criteria,
+            ));
+    }    
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
@@ -153,9 +185,9 @@ class Lowongan extends CActiveRecord
 
     public function statusLabel($data){
         if($data==1){
-            return "alert alert-success";
+            return "label label-info";
         }else{
-            return "alert alert-danger";
+            return "label label-danger";
         }
     }       
 
@@ -376,8 +408,8 @@ class Lowongan extends CActiveRecord
                 ));
         }    
 
-        public function countApplicant(){
-            return $count = Filelamaran::model()->count();
+        public function countCompany(){
+            return $count = Perusahaan::model()->count();
         }    
 
         public function countMale(){

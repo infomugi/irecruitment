@@ -15,6 +15,6 @@ $dataJabatan=Jabatan::model()->findByPk($data->Lowongan->jabatan);
 			<?php echo FileLamaran::model()->status($data->status_lamaran); ?>
 		</span>
 
-		<span class="time pull-right"><?php echo CHtml::encode($data->tanggal_upload); ?></span>
+		<span class="time pull-right hidden-xs"><?php echo CHtml::encode($data->tanggal_upload); ?></span>
 	</div>
 </div>

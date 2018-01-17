@@ -7,7 +7,7 @@ $this->pageTitle='Beranda';
 			<h3 class="box-title">Pencarian Lamaran</h3>
 			<?php 
 			echo CHtml::beginForm(CHtml::normalizeUrl(array('filelamaran/search')), 'get')
-			. CHtml::textField('string', (isset($_GET['string'])) ? $_GET['string'] : '', array('id'=>'string','class'=>'form-control input-lg','placeholder'=>'Cari Berdasarkan ID Pengajuan'))
+			. CHtml::textField('string', (isset($_GET['string'])) ? $_GET['string'] : '', array('id'=>'string','class'=>'form-control input-lg','placeholder'=>'Cari Berdasarkan Kode Lamaran'))
 			. CHtml::endForm();
 			?>
 
@@ -19,7 +19,7 @@ $this->pageTitle='Beranda';
 			<h3 class="box-title">Pencarian Lowongan</h3>
 			<?php 
 			echo CHtml::beginForm(CHtml::normalizeUrl(array('lowongan/search')), 'get')
-			. CHtml::textField('string', (isset($_GET['string'])) ? $_GET['string'] : '', array('id'=>'string','class'=>'form-control input-lg','placeholder'=>'Cari Berdasarkan ID Job Order'))
+			. CHtml::textField('string', (isset($_GET['string'])) ? $_GET['string'] : '', array('id'=>'string','class'=>'form-control input-lg','placeholder'=>'Cari Berdasarkan Kode Lowongan'))
 			. CHtml::endForm();
 			?>
 
@@ -41,10 +41,10 @@ $this->pageTitle='Beranda';
 	</div>
 	<div class="col-lg-3 col-sm-6 col-xs-12">
 		<div class="white-box">
-			<h3 class="box-title">Total Pelamar</h3>
+			<h3 class="box-title">Total Perusahaan</h3>
 			<ul class="list-inline two-part">
 				<li><i class="ti-files text-purple"></i></li>
-				<li class="text-right"><span class="counter"><?php echo Lowongan::model()->countApplicant(); ?></span></li>
+				<li class="text-right"><span class="counter"><?php echo Lowongan::model()->countCompany(); ?></span></li>
 			</ul>
 		</div>
 	</div>
@@ -100,7 +100,7 @@ $this->pageTitle='Beranda';
 									'view'=>
 									array(
 										'url'=>'Yii::app()->createUrl("lowongan/view", array("id"=>$data->id_lowongan))',
-										'imageUrl'=>'images/detail.png',
+										'imageUrl'=>YII::app()->baseUrl.'/images/detail.png',
 										),
 									),
 								),
@@ -159,7 +159,7 @@ $this->pageTitle='Beranda';
 											'view'=>
 											array(
 												'url'=>'Yii::app()->createUrl("lowongan/view", array("id"=>$data->id_lowongan))',
-												'imageUrl'=>'images/detail.png',
+												'imageUrl'=>YII::app()->baseUrl.'/images/detail.png',
 												),
 											),
 										),
